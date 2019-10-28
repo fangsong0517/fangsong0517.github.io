@@ -81,59 +81,32 @@
   
 
 	<div class='post-body mb'>
-		<h2 id="1-如果想把一个多位数的各个位表示怎么办？"><a href="#1-如果想把一个多位数的各个位表示怎么办？" class="headerlink" title="1.如果想把一个多位数的各个位表示怎么办？"></a>1.如果想把一个多位数的各个位表示怎么办？</h2><p><code>while(j&gt;0){</code></p>
-<p>k=j%10;</p>
-<p>……….j=j/10<code>}</code></p>
-<h2 id="2-如果想知道最长连号-eg-3-5-6-2-3-4-5-6-8-9-，最长为5；？"><a href="#2-如果想知道最长连号-eg-3-5-6-2-3-4-5-6-8-9-，最长为5；？" class="headerlink" title="2.如果想知道最长连号 eg.3 5 6 2 3 4 5 6 8 9 ，最长为5；？"></a>2.如果想知道最长连号 eg.3 5 6 2 3 4 5 6 8 9 ，最长为5；？</h2><p>m=0;<br> k=0;<br> for(int i=1;i&lt;n;i++)<br> {<br>     if(a[i]+1==a[i+1])m++;<br>     else {k++;                     <em>切记弄一个k++，用一个b[i]</em></p>
-<p>​    b[k]=m+1;m=0</p>
+		<h2 id="1-如果想把一个多位数的各个位表示怎么办？"><a href="#1-如果想把一个多位数的各个位表示怎么办？" class="headerlink" title="1.如果想把一个多位数的各个位表示怎么办？"></a>1.如果想把一个多位数的各个位表示怎么办？</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(j&gt;<span class="number">0</span>)&#123;</span><br><span class="line"></span><br><span class="line">k=j%<span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">......j=j/<span class="number">10</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="2-如果想知道最长连号-eg-3-5-6-2-3-4-5-6-8-9-，最长为5；？"><a href="#2-如果想知道最长连号-eg-3-5-6-2-3-4-5-6-8-9-，最长为5；？" class="headerlink" title="2.如果想知道最长连号 eg.3 5 6 2 3 4 5 6 8 9 ，最长为5；？"></a>2.如果想知道最长连号 eg.3 5 6 2 3 4 5 6 8 9 ，最长为5；？</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">m=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"> k=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i++)</span><br><span class="line"></span><br><span class="line"> &#123; </span><br><span class="line"></span><br><span class="line"> 	<span class="keyword">if</span>(a[i]+<span class="number">1</span>==a[i+<span class="number">1</span>])m++;</span><br><span class="line"></span><br><span class="line"> 	<span class="keyword">else</span> &#123;k++;                     切记弄一个k++，用一个b[i]</span><br><span class="line"></span><br><span class="line">	b[k]=m+<span class="number">1</span>;m=<span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
 <h2 id="3-如果题目给了很大的数？"><a href="#3-如果题目给了很大的数？" class="headerlink" title="3.如果题目给了很大的数？"></a>3.如果题目给了很大的数？</h2><p><em>切记用  long long</em></p>
 <h2 id="4-当遇见很大的数不行的话可以定义在外面？"><a href="#4-当遇见很大的数不行的话可以定义在外面？" class="headerlink" title="4.当遇见很大的数不行的话可以定义在外面？"></a>4.当遇见很大的数不行的话可以定义在外面？</h2>  <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> a[<span class="number">100000000</span>],b[<span class="number">10000000</span>];</span><br></pre></td></tr></table></figure>
 
 <p><img src="C:%5CUsers%5Casus%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1544709286131.png" alt="1544709286131"></p>
 <h2 id="5-各种应用"><a href="#5-各种应用" class="headerlink" title="5.各种应用"></a>5.各种应用</h2><p>#include <iostream></p>
 <p>##6.include <iomanip>//不要忘记包含此头文件</p>
-<p>using namespace std;</p>
-<p>int main()</p>
-<p>{</p>
-<ol>
-<li><p>int a;</p>
-</li>
-<li><p>cout&lt;&lt;”input a:”;</p>
-</li>
-<li><p>cin&gt;&gt;a;</p>
-</li>
-<li><p>cout&lt;&lt;”dec:”&lt;&lt;dec&lt;&lt;a&lt;&lt;endl; //以十进制形式输出整数</p>
-</li>
-<li><p>cout&lt;&lt;”hex:”&lt;&lt;hex&lt;&lt;a&lt;&lt;endl; //以十六进制形式输出整数a</p>
-</li>
-<li><p>cout&lt;&lt;”oct:”&lt;&lt;setbase(8)&lt;&lt;a&lt;&lt;endl; //以八进制形式输出整数a</p>
-</li>
-<li><p>char *pt=”China”; //pt指向字符串”China”</p>
-</li>
-<li><p>cout&lt;&lt;setw(10)&lt;&lt;pt&lt;&lt;endl; //指定域宽为,输出字符串</p>
-</li>
-<li><p>cout&lt;&lt;setfill(‘<em>‘)&lt;&lt;setw(10)&lt;&lt;pt&lt;&lt;endl; //指定域宽,输出字符串,空白处以’</em>‘填充</p>
-</li>
-<li><p>double pi=22.0/7.0; //计算pi值</p>
-</li>
-<li><p>//按指数形式输出,8位小数</p>
-</li>
-<li><p>cout&lt;&lt;setiosflags(ios::scientific)&lt;&lt;setprecision(8);</p>
-</li>
-<li><p>cout&lt;&lt;”pi=”&lt;&lt;pi&lt;&lt;endl; //输出pi值</p>
-</li>
-<li><p>cout&lt;&lt;”pi=”&lt;&lt;setprecision(4)&lt;&lt;pi&lt;&lt;endl; //改为位小数</p>
-</li>
-<li><p>cout&lt;&lt;”pi=”&lt;&lt;setiosflags(ios::fixed)&lt;&lt;pi&lt;&lt;endl; //改为小数形式输出</p>
-</li>
-<li><p>return 0;</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="number">1.</span> <span class="keyword">int</span> a;</span><br><span class="line"><span class="number">2.</span> <span class="built_in">cout</span>&lt;&lt;<span class="string">"input a:"</span>;</span><br><span class="line"><span class="number">3.</span> <span class="built_in">cin</span>&gt;&gt;a;</span><br><span class="line"><span class="number">4.</span> <span class="built_in">cout</span>&lt;&lt;<span class="string">"dec:"</span>&lt;&lt;dec&lt;&lt;a&lt;&lt;<span class="built_in">endl</span>; <span class="comment">//以十进制形式输出整数</span></span><br><span class="line"><span class="number">5.</span> <span class="built_in">cout</span>&lt;&lt;<span class="string">"hex:"</span>&lt;&lt;hex&lt;&lt;a&lt;&lt;<span class="built_in">endl</span>; <span class="comment">//以十六进制形式输出整数a</span></span><br><span class="line"><span class="number">6.</span> <span class="built_in">cout</span>&lt;&lt;<span class="string">"oct:"</span>&lt;&lt;setbase(<span class="number">8</span>)&lt;&lt;a&lt;&lt;<span class="built_in">endl</span>; <span class="comment">//以八进制形式输出整数a</span></span><br><span class="line"><span class="number">7.</span> <span class="keyword">char</span> *pt=<span class="string">"China"</span>; <span class="comment">//pt指向字符串"China"</span></span><br><span class="line"><span class="number">8.</span> <span class="built_in">cout</span>&lt;&lt;setw(<span class="number">10</span>)&lt;&lt;pt&lt;&lt;<span class="built_in">endl</span>; <span class="comment">//指定域宽为,输出字符串</span></span><br><span class="line">9. cout&lt;&lt;setfill('')&lt;&lt;setw(10)&lt;&lt;pt&lt;&lt;endl; //指定域宽,输出字符串,空白处以''填充</span><br><span class="line"><span class="number">10.</span> <span class="keyword">double</span> pi=<span class="number">22.0</span>/<span class="number">7.0</span>; <span class="comment">//计算pi值</span></span><br><span class="line"><span class="number">11.</span> <span class="comment">//按指数形式输出,8位小数</span></span><br><span class="line"><span class="number">12.</span> <span class="built_in">cout</span>&lt;&lt;setiosflags(ios::scientific)&lt;&lt;setprecision(<span class="number">8</span>);</span><br><span class="line"><span class="number">13.</span> <span class="built_in">cout</span>&lt;&lt;<span class="string">"pi="</span>&lt;&lt;pi&lt;&lt;<span class="built_in">endl</span>; <span class="comment">//输出pi值</span></span><br><span class="line"><span class="number">14.</span> <span class="built_in">cout</span>&lt;&lt;<span class="string">"pi="</span>&lt;&lt;setprecision(<span class="number">4</span>)&lt;&lt;pi&lt;&lt;<span class="built_in">endl</span>; <span class="comment">//改为位小数</span></span><br><span class="line"><span class="number">15.</span> <span class="built_in">cout</span>&lt;&lt;<span class="string">"pi="</span>&lt;&lt;setiosflags(ios::fixed)&lt;&lt;pi&lt;&lt;<span class="built_in">endl</span>; <span class="comment">//改为小数形式输出</span></span><br><span class="line"><span class="number">16.</span> <span class="keyword">return</span> <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+
+
+
 <p>​</p>
 <p>##7.进制的互相转化.</p>
 <p>![img](file:///C:\Users\asus\Documents\Tencent Files\2035756541\Image\C2C\1C82D1214C2BD67805FD8C9E1A2BCE1F.jpg)</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//***将十进制化为二进制</span><br><span class="line">#include&lt;bitset&gt;</span><br><span class="line">cout&lt;&lt;bit&lt;sizeof(n*2)&gt;(n)&lt;&lt;endl;//2.4.8控制几位；</span><br><span class="line">//化为八进制十六进制</span><br><span class="line">cout&lt;&lt;oct&lt;&lt;n&lt;&lt;endl;</span><br><span class="line">cout&lt;&lt;hex&lt;&lt;n&lt;&lt;endl;</span><br><span class="line">cout&lt;&lt;“重回十进制”&lt;&lt;dec&lt;&lt;n&lt;&lt;endl;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
 <h2 id="7-t-a-i-‘0’-j-后面的那个-“0”-是什么意思？"><a href="#7-t-a-i-‘0’-j-后面的那个-“0”-是什么意思？" class="headerlink" title="7.t+=(a[i]-‘0’)*j++;后面的那个 -“0” 是什么意思？"></a>7.t+=(a[i]-‘0’)*j++;后面的那个 -“0” 是什么意思？</h2><p>应该是把字符型数据转换为整型，在ACSII码表中，字符‘0’的十进制值是48,假设有一个字符为‘0’，那么计算机识别出来的十进制值是48，而不是0。所以可以通过问题上的公式可以把字符型的0转化为整型的0。同理，可以把1到9的字符转换成整型的1到9，看一下ASCII码表就懂了，不难的。通俗来讲就是一个数据类型的转换，这种操作在单片机上的数据转换用得会比较多，但一般是反过来用，把十进制的整型数字转换成字符型数字，然后在一些显示设备上打印出来。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;//代码简洁明了（个人观点）</span><br><span class="line">int main(void)&#123;</span><br><span class="line">char a[14], mod[12] = &quot;0123456789X&quot;; //先将mod11后的十一个字符存入数组</span><br><span class="line">gets(a); //输入字符串</span><br><span class="line">int i, j = 1, t = 0;</span><br><span class="line">for(i = 0; i &lt; 12; i++) &#123;</span><br><span class="line">if(a[i] == &apos;-&apos;) continue; //字符串为分隔符‘-’时跳过此次循环进入下一次循环</span><br><span class="line"></span><br><span class="line">t += (a[i]-&apos;0&apos;)*j++; //t储存 第j个  数字  * j 的和</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">if(mod[t%11] == a[12]) printf(&quot;Right&quot;);</span><br><span class="line">else &#123;</span><br><span class="line">a[12] = mod[t%11]; //若识别码错误，则赋正确的识别码，然后输出</span><br><span class="line">puts(a);</span><br><span class="line">&#125;</span><br><span class="line">return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -288,7 +261,7 @@
     }
     <span class="keyword">return</span> <span class="number">0</span>;    
 } 
-&lt;!--￼<span class="number">21</span>--&gt;
+&lt;!--￼<span class="number">24</span>--&gt;
 </code></pre>
 </li>
 </ol>
