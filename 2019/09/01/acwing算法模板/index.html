@@ -1,67 +1,87 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  
-  <title>acwing算法模板 › fangsong</title>
-  <meta name="author" content="fangsong">
-  
-  <meta name="description" content="快速排序算法模板123456789101112void quick_sort(int q[], int l, int r)&amp;#123;  if(l &amp;gt;= r)return;  int i = l - 1, j = r + 1, x = q[l + r &amp;gt;&amp;gt; 1];  while(i">
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <head>
+    <meta charset="utf-8">
+    
+    <title>acwing算法模板 | fangsong</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+      <link rel="alternate" href="/atom.xml" title="fangsong" type="application/atom+xml">
+    
+    
+      <link rel="icon" href="/favicon.png">
+    
 
-  <meta property="og:title" content="acwing算法模板"/>
-  <meta property="og:site_name" content="fangsong"/>
+    <link rel="stylesheet" href="/css/style.css">
 
-  
-    <meta property="og:image" content=""/>
-  
+    <link rel="stylesheet" href="/js/google-code-prettify/tomorrow-night-eighties.min.css">
 
-  <link href="/favicon.png" rel="icon">
-  <link rel="alternate" href="/atom.xml" title="fangsong" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
-  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-  
+  </head>
 
-</head>
+  <body>
+
+<header>
+	<a id="logo" href="/" title="fangsong">
+	<img src="/favicon.png" alt="fangsong"></a>
+	
+	
+		<!--搜索栏-->
+		<i class="js-toggle-search iconfont icon-search"></i>
 
 
-<body>
-  <header id="header"><div class="meta inner">
-  <h1><a href="/">fangsong</a></h1>
-  <h2><a href="/"></a></h2>
-  <nav id="main-nav">
-    <ul>
-      
-      <li><a href="/about">About</a></li>
-      
-      <li><a href="/archives">Archives</a></li>
-      
-      <li><a href="/atom.xml">RSS</a></li>
-      
-    </ul>
-    <div class="clearfix"></div>
-  </nav>
-</div>
-<div class="clearfix"></div>
+<form class="js-search search-form search-form--modal" method="get" action="http://gushi.li" role="search">
+	<div class="search-form__inner">
+		<div>
+			<i class="iconfont icon-search"></i>
+			<input class="text-input" placeholder="Enter Key..." type="search">
+		</div>
+	</div>
+</form>
+	
+
+	
+		<!--侧边导航栏-->
+		<a id="nav-toggle" href="#"><span></span></a>
+
+<nav>
+	<div class="menu-top-container">
+		<ul id="menu-top" class="menu">
+			
+				
+				<li class="current-menu-item">
+					<a href="http://weibo.com/" target="_blank">Weibo</a>
+				</li>
+			
+		</ul>
+	</div>
+</nav>
+	
+
 </header>
-  <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
-  <div class="post-content">
-    <header>
-      
+<div class="m-header ">
+	<section id="hero1" class="hero">
+		<div class="inner">
+		</div>
+	</section>
+	
+		<figure class="top-image" data-enable=true></figure>
+	
+</div>
+
+<!--文章列表-->
+<div class="wrapper">
   
-    <h1 class="title">acwing算法模板</h1>
+    <!--文章-->
+<article>
+	
+  
+    <h1 class="post-title" itemprop="name">
+      acwing算法模板
+    </h1>
   
 
-      
-        <time datetime="2019-09-01T08:00:38.655Z">2019-09-01</time>
-      
-    </header>
-    <div class="entry">
-      
-        <h2 id="快速排序算法模板"><a href="#快速排序算法模板" class="headerlink" title="快速排序算法模板"></a>快速排序算法模板</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">quick_sort</span><span class="params">(<span class="keyword">int</span> q[], <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(l &gt;= r)<span class="keyword">return</span>;</span><br><span class="line">  <span class="keyword">int</span> i = l - <span class="number">1</span>, j = r + <span class="number">1</span>, x = q[l + r &gt;&gt; <span class="number">1</span>];</span><br><span class="line">  <span class="keyword">while</span>(i &lt; j)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">do</span> i ++; <span class="keyword">while</span>(q[i] &lt; x);</span><br><span class="line">    <span class="keyword">do</span> j --; <span class="keyword">while</span>(q[j] &gt; x);</span><br><span class="line">    <span class="keyword">if</span>( i &lt; j )swap(q[i], q[j]);</span><br><span class="line">  &#125;</span><br><span class="line">  quick_sort(q, l, j), quick(q, j + <span class="number">1</span>, r);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+	<div class='post-body mb'>
+		<h2 id="快速排序算法模板"><a href="#快速排序算法模板" class="headerlink" title="快速排序算法模板"></a>快速排序算法模板</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">quick_sort</span><span class="params">(<span class="keyword">int</span> q[], <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(l &gt;= r)<span class="keyword">return</span>;</span><br><span class="line">  <span class="keyword">int</span> i = l - <span class="number">1</span>, j = r + <span class="number">1</span>, x = q[l + r &gt;&gt; <span class="number">1</span>];</span><br><span class="line">  <span class="keyword">while</span>(i &lt; j)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">do</span> i ++; <span class="keyword">while</span>(q[i] &lt; x);</span><br><span class="line">    <span class="keyword">do</span> j --; <span class="keyword">while</span>(q[j] &gt; x);</span><br><span class="line">    <span class="keyword">if</span>( i &lt; j )swap(q[i], q[j]);</span><br><span class="line">  &#125;</span><br><span class="line">  quick_sort(q, l, j), quick(q, j + <span class="number">1</span>, r);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="归并排序算法模板"><a href="#归并排序算法模板" class="headerlink" title="归并排序算法模板"></a>归并排序算法模板</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">merge_sort</span><span class="params">(<span class="keyword">int</span> q[], <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(l &gt;= r)<span class="keyword">return</span>;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">int</span> mid = l + r &gt;&gt; ;</span><br><span class="line">  merge_sort(q, l, mid);</span><br><span class="line">  merge_sort(q, mid + <span class="number">1</span>, r);</span><br><span class="line">  <span class="keyword">int</span> k = <span class="number">0.</span> i = l, j = mid + <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">while</span>( i &lt;= mid &amp;&amp; j &lt;= r)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">if</span>(q[i] &lt; q[j])temp[k++] = q[i++];</span><br><span class="line">    <span class="keyword">else</span> temp[k++] = q[j++];</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">while</span>(i &lt;= mid)temp[k++] = q[i++];</span><br><span class="line">  <span class="keyword">while</span>(j &lt;= r)temp[k++] = q[j++];</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = l, j = <span class="number">0</span>; i &lt;= r; i++, j ++ )q[i] = temp[j];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -72,84 +92,122 @@
 <h2 id="高精度加法"><a href="#高精度加法" class="headerlink" title="高精度加法"></a>高精度加法</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// C = A + B, A &gt;= 0, B &gt;= 0;</span></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;add(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp;A, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp;B)</span><br><span class="line">&#123;</span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
-      
-    </div>
-      
-      <footer>
-        
-        
-        
-  <div class="addthis addthis_toolbox addthis_default_style">
-    
-      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
-    
-    
-      <a class="addthis_button_tweet"></a>
-    
-    
-      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
-    
-    
-      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
-    
-    <a class="addthis_counter addthis_pill_style"></a>
-  </div>
-  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
-
-      
-      <div class="clearfix"></div>
-      </footer>
-  </div>
+	</div>
+	<div class="meta split">
+		
+			<span>本文总阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
+		
+		<time class="post-date" datetime="2019-09-01T08:00:38.655Z" itemprop="datePublished">2019-09-01</time>
+	</div>
 </article>
 
+<!--评论-->
 
-<section id="comment">
+	
+<div class="ds-thread" data-thread-key="acwing算法模板" data-title="acwing算法模板" data-url="http://yoursite.com/2019/09/01/acwing%E7%AE%97%E6%B3%95%E6%A8%A1%E6%9D%BF/"></div>
+<script type="text/javascript">
+
+var duoshuoQuery = {short_name:"yumemor"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+</script>
+
+
   
-</section>
-
-
-</div></div>
-    <aside id="sidebar" class="alignright">
-  <div class="search">
-  <form action="//google.com/search" method="get" accept-charset="utf-8">
-    <input type="search" name="q" results="0" placeholder="搜索">
-    <input type="hidden" name="q" value="site:yoursite.com">
-  </form>
-</div>
-
-  
-<div class="widget tag">
-  <h3 class="title">最新文章</h3>
-  <ul class="entry">
-    
-      <li>
-        <a href="/2019/10/28/平常做题笔记/">平常做题笔记</a>
-      </li>
-    
-      <li>
-        <a href="/2019/09/01/acwing算法模板/">acwing算法模板</a>
-      </li>
-    
-  </ul>
 </div>
 
 
-  
+  <svg id="bigTriangleColor" width="100%" height="40" viewBox="0 0 100 102" preserveAspectRatio="none">
+    <path d="M0 0 L50 100 L100 0 Z"></path>
+  </svg>
 
   
-</aside>
-    <div class="clearfix"></div>
-  </div>
-  <footer id="footer" class="inner"><div class="alignleft">
-  
-  &copy; 2019 fangsong
-  
+
+
+  <div class="wrapper"></div>
+
+
+
+
+
+<div class="fat-footer">
+	<div class="wrapper">
+		<div class="layout layout--center">
+			<div class="layout__item palm-mb">
+				<div class="media">
+					<img class="headimg" src='https://imgchr.github.la/steve.jpeg' alt='fangsong'>
+					<div class="media__body">
+						<h4>justpsvm</h4>
+						<p class='site-description'>Stay Hungry,Stay Foolish.</p>
+					</div>
+				</div>
+				<div class="author-contact">
+					<ul>
+						
+							
+							<li>
+				        		<a href="http://weibo.com/" target="_blank">
+				        			
+				        				<i class="iconfont icon-weibo"></i>
+				        			
+				        		</a>
+				        	</li>
+						
+							
+							<li>
+				        		<a href="https://github.com/" target="_blank">
+				        			
+				        				<i class="iconfont icon-github"></i>
+				        			
+				        		</a>
+				        	</li>
+						
+							
+							<li>
+				        		<a href="https://www.zhihu.com/" target="_blank">
+				        			
+										<i class="iconfont icon-zhihu"></i>
+				        			
+				        		</a>
+				        	</li>
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
-<div class="clearfix"></div></footer>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
+<footer class="footer" role="contentinfo">
+	<div class="wrapper wrapper--wide split split--responsive">
+		
+			<span>本站总访问量 <span id="busuanzi_value_site_pv"></span> 次, 访客数 <span id="busuanzi_value_site_uv"></span> 人次</span>
+		
+		<span>Theme by <a href="http://github.com/justpsvm" target="_blank" rel="noopener">justpsvm</a>. Powered by <a href="http://hexo.io" target="_blank" rel="noopener">Hexo</a></span>
+	</div>
+</footer>
 
-
-</body>
+	<!-－这里导入了 lib.js 里面涵盖了 jQuery 等框架 所以注释掉-->
+	<!--<script src="http://lib.sinaapp.com/js/jquery/2.0/jquery.min.js"></script>-->
+	<script src="/js/lib.js"></script>
+	<script src="/js/google-code-prettify/prettify.js"></script>
+	<script src="/js/module.js"></script>
+	<script src="/js/script.js"></script>
+	
+		<script async src="http://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	
+	<script type='text/javascript'>
+		//代码高亮
+		$(document).ready(function(){
+	 		$('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+   			prettyPrint();
+		});
+	</script>
+	</body>
 </html>
-
