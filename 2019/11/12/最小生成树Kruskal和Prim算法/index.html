@@ -3,7 +3,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>指针地址上运行方式 | 恁村扛把子</title>
+  <title>最小生成树Kruskal和Prim算法 | 恁村扛把子</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="author" content="fangsong">
   <meta name="keywords" content="">
@@ -48,8 +48,8 @@
   <div class="overlay">
   <div class="page-title">
     <div class="avatar"><a href="/"><img src="/images/fs3.jpg"></a></div>
-    <span>2019-11-11</span>
-    <h2>指针地址上运行方式</h2>
+    <span>2019-11-12</span>
+    <h2>最小生成树Kruskal和Prim算法</h2>
     
     </div>
 </div>
@@ -58,13 +58,38 @@
   <div class="lx-post">
     <div class="lx-entry padding">
       <div>
-        <p>​                                     </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p = &amp;a[0];</span><br></pre></td></tr></table></figure>
-
-<p>​     在c语言中，定义了一种在地址上运行的方式，我们已经有了上面的语句， 这时候如果通过<strong>printf(“%d”, *(p + 1));</strong>   或者<strong>printf(“%d”, *(&amp;a[0] + 1));</strong> 进行输出，我们都会得到<strong>a[1]</strong>元素的值，因为<strong>p +  1</strong>和<strong>&amp;a[0] + 1</strong>这中计算实际上都会得到<strong>a[1]</strong>的地址。</p>
-<p>​     类似的，p + 2、&amp;a[0] + 2 或 &amp;a[1] + 1都会得到 a[2] 元素的地址。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">p                    p + <span class="number">1</span>                      p + <span class="number">2</span>         ......       p + <span class="number">6</span>       </span><br><span class="line"></span><br><span class="line">↓                      ↓                          ↓                          ↓</span><br><span class="line"></span><br><span class="line">a[<span class="number">0</span>]                  a[<span class="number">1</span>]                       a[<span class="number">2</span>]          ......       a[<span class="number">6</span>]</span><br></pre></td></tr></table></figure>
-
+        <p>关于图的几个概念定义：</p>
+<ul>
+<li><strong>连通图</strong>：在无向图中，若任意两个顶点<em>vi</em>与<em>vj</em>都有路径相通，则称该无向图为连通图。</li>
+<li><strong>强连通图</strong>：在有向图中，若任意两个顶点vi与vj都有路径相通，则称该有向图为强连通图。</li>
+<li><strong>连通网</strong>：在连通图中，若图的边具有一定的意义，每一条边都对应着一个数，称为权；权代表着连接连个顶点的代价，称这种连通图叫做连通网。</li>
+<li><strong>生成树</strong>：一个连通图的生成树是指一个连通子图，它含有图中全部n个顶点，但只有足以构成一棵树的n-1条边。一颗有n个顶点的生成树有且仅有n-1条边，如果生成树中再添加一条边，则必定成环。</li>
+<li><strong>最小生成树</strong>：在连通网的所有生成树中，所有边的代价和最小的生成树，称为最小生成树。</li>
+</ul>
+<p><img src="https://img-blog.csdn.net/20160714130435508" alt="img"></p>
+<p>下面介绍两种求最小生成树算法</p>
+<p>##1.Kruskal算法（克鲁斯卡尔）</p>
+<p>此算法可以称为“加边法”，初始最小生成树边数为0，每迭代一次就选择一条满足条件的最小代价边，加入到最小生成树的边集合里。 </p>
+<ol>
+<li><p>把图中的所有边按代价从小到大排序； </p>
+</li>
+<li><p>把图中的n个顶点看成独立的n棵树组成的森林； </p>
+</li>
+<li><p>按权值从小到大选择边，所选的边连接的两个顶点ui,vi,应属于两颗不同的树，则成为最小生成树的一条边，并将这两颗树合并作为一颗树。 </p>
+</li>
+<li><p>重复(3),直到所有顶点都在一颗树内或者有n-1条边为止。</p>
+<p><img src="https://img-blog.csdn.net/20160714144315409" alt="img"></p>
+</li>
+</ol>
+<p>##2.Prim算法</p>
+<p>此算法可以称为“加点法”，每次迭代选择代价最小的边对应的点，加入到最小生成树中。算法从某一个顶点s开始，逐渐长大覆盖整个连通网的所有顶点。</p>
+<ol>
+<li>图的所有顶点集合为<strong><code>V</code></strong>；初始令集合<code>u={s}, v=V−u；</code></li>
+<li>在两个集合u,v能够组成的边中，选择一条代价最小的边<code>(u0,v0)</code>，加入到最小生成树中，并把<code>v0</code>并入到集合<code>u</code>中。</li>
+<li>重复上述步骤，直到最小生成树有<code>n-1</code>条边或者<code>n</code>个顶点为止。</li>
+</ol>
+<p>由于不断向集合u中加点，所以最小代价边必须同步更新；需要建立一个辅助数组closedge,用来维护集合v中每个顶点与集合u中最小代价边信息，：</p>
+<p><img src="https://img-blog.csdn.net/20160714161107576" alt="è¿éåå¾çæè¿°"></p>
 
       </div>
     </div>
@@ -73,12 +98,12 @@
 <div class="lx-navigation">
 	<div class="lx-cover prev lx-cover-sm" style="background-image: url(/images/footer_1.jpg)">
 		<div class="overlay"></div>
-		<a class="copy" href="/2019/11/12/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91Kruskal%E5%92%8CPrim%E7%AE%97%E6%B3%95/">
+		<a class="copy" href="#">
 			<div class="display-t">
 				<div class="display-tc">
 					<div>
 						<span>Next</span>
-						<h3>最小生成树Kruskal和Prim算法</h3>
+						<h3>没有更新的文章</h3>
 					</div>
 				</div>
 			</div>
@@ -86,12 +111,12 @@
 	</div>
         <div class="lx-cover next lx-cover-sm" style="background-image: url(/images/footer_2.jpg)">
 		<div class="overlay"></div>
-		<a class="copy" href="/2019/11/11/scanf%E6%A0%BC%E5%BC%8F%E6%8E%A7%E5%88%B6%E7%AC%A6%E6%B1%87%E6%80%BB/">
+		<a class="copy" href="/2019/11/11/%E6%8C%87%E9%92%88%E5%9C%B0%E5%9D%80%E4%B8%8A%E8%BF%90%E8%A1%8C%E6%96%B9%E5%BC%8F/">
 			<div class="display-t">
 				<div class="display-tc">
 					<div>
 						<span>Prev</span>
-						<h3>scanf格式控制符汇总</h3>
+						<h3>指针地址上运行方式</h3>
 					</div>
 				</div>
 			</div>
