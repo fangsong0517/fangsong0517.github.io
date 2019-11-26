@@ -3,7 +3,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>scanf格式控制符汇总 | 恁村扛把子</title>
+  <title>算法/分解合数的质因子 | 恁村扛把子</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="author" content="fangsong">
   <meta name="keywords" content="">
@@ -48,8 +48,8 @@
   <div class="overlay">
   <div class="page-title">
     <div class="avatar"><a href="/"><img src="/images/fs3.jpg"></a></div>
-    <span>2019-11-11</span>
-    <h2>scanf格式控制符汇总</h2>
+    <span>2019-11-15</span>
+    <h2>算法/分解合数的质因子</h2>
     
     </div>
 </div>
@@ -58,50 +58,8 @@
   <div class="lx-post">
     <div class="lx-entry padding">
       <div>
-        <h2 id="scanf-格式控制符汇总"><a href="#scanf-格式控制符汇总" class="headerlink" title="scanf() 格式控制符汇总"></a>scanf() 格式控制符汇总</h2><table>
-<thead>
-<tr>
-<th>格式控制符</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>%c</td>
-<td>读取一个单一的字符</td>
-</tr>
-<tr>
-<td>%hd、%d、%ld</td>
-<td>读取一个十进制整数，并分别赋值给 short、int、long 类型</td>
-</tr>
-<tr>
-<td>%ho、%o、%lo</td>
-<td>读取一个八进制整数（可带前缀也可不带），并分别赋值给 short、int、long 类型</td>
-</tr>
-<tr>
-<td>%hx、%x、%lx</td>
-<td>读取一个十六进制整数（可带前缀也可不带），并分别赋值给 short、int、long 类型</td>
-</tr>
-<tr>
-<td>%hu、%u、%lu</td>
-<td>读取一个无符号整数，并分别赋值给 unsigned short、unsigned int、unsigned long 类型</td>
-</tr>
-<tr>
-<td>%f、%lf</td>
-<td>读取一个十进制形式的小数，并分别赋值给 float、double 类型</td>
-</tr>
-<tr>
-<td>%e、%le</td>
-<td>读取一个指数形式的小数，并分别赋值给 float、double 类型</td>
-</tr>
-<tr>
-<td>%g、%lg</td>
-<td>既可以读取一个十进制形式的小数，也可以读取一个指数形式的小数，并分别赋值给 float、double 类型</td>
-</tr>
-<tr>
-<td>%s</td>
-<td>读取一个字符串（以空白符为结束）</td>
-</tr>
-</tbody></table>
+        <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++) &#123; <span class="comment">// 暴力</span></span><br><span class="line"><span class="keyword">int</span> num = i;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">2</span>; j * j &lt;= num; j++) &#123;</span><br><span class="line">   <span class="keyword">if</span>(num % j) <span class="keyword">continue</span>;    <span class="comment">// 只要是素数就不进行下一步</span></span><br><span class="line">    <span class="keyword">while</span>(num % j == <span class="number">0</span>) &#123;  <span class="comment">// 分解合数的质数因子</span></span><br><span class="line">        cnt[j]++;    <span class="comment">// cnt[]存的是素数的个数 , j 为素数</span></span><br><span class="line">        num /= j;</span><br><span class="line">    &#125;</span><br><span class="line">    cnt[num]++;  <span class="comment">// 24 % 2， 12 %2 ， 6 % 2， 3 也的存上</span></span><br><span class="line">&#125;</span><br><span class="line">cnt[i]++;  <span class="comment">// 例如 2 3 4 5，除了4是合数外，将其素数存起来</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
       </div>
     </div>
@@ -110,12 +68,12 @@
 <div class="lx-navigation">
 	<div class="lx-cover prev lx-cover-sm" style="background-image: url(/images/footer_1.jpg)">
 		<div class="overlay"></div>
-		<a class="copy" href="/2019/11/11/%E6%8C%87%E9%92%88%E5%9C%B0%E5%9D%80%E4%B8%8A%E8%BF%90%E8%A1%8C%E6%96%B9%E5%BC%8F/">
+		<a class="copy" href="/2019/11/19/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/Leetcode%E9%93%BE%E8%A1%A8/">
 			<div class="display-t">
 				<div class="display-tc">
 					<div>
 						<span>Next</span>
-						<h3>指针地址上运行方式</h3>
+						<h3>数据结构/Leetcode链表</h3>
 					</div>
 				</div>
 			</div>
@@ -123,12 +81,12 @@
 	</div>
         <div class="lx-cover next lx-cover-sm" style="background-image: url(/images/footer_2.jpg)">
 		<div class="overlay"></div>
-		<a class="copy" href="/2019/11/09/haizei%E9%94%99%E9%A2%98%E7%AC%94%E8%AE%B0/">
+		<a class="copy" href="/2019/11/13/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
 			<div class="display-t">
 				<div class="display-tc">
 					<div>
 						<span>Prev</span>
-						<h3>haizei错题笔记</h3>
+						<h3>数据结构/数据结构</h3>
 					</div>
 				</div>
 			</div>

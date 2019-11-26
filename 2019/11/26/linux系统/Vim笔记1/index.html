@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>linux系统/Vim笔记1 | 恁村扛把子</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="fangsong">
+  <meta name="keywords" content="">
+  <meta name="description" content="不要尽力而为，而要全力以赴，即使没有出色的外表和能力，也要压倒一切的霸气，用自己的光，照亮自己的路。">
+  <script id="hexo-configurations">
+  var CONFIG = {
+    root: '/',
+    theme: 'master',
+    version: '1.4.5',
+    localsearch:{
+      "enable": false,
+      "trigger": "auto",
+      "top_n_per_article": 1,
+      "unescape": false,
+      "preload": false
+      },
+    path: '-'
+  };
+</script>
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/jquery.jside.menu.js"></script>
+	<script>
+	$(document).ready(function(){
+	$(".menu-container").jSideMenu({
+	    jSidePosition: "position-right",
+	    jSideSticky: true,
+	    jSideSkin: "endless-river",
+	     });
+	}); 
+	</script>
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300|Noto+Serif+SC&amp;display=swap">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+</head>
+<body>
+<div class="single">
+<div id="page">
+<div id="lx-aside" style="background-image: url(/images/page-cover.jpg)" data-stellar-background-ratio="0.5">
+  <div class="overlay">
+  <div class="page-title">
+    <div class="avatar"><a href="/"><img src="/images/fs3.jpg"></a></div>
+    <span>2019-11-26</span>
+    <h2>linux系统/Vim笔记1</h2>
+    
+    </div>
+</div>
+</div>
+<div id="lx-main-content">
+  <div class="lx-post">
+    <div class="lx-entry padding">
+      <div>
+        <h1 id="Vim笔记"><a href="#Vim笔记" class="headerlink" title="Vim笔记"></a>Vim笔记</h1><h4 id="第一讲小结"><a href="#第一讲小结" class="headerlink" title="第一讲小结"></a>第一讲小结</h4><hr>
+<ol>
+<li><p>光标在屏幕文本中的移动既可以用箭头键，也可以使用 <code>hjkl</code> 字母键。<br>   <code>h</code> (左移)       <code>j</code> (下行)       <code>k</code> (上行)     <code>l</code> (右移)</p>
+</li>
+<li><p>欲进入 Vim 编辑器(从命令行提示符)，请输入：vim 文件名 &lt;回车&gt;</p>
+</li>
+<li><p>欲退出 Vim 编辑器，请输入 <code>&lt;ESC&gt;</code>   :<code>q!</code>   &lt;回车&gt; 放弃所有改动。<br>   或者输入 <ESC>   :<code>wq</code>   &lt;回车&gt; 保存改动。</p>
+</li>
+<li><p>在正常模式下删除光标所在位置的字符，请按： <code>x</code></p>
+</li>
+<li><p>欲插入或添加文本，请输入：</p>
+<p>   <code>i</code>   输入欲插入文本   <code>&lt;ESC&gt;</code>             在光标前插入文本<br>   <code>A</code>   输入欲添加文本   <code>&lt;ESC&gt;</code>             在一行后添加文本</p>
+</li>
+</ol>
+<h4 id="第二讲小结"><a href="#第二讲小结" class="headerlink" title="第二讲小结"></a><strong>第二讲小结</strong></h4><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">1. 欲从当前光标删除至下一个单词，请输入：`dw`</span><br><span class="line">2. 欲从当前光标删除至当前行末尾，请输入：`d$`</span><br><span class="line">3. 欲删除整行，请输入：`dd`</span><br><span class="line">3. 欲重复一个动作，请在它前面加上一个数字：`2w`</span><br><span class="line">4. 在正常模式下修改命令的格式是：</span><br><span class="line">         `operator   [number]   motion`</span><br><span class="line"> 其中：</span><br><span class="line">   `operator -` 操作符，代表要做的事情，比如 `d` 代表删除</span><br><span class="line">   `[number] -` 可以附加的数字，代表动作重复的次数</span><br><span class="line">   `motion   -` 动作，代表在所操作的文本上的移动，例如 `w` 代表单词`(word)`，</span><br><span class="line">              `$` 代表行末等等。</span><br><span class="line">6. 欲移动光标到行首，请按数字0键：`0`</span><br><span class="line">7. 欲撤消以前的操作，请输入：`u` (小写的`u`)</span><br><span class="line"> 欲撤消在一行中所做的改动，请输入：`U` (大写的`U)`</span><br><span class="line"> 欲撤消以前的撤消命令，恢复以前的操作结果，请输入：`CTRL-R`</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h4 id="第三讲小结"><a href="#第三讲小结" class="headerlink" title="第三讲小结"></a><strong>第三讲小结</strong></h4><hr>
+<ol>
+<li><p>要重新置入已经删除的文本内容，请按小写字母 <code>p</code> 键。该操作可以将已删除<br>的文本内容置于光标之后。如果最后一次删除的是一个整行，那么该行将置<br>于当前光标所在行的下一行。</p>
+</li>
+<li><p>要替换光标所在位置的字符，请输入小写的 <code>r</code> 和要替换掉原位置字符的新字<br>符即可。</p>
+</li>
+<li><p>更改类命令允许您改变从当前光标所在位置直到动作指示的位置中间的文本。<br>比如输入 <code>ce</code> 可以替换当前光标到单词的末尾的内容；输入 <code>c$</code> 可以替换当<br>前光标到行末的内容。</p>
+</li>
+<li><p>更改类命令的格式是：</p>
+<p>   <code>c   [number]   motion</code></p>
+</li>
+</ol>
+<h4 id="第四讲小结"><a href="#第四讲小结" class="headerlink" title="第四讲小结"></a><strong>第四讲小结</strong></h4><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">1. `CTRL-G` 用于显示当前光标所在位置和文件状态信息。</span><br><span class="line"> `G` 用于将光标跳转至文件最后一行。</span><br><span class="line"> 先敲入一个行号然后输入大写 G 则是将光标移动至该行号代表的行。</span><br><span class="line"> `gg` 用于将光标跳转至文件第一行。</span><br><span class="line"></span><br><span class="line">2. 输入 / 然后紧随一个字符串是在当前所编辑的文档中正向查找该字符串。</span><br><span class="line"> 输入 ? 然后紧随一个字符串则是在当前所编辑的文档中反向查找该字符串。</span><br><span class="line"> 完成一次查找之后按 n 键是重复上一次的命令，可在同一方向上查</span><br><span class="line"> 找下一个匹配字符串所在；或者按大写 N 向相反方向查找下一匹配字符串所在。</span><br><span class="line"> `CTRL-O` 带您跳转回较旧的位置，`CTRL-I` 则带您到较新的位置。</span><br><span class="line"></span><br><span class="line">3. 如果光标当前位置是括号`(、)、[、]、&#123;、&#125;，`按 `%` 会将光标移动到配对的括号上。</span><br><span class="line"></span><br><span class="line">4. `在一行内替换头一个字符串 old 为新的字符串 new，请输入  :s/old/new`</span><br><span class="line"> `在一行内替换所有的字符串 old 为新的字符串 new，请输入  :s/old/new/g`</span><br><span class="line"> `在两行内替换所有的字符串 old 为新的字符串 new，请输入  :#,#s/old/new/g`</span><br><span class="line"> `在文件内替换所有的字符串 old 为新的字符串 new，请输入  :%s/old/new/g`</span><br><span class="line"> `进行全文替换时询问用户确认每个替换需添加 c 标志        :%s/old/new/gc`</span><br></pre></td></tr></table></figure>
+
+<h4 id="第五讲小结"><a href="#第五讲小结" class="headerlink" title="第五讲小结"></a><strong>第五讲小结</strong></h4><ol>
+<li><p>:<code>!command</code> 用于执行一个外部命令 <code>command</code></p>
+<p>请看一些实际例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(MS-DOS)         (Unix)</span><br><span class="line"> :!dir            :!ls            - 用于显示当前目录的内容。</span><br><span class="line"> :!del FILENAME   :!rm FILENAME   -  用于删除名为 `FILENAME` 的文件。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>:w FILENAME</code>  可将当前 VIM 中正在编辑的文件保存到名为 <code>FILENAME</code> 的文<br>件中。</p>
+</li>
+<li><p><code>v motion :w FILENAME</code> 可将当前编辑文件中可视模式下选中的内容保存到文件<br><code>FILENAME</code> 中。</p>
+</li>
+<li><p><code>:r FILENAME</code> 可提取磁盘文件 <code>FILENAME</code> 并将其插入到当前文件的光标位置<br>后面。</p>
+</li>
+<li><p><code>:r !dir</code> 可以读取 <code>dir</code> 命令的输出并将其放置到当前文件的光标位置后面。</p>
+</li>
+</ol>
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="lx-navigation">
+	<div class="lx-cover prev lx-cover-sm" style="background-image: url(/images/footer_1.jpg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2019/11/26/linux%E7%B3%BB%E7%BB%9F/linux%E9%85%8D%E7%BD%AE/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Next</span>
+						<h3>linux系统/linux配置</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+        <div class="lx-cover next lx-cover-sm" style="background-image: url(/images/footer_2.jpg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2019/11/19/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/Leetcode%E9%93%BE%E8%A1%A8/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Prev</span>
+						<h3>数据结构/Leetcode链表</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>
+</div>
+
+<footer>
+  <div>
+  Copyright &copy; 2019.<a href="/">恁村扛把子</a><br>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme <a href="https://lx.blleng.cn" target="_blank">Lx</a><br>
+  </div>
+</footer>
+</div>
+
+<button class="menu-trigger"></button>
+<div class="menu">
+  <div class="menu-head">
+    <span class="layer">
+      <div class="col">
+        <div class="row for-pic">
+          <div class="profile-pic">
+            <a href="/"><img src="/images/fs3.jpg" alt="fangsong"/></a>
+          </div>
+        </div>
+        <div class="row for-name">
+          <p>fangsong</p>
+          <span class="tagline">Hello, World!</span>
+        </div>
+      </div>
+    </span>
+  </div>
+  <nav class="menu-container">
+  <ul class="menu-items">
+    <li><a href="/"><i class="fa fa-home fa-fw"></i>首页</a></li>
+    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-bookmark fa-fw"></i>页面</span>
+        <ul>
+          <li><a href="/guestbook">留言</a></li>
+        <li><a href="/about">关于</a></li>
+        </ul>
+    </li>
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-link fa-fw"></i>友链</span>
+        <ul>
+          <li> <a href="https://www.luogu.org/" target="_blank">luogu</a></li>
+        </ul>
+    </li>
+  </ul>
+  </nav>
+</div>
+
+<div class="gototop js-top">
+  <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
+</div>
+<script src="/js/jquery.easing.min.js"></script>
+<script src="/js/jquery.waypoints.min.js"></script>
+<script src="/js/jquery.stellar.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>
