@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Mynotes/计算机网络/计算机网络概要 | 恁村扛把子</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="fangsong">
+  <meta name="keywords" content="">
+  <meta name="description" content="不要尽力而为，而要全力以赴，即使没有出色的外表和能力，也要压倒一切的霸气，用自己的光，照亮自己的路。">
+  <script id="hexo-configurations">
+  var CONFIG = {
+    root: '/',
+    theme: 'master',
+    version: '1.4.5',
+    localsearch:{
+      "enable": false,
+      "trigger": "auto",
+      "top_n_per_article": 1,
+      "unescape": false,
+      "preload": false
+      },
+    path: '-'
+  };
+</script>
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/jquery.jside.menu.js"></script>
+	<script>
+	$(document).ready(function(){
+	$(".menu-container").jSideMenu({
+	    jSidePosition: "position-right",
+	    jSideSticky: true,
+	    jSideSkin: "endless-river",
+	     });
+	}); 
+	</script>
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300|Noto+Serif+SC&amp;display=swap">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+</head>
+<body>
+<div class="single">
+<div id="page">
+<div id="lx-aside" style="background-image: url(/images/page-cover.jpg)" data-stellar-background-ratio="0.5">
+  <div class="overlay">
+  <div class="page-title">
+    <div class="avatar"><a href="/"><img src="/images/fs3.jpg"></a></div>
+    <span>2020-04-02</span>
+    <h2>Mynotes/计算机网络/计算机网络概要</h2>
+    
+    </div>
+</div>
+</div>
+<div id="lx-main-content">
+  <div class="lx-post">
+    <div class="lx-entry padding">
+      <div>
+        <h1 id="计算机网络概要"><a href="#计算机网络概要" class="headerlink" title="计算机网络概要"></a>计算机网络概要</h1><h2 id="计算机网络概论与OSI七层模型"><a href="#计算机网络概论与OSI七层模型" class="headerlink" title="计算机网络概论与OSI七层模型"></a>计算机网络概论与OSI七层模型</h2><h3 id="计算机网络大致的模型化："><a href="#计算机网络大致的模型化：" class="headerlink" title="计算机网络大致的模型化："></a>计算机网络大致的模型化：</h3><p><img src="%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A6%82%E8%A6%81.assets/2020-03-24%2008-50-06%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt=""></p>
+<p><code>ISP:互联网服务提供商(Internet Service Provider)</code></p>
+<p>家庭网络:在网络的边缘(端系统)</p>
+<p>公司网络:在网络的边缘(端系统)</p>
+<p>移动网络:在网络的边缘(端系统)</p>
+<p>主要是路由器交换机；</p>
+<h3 id="如何接入互联网"><a href="#如何接入互联网" class="headerlink" title="如何接入互联网"></a>如何接入互联网</h3><p>(一)、<code>DSL</code>网</p>
+<p><img src="%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A6%82%E8%A6%81.assets/2020-03-24%2008-54-51%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt=""></p>
+<p><code>DSL</code>（Digital Subscriber Line）的中文名是数字用户线路，是以电话线为<a href="https://baike.baidu.com/item/传输介质/5538029" target="_blank" rel="noopener">传输介质</a>的传输技术组合。</p>
+<p>(二)、<code>HFC</code>网</p>
+<p><code>HFC</code>(Hybrid Fiber－Coaxial)网即混合光纤同轴网络，是以光纤为骨干网络，同轴电缆为分支网络的高带宽网络，传输速率可达20 Mb/s以上, 主要流行发达的国家；</p>
+<p><img src="%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A6%82%E8%A6%81.assets/2020-03-24%2009-00-07%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt=""></p>
+<p>(三)、<code>FTTH</code>光纤到户</p>
+<p>光纤到户（Fibre (Fiber) To The Home，FTTH）是一种<a href="https://baike.baidu.com/item/光纤通信" target="_blank" rel="noopener">光纤通信</a>的传输方法。</p>
+<p><img src="%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A6%82%E8%A6%81.assets/2020-03-24%2009-02-26%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt=""></p>
+<p>(四)、以太网</p>
+<p>以太网是一种<a href="https://baike.baidu.com/item/计算机" target="_blank" rel="noopener">计算机</a><a href="https://baike.baidu.com/item/局域网" target="_blank" rel="noopener">局域网</a>技术。(主要用在机构，学校..)</p>
+<p><img src="%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A6%82%E8%A6%81.assets/2020-03-24%2009-03-39%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt=""></p>
+<h3 id="OSI七层参考模型"><a href="#OSI七层参考模型" class="headerlink" title="OSI七层参考模型"></a>OSI七层参考模型</h3><p><img src="%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A6%82%E8%A6%81.assets/2020-03-24%2009-06-52%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt=""></p>
+<p>哪些协议与设备？重点</p>
+<p><img src="%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A6%82%E8%A6%81.assets/2020-03-24%2009-10-33%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt=""></p>
+<p><img src="%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A6%82%E8%A6%81.assets/2020-03-24%2009-10-57%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt=""></p>
+<h3 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h3><p><img src="%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A6%82%E8%A6%81.assets/2020-03-24%2009-14-42%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt=""></p>
+<h3 id="网络协议组成的三要素"><a href="#网络协议组成的三要素" class="headerlink" title="网络协议组成的三要素"></a>网络协议组成的三要素</h3><ul>
+<li>语法</li>
+<li>语义</li>
+<li>同步</li>
+</ul>
+<h2 id="分组交换"><a href="#分组交换" class="headerlink" title="分组交换"></a>分组交换</h2><p>(分组)将报文进行切片</p>
+<p><img src="%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A6%82%E8%A6%81.assets/2020-03-24%2009-20-32%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt=""></p>
+<h3 id="存储转发机制"><a href="#存储转发机制" class="headerlink" title="存储转发机制"></a>存储转发机制</h3><p><img src="%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A6%82%E8%A6%81.assets/2020-03-24%2009-21-37%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt=""></p>
+<h3 id="排队时延和分组丢失"><a href="#排队时延和分组丢失" class="headerlink" title="排队时延和分组丢失"></a>排队时延和分组丢失</h3><p><img src="%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A6%82%E8%A6%81.assets/2020-03-24%2009-22-18%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt=""></p>
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="lx-navigation">
+	<div class="lx-cover prev lx-cover-sm" style="background-image: url(/images/footer_1.jpg)">
+		<div class="overlay"></div>
+		<a class="copy" href="#">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Next</span>
+						<h3>没有更新的文章</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+        <div class="lx-cover next lx-cover-sm" style="background-image: url(/images/footer_2.jpg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2020/04/02/Mynotes/%E7%BA%BF%E6%80%A7%E7%AD%9B%E7%9A%84%E5%8F%98%E5%BD%A2/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Prev</span>
+						<h3>Mynotes/线性筛的变形</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>
+</div>
+
+<footer>
+  <div>
+  Copyright &copy; 2019.<a href="/">恁村扛把子</a><br>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme <a href="https://lx.blleng.cn" target="_blank">Lx</a><br>
+  </div>
+</footer>
+</div>
+
+<button class="menu-trigger"></button>
+<div class="menu">
+  <div class="menu-head">
+    <span class="layer">
+      <div class="col">
+        <div class="row for-pic">
+          <div class="profile-pic">
+            <a href="/"><img src="/images/fs3.jpg" alt="fangsong"/></a>
+          </div>
+        </div>
+        <div class="row for-name">
+          <p>fangsong</p>
+          <span class="tagline">Hello, World!</span>
+        </div>
+      </div>
+    </span>
+  </div>
+  <nav class="menu-container">
+  <ul class="menu-items">
+    <li><a href="/"><i class="fa fa-home fa-fw"></i>首页</a></li>
+    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-bookmark fa-fw"></i>页面</span>
+        <ul>
+          <li><a href="/guestbook">留言</a></li>
+        <li><a href="/about">关于</a></li>
+        </ul>
+    </li>
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-link fa-fw"></i>友链</span>
+        <ul>
+          <li> <a href="https://www.luogu.org/" target="_blank">luogu</a></li>
+        </ul>
+    </li>
+  </ul>
+  </nav>
+</div>
+
+<div class="gototop js-top">
+  <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
+</div>
+<script src="/js/jquery.easing.min.js"></script>
+<script src="/js/jquery.waypoints.min.js"></script>
+<script src="/js/jquery.stellar.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>

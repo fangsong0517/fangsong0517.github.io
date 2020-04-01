@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Mynotes/linux学习笔记/数据提取操作 | 恁村扛把子</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="fangsong">
+  <meta name="keywords" content="">
+  <meta name="description" content="不要尽力而为，而要全力以赴，即使没有出色的外表和能力，也要压倒一切的霸气，用自己的光，照亮自己的路。">
+  <script id="hexo-configurations">
+  var CONFIG = {
+    root: '/',
+    theme: 'master',
+    version: '1.4.5',
+    localsearch:{
+      "enable": false,
+      "trigger": "auto",
+      "top_n_per_article": 1,
+      "unescape": false,
+      "preload": false
+      },
+    path: '-'
+  };
+</script>
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/jquery.jside.menu.js"></script>
+	<script>
+	$(document).ready(function(){
+	$(".menu-container").jSideMenu({
+	    jSidePosition: "position-right",
+	    jSideSticky: true,
+	    jSideSkin: "endless-river",
+	     });
+	}); 
+	</script>
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300|Noto+Serif+SC&amp;display=swap">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+</head>
+<body>
+<div class="single">
+<div id="page">
+<div id="lx-aside" style="background-image: url(/images/page-cover.jpg)" data-stellar-background-ratio="0.5">
+  <div class="overlay">
+  <div class="page-title">
+    <div class="avatar"><a href="/"><img src="/images/fs3.jpg"></a></div>
+    <span>2020-04-01</span>
+    <h2>Mynotes/linux学习笔记/数据提取操作</h2>
+    
+    </div>
+</div>
+</div>
+<div id="lx-main-content">
+  <div class="lx-post">
+    <div class="lx-entry padding">
+      <div>
+        <h1 id="数据提取操作"><a href="#数据提取操作" class="headerlink" title="数据提取操作"></a>数据提取操作</h1><ul>
+<li>数据提取操作</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>cut</td>
+<td>切分</td>
+<td>grep</td>
+<td>检索</td>
+</tr>
+<tr>
+<td>sort</td>
+<td>排序</td>
+<td>wc</td>
+<td>统计字符字数行数</td>
+</tr>
+<tr>
+<td>uniq</td>
+<td>去重</td>
+<td>tee</td>
+<td>双重导向</td>
+</tr>
+<tr>
+<td>split</td>
+<td>文件切分</td>
+<td>xargs</td>
+<td>参数代换</td>
+</tr>
+<tr>
+<td>tr</td>
+<td>替换压缩删除</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<ul>
+<li><p>cut切分<br>cut [-dfc] <file><br>-d c:以字符分割<br>-f num：显示ｎｕｍ字段内容【ｎ- ;n - m; -m】<br>-c num: 字节<br>-b num: 字符</p>
+</li>
+<li><p>grep检索<br>grep [-acinv] <string> <file><br>-a: 将二进制文件以普通文件形式搜寻数据<br>-c : 统计搜寻到的次数<br>-i：忽略大小写<br>-n：顺序输出行号<br>-v：反向输出（输出没找到的）</p>
+</li>
+<li><p>sort排序</p>
+<p>sort [-fnMnrtuk] <file_or_stdio></p>
+<p>-f:忽略大小写</p>
+<p>-b:忽略最前面的空格符</p>
+<p>-M:以月份名称排序</p>
+<p>-n:以纯数字方式排序</p>
+<p>-r:反向排序</p>
+<p>-u:uniq</p>
+<p>-t:分隔符，默认[TAB]</p>
+<p>-k:以那个区间排序</p>
+</li>
+</ul>
+<ul>
+<li><p>wc统计字符字数，行数</p>
+<p>wc [-lwm] <file_or_stdin></p>
+<p>-l: 仅列出行号</p>
+<p>-w:仅列出多少字</p>
+<p>-m:仅列出多少字符</p>
+</li>
+<li><p>uniq去重</p>
+<p>uniq [-ic]</p>
+<p>-i :忽略大小写字符的不同</p>
+<p>-c:进行计数</p>
+</li>
+<li><p>split文件切分</p>
+<p>split [-bl] <file> PREFIX</p>
+<p>-b SIZE: 切分为ＳＩＺＥ大小的文件</p>
+<p>-l ｎｕｍ：以ｎｕｍ行为大小切</p>
+</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls /etc | splist -l 10</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>xargs参数xargs替换</p>
+<p>-0：将特殊字符还原为普通字符</p>
+<p>-eEOF:当xargs读到ＥＯＦ时停止</p>
+<p>-p:执行指令前询问</p>
+<p>-n num:每次执行command时需要的参数个数</p>
+</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/passwd | cut -d ":" -f 1 | xargs -n 1 -efangsong id</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>tr替换压缩删除  </p>
+<p>tr [cdst] &lt;字符集&gt;　&lt;字符集&gt;</p>
+<p>c 取代所有不属于第一字符集的字符</p>
+<p>d 删除所有属于第一字符集的字符</p>
+<p>s 将连续重复的字符以单独一个字符表示</p>
+<p>t 先删除第一字符集比第二字符集字符集多的字符</p>
+</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"> cat fangsong | tr [0-9] [a-z]</span><br><span class="line"> cat fangsong | tr -d [0-9]</span><br><span class="line"> cat fangsong | tr -s [a-z]</span><br><span class="line"> cat fangsong | tr -t [0-9] [a-z]</span><br><span class="line"></span><br><span class="line"> 文件夹下文件名大写变小写</span><br><span class="line">ls | tr [a - z] [A  - Z]</span><br><span class="line">for i in `ls`; do</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">mv <span class="variable">$i</span> `<span class="built_in">echo</span> <span class="variable">$i</span>` | tr [a-z] [A-Z]</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"><span class="keyword">done</span></span></span><br></pre></td></tr></table></figure>
+
+<p>如何统计文件中单词的个数，逆序输出</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cat fangsong | tr -s -c [a-z] ' ' | tr ' ' '\n' | sort | uniq -c | sort -n -r | head -n 20</span><br><span class="line">先把不是字符的去掉，然后把空格替换为'\n',然后排序去重然后逆序输出前二十行</span><br></pre></td></tr></table></figure>
+
+
+
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="lx-navigation">
+	<div class="lx-cover prev lx-cover-sm" style="background-image: url(/images/footer_1.jpg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2020/04/02/Mynotes/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%96%87%E4%BB%B6%E4%B8%8E%E7%9B%AE%E5%BD%95%E6%93%8D%E4%BD%9C/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Next</span>
+						<h3>Mynotes/linux学习笔记/文件与目录操作</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+        <div class="lx-cover next lx-cover-sm" style="background-image: url(/images/footer_2.jpg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2020/04/02/Mynotes/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%91%BD%E4%BB%A4%E7%B3%BB%E7%BB%9F/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Prev</span>
+						<h3>Mynotes/linux学习笔记/命令系统</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>
+</div>
+
+<footer>
+  <div>
+  Copyright &copy; 2019.<a href="/">恁村扛把子</a><br>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme <a href="https://lx.blleng.cn" target="_blank">Lx</a><br>
+  </div>
+</footer>
+</div>
+
+<button class="menu-trigger"></button>
+<div class="menu">
+  <div class="menu-head">
+    <span class="layer">
+      <div class="col">
+        <div class="row for-pic">
+          <div class="profile-pic">
+            <a href="/"><img src="/images/fs3.jpg" alt="fangsong"/></a>
+          </div>
+        </div>
+        <div class="row for-name">
+          <p>fangsong</p>
+          <span class="tagline">Hello, World!</span>
+        </div>
+      </div>
+    </span>
+  </div>
+  <nav class="menu-container">
+  <ul class="menu-items">
+    <li><a href="/"><i class="fa fa-home fa-fw"></i>首页</a></li>
+    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-bookmark fa-fw"></i>页面</span>
+        <ul>
+          <li><a href="/guestbook">留言</a></li>
+        <li><a href="/about">关于</a></li>
+        </ul>
+    </li>
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-link fa-fw"></i>友链</span>
+        <ul>
+          <li> <a href="https://www.luogu.org/" target="_blank">luogu</a></li>
+        </ul>
+    </li>
+  </ul>
+  </nav>
+</div>
+
+<div class="gototop js-top">
+  <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
+</div>
+<script src="/js/jquery.easing.min.js"></script>
+<script src="/js/jquery.waypoints.min.js"></script>
+<script src="/js/jquery.stellar.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>

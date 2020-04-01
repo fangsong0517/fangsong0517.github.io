@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Mynotes/操作系统与系统编程/cp/实现cp所用到的函数 | 恁村扛把子</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="fangsong">
+  <meta name="keywords" content="">
+  <meta name="description" content="不要尽力而为，而要全力以赴，即使没有出色的外表和能力，也要压倒一切的霸气，用自己的光，照亮自己的路。">
+  <script id="hexo-configurations">
+  var CONFIG = {
+    root: '/',
+    theme: 'master',
+    version: '1.4.5',
+    localsearch:{
+      "enable": false,
+      "trigger": "auto",
+      "top_n_per_article": 1,
+      "unescape": false,
+      "preload": false
+      },
+    path: '-'
+  };
+</script>
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/jquery.jside.menu.js"></script>
+	<script>
+	$(document).ready(function(){
+	$(".menu-container").jSideMenu({
+	    jSidePosition: "position-right",
+	    jSideSticky: true,
+	    jSideSkin: "endless-river",
+	     });
+	}); 
+	</script>
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300|Noto+Serif+SC&amp;display=swap">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+</head>
+<body>
+<div class="single">
+<div id="page">
+<div id="lx-aside" style="background-image: url(/images/page-cover.jpg)" data-stellar-background-ratio="0.5">
+  <div class="overlay">
+  <div class="page-title">
+    <div class="avatar"><a href="/"><img src="/images/fs3.jpg"></a></div>
+    <span>2020-04-02</span>
+    <h2>Mynotes/操作系统与系统编程/cp/实现cp所用到的函数</h2>
+    
+    </div>
+</div>
+</div>
+<div id="lx-main-content">
+  <div class="lx-post">
+    <div class="lx-entry padding">
+      <div>
+        <h1 id="实现cp所用到的函数"><a href="#实现cp所用到的函数" class="headerlink" title="实现cp所用到的函数"></a>实现cp所用到的函数</h1><h3 id="open-打开和创建文件"><a href="#open-打开和创建文件" class="headerlink" title="open()打开和创建文件"></a>open()打开和创建文件</h3><p>open是多种语言、环境的一种<a href="https://baike.baidu.com/item/函数/18686609" target="_blank" rel="noopener">函数</a>，LINUX中open函数作用：<a href="https://baike.baidu.com/item/打开/1306427" target="_blank" rel="noopener">打开</a>和创建文件。PB程序语言中open功能：打开窗口。</p>
+<p><a href="https://baike.baidu.com/item/打开" target="_blank" rel="noopener"><br>打开</a>和创建文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int  open(constchar*pathname,int  flags);</span><br></pre></td></tr></table></figure>
+
+<p>pathname 是待<a href="https://baike.baidu.com/item/打开" target="_blank" rel="noopener">打开</a>/创建文件的POSIX路径名（如/home/user/a.cpp）；flags 用于指定文件的打开/创建模式，这个参数可由以下<a href="https://baike.baidu.com/item/常量" target="_blank" rel="noopener">常量</a>（定义于<a href="https://baike.baidu.com/item/fcntl.h" target="_blank" rel="noopener">fcntl.h</a>）通过逻辑位或逻辑构成。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">O_RDONLY只读模式</span><br><span class="line">O_WRONLY只写模式</span><br><span class="line">O_RDWR读写模式</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">if</span>((fd_in = open(argv[<span class="number">1</span>], O_RDONLY)) == <span class="number">-1</span>) &#123;</span><br><span class="line">        perror(argv[<span class="number">1</span>]);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="creat-创建一个文件并以只写的方式打开"><a href="#creat-创建一个文件并以只写的方式打开" class="headerlink" title="creat()创建一个文件并以只写的方式打开"></a>creat()创建一个文件并以只写的方式打开</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int creat(const char * pathname, mode_t mode);</span><br></pre></td></tr></table></figure>
+
+<p><strong>函数功能：</strong></p>
+<p>创建一个文件并以只写的方式打开。如果原来该文件存在，会将这个文件的长度截短为0。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>((fd_out= creat(argv[<span class="number">2</span>], <span class="number">0644</span>)) == <span class="number">-1</span>) &#123;</span><br><span class="line">      perror(argv[<span class="number">2</span>]);</span><br><span class="line">      <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="read-从文件中读"><a href="#read-从文件中读" class="headerlink" title="read()从文件中读"></a>read()从文件中读</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">include &lt;unistd.h&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssize_t read  (int fd, void *buf, size_t count);</span><br></pre></td></tr></table></figure>
+
+<p>参数count是请求读取的字节数，读上来的数据保存在缓冲区buf中</p>
+<p>成功返回读取的字节数，出错返回-1并设置errno，如果在调read之前已到达文件末尾，则这次read返回0。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>((nread = read(fd_in, buf, BUFSSIZE)) &gt; <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(write(fd_out, buf, <span class="built_in">strlen</span>(buf)) != nread)&#123;</span><br><span class="line">            perror(<span class="string">"write"</span>);</span><br><span class="line">            <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">memset</span>(buf, <span class="number">0</span>, BUFSSIZE + <span class="number">5</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="write-函数"><a href="#write-函数" class="headerlink" title="write()函数"></a>write()函数</h3><p>将数据写入已打开的文件内</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">write有两种用法。一种是：ssize_t write(int fd, const void *buf, size_t nbyte);</span><br><span class="line">fd：文件描述符；</span><br><span class="line">buf：指定的缓冲区，即指针，指向一段内存单元；</span><br><span class="line">nbyte：要写入文件指定的字节数；</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">while((nread = read(fd_in, buf, BUFSSIZE)) &gt; 0)&#123;</span><br><span class="line">        if(write(fd_out, buf, strlen(buf)) != nread)&#123;</span><br><span class="line">            perror(&quot;write&quot;);</span><br><span class="line">            exit(1);</span><br><span class="line">        &#125;</span><br><span class="line">        memset(buf, 0, BUFSSIZE + 5);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="lx-navigation">
+	<div class="lx-cover prev lx-cover-sm" style="background-image: url(/images/footer_1.jpg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2020/04/02/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/ls/%E5%AE%9E%E7%8E%B0ls%E9%9C%80%E8%A6%81%E7%94%A8%E5%88%B0%E7%9A%84%E5%87%BD%E6%95%B0/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Next</span>
+						<h3>Mynotes/操作系统与系统编程/ls/实现ls需要用到的函数</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+        <div class="lx-cover next lx-cover-sm" style="background-image: url(/images/footer_2.jpg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2020/04/02/Mynotes/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E8%AE%A4%E8%AF%86SHELL%E5%B9%B6%E4%BD%BF%E7%94%A8%E7%9B%B8%E5%85%B3%E6%96%87%E4%BB%B6/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Prev</span>
+						<h3>Mynotes/linux学习笔记/认识SHELL并使用相关文件</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>
+</div>
+
+<footer>
+  <div>
+  Copyright &copy; 2019.<a href="/">恁村扛把子</a><br>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme <a href="https://lx.blleng.cn" target="_blank">Lx</a><br>
+  </div>
+</footer>
+</div>
+
+<button class="menu-trigger"></button>
+<div class="menu">
+  <div class="menu-head">
+    <span class="layer">
+      <div class="col">
+        <div class="row for-pic">
+          <div class="profile-pic">
+            <a href="/"><img src="/images/fs3.jpg" alt="fangsong"/></a>
+          </div>
+        </div>
+        <div class="row for-name">
+          <p>fangsong</p>
+          <span class="tagline">Hello, World!</span>
+        </div>
+      </div>
+    </span>
+  </div>
+  <nav class="menu-container">
+  <ul class="menu-items">
+    <li><a href="/"><i class="fa fa-home fa-fw"></i>首页</a></li>
+    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-bookmark fa-fw"></i>页面</span>
+        <ul>
+          <li><a href="/guestbook">留言</a></li>
+        <li><a href="/about">关于</a></li>
+        </ul>
+    </li>
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-link fa-fw"></i>友链</span>
+        <ul>
+          <li> <a href="https://www.luogu.org/" target="_blank">luogu</a></li>
+        </ul>
+    </li>
+  </ul>
+  </nav>
+</div>
+
+<div class="gototop js-top">
+  <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
+</div>
+<script src="/js/jquery.easing.min.js"></script>
+<script src="/js/jquery.waypoints.min.js"></script>
+<script src="/js/jquery.stellar.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>

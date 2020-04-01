@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Mynotes/linux学习笔记/系统信息的获取 | 恁村扛把子</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="fangsong">
+  <meta name="keywords" content="">
+  <meta name="description" content="不要尽力而为，而要全力以赴，即使没有出色的外表和能力，也要压倒一切的霸气，用自己的光，照亮自己的路。">
+  <script id="hexo-configurations">
+  var CONFIG = {
+    root: '/',
+    theme: 'master',
+    version: '1.4.5',
+    localsearch:{
+      "enable": false,
+      "trigger": "auto",
+      "top_n_per_article": 1,
+      "unescape": false,
+      "preload": false
+      },
+    path: '-'
+  };
+</script>
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/jquery.jside.menu.js"></script>
+	<script>
+	$(document).ready(function(){
+	$(".menu-container").jSideMenu({
+	    jSidePosition: "position-right",
+	    jSideSticky: true,
+	    jSideSkin: "endless-river",
+	     });
+	}); 
+	</script>
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300|Noto+Serif+SC&amp;display=swap">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+</head>
+<body>
+<div class="single">
+<div id="page">
+<div id="lx-aside" style="background-image: url(/images/page-cover.jpg)" data-stellar-background-ratio="0.5">
+  <div class="overlay">
+  <div class="page-title">
+    <div class="avatar"><a href="/"><img src="/images/fs3.jpg"></a></div>
+    <span>2020-04-01</span>
+    <h2>Mynotes/linux学习笔记/系统信息的获取</h2>
+    
+    </div>
+</div>
+</div>
+<div id="lx-main-content">
+  <div class="lx-post">
+    <div class="lx-entry padding">
+      <div>
+        <h1 id="系统信息的获取"><a href="#系统信息的获取" class="headerlink" title="系统信息的获取"></a>系统信息的获取</h1><h4 id="系统信息"><a href="#系统信息" class="headerlink" title="系统信息"></a>系统信息</h4><blockquote>
+<p>uptime 打印系统运行时长和平均负载</p>
+<p>who显示当前登录系统用户信息</p>
+<p>last显示用户最近登录用户信息</p>
+<p>date显示或设置系统时间与日期</p>
+<p>w当前登录用户列表及正在执行的任务</p>
+<p>whoami打印当前有效的用户名称</p>
+<p>uname打印当前系统信息</p>
+<p>cal显示日历</p>
+</blockquote>
+<h4 id="uptime"><a href="#uptime" class="headerlink" title="uptime"></a>uptime</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fangsong@fangsong-FX503VD:~$ uptime</span><br><span class="line"> 08:26:41 up 11 min,  1 user,  load average: 0.75, 1.41, 0.97</span><br></pre></td></tr></table></figure>
+
+<h4 id="w"><a href="#w" class="headerlink" title="w"></a>w</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-h :不打印头信息</span><br><span class="line">-s :是hi用端输出格式</span><br><span class="line">-f :切换FROM项</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">fangsong@fangsong-FX503VD:~$ w</span><br><span class="line"> 08:28:23 up 12 min,  1 user,  load average: 0.86, 1.27, 0.97</span><br><span class="line">USER     TTY      来自           LOGIN@   IDLE   JCPU   PCPU WHAT</span><br><span class="line">fangsong :0       :0               08:17   ?xdm?   1:46   0.01s /usr/lib/gdm3/g</span><br><span class="line">fangsong@fangsong-FX503VD:~$ w -h</span><br><span class="line">fangsong :0       :0               08:17   ?xdm?   1:49   0.01s /usr/lib/gdm3/g</span><br><span class="line">fangsong@fangsong-FX503VD:~$ w -s</span><br><span class="line"> 08:28:39 up 13 min,  1 user,  load average: 0.75, 1.23, 0.96</span><br><span class="line">USER     TTY      来自            空闲等待</span><br><span class="line">fangsong :0       :0               ?xdm?  /usr/lib/gdm3/gdm-x-session --run-s</span><br><span class="line">fangsong@fangsong-FX503VD:~$ w -f</span><br><span class="line"> 08:28:48 up 13 min,  1 user,  load average: 0.63, 1.19, 0.95</span><br><span class="line">USER     TTY        LOGIN@   IDLE   JCPU   PCPU WHAT</span><br><span class="line">fangsong :0        08:17   ?xdm?   1:49   0.01s /usr/lib/gdm3/gdm-x-session --r</span><br><span class="line">fangsong@fangsong-FX503VD:~$</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>USER</th>
+<th>TTY</th>
+<th>FROM</th>
+<th>LOGIN@</th>
+<th>IDLE</th>
+<th>JCPU</th>
+<th>PCPU</th>
+<th>WHAT</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>登录用户名</td>
+<td>登录后系统分配的端号</td>
+<td>登录主机名</td>
+<td>登录时间</td>
+<td>空闲时间</td>
+<td>和终端相连的所有进程所占用时间，当前正在执行的后台作业</td>
+<td>当前进程占用时间</td>
+<td>当前进程正在执行的的命令</td>
+</tr>
+</tbody></table>
+<h4 id="who"><a href="#who" class="headerlink" title="who"></a>who</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">fangsong@fangsong-FX503VD:~$ who -H #显示各栏标题新系列</span><br><span class="line">名称   线路       时间           备注</span><br><span class="line">fangsong :0           2020-03-15 08:17 (:0)</span><br><span class="line">fangsong@fangsong-FX503VD:~$ who -q#登录用户总人数</span><br><span class="line">fangsong</span><br><span class="line"><span class="meta">#</span><span class="bash"> 用户数=1</span></span><br><span class="line">fangsong@fangsong-FX503VD:~$ who -a</span><br><span class="line">           系统引导 2020-03-15 08:15</span><br><span class="line">           运行级别 5 2020-03-15 08:16</span><br><span class="line">fangsong ? :0           2020-03-15 08:17   ?          1763 (:0)</span><br><span class="line">fangsong@fangsong-FX503VD:~$ who -u#显示空闲时间</span><br><span class="line">fangsong :0           2020-03-15 08:17   ?          1763 (:0)</span><br></pre></td></tr></table></figure>
+
+<h4 id="LAST"><a href="#LAST" class="headerlink" title="LAST"></a>LAST</h4><p>显示用户最近登录用户信息</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">fangsong@fangsong-FX503VD:~$ last -n 5#指定输出记录数</span><br><span class="line">fangsong :0           :0               Sun Mar 15 08:17   still logged in</span><br><span class="line">reboot   system boot  5.0.0-38-generic Sun Mar 15 08:15   still running</span><br><span class="line">fangsong :0           :0               Sat Mar 14 10:08 - down   (13:37)</span><br><span class="line">reboot   system boot  5.0.0-38-generic Sat Mar 14 10:06 - 23:45  (13:38)</span><br><span class="line">fangsong :0           :0               Fri Mar 13 16:55 - 00:41  (07:45)</span><br><span class="line"></span><br><span class="line">wtmp begins Mon Nov 25 15:04:07 2019</span><br></pre></td></tr></table></figure>
+
+<h4 id="uname"><a href="#uname" class="headerlink" title="uname"></a>uname</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">fangsong@fangsong-FX503VD:~$ uname -a#全部信息</span><br><span class="line">Linux fangsong-FX503VD 5.0.0-38-generic #41-Ubuntu SMP Tue Dec 3 00:27:35 UTC 2019 x86_64 x86_64 x86_64 GNU/Linux</span><br><span class="line">fangsong@fangsong-FX503VD:~$ uname -m#电脑类型</span><br><span class="line">x86_64</span><br><span class="line">fangsong@fangsong-FX503VD:~$ uname -n#网络上主机的名称</span><br><span class="line">fangsong-FX503VD</span><br><span class="line">fangsong@fangsong-FX503VD:~$ uname -v#os版本</span><br><span class="line"><span class="meta">#</span><span class="bash">41-Ubuntu SMP Tue Dec 3 00:27:35 UTC 2019</span></span><br><span class="line">fangsong@fangsong-FX503VD:~$ uname -p#处理器类型</span><br><span class="line">x86_64</span><br><span class="line">fangsong@fangsong-FX503VD:~$ uname -i#硬件</span><br><span class="line">x86_64</span><br><span class="line">fangsong@fangsong-FX503VD:~$ uname -o#操作系统名称</span><br><span class="line">GNU/Linux</span><br></pre></td></tr></table></figure>
+
+<h4 id="date"><a href="#date" class="headerlink" title="date"></a>date</h4><p>ntp协议：标准的时间</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">fangsong@fangsong-FX503VD:~$ date</span><br><span class="line">2020年 03月 15日 星期日 08:43:00 CST</span><br><span class="line">fangsong@fangsong-FX503VD:~$ date +%s</span><br><span class="line">1584232994</span><br><span class="line">fangsong@fangsong-FX503VD:~$ date +%S</span><br><span class="line">22</span><br><span class="line">fangsong@fangsong-FX503VD:~$ date +%T</span><br><span class="line">08:43:31</span><br><span class="line">fangsong@fangsong-FX503VD:~$ date +%H+%M+%S</span><br><span class="line">08+43+55</span><br></pre></td></tr></table></figure>
+
+<h1 id=""><a href="#" class="headerlink" title=""></a></h1>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="lx-navigation">
+	<div class="lx-cover prev lx-cover-sm" style="background-image: url(/images/footer_1.jpg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2020/04/02/Mynotes/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%96%87%E4%BB%B6%E4%B8%8E%E7%9B%AE%E5%BD%95%E6%93%8D%E4%BD%9C%E3%80%81%E5%AE%9E%E7%8E%B0ls%E5%91%BD%E4%BB%A4/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Next</span>
+						<h3>Mynotes/linux学习笔记/文件与目录操作、实现ls命令</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+        <div class="lx-cover next lx-cover-sm" style="background-image: url(/images/footer_2.jpg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2020/04/02/Mynotes/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%96%87%E4%BB%B6%E4%B8%8E%E7%9B%AE%E5%BD%95%E6%93%8D%E4%BD%9C/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Prev</span>
+						<h3>Mynotes/linux学习笔记/文件与目录操作</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>
+</div>
+
+<footer>
+  <div>
+  Copyright &copy; 2019.<a href="/">恁村扛把子</a><br>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme <a href="https://lx.blleng.cn" target="_blank">Lx</a><br>
+  </div>
+</footer>
+</div>
+
+<button class="menu-trigger"></button>
+<div class="menu">
+  <div class="menu-head">
+    <span class="layer">
+      <div class="col">
+        <div class="row for-pic">
+          <div class="profile-pic">
+            <a href="/"><img src="/images/fs3.jpg" alt="fangsong"/></a>
+          </div>
+        </div>
+        <div class="row for-name">
+          <p>fangsong</p>
+          <span class="tagline">Hello, World!</span>
+        </div>
+      </div>
+    </span>
+  </div>
+  <nav class="menu-container">
+  <ul class="menu-items">
+    <li><a href="/"><i class="fa fa-home fa-fw"></i>首页</a></li>
+    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-bookmark fa-fw"></i>页面</span>
+        <ul>
+          <li><a href="/guestbook">留言</a></li>
+        <li><a href="/about">关于</a></li>
+        </ul>
+    </li>
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-link fa-fw"></i>友链</span>
+        <ul>
+          <li> <a href="https://www.luogu.org/" target="_blank">luogu</a></li>
+        </ul>
+    </li>
+  </ul>
+  </nav>
+</div>
+
+<div class="gototop js-top">
+  <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
+</div>
+<script src="/js/jquery.easing.min.js"></script>
+<script src="/js/jquery.waypoints.min.js"></script>
+<script src="/js/jquery.stellar.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>

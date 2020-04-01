@@ -3,7 +3,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>linux系统/linux服务器免密登陆 | 恁村扛把子</title>
+  <title>Mynotes/README | 恁村扛把子</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="author" content="fangsong">
   <meta name="keywords" content="">
@@ -48,8 +48,8 @@
   <div class="overlay">
   <div class="page-title">
     <div class="avatar"><a href="/"><img src="/images/fs3.jpg"></a></div>
-    <span>2019-11-29</span>
-    <h2>linux系统/linux服务器免密登陆</h2>
+    <span>2020-04-02</span>
+    <h2>Mynotes/README</h2>
     
     </div>
 </div>
@@ -58,21 +58,18 @@
   <div class="lx-post">
     <div class="lx-entry padding">
       <div>
-        <h2 id="1-修改主机名"><a href="#1-修改主机名" class="headerlink" title="1.修改主机名"></a>1.修改主机名</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /ect/hostname   修改主机名</span><br></pre></td></tr></table></figure>
+        <h1 id="Mynotes"><a href="#Mynotes" class="headerlink" title="Mynotes"></a>Mynotes</h1><p>笔记记录<br>平常学习时的笔记整理，包括数据结构，C语言，linux学习，系统编程，计算机网络等</p>
+<p>##　C语言目录</p>
+<img src="https://github.com/fangsong0517/Figure-bed/blob/master/c%E8%AF%AD%E8%A8%80%E7%9B%AE%E5%BD%95.png?raw=true" alt="c语言目录.png" style="zoom: 50%;" />
 
-<h2 id="2-免密登录服务器"><a href="#2-免密登录服务器" class="headerlink" title="2.免密登录服务器"></a>2.免密登录服务器</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen</span><br></pre></td></tr></table></figure>
+<p>##　数据结构目录</p>
+<p><img src="https://github.com/fangsong0517/Figure-bed/blob/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%9B%AE%E5%BD%951.png?raw=true" alt="数据结构目录1.png" style="zoom:50%;" /><img src="https://github.com/fangsong0517/Figure-bed/blob/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%9B%AE%E5%BD%952.png?raw=true" alt="数据结构目录2.png"></p>
+<p>##　欧拉计划目录</p>
+<img src="https://github.com/fangsong0517/Figure-bed/blob/master/%E6%AC%A7%E6%8B%89%E8%AE%A1%E5%88%92%E7%9B%AE%E5%BD%95.png?raw=true" alt="欧拉计划目录.png" style="zoom:50%;" />
 
-<p><img src="https://img-blog.csdnimg.cn/20191128234502275.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTIxNjcw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ls -a</span><br><span class="line">$ cd .ssh</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/20191128235256508.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTIxNjcw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~/.ssh$ cat id_rsa.pub</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/20191128235439619.png" alt="在这里插入图片描述"></p>
-<p>复制公钥</p>
-<p>在另一个终端确保已经登录<code>pi</code><br>输入<code>pwd</code></p>
-<p>由于此处初次使用，所以<code>cd .ssh</code>所以会报错<code>-bash: cd: .ssh: No such file or directory</code><br><img src="https://img-blog.csdnimg.cn/20191128235704510.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTIxNjcw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>此时再次输入<code>ssh-keygen</code><br>再次<code>cd .ssh</code>即可<br><img src="https://img-blog.csdnimg.cn/20191129000041497.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTIxNjcw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~/.ssh $ ls         此处没有auauthorized_keys需要创建</span><br><span class="line">~/.ssh $ vim authorized_keys</span><br></pre></td></tr></table></figure>
-<p>之后讲之前复制的公钥放在里面</p>
-<p>测试一下，重新连接服务器。<img src="https://img-blog.csdnimg.cn/20191129000509692.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTIxNjcw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>ok 大功告成</p>
+
+
+
 
       </div>
     </div>
@@ -81,12 +78,12 @@
 <div class="lx-navigation">
 	<div class="lx-cover prev lx-cover-sm" style="background-image: url(/images/footer_1.jpg)">
 		<div class="overlay"></div>
-		<a class="copy" href="/2020/04/02/Mynotes/C%E8%AF%AD%E8%A8%80/">
+		<a class="copy" href="/2020/04/02/Mynotes/acwing%E5%9F%BA%E7%A1%80/(Trie%E6%A0%91)/">
 			<div class="display-t">
 				<div class="display-tc">
 					<div>
 						<span>Next</span>
-						<h3>Mynotes/C语言</h3>
+						<h3>Mynotes/acwing基础/(Trie树)</h3>
 					</div>
 				</div>
 			</div>
@@ -94,12 +91,12 @@
 	</div>
         <div class="lx-cover next lx-cover-sm" style="background-image: url(/images/footer_2.jpg)">
 		<div class="overlay"></div>
-		<a class="copy" href="/2019/11/26/linux%E7%B3%BB%E7%BB%9F/linux%E9%85%8D%E7%BD%AE/">
+		<a class="copy" href="/2020/04/02/Mynotes/Hzoj_Code/%E9%80%92%E5%BD%92%E4%B8%8EDFS/">
 			<div class="display-t">
 				<div class="display-tc">
 					<div>
 						<span>Prev</span>
-						<h3>linux系统/linux配置</h3>
+						<h3>Mynotes/Hzoj_Code/递归与DFS</h3>
 					</div>
 				</div>
 			</div>

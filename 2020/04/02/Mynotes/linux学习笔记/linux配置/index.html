@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Mynotes/linux学习笔记/linux配置 | 恁村扛把子</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="fangsong">
+  <meta name="keywords" content="">
+  <meta name="description" content="不要尽力而为，而要全力以赴，即使没有出色的外表和能力，也要压倒一切的霸气，用自己的光，照亮自己的路。">
+  <script id="hexo-configurations">
+  var CONFIG = {
+    root: '/',
+    theme: 'master',
+    version: '1.4.5',
+    localsearch:{
+      "enable": false,
+      "trigger": "auto",
+      "top_n_per_article": 1,
+      "unescape": false,
+      "preload": false
+      },
+    path: '-'
+  };
+</script>
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/jquery.jside.menu.js"></script>
+	<script>
+	$(document).ready(function(){
+	$(".menu-container").jSideMenu({
+	    jSidePosition: "position-right",
+	    jSideSticky: true,
+	    jSideSkin: "endless-river",
+	     });
+	}); 
+	</script>
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300|Noto+Serif+SC&amp;display=swap">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+</head>
+<body>
+<div class="single">
+<div id="page">
+<div id="lx-aside" style="background-image: url(/images/page-cover.jpg)" data-stellar-background-ratio="0.5">
+  <div class="overlay">
+  <div class="page-title">
+    <div class="avatar"><a href="/"><img src="/images/fs3.jpg"></a></div>
+    <span>2020-04-01</span>
+    <h2>Mynotes/linux学习笔记/linux配置</h2>
+    
+    </div>
+</div>
+</div>
+<div id="lx-main-content">
+  <div class="lx-post">
+    <div class="lx-entry padding">
+      <div>
+        <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get upgrate</span><br><span class="line">sudo apt-get upinstall</span><br><span class="line">sudo apt-get install git</span><br><span class="line">sudo apt-get install dpkg<span class="comment">//安装包安装软件</span></span><br><span class="line"><span class="comment">//sudo apt-get install tar//解压缩 软件</span></span><br><span class="line">sudo apt-get ifcongig</span><br><span class="line">wget -qO- https:<span class="comment">//raw.github.com/ma6174/vim/master/setup.sh | sh -x//配置vim</span></span><br><span class="line">sudo apt-get install net-tools<span class="comment">//ifconfig</span></span><br><span class="line"><span class="comment">//apt-get install install net-tools</span></span><br><span class="line"><span class="comment">//apt-get install traceroute</span></span><br><span class="line">sudo apt-get install ssh</span><br><span class="line">sudo apt-get install openssh-server</span><br><span class="line">配置 google</span><br><span class="line">下载typora，zoom， 钉钉，⽹易云，搜狗，迅雷,xmind</span><br></pre></td></tr></table></figure>
+
+<h2 id="ssh，github配置"><a href="#ssh，github配置" class="headerlink" title="ssh，github配置"></a>ssh，github配置</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">cd .ssh</span><br><span class="line">ls</span><br><span class="line">ssh-keygen -t rsa</span><br><span class="line">找到id_rsa.pub复制. 登录github 点击头像 选择settings 进⼊设置，然后选择ssh GPG keys 按钮 点击</span><br><span class="line">ssh添加 粘贴</span><br><span class="line">ssh -T git@github.com</span><br><span class="line"># GitHub Start</span><br><span class="line"><span class="number">192.30</span><span class="number">.253</span><span class="number">.112</span> github.com</span><br><span class="line"><span class="number">192.30</span><span class="number">.253</span><span class="number">.119</span> gist.github.com</span><br><span class="line"><span class="number">151.101</span><span class="number">.100</span><span class="number">.133</span> assets-cdn.github.com</span><br><span class="line"><span class="number">151.101</span><span class="number">.100</span><span class="number">.133</span> raw.githubusercontent.com</span><br><span class="line"><span class="number">151.101</span><span class="number">.100</span><span class="number">.133</span> gist.githubusercontent.com</span><br><span class="line"><span class="number">151.101</span><span class="number">.100</span><span class="number">.133</span> cloud.githubusercontent.com</span><br><span class="line"><span class="number">151.101</span><span class="number">.100</span><span class="number">.133</span> camo.githubusercontent.com</span><br><span class="line"><span class="number">151.101</span><span class="number">.100</span><span class="number">.133</span> avatars0.githubusercontent.com</span><br><span class="line"><span class="number">151.101</span><span class="number">.100</span><span class="number">.133</span> avatars1.githubusercontent.com</span><br><span class="line"><span class="number">151.101</span><span class="number">.100</span><span class="number">.133</span> avatars2.githubusercontent.com</span><br><span class="line"><span class="number">151.101</span><span class="number">.100</span><span class="number">.133</span> avatars3.githubusercontent.com</span><br><span class="line"><span class="number">151.101</span><span class="number">.100</span><span class="number">.133</span> avatars4.githubusercontent.com</span><br><span class="line"><span class="number">151.101</span><span class="number">.100</span><span class="number">.133</span> avatars5.githubusercontent.com</span><br><span class="line"><span class="number">151.101</span><span class="number">.100</span><span class="number">.133</span> avatars6.githubusercontent.com</span><br><span class="line"><span class="number">151.101</span><span class="number">.100</span><span class="number">.133</span> avatars7.githubusercontent.com</span><br></pre></td></tr></table></figure>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="lx-navigation">
+	<div class="lx-cover prev lx-cover-sm" style="background-image: url(/images/footer_1.jpg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2020/04/02/Mynotes/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E7%AC%94%E8%AE%B0/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Next</span>
+						<h3>Mynotes/linux学习笔记/linux笔记</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+        <div class="lx-cover next lx-cover-sm" style="background-image: url(/images/footer_2.jpg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2020/04/02/Mynotes/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%85%8D%E5%AF%86%E7%99%BB%E9%99%86/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Prev</span>
+						<h3>Mynotes/linux学习笔记/linux服务器免密登陆</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>
+</div>
+
+<footer>
+  <div>
+  Copyright &copy; 2019.<a href="/">恁村扛把子</a><br>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme <a href="https://lx.blleng.cn" target="_blank">Lx</a><br>
+  </div>
+</footer>
+</div>
+
+<button class="menu-trigger"></button>
+<div class="menu">
+  <div class="menu-head">
+    <span class="layer">
+      <div class="col">
+        <div class="row for-pic">
+          <div class="profile-pic">
+            <a href="/"><img src="/images/fs3.jpg" alt="fangsong"/></a>
+          </div>
+        </div>
+        <div class="row for-name">
+          <p>fangsong</p>
+          <span class="tagline">Hello, World!</span>
+        </div>
+      </div>
+    </span>
+  </div>
+  <nav class="menu-container">
+  <ul class="menu-items">
+    <li><a href="/"><i class="fa fa-home fa-fw"></i>首页</a></li>
+    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-bookmark fa-fw"></i>页面</span>
+        <ul>
+          <li><a href="/guestbook">留言</a></li>
+        <li><a href="/about">关于</a></li>
+        </ul>
+    </li>
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-link fa-fw"></i>友链</span>
+        <ul>
+          <li> <a href="https://www.luogu.org/" target="_blank">luogu</a></li>
+        </ul>
+    </li>
+  </ul>
+  </nav>
+</div>
+
+<div class="gototop js-top">
+  <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
+</div>
+<script src="/js/jquery.easing.min.js"></script>
+<script src="/js/jquery.waypoints.min.js"></script>
+<script src="/js/jquery.stellar.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>

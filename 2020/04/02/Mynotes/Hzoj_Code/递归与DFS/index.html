@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Mynotes/Hzoj_Code/递归与DFS | 恁村扛把子</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="fangsong">
+  <meta name="keywords" content="">
+  <meta name="description" content="不要尽力而为，而要全力以赴，即使没有出色的外表和能力，也要压倒一切的霸气，用自己的光，照亮自己的路。">
+  <script id="hexo-configurations">
+  var CONFIG = {
+    root: '/',
+    theme: 'master',
+    version: '1.4.5',
+    localsearch:{
+      "enable": false,
+      "trigger": "auto",
+      "top_n_per_article": 1,
+      "unescape": false,
+      "preload": false
+      },
+    path: '-'
+  };
+</script>
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/jquery.jside.menu.js"></script>
+	<script>
+	$(document).ready(function(){
+	$(".menu-container").jSideMenu({
+	    jSidePosition: "position-right",
+	    jSideSticky: true,
+	    jSideSkin: "endless-river",
+	     });
+	}); 
+	</script>
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300|Noto+Serif+SC&amp;display=swap">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+</head>
+<body>
+<div class="single">
+<div id="page">
+<div id="lx-aside" style="background-image: url(/images/page-cover.jpg)" data-stellar-background-ratio="0.5">
+  <div class="overlay">
+  <div class="page-title">
+    <div class="avatar"><a href="/"><img src="/images/fs3.jpg"></a></div>
+    <span>2020-04-02</span>
+    <h2>Mynotes/Hzoj_Code/递归与DFS</h2>
+    
+    </div>
+</div>
+</div>
+<div id="lx-main-content">
+  <div class="lx-post">
+    <div class="lx-entry padding">
+      <div>
+        <p>[TOC]</p>
+<h4 id="83-N分"><a href="#83-N分" class="headerlink" title="#83.N分"></a>#<code>83.N分</code></h4><p><a href="http://oj.haizeix.com/problem/83" target="_blank" rel="noopener">题目</a></p>
+<p><strong>题解:</strong></p>
+<p>层数是固定的，后面的数是&gt;=前面的数，输出方法总数；</p>
+<p>每一层从谁开始，选多少数，还应该选几个；</p>
+<h4 id="235-递归实现指数型枚举"><a href="#235-递归实现指数型枚举" class="headerlink" title="#235.递归实现指数型枚举"></a>#<code>235.递归实现指数型枚举</code></h4><p><a href="http://oj.haizeix.com/problem/235" target="_blank" rel="noopener">题目</a></p>
+<p><strong>题解：</strong></p>
+<p><img src="%E9%80%92%E5%BD%92%E4%B8%8EDFS.assets/2020-03-12%2011-12-06%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt=""><br><img src="%E9%80%92%E5%BD%92%E4%B8%8EDFS.assets/2020-03-12%2011-13-24%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt=""></p>
+<p>如果第一层是１那么第二层就应该从２开始，如果第一层是２那么下一层就应该从３开始；<br>递归函数：func(int s), s是从谁开始<br>n, num[15]记录，cnt 计数<br>保证下一层比本层大所以进行func(i + 1)<br><font color = red><strong>他这是每次选择一个，就输出num[];</strong></font></p>
+<h4 id="236-递归实现组合型枚举"><a href="#236-递归实现组合型枚举" class="headerlink" title="#236.递归实现组合型枚举"></a>#<code>236.递归实现组合型枚举</code></h4><p><a href="http://oj.haizeix.com/problem/236" target="_blank" rel="noopener">题目</a></p>
+<p><strong>题解：</strong></p>
+<p><font color = red><strong>什么时候能选够ｍ个数就输出num[]</strong></font></p>
+<h4 id="237-递归实现排列型枚举"><a href="#237-递归实现排列型枚举" class="headerlink" title="#237.递归实现排列型枚举"></a>#<code>237.递归实现排列型枚举</code></h4><p><a href="http://oj.haizeix.com/problem/237" target="_blank" rel="noopener">题目</a></p>
+<p><strong>题解：</strong><br>后面的数可以比前面数小，与前两个题不同，所以每次遍历要从１～ｎ，为了避免重复，开一个标记组<br><font color = red><strong>也是选择ｍ个数输出num[]，避免重复要标记</strong></font><br>回溯的时候标记别忘取消了；</p>
+<h4 id="240-图形打印四"><a href="#240-图形打印四" class="headerlink" title="#240.图形打印四"></a>#<code>240.图形打印四</code></h4><p><a href="http://oj.haizeix.com/problem/240" target="_blank" rel="noopener">题目</a></p>
+<p><strong>题解：</strong></p>
+<p><img src="%E9%80%92%E5%BD%92%E4%B8%8EDFS.assets/2020-03-12%2010-27-09%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt=""></p>
+<p>当ｎ= 1时边长为１，当ｎ= 2时边长为３,当ｎ=3时，边长为９，….27…81…243….</p>
+<p>可以由左上角对五个位置进行填充，可得</p>
+<p>设边长为num[n]</p>
+<p>左上角:(<code>x, y</code>);</p>
+<p>右上角:(<code>x, y + num[n]/3*2</code>)</p>
+<p>左下角:(<code>x + num[n]/3*2, y</code>)</p>
+<p>右下角:(<code>x + num[n]/3*2, y + num[n]/3*2</code>)</p>
+<p>中心：(<code>x + num[n]/3, y + num[n]/3</code>)</p>
+<p>主要思路是将从１～７个全部打印出来，最后进行选择</p>
+<p>当递归到１时将二维字符数组对应的ｘ, y打印成’X’，也就是递归出口；</p>
+<p>因为２是由１转变过来的，３是由２转变过来的，４是由３转变过来的，即可递归回溯</p>
+<h4 id="396填涂颜色"><a href="#396填涂颜色" class="headerlink" title="#396填涂颜色"></a>#<code>396填涂颜色</code></h4><p><a href="http://oj.haizeix.com/problem/396" target="_blank" rel="noopener">题目</a></p>
+<p>题解: 可以先在外围加一堵0墙，然后进行对外围搜0，然后都标记为３，最后将全部扫一遍，将０变为２，３变０即可：</p>
+<blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;0 0 0 0 0 0</span><br><span class="line">&gt;0 0 1 1 1 1</span><br><span class="line">&gt;0 1 0 0 0 1</span><br><span class="line">&gt;1 0 0 0 0 1</span><br><span class="line">&gt;1 0 0 0 0 1</span><br><span class="line">&gt;1 1 1 1 1 1</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;0 0 0 0 0 0 0 0 //先在外围加一堵0墙</span><br><span class="line">&gt;0 0 0 1 1 1 1 0//然后进行对外围搜0，然后都标记为３</span><br><span class="line">&gt;0 0 1 0 0 0 1 0</span><br><span class="line">&gt;0 1 0 0 0 0 1 0</span><br><span class="line">&gt;0 1 0 0 0 0 1 0</span><br><span class="line">&gt;0 1 1 1 1 1 1 0</span><br><span class="line">&gt;0 0 0 0 0 0 0 0</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;0 0 0 0 0 0//最后将全部扫一遍，将０变为２，３变０即可：</span><br><span class="line">&gt;0 0 1 1 1 1</span><br><span class="line">&gt;0 1 1 2 2 1</span><br><span class="line">&gt;1 1 2 2 2 1</span><br><span class="line">&gt;1 2 2 2 2 1</span><br><span class="line">&gt;1 1 1 1 1 1</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h4 id="397僵尸来袭"><a href="#397僵尸来袭" class="headerlink" title="#397僵尸来袭"></a>#<code>397僵尸来袭</code></h4><p><a href="http://oj.haizeix.com/problem/397" target="_blank" rel="noopener">题目</a></p>
+<p>题解: </p>
+<p>直接对二维数组遍历，在便利的同时如果非０那就开始搜索，进行吧能搜到的所有僵尸变为０，直至最后，记录了几次调用函数搜索即可！</p>
+<p>模拟一下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">0 1 2 3 4 0</span><br><span class="line">1 0 0 0 0 0</span><br><span class="line">2 9 3 0 2 4</span><br><span class="line">0 0 2 0 2 8</span><br><span class="line">1 0 0 0 0 0</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">0 0 0 0 0 0</span><br><span class="line">1 0 0 0 0 0</span><br><span class="line">2 9 3 0 2 4      第一次</span><br><span class="line">0 0 2 0 2 8</span><br><span class="line">1 0 0 0 0 0</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">0 0 0 0 0 0</span><br><span class="line">0 0 0 0 0 0</span><br><span class="line">0 0 0 0 2 4      第二次</span><br><span class="line">0 0 0 0 2 8</span><br><span class="line">1 0 0 0 0 0</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">0 0 0 0 0 0</span><br><span class="line">0 0 0 0 0 0</span><br><span class="line">0 0 0 0 0 0      第三次</span><br><span class="line">0 0 0 0 0 0</span><br><span class="line">1 0 0 0 0 0</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">0 0 0 0 0 0</span><br><span class="line">0 0 0 0 0 0</span><br><span class="line">0 0 0 0 0 0      第四次</span><br><span class="line">0 0 0 0 0 0</span><br><span class="line">0 0 0 0 0 0</span><br></pre></td></tr></table></figure>
+
+<h4 id="404-01迷宫简易版"><a href="#404-01迷宫简易版" class="headerlink" title="#404  01迷宫简易版"></a>#<code>404  01迷宫简易版</code></h4><p><a href="http://oj.haizeix.com/problem/404" target="_blank" rel="noopener">题目</a></p>
+<p>题解: </p>
+<p>如果上一次坐标与本次坐标不同即可走，然后把标记数组置为１，加数；</p>
+<p>此题用到了记录数组；切记刚开始坐标对应的标记数组应该置为一；</p>
+<h4 id="405-01迷宫"><a href="#405-01迷宫" class="headerlink" title="#405  01迷宫"></a>#<code>405  01迷宫</code></h4><p><a href="http://oj.haizeix.com/problem/405" target="_blank" rel="noopener">题目</a></p>
+<p>题解: </p>
+<p>本体由于数量大，按正常思路走会超时，所以本题使用了用队列记录了所要能到达的坐标位置，计数，到一小块结束后，将队列所存的坐标对应全赋值为这一块计数的那个值，继续同理操作，到最后只要索引下表就可以快速找到多大；</p>
+<h4 id="406水坑数量"><a href="#406水坑数量" class="headerlink" title="#406水坑数量"></a>#<code>406水坑数量</code></h4><p><a href="http://oj.haizeix.com/problem/406" target="_blank" rel="noopener">题目</a></p>
+<p>题解: </p>
+<p>本题同３９７僵尸来袭，都是直接遍历二维数组，符合条件就直接搜进行原图标记，记录搜了几波就ＯＫ了；</p>
+<h4 id="534体积"><a href="#534体积" class="headerlink" title="#534体积"></a>#<code>534体积</code></h4><p><a href="http://oj.haizeix.com/problem/534" target="_blank" rel="noopener">题目</a></p>
+<p>题解: </p>
+<p>此题就是235的改进，每走一步记录所走的当前路径的和，然后到最后去重，去重的时候可以使用标记数组，用sun当索引进行标记,记录最后有多少数就是表示不同提及的组合数</p>
+<h4 id="535瓷砖"><a href="#535瓷砖" class="headerlink" title="#535瓷砖"></a>#<code>535瓷砖</code></h4><p><a href="http://oj.haizeix.com/problem/535" target="_blank" rel="noopener">题目</a></p>
+<p>题解: </p>
+<p>直接DFS,先找到开始坐标，进行DFS,能走的地方一直走，每走一步记录一步sum++;最终sum就是最大能走多少；</p>
+<h4 id="536-最大黑色区域"><a href="#536-最大黑色区域" class="headerlink" title="#536 最大黑色区域"></a>#<code>536 最大黑色区域</code></h4><p><a href="http://oj.haizeix.com/problem/536" target="_blank" rel="noopener">题目</a></p>
+<p>题解: </p>
+<p>从头开始走，每当能走时进行搜索记录本次搜索的步数，然后每一波搜索记录一下最大的值，然后就得到最大黑色区域的面积；</p>
+<h4 id="537门票问题"><a href="#537门票问题" class="headerlink" title="#537门票问题"></a>#<code>537门票问题</code></h4><p><a href="http://oj.haizeix.com/problem/537" target="_blank" rel="noopener">题目</a></p>
+<p>题解: </p>
+<p>改进的236题;首先有一个记录路径的，而且还要记录元音和辅音有多少个为了当走了合法left时而且元音辅音符合条件时才能满足打印情况，就是这样。</p>
+<h4 id="538图的遍历"><a href="#538图的遍历" class="headerlink" title="#538图的遍历"></a>#<code>538图的遍历</code></h4><p><a href="http://oj.haizeix.com/problem/538" target="_blank" rel="noopener">题目</a></p>
+<p>已知结点个数，必须整一个标记数组check[], 当没走过的进行遍历周围所能到达的</p>
+<p><img src="%E9%80%92%E5%BD%92%E4%B8%8EDFS.assets/Whiteboard%5B2%5D-01.png" alt="Whiteboard[2]-01"></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(flag == <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"-"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    flag = <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; x;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(num[x][i] == <span class="number">1</span> &amp;&amp; check[i] == <span class="number">0</span>) &#123;</span><br><span class="line">            check[i] = <span class="number">1</span>;</span><br><span class="line">            func(i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="540生日购物"><a href="#540生日购物" class="headerlink" title="#540生日购物"></a>#<code>540生日购物</code></h4><p><a href="http://oj.haizeix.com/problem/540" target="_blank" rel="noopener">题目</a></p>
+<p>由于题目N &lt;= 40, 最大40由于很大,达到2 ^ 40多；会超时，因此将其分为两部分进行处理，一部分0 ~ 20 ,21~40进行处理；和235题近似</p>
+<p><img src="%E9%80%92%E5%BD%92%E4%B8%8EDFS.assets/image-20200327173733020.png" alt="image-20200327173733020"> </p>
+<h4 id="541相遇问题"><a href="#541相遇问题" class="headerlink" title="#541相遇问题"></a>#<code>541相遇问题</code></h4><p><a href="http://oj.haizeix.com/problem/541" target="_blank" rel="noopener">题目</a></p>
+<p>对于每个人来讲，把他走到ｎ号点的时间都存起来，最后会得到两个人的数组，找两个数组中是否有一样的；邻接矩阵进行存储；</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cin</span> &gt;&gt; a &gt;&gt; b &gt;&gt; c &gt;&gt; d;</span><br><span class="line">atime[<span class="number">0</span>][a][b] = atime[<span class="number">0</span>][b][a] = c;</span><br><span class="line">atime[<span class="number">1</span>][a][b] = atime[<span class="number">1</span>][b][a] = d;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> n, m, atime[<span class="number">2</span>][<span class="number">20</span>][<span class="number">20</span>], ans[<span class="number">2</span>][<span class="number">100000</span>], ans_num[<span class="number">2</span>];</span><br><span class="line"><span class="comment">//atime 存时间, ans存到达所需要的时间，ans_num计数</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">(<span class="keyword">int</span> people, <span class="keyword">int</span> locate, <span class="keyword">int</span> cost)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(locate == n) &#123;</span><br><span class="line">        ans[people][ans_num[people]] = cost;</span><br><span class="line">        ans_num[people]++;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = locate + <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(atime[people][locate][i]) &#123;</span><br><span class="line">            func(people, i, cost + atime[people][locate][i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="542奶酪"><a href="#542奶酪" class="headerlink" title="#542奶酪"></a>#<code>542奶酪</code></h4><p><a href="http://oj.haizeix.com/problem/542" target="_blank" rel="noopener">题目</a></p>
+<p><img src="%E9%80%92%E5%BD%92%E4%B8%8EDFS.assets/image-20200327220747451.png" alt="image-20200327220747451"></p>
+<p>求上下表面数组：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cin</span> &gt;&gt;qiu[i][<span class="number">0</span>] &gt;&gt; qiu[i][<span class="number">1</span>] &gt;&gt; qiu[i][<span class="number">2</span>];</span><br><span class="line">           <span class="keyword">if</span>(qiu[i][<span class="number">2</span>] &lt;= r) &#123;</span><br><span class="line">               low[low_num++] = i;</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="keyword">if</span>(qiu[i][<span class="number">2</span>] + r &gt;= h) &#123;</span><br><span class="line">               up[i] = <span class="number">1</span>;</span><br><span class="line">           &#125;</span><br></pre></td></tr></table></figure>
+
+<p>构建邻接矩阵：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; i; j++) &#123;</span><br><span class="line">              <span class="keyword">int</span> t0 = qiu[i][<span class="number">0</span>] - qiu[j][<span class="number">0</span>];</span><br><span class="line">              <span class="keyword">int</span> t1 = qiu[i][<span class="number">1</span>] - qiu[j][<span class="number">1</span>];</span><br><span class="line">              <span class="keyword">int</span> t2 = qiu[i][<span class="number">2</span>] - qiu[j][<span class="number">2</span>];</span><br><span class="line">              <span class="keyword">if</span>(<span class="built_in">sqrt</span>(t0 * t0 + t1 * t1 + t2 * t2) &lt;= <span class="number">2</span> * r) &#123;</span><br><span class="line">                  arr[i][j] = arr[j][i] = <span class="number">1</span>;</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;</span><br></pre></td></tr></table></figure>
+
+<p>遍历下表面进行搜索</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= low_num; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(check[i] == <span class="number">0</span>) &#123;</span><br><span class="line">            check[i] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(dfs(i)) &#123;</span><br><span class="line">                <span class="built_in">cout</span> &lt;&lt; <span class="string">"Yes"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">            flag = <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>dfs函数：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> now)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(up[now] == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(arr[now][i] &amp;&amp; check[i] == <span class="number">0</span>) &#123;</span><br><span class="line">            check[i] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(func(i)) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="lx-navigation">
+	<div class="lx-cover prev lx-cover-sm" style="background-image: url(/images/footer_1.jpg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2020/04/02/Mynotes/README/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Next</span>
+						<h3>Mynotes/README</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+        <div class="lx-cover next lx-cover-sm" style="background-image: url(/images/footer_2.jpg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2020/04/02/Mynotes/C%E8%AF%AD%E8%A8%80csdn%E5%8D%9A%E5%AE%A2%E6%80%BB%E7%BB%93/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Prev</span>
+						<h3>Mynotes/C语言csdn博客总结</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>
+</div>
+
+<footer>
+  <div>
+  Copyright &copy; 2019.<a href="/">恁村扛把子</a><br>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme <a href="https://lx.blleng.cn" target="_blank">Lx</a><br>
+  </div>
+</footer>
+</div>
+
+<button class="menu-trigger"></button>
+<div class="menu">
+  <div class="menu-head">
+    <span class="layer">
+      <div class="col">
+        <div class="row for-pic">
+          <div class="profile-pic">
+            <a href="/"><img src="/images/fs3.jpg" alt="fangsong"/></a>
+          </div>
+        </div>
+        <div class="row for-name">
+          <p>fangsong</p>
+          <span class="tagline">Hello, World!</span>
+        </div>
+      </div>
+    </span>
+  </div>
+  <nav class="menu-container">
+  <ul class="menu-items">
+    <li><a href="/"><i class="fa fa-home fa-fw"></i>首页</a></li>
+    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-bookmark fa-fw"></i>页面</span>
+        <ul>
+          <li><a href="/guestbook">留言</a></li>
+        <li><a href="/about">关于</a></li>
+        </ul>
+    </li>
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-link fa-fw"></i>友链</span>
+        <ul>
+          <li> <a href="https://www.luogu.org/" target="_blank">luogu</a></li>
+        </ul>
+    </li>
+  </ul>
+  </nav>
+</div>
+
+<div class="gototop js-top">
+  <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
+</div>
+<script src="/js/jquery.easing.min.js"></script>
+<script src="/js/jquery.waypoints.min.js"></script>
+<script src="/js/jquery.stellar.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>

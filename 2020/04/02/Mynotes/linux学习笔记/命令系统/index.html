@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Mynotes/linux学习笔记/命令系统 | 恁村扛把子</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="fangsong">
+  <meta name="keywords" content="">
+  <meta name="description" content="不要尽力而为，而要全力以赴，即使没有出色的外表和能力，也要压倒一切的霸气，用自己的光，照亮自己的路。">
+  <script id="hexo-configurations">
+  var CONFIG = {
+    root: '/',
+    theme: 'master',
+    version: '1.4.5',
+    localsearch:{
+      "enable": false,
+      "trigger": "auto",
+      "top_n_per_article": 1,
+      "unescape": false,
+      "preload": false
+      },
+    path: '-'
+  };
+</script>
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/jquery.jside.menu.js"></script>
+	<script>
+	$(document).ready(function(){
+	$(".menu-container").jSideMenu({
+	    jSidePosition: "position-right",
+	    jSideSticky: true,
+	    jSideSkin: "endless-river",
+	     });
+	}); 
+	</script>
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300|Noto+Serif+SC&amp;display=swap">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+</head>
+<body>
+<div class="single">
+<div id="page">
+<div id="lx-aside" style="background-image: url(/images/page-cover.jpg)" data-stellar-background-ratio="0.5">
+  <div class="overlay">
+  <div class="page-title">
+    <div class="avatar"><a href="/"><img src="/images/fs3.jpg"></a></div>
+    <span>2020-04-01</span>
+    <h2>Mynotes/linux学习笔记/命令系统</h2>
+    
+    </div>
+</div>
+</div>
+<div id="lx-main-content">
+  <div class="lx-post">
+    <div class="lx-entry padding">
+      <div>
+        <h1 id="命令系统"><a href="#命令系统" class="headerlink" title="命令系统"></a>命令系统</h1><h4 id="man手册使用"><a href="#man手册使用" class="headerlink" title="man手册使用"></a>man手册使用</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">man ls</span><br><span class="line">man ssh</span><br></pre></td></tr></table></figure>
+
+<p>在man中，常见的几个数字含义：</p>
+<table>
+<thead>
+<tr>
+<th>代号</th>
+<th>代表的含义</th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>１</td>
+<td>用户在shell环境下可以操作的命令或可执行文件</td>
+<td><code>man 1 ls</code></td>
+</tr>
+<tr>
+<td>２</td>
+<td>系统内核可以调用的函数和工具</td>
+<td><code>man 2 reboot</code></td>
+</tr>
+<tr>
+<td>３</td>
+<td>一些常用的函数和函数库，大部分ｃ的函数库</td>
+<td><code>man 3 readdir</code></td>
+</tr>
+<tr>
+<td>４</td>
+<td>设备文件的说明，通常实在<code>/dev</code>下的设备</td>
+<td><code>man 4 null</code></td>
+</tr>
+<tr>
+<td>５</td>
+<td>配置文件或某些文件格式</td>
+<td><code>man 5 interfaces</code></td>
+</tr>
+<tr>
+<td>６</td>
+<td>游戏</td>
+<td><code>man 6 lol</code></td>
+</tr>
+<tr>
+<td>７</td>
+<td>惯例与协议等，例如<code>linux</code> 文件系统，网络协议等</td>
+<td><code>man 7 tcp</code></td>
+</tr>
+<tr>
+<td>８</td>
+<td>系统管理员可用的命令</td>
+<td><code>man 8 reboot</code></td>
+</tr>
+<tr>
+<td>９</td>
+<td>跟kernel有用的文件</td>
+<td></td>
+</tr>
+</tbody></table>
+<h4 id="shell通配符"><a href="#shell通配符" class="headerlink" title="shell通配符"></a>shell通配符</h4><ul>
+<li><p>?</p>
+<p>代表单个任意字符, 就是.cpp什么的前面是单个字符的</p>
+<p>几个？代表几个字符的文件</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fangsong@fangsong-FX503VD:~/Mycode/2.f$ ls</span><br><span class="line">8.cpp 19.cpp 20.cpp</span><br><span class="line">fangsong@fangsong-FX503VD:~/Mycode/2.f$ ls ?.cpp</span><br><span class="line">8.cpp</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>*</p>
+<p>代表任意几个字符</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fangsong@fangsong-FX503VD:~/Mycode/2.f$ ls</span><br><span class="line">fangsong@fangsong-FX503VD:~/Mycode/2.f$ ls *.cpp</span><br><span class="line">8.cpp  19.cpp 20.cpp</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>[list]</code>匹配list中的任意单一字符</p>
+</li>
+<li><p><code>[!list]</code>匹配除list中的任意单一字符</p>
+</li>
+<li><p><code>[c1-c2]</code>匹配<code>c1-c2</code>中的任意单一字符</p>
+</li>
+<li><p><code>{string,string2,...}</code>匹配<code>string</code>或其中一个字符串</p>
+</li>
+</ul>
+<h4 id="Shell任务控制"><a href="#Shell任务控制" class="headerlink" title="Shell任务控制"></a>Shell任务控制</h4><p>1.<code>&amp;</code><br>在命令的后面加上<code>&amp;</code>表示后台执行的意思</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">command &amp;</span><br></pre></td></tr></table></figure>
+
+<p>2.<code>;</code><br>在命令之间用<code>;</code>项链，表示顺序执行的意思</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">command1 ;command2</span><br></pre></td></tr></table></figure>
+
+<p>3.<code>&amp;&amp;</code><br>命令之间以<code>&amp;&amp;</code>相连时，只有前一个命令成功执行则执行第二个命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">command1 &amp;&amp; command2</span><br></pre></td></tr></table></figure>
+
+<p>4.<code>||</code><br>命令之间以<code>||</code>相连时，如果前一个命令执行失败，则执行第二个命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">command1 || command2</span><br></pre></td></tr></table></figure>
+
+<p>5.``<br>命令中如果包含另一个命令，则用符号｀｀将它包起来，优先执行｀｀中的子命令，然后将其结果代入父命令继续执行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">command1 ` command2`</span><br></pre></td></tr></table></figure>
+
+<p>6.<code>ctrl + z</code><br>暂时挂起<br>7.<code>bg</code><br>挂起的命令后台执行<br>8.<code>fg</code><br>后台执行的命令前台执行<br>9.<code>jobs</code><br>查看后台所有挂起的任务及编号</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">fangsong@fangsong-FX503VD:~$ ping baidu.com</span><br><span class="line">PING baidu.com (39.156.69.79) 56(84) bytes of data.</span><br><span class="line">64 bytes from 39.156.69.79 (39.156.69.79): icmp_seq=1 ttl=51 time=20.6 ms</span><br><span class="line">64 bytes from 39.156.69.79 (39.156.69.79): icmp_seq=2 ttl=51 time=22.4 ms</span><br><span class="line">64 bytes from 39.156.69.79 (39.156.69.79): icmp_seq=3 ttl=51 time=21.9 ms</span><br><span class="line">^Z</span><br><span class="line">[1]+  已停止               ping baidu.com</span><br><span class="line">fangsong@fangsong-FX503VD:~$ jobs</span><br><span class="line">[1]+  已停止               ping baidu.com</span><br><span class="line">fangsong@fangsong-FX503VD:~$ fg</span><br><span class="line">ping baidu.com</span><br><span class="line">64 bytes from 39.156.69.79 (39.156.69.79): icmp_seq=4 ttl=51 time=21.7 ms</span><br><span class="line">64 bytes from 39.156.69.79 (39.156.69.79): icmp_seq=5 ttl=51 time=21.9 ms</span><br><span class="line">64 bytes from 39.156.69.79 (39.156.69.79): icmp_seq=6 ttl=51 time=21.6 ms</span><br><span class="line">^C</span><br><span class="line">--- baidu.com ping statistics ---</span><br><span class="line">6 packets transmitted, 6 received, 0% packet loss, time 360ms</span><br><span class="line">rtt min/avg/max/mdev = 20.600/21.683/22.444/0.584 ms</span><br></pre></td></tr></table></figure>
+
+<h4 id="管道，重定向"><a href="#管道，重定向" class="headerlink" title="管道，重定向"></a>管道，重定向</h4><p>管道｜</p>
+<p>1.<code>&gt;</code><br>重定向符<br>2.<code>&gt;&gt;</code><br>作用与&gt;基本相同，不同的是&gt;&gt;将内容追加到文件的末尾，而&gt;内容覆盖原文件<br>3.<code>&lt;</code><br>与&gt;相反，是从文件到命令的重定向。他讲文件的内容输出到命令作为输入<br>4.<code>&lt;&lt;</code><br>？</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Num=`cat /dev/urandom | head -n 10 | cksum | cut -d ' ' -f 1`</span><br></pre></td></tr></table></figure>
+
+<p>此处就是管道，将前面的输出作为输入给后面</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fangsong@fangsong-FX503VD:~/Mycode/2.f$ ./a.out &lt; in.txt</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">fangsong@fangsong-FX503VD:~/Mycode/2.f$ cat &gt; a.log &lt;&lt;EOF</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> fs</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> EOF</span></span><br><span class="line">fangsong@fangsong-FX503VD:~/Mycode/2.f$ cat a.log</span><br><span class="line">fs</span><br><span class="line">fangsong@fangsong-FX503VD:~/Mycode/2.f$ cat &gt;&gt; a.log &lt;&lt;EOF</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> fangsong</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> EOF</span></span><br><span class="line">fangsong@fangsong-FX503VD:~/Mycode/2.f$ cat a.log</span><br><span class="line">fs</span><br><span class="line">fangsong</span><br><span class="line">fangsong@fangsong-FX503VD:~/Mycode/2.f$ cat &gt; a.log &lt;&lt;EOF #EOF结束标志</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> 0</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> EOF <span class="comment">#也可以换成其他的东西XXX</span></span></span><br><span class="line">fangsong@fangsong-FX503VD:~/Mycode/2.f$ cat a.log</span><br><span class="line">0</span><br><span class="line">fangsong@fangsong-FX503VD:~/Mycode/2.f$</span><br></pre></td></tr></table></figure>
+
+<h1 id=""><a href="#" class="headerlink" title=""></a></h1>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="lx-navigation">
+	<div class="lx-cover prev lx-cover-sm" style="background-image: url(/images/footer_1.jpg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2020/04/02/Mynotes/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E6%8F%90%E5%8F%96%E6%93%8D%E4%BD%9C/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Next</span>
+						<h3>Mynotes/linux学习笔记/数据提取操作</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+        <div class="lx-cover next lx-cover-sm" style="background-image: url(/images/footer_2.jpg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2020/04/02/Mynotes/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%9F%BA%E6%9C%AC%E7%B3%BB%E7%BB%9F/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Prev</span>
+						<h3>Mynotes/linux学习笔记/基本系统</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>
+</div>
+
+<footer>
+  <div>
+  Copyright &copy; 2019.<a href="/">恁村扛把子</a><br>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme <a href="https://lx.blleng.cn" target="_blank">Lx</a><br>
+  </div>
+</footer>
+</div>
+
+<button class="menu-trigger"></button>
+<div class="menu">
+  <div class="menu-head">
+    <span class="layer">
+      <div class="col">
+        <div class="row for-pic">
+          <div class="profile-pic">
+            <a href="/"><img src="/images/fs3.jpg" alt="fangsong"/></a>
+          </div>
+        </div>
+        <div class="row for-name">
+          <p>fangsong</p>
+          <span class="tagline">Hello, World!</span>
+        </div>
+      </div>
+    </span>
+  </div>
+  <nav class="menu-container">
+  <ul class="menu-items">
+    <li><a href="/"><i class="fa fa-home fa-fw"></i>首页</a></li>
+    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-bookmark fa-fw"></i>页面</span>
+        <ul>
+          <li><a href="/guestbook">留言</a></li>
+        <li><a href="/about">关于</a></li>
+        </ul>
+    </li>
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-link fa-fw"></i>友链</span>
+        <ul>
+          <li> <a href="https://www.luogu.org/" target="_blank">luogu</a></li>
+        </ul>
+    </li>
+  </ul>
+  </nav>
+</div>
+
+<div class="gototop js-top">
+  <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
+</div>
+<script src="/js/jquery.easing.min.js"></script>
+<script src="/js/jquery.waypoints.min.js"></script>
+<script src="/js/jquery.stellar.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>
