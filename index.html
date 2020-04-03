@@ -1724,7 +1724,7 @@ S_ISSOCK (st_mode)   是否为socket
 
 </article>
     
-    <article id="post-Mynotes/linux学习笔记/数据提取操作" class="article article-type-post" itemscope
+    <article id="post-Mynotes/linux学习笔记/基本系统" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -1732,8 +1732,8 @@ S_ISSOCK (st_mode)   是否为socket
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/04/02/Mynotes/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E6%8F%90%E5%8F%96%E6%93%8D%E4%BD%9C/"
-    >Mynotes/linux学习笔记/数据提取操作</a> 
+  <a class="article-title" href="/2020/04/02/Mynotes/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%9F%BA%E6%9C%AC%E7%B3%BB%E7%BB%9F/"
+    >Mynotes/linux学习笔记/基本系统</a> 
 </h2>
  
 
@@ -1742,7 +1742,7 @@ S_ISSOCK (st_mode)   是否为socket
 
     
     <div class="article-meta">
-      <a href="/2020/04/02/Mynotes/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E6%8F%90%E5%8F%96%E6%93%8D%E4%BD%9C/" class="article-date">
+      <a href="/2020/04/02/Mynotes/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%9F%BA%E6%9C%AC%E7%B3%BB%E7%BB%9F/" class="article-date">
   <time datetime="2020-04-01T16:33:54.865Z" itemprop="datePublished">2020-04-01</time>
 </a>
       
@@ -1760,113 +1760,8 @@ S_ISSOCK (st_mode)   是否为socket
       
 
       
-      <h1 id="数据提取操作"><a href="#数据提取操作" class="headerlink" title="数据提取操作"></a>数据提取操作</h1><ul>
-<li>数据提取操作</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>命令</th>
-<th>说明</th>
-<th>命令</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>cut</td>
-<td>切分</td>
-<td>grep</td>
-<td>检索</td>
-</tr>
-<tr>
-<td>sort</td>
-<td>排序</td>
-<td>wc</td>
-<td>统计字符字数行数</td>
-</tr>
-<tr>
-<td>uniq</td>
-<td>去重</td>
-<td>tee</td>
-<td>双重导向</td>
-</tr>
-<tr>
-<td>split</td>
-<td>文件切分</td>
-<td>xargs</td>
-<td>参数代换</td>
-</tr>
-<tr>
-<td>tr</td>
-<td>替换压缩删除</td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<ul>
-<li><p>cut切分<br>cut [-dfc] <file><br>-d c:以字符分割<br>-f num：显示ｎｕｍ字段内容【ｎ- ;n - m; -m】<br>-c num: 字节<br>-b num: 字符</p>
-</li>
-<li><p>grep检索<br>grep [-acinv] <string> <file><br>-a: 将二进制文件以普通文件形式搜寻数据<br>-c : 统计搜寻到的次数<br>-i：忽略大小写<br>-n：顺序输出行号<br>-v：反向输出（输出没找到的）</p>
-</li>
-<li><p>sort排序</p>
-<p>sort [-fnMnrtuk] <file_or_stdio></p>
-<p>-f:忽略大小写</p>
-<p>-b:忽略最前面的空格符</p>
-<p>-M:以月份名称排序</p>
-<p>-n:以纯数字方式排序</p>
-<p>-r:反向排序</p>
-<p>-u:uniq</p>
-<p>-t:分隔符，默认[TAB]</p>
-<p>-k:以那个区间排序</p>
-</li>
-</ul>
-<ul>
-<li><p>wc统计字符字数，行数</p>
-<p>wc [-lwm] <file_or_stdin></p>
-<p>-l: 仅列出行号</p>
-<p>-w:仅列出多少字</p>
-<p>-m:仅列出多少字符</p>
-</li>
-<li><p>uniq去重</p>
-<p>uniq [-ic]</p>
-<p>-i :忽略大小写字符的不同</p>
-<p>-c:进行计数</p>
-</li>
-<li><p>split文件切分</p>
-<p>split [-bl] <file> PREFIX</p>
-<p>-b SIZE: 切分为ＳＩＺＥ大小的文件</p>
-<p>-l ｎｕｍ：以ｎｕｍ行为大小切</p>
-</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls /etc | splist -l 10</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>xargs参数xargs替换</p>
-<p>-0：将特殊字符还原为普通字符</p>
-<p>-eEOF:当xargs读到ＥＯＦ时停止</p>
-<p>-p:执行指令前询问</p>
-<p>-n num:每次执行command时需要的参数个数</p>
-</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/passwd | cut -d ":" -f 1 | xargs -n 1 -efangsong id</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>tr替换压缩删除  </p>
-<p>tr [cdst] &lt;字符集&gt;　&lt;字符集&gt;</p>
-<p>c 取代所有不属于第一字符集的字符</p>
-<p>d 删除所有属于第一字符集的字符</p>
-<p>s 将连续重复的字符以单独一个字符表示</p>
-<p>t 先删除第一字符集比第二字符集字符集多的字符</p>
-</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"> cat fangsong | tr [0-9] [a-z]</span><br><span class="line"> cat fangsong | tr -d [0-9]</span><br><span class="line"> cat fangsong | tr -s [a-z]</span><br><span class="line"> cat fangsong | tr -t [0-9] [a-z]</span><br><span class="line"></span><br><span class="line"> 文件夹下文件名大写变小写</span><br><span class="line">ls | tr [a - z] [A  - Z]</span><br><span class="line">for i in `ls`; do</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">mv <span class="variable">$i</span> `<span class="built_in">echo</span> <span class="variable">$i</span>` | tr [a-z] [A-Z]</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"><span class="keyword">done</span></span></span><br></pre></td></tr></table></figure>
-
-<p>如何统计文件中单词的个数，逆序输出</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cat fangsong | tr -s -c [a-z] ' ' | tr ' ' '\n' | sort | uniq -c | sort -n -r | head -n 20</span><br><span class="line">先把不是字符的去掉，然后把空格替换为'\n',然后排序去重然后逆序输出前二十行</span><br></pre></td></tr></table></figure>
-
-
-
-
+      <h1 id="基本系统"><a href="#基本系统" class="headerlink" title="基本系统"></a>基本系统</h1><h4 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h4><p><img src="https://github.com/fangsong0517/Figure-bed/blob/master/2020-03-15%2009-33-20%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png?raw=true" alt="2020-03-15 09-33-20屏幕截图.png"><br><img src="https://github.com/fangsong0517/Figure-bed/blob/master/2020-03-15%2009-43-10%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png?raw=true" alt="2020-03-15 09-43-10屏幕截图.png"><br><img src="https://github.com/fangsong0517/Figure-bed/blob/master/2020-03-15%2009-43-36%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png?raw=true" alt="2020-03-15 09-43-36屏幕截图.png"></p>
+<h1 id=""><a href="#" class="headerlink" title=""></a></h1>
       
       <!-- reward -->
       
