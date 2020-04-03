@@ -73,6 +73,230 @@
     
     
     
+    <article id="post-Mynotes/linux学习笔记/文件与目录操作" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/04/02/Mynotes/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%96%87%E4%BB%B6%E4%B8%8E%E7%9B%AE%E5%BD%95%E6%93%8D%E4%BD%9C/"
+    >Mynotes/linux学习笔记/文件与目录操作</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/04/02/Mynotes/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%96%87%E4%BB%B6%E4%B8%8E%E7%9B%AE%E5%BD%95%E6%93%8D%E4%BD%9C/" class="article-date">
+  <time datetime="2020-04-01T16:33:54.865Z" itemprop="datePublished">2020-04-01</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h1 id="文件与目录操作"><a href="#文件与目录操作" class="headerlink" title="文件与目录操作"></a>文件与目录操作</h1><h4 id="CD切换工作目录"><a href="#CD切换工作目录" class="headerlink" title="CD切换工作目录"></a>CD切换工作目录</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cd /etc #直接切换到/etc目录</span><br><span class="line">cd .. #切换到上层目录</span><br><span class="line">cd . #切换到当前目录</span><br><span class="line">cd #回到自己的家目录</span><br><span class="line">cd ~#回到自己的家目录</span><br><span class="line">cd -#回到上次的工作目录</span><br></pre></td></tr></table></figure>
+
+<h4 id="PWD"><a href="#PWD" class="headerlink" title="PWD"></a>PWD</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">L 显示逻辑工作目录</span><br><span class="line">P 显示物理工作目录</span><br></pre></td></tr></table></figure>
+
+<h4 id="MkDIR创建目录"><a href="#MkDIR创建目录" class="headerlink" title="MkDIR创建目录"></a>MkDIR创建目录</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-p 自动创建父目录</span><br><span class="line">-m 设置权限</span><br></pre></td></tr></table></figure>
+
+<h4 id="RMDIR删除目录"><a href="#RMDIR删除目录" class="headerlink" title="RMDIR删除目录"></a>RMDIR删除目录</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p删除祖先</span><br></pre></td></tr></table></figure>
+
+<h4 id="CP"><a href="#CP" class="headerlink" title="CP"></a>CP</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">-i :若文件存在，询问用户</span><br><span class="line">-r :递归赋值</span><br><span class="line">-a ：pdr的集合</span><br><span class="line">-p: 连同文件属性一起复制</span><br><span class="line">-d:若源文件为链接文件的属性，则赋值链接文件的属性</span><br><span class="line">-s:拷贝为软连接</span><br><span class="line">-l:拷贝为硬链接</span><br><span class="line">-u：原文件比目的文件新才拷贝</span><br></pre></td></tr></table></figure>
+
+<h4 id="RM"><a href="#RM" class="headerlink" title="RM"></a>RM</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-i :互动模式</span><br><span class="line">-r :递归删除</span><br><span class="line">-f：force</span><br></pre></td></tr></table></figure>
+
+<h4 id="MV"><a href="#MV" class="headerlink" title="MV"></a>MV</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-i :互动模式</span><br><span class="line">-f：force</span><br><span class="line">-u:源文件跟新才会移动</span><br></pre></td></tr></table></figure>
+
+<h4 id="CAT"><a href="#CAT" class="headerlink" title="CAT"></a>CAT</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-A:相当于-VET</span><br><span class="line">-v:列出看不到的字符</span><br><span class="line">-E:显示断行符为￥</span><br><span class="line">-T：显示TAB为^I</span><br><span class="line">-b:列出行号</span><br><span class="line">-n:列出行号，空行也编号</span><br></pre></td></tr></table></figure>
+
+<h4 id="NL输出行号显示文件"><a href="#NL输出行号显示文件" class="headerlink" title="NL输出行号显示文件"></a>NL输出行号显示文件</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-b a:相当于cat -a</span><br><span class="line">-b t:相当于cat -b</span><br><span class="line">-n ln:行号在屏幕的最左边显示</span><br><span class="line">-n rn:行号在自己字段的最右边显示</span><br><span class="line">-n rz:行号在自己字段的最右边显示，前面自动补0</span><br><span class="line">-w &lt;num&gt;：行号所占位数</span><br></pre></td></tr></table></figure>
+
+<h4 id="HEAD查看头几行"><a href="#HEAD查看头几行" class="headerlink" title="HEAD查看头几行"></a>HEAD查看头几行</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">head [-n num] &lt;file&gt;</span><br><span class="line">-n num:显示前几行</span><br><span class="line">-n -num:除后几行外，其他都显示</span><br></pre></td></tr></table></figure>
+
+<h4 id="TAIL查看末尾几行"><a href="#TAIL查看末尾几行" class="headerlink" title="TAIL查看末尾几行"></a>TAIL查看末尾几行</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tail [-n num] &lt;file&gt;</span><br><span class="line">-n num:显示文件后num行</span><br><span class="line">-n +num:除前几行外，其他都显示</span><br></pre></td></tr></table></figure>
+
+<h4 id="TAIL查看末尾几行-1"><a href="#TAIL查看末尾几行-1" class="headerlink" title="TAIL查看末尾几行"></a>TAIL查看末尾几行</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tail [-n num] &lt;file&gt;</span><br><span class="line">-n num:显示文件后num行</span><br><span class="line">-n +num:除前几行外，其他都显示</span><br></pre></td></tr></table></figure>
+
+<h4 id="文件时间及隐藏属性"><a href="#文件时间及隐藏属性" class="headerlink" title="文件时间及隐藏属性"></a>文件时间及隐藏属性</h4><blockquote>
+<p>文件的三个时间</p>
+<blockquote>
+<p>mtime :内容数据改动时才更新这个时间</p>
+<p>ctime:文件的权限，文件改动更新这个时间</p>
+<p>atime:文件的内容被取用access时，更新这个时间</p>
+</blockquote>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -l --time=ctime /etc/hostname</span><br></pre></td></tr></table></figure>
+
+<p>ls -l #是行列表形式<br>–time=ctime# 显示这个时间为ctime, –后面通常加原型<br>每个文件都有这三种属性</p>
+<h4 id="修改文件时间与新建文件"><a href="#修改文件时间与新建文件" class="headerlink" title="修改文件时间与新建文件"></a>修改文件时间与新建文件</h4><blockquote>
+<p>touch [-acdmt] <file></p>
+<blockquote>
+<p>-a:仅修改访问时间<br>-c:金修改文件的时间，若文件不存在，不新建<br>-d:修改文件日期<br>-m:金修改mtime<br>-t:修改文件时间[yymmddhhmm]</p>
+</blockquote>
+</blockquote>
+<h4 id="文件隐藏属性"><a href="#文件隐藏属性" class="headerlink" title="文件隐藏属性"></a>文件隐藏属性</h4><blockquote>
+<p>chattr [+-=] [ASacdistu] <file_or_dir></p>
+<p>A:不修改atime<br>S:同步写入 //不缓存直接写到磁盘上，例如银行<br>a:只能增加数据　//通常用在日志上<br>c:自动压缩，解压<br>d:不会被dump程序备份<br>i:不能删除修改建立连接 //写死了<br>s:文件删除时，直接从磁盘删除<br>u:文件删除时，文件内容存在磁盘中</p>
+</blockquote>
+<h4 id="文件的特殊权限"><a href="#文件的特殊权限" class="headerlink" title="文件的特殊权限"></a>文件的特殊权限</h4><blockquote>
+<p>set_uid    s占位符       作用二进制程序文件，费脚本　　　　　用户在执行该程序时获取程序所有者权限<br>set_git　s占位符        目录和二进制文件　　　　　　　　　　用户在该目录下，有效组变为目录所属组<br>sticky Bit　t占位符　　目录　　　　　　　　　再改目录下，用户只能删除自己穿就爱你的内容</p>
+</blockquote>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-Mynotes/linux学习笔记/系统信息的获取" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/04/02/Mynotes/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E7%B3%BB%E7%BB%9F%E4%BF%A1%E6%81%AF%E7%9A%84%E8%8E%B7%E5%8F%96/"
+    >Mynotes/linux学习笔记/系统信息的获取</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/04/02/Mynotes/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E7%B3%BB%E7%BB%9F%E4%BF%A1%E6%81%AF%E7%9A%84%E8%8E%B7%E5%8F%96/" class="article-date">
+  <time datetime="2020-04-01T16:33:54.865Z" itemprop="datePublished">2020-04-01</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h1 id="系统信息的获取"><a href="#系统信息的获取" class="headerlink" title="系统信息的获取"></a>系统信息的获取</h1><h4 id="系统信息"><a href="#系统信息" class="headerlink" title="系统信息"></a>系统信息</h4><blockquote>
+<p>uptime 打印系统运行时长和平均负载</p>
+<p>who显示当前登录系统用户信息</p>
+<p>last显示用户最近登录用户信息</p>
+<p>date显示或设置系统时间与日期</p>
+<p>w当前登录用户列表及正在执行的任务</p>
+<p>whoami打印当前有效的用户名称</p>
+<p>uname打印当前系统信息</p>
+<p>cal显示日历</p>
+</blockquote>
+<h4 id="uptime"><a href="#uptime" class="headerlink" title="uptime"></a>uptime</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fangsong@fangsong-FX503VD:~$ uptime</span><br><span class="line"> 08:26:41 up 11 min,  1 user,  load average: 0.75, 1.41, 0.97</span><br></pre></td></tr></table></figure>
+
+<h4 id="w"><a href="#w" class="headerlink" title="w"></a>w</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-h :不打印头信息</span><br><span class="line">-s :是hi用端输出格式</span><br><span class="line">-f :切换FROM项</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">fangsong@fangsong-FX503VD:~$ w</span><br><span class="line"> 08:28:23 up 12 min,  1 user,  load average: 0.86, 1.27, 0.97</span><br><span class="line">USER     TTY      来自           LOGIN@   IDLE   JCPU   PCPU WHAT</span><br><span class="line">fangsong :0       :0               08:17   ?xdm?   1:46   0.01s /usr/lib/gdm3/g</span><br><span class="line">fangsong@fangsong-FX503VD:~$ w -h</span><br><span class="line">fangsong :0       :0               08:17   ?xdm?   1:49   0.01s /usr/lib/gdm3/g</span><br><span class="line">fangsong@fangsong-FX503VD:~$ w -s</span><br><span class="line"> 08:28:39 up 13 min,  1 user,  load average: 0.75, 1.23, 0.96</span><br><span class="line">USER     TTY      来自            空闲等待</span><br><span class="line">fangsong :0       :0               ?xdm?  /usr/lib/gdm3/gdm-x-session --run-s</span><br><span class="line">fangsong@fangsong-FX503VD:~$ w -f</span><br><span class="line"> 08:28:48 up 13 min,  1 user,  load average: 0.63, 1.19, 0.95</span><br><span class="line">USER     TTY        LOGIN@   IDLE   JCPU   PCPU WHAT</span><br><span class="line">fangsong :0        08:17   ?xdm?   1:49   0.01s /usr/lib/gdm3/gdm-x-session --r</span><br><span class="line">fangsong@fangsong-FX503VD:~$</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>USER</th>
+<th>TTY</th>
+<th>FROM</th>
+<th>LOGIN@</th>
+<th>IDLE</th>
+<th>JCPU</th>
+<th>PCPU</th>
+<th>WHAT</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>登录用户名</td>
+<td>登录后系统分配的端号</td>
+<td>登录主机名</td>
+<td>登录时间</td>
+<td>空闲时间</td>
+<td>和终端相连的所有进程所占用时间，当前正在执行的后台作业</td>
+<td>当前进程占用时间</td>
+<td>当前进程正在执行的的命令</td>
+</tr>
+</tbody></table>
+<h4 id="who"><a href="#who" class="headerlink" title="who"></a>who</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">fangsong@fangsong-FX503VD:~$ who -H #显示各栏标题新系列</span><br><span class="line">名称   线路       时间           备注</span><br><span class="line">fangsong :0           2020-03-15 08:17 (:0)</span><br><span class="line">fangsong@fangsong-FX503VD:~$ who -q#登录用户总人数</span><br><span class="line">fangsong</span><br><span class="line"><span class="meta">#</span><span class="bash"> 用户数=1</span></span><br><span class="line">fangsong@fangsong-FX503VD:~$ who -a</span><br><span class="line">           系统引导 2020-03-15 08:15</span><br><span class="line">           运行级别 5 2020-03-15 08:16</span><br><span class="line">fangsong ? :0           2020-03-15 08:17   ?          1763 (:0)</span><br><span class="line">fangsong@fangsong-FX503VD:~$ who -u#显示空闲时间</span><br><span class="line">fangsong :0           2020-03-15 08:17   ?          1763 (:0)</span><br></pre></td></tr></table></figure>
+
+<h4 id="LAST"><a href="#LAST" class="headerlink" title="LAST"></a>LAST</h4><p>显示用户最近登录用户信息</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">fangsong@fangsong-FX503VD:~$ last -n 5#指定输出记录数</span><br><span class="line">fangsong :0           :0               Sun Mar 15 08:17   still logged in</span><br><span class="line">reboot   system boot  5.0.0-38-generic Sun Mar 15 08:15   still running</span><br><span class="line">fangsong :0           :0               Sat Mar 14 10:08 - down   (13:37)</span><br><span class="line">reboot   system boot  5.0.0-38-generic Sat Mar 14 10:06 - 23:45  (13:38)</span><br><span class="line">fangsong :0           :0               Fri Mar 13 16:55 - 00:41  (07:45)</span><br><span class="line"></span><br><span class="line">wtmp begins Mon Nov 25 15:04:07 2019</span><br></pre></td></tr></table></figure>
+
+<h4 id="uname"><a href="#uname" class="headerlink" title="uname"></a>uname</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">fangsong@fangsong-FX503VD:~$ uname -a#全部信息</span><br><span class="line">Linux fangsong-FX503VD 5.0.0-38-generic #41-Ubuntu SMP Tue Dec 3 00:27:35 UTC 2019 x86_64 x86_64 x86_64 GNU/Linux</span><br><span class="line">fangsong@fangsong-FX503VD:~$ uname -m#电脑类型</span><br><span class="line">x86_64</span><br><span class="line">fangsong@fangsong-FX503VD:~$ uname -n#网络上主机的名称</span><br><span class="line">fangsong-FX503VD</span><br><span class="line">fangsong@fangsong-FX503VD:~$ uname -v#os版本</span><br><span class="line"><span class="meta">#</span><span class="bash">41-Ubuntu SMP Tue Dec 3 00:27:35 UTC 2019</span></span><br><span class="line">fangsong@fangsong-FX503VD:~$ uname -p#处理器类型</span><br><span class="line">x86_64</span><br><span class="line">fangsong@fangsong-FX503VD:~$ uname -i#硬件</span><br><span class="line">x86_64</span><br><span class="line">fangsong@fangsong-FX503VD:~$ uname -o#操作系统名称</span><br><span class="line">GNU/Linux</span><br></pre></td></tr></table></figure>
+
+<h4 id="date"><a href="#date" class="headerlink" title="date"></a>date</h4><p>ntp协议：标准的时间</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">fangsong@fangsong-FX503VD:~$ date</span><br><span class="line">2020年 03月 15日 星期日 08:43:00 CST</span><br><span class="line">fangsong@fangsong-FX503VD:~$ date +%s</span><br><span class="line">1584232994</span><br><span class="line">fangsong@fangsong-FX503VD:~$ date +%S</span><br><span class="line">22</span><br><span class="line">fangsong@fangsong-FX503VD:~$ date +%T</span><br><span class="line">08:43:31</span><br><span class="line">fangsong@fangsong-FX503VD:~$ date +%H+%M+%S</span><br><span class="line">08+43+55</span><br></pre></td></tr></table></figure>
+
+<h1 id=""><a href="#" class="headerlink" title=""></a></h1>
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-Mynotes/linux学习笔记/命令系统" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -242,333 +466,6 @@
 
 </article>
     
-    <article id="post-Mynotes/linux学习笔记/文件与目录操作、实现ls命令" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/04/02/Mynotes/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%96%87%E4%BB%B6%E4%B8%8E%E7%9B%AE%E5%BD%95%E6%93%8D%E4%BD%9C%E3%80%81%E5%AE%9E%E7%8E%B0ls%E5%91%BD%E4%BB%A4/"
-    >Mynotes/linux学习笔记/文件与目录操作、实现ls命令</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/04/02/Mynotes/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%96%87%E4%BB%B6%E4%B8%8E%E7%9B%AE%E5%BD%95%E6%93%8D%E4%BD%9C%E3%80%81%E5%AE%9E%E7%8E%B0ls%E5%91%BD%E4%BB%A4/" class="article-date">
-  <time datetime="2020-04-01T16:33:54.865Z" itemprop="datePublished">2020-04-01</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h1 id="文件与目录操作、实现ls命令"><a href="#文件与目录操作、实现ls命令" class="headerlink" title="文件与目录操作、实现ls命令"></a>文件与目录操作、实现ls命令</h1><h4 id="如何在Linux中查找文件"><a href="#如何在Linux中查找文件" class="headerlink" title="如何在Linux中查找文件"></a>如何在Linux中查找文件</h4><table>
-<thead>
-<tr>
-<th>命令</th>
-<th>功能</th>
-<th>命令</th>
-<th>功能</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>which</td>
-<td>寻找可执行文件</td>
-<td>whereis</td>
-<td>寻找特定文件</td>
-</tr>
-<tr>
-<td>locate</td>
-<td>搜索文件(可部分查找)</td>
-<td>find</td>
-<td>多样化高级查找</td>
-</tr>
-</tbody></table>
-<ul>
-<li>which寻找可执行文件</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fangsong@fangsong-FX503VD:~$ ls -a `which ping`</span><br><span class="line">/usr/bin/ping</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>whereis寻找特定文件</p>
-<p>-b:查找二进制文件</p>
-<p>-m:查找man手册</p>
-<p>-s:查找source源文件</p>
-</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fangsong@fangsong-FX503VD:~$ whereis ping</span><br><span class="line">ping: /usr/bin/ping /usr/share/man/man8/ping.8.gz</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>locate模糊定义</p>
-<p>-i:忽略大小写</p>
-<p>-r:后面可接正则表达式</p>
-</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fangsong@fangsong-FX503VD:~$ locate prime.cpp</span><br><span class="line">/home/fangsong/Mycode/1.c语言/4/1.prime.cpp</span><br><span class="line">/home/fangsong/Mycode/2.EP/prime.cpp</span><br><span class="line">/home/fangsong/Mycode/2.f/prime.cpp</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>find高级查找</p>
-<p>find [path] [option] [action]</p>
-<p>与时间相关的参数：-atime -ctime -mtime</p>
-<p>-mtime n : ｎ天前的”一天之内”修改的文件 amin</p>
-<p>-mtime +n: n天之前，不包含ｎ，修改过的文件</p>
-<p>-mtime -n:ｎ天之内，包含ｎ，修改过的文件</p>
-<p>-newer file:比file 还要新的文件</p>
-<p>与用户或者用户组相关的参数：</p>
-<p>-uid n:用户UID为ｎ</p>
-<p>-gid n:群组GID为ｎ</p>
-<p>-user name:用户名为name</p>
-<p>-group name:群组名为name</p>
-<p>nouser:文件所有者不存在</p>
-<p>nogroup:文件所有组不存在</p>
-<p>与文件权限名称有关的参数：</p>
-<p>-name filename: 文件名为filrname</p>
-<p>-size [+-] SIZE:查找比SIZE大或小的</p>
-<p>-type TYPE：f b c d l s p</p>
-<p>-perm mode : mode 刚好等于的文件</p>
-<p>-perm -mode: 全部包含mode的文件</p>
-</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">find -exec ls -l &#123;&#125; \;</span><br><span class="line"></span><br><span class="line">find . -name "*.cpp" -mtime -1 -exec wc -l &#123;&#125; \ #一天前.cpp文件的统计行数</span><br></pre></td></tr></table></figure>
-
-<p>查找家目录下所有.cpp,.c,.sh,.h的行数总和</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find ~ -name "*.cpp" -o -name "*.c" -o -name "*.h" -o -name "*.sh" | xargs wc -l</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<h4 id="实现ls需要用到的函数"><a href="#实现ls需要用到的函数" class="headerlink" title="实现ls需要用到的函数"></a>实现ls需要用到的函数</h4><h5 id="opendir"><a href="#opendir" class="headerlink" title="opendir()"></a>opendir()</h5><p><strong>头文件</strong><br>　　#include&lt;sys/types.h&gt;<br>　　#include&lt;dirent.h&gt;<br><strong>函数原型</strong><br>　　DIR* opendir (const char * path ); （获取path子目录下的所由文件和目录的列表，如果path是个文件则返回值为NULL）<br><strong>功能</strong><br>　　<font color= red>打开一个目录，在失败的时候返回一个空的指针。</font><br><strong>返回值(DIR)</strong><br>       DIR 结构体的原型为：struct_dirstream<br>       在Linux系统中：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> __<span class="title">dirstream</span> <span class="title">DIR</span>;</span></span><br><span class="line"></span><br><span class="line">      <span class="class"><span class="keyword">struct</span> __<span class="title">dirstream</span></span></span><br><span class="line"><span class="class">      &#123;</span></span><br><span class="line">        <span class="keyword">void</span> *__fd; <span class="comment">/* `struct hurd_fd' pointer for descriptor.   */</span></span><br><span class="line">        <span class="keyword">char</span> *__data; <span class="comment">/* Directory block.   */</span></span><br><span class="line">        <span class="keyword">int</span> __entry_data; <span class="comment">/* Entry number `__data' corresponds to.   */</span></span><br><span class="line">        <span class="keyword">char</span> *__ptr; <span class="comment">/* Current pointer into the block.   */</span></span><br><span class="line">        <span class="keyword">int</span> __entry_ptr; <span class="comment">/* Entry number `__ptr' corresponds to.   */</span></span><br><span class="line">        <span class="keyword">size_t</span> __allocation; <span class="comment">/* Space allocated for the block.   */</span></span><br><span class="line">        <span class="keyword">size_t</span> __size; <span class="comment">/* Total valid data in the block.   */</span></span><br><span class="line">        __libc_lock_define (, __lock) <span class="comment">/* Mutex lock for this structure.   */</span></span><br><span class="line">       &#125;;</span><br></pre></td></tr></table></figure>
-
-<h5 id="readdir"><a href="#readdir" class="headerlink" title="readdir()"></a>readdir()</h5><p><strong>头文件</strong><br>#include&lt;dirent.h&gt;<br><strong>函数原型</strong><br>struct dirent* readdir(DIR* dir_handle); （个人理解循环读取dir_handle,目录和文件都读）<br><strong>功能</strong><br><font color = red>读取opendir 返回值的那个列表</font><br><strong>返回值</strong><br>返回dirent结构体指针，dirent结构体成员如下，（文件和目录都行）</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">dirent</span></span></span><br><span class="line"><span class="class">　　&#123;</span></span><br><span class="line">　　<span class="keyword">long</span> d_ino; <span class="comment">/* inode number 索引节点号 */</span></span><br><span class="line">　　<span class="keyword">off_t</span> d_off; <span class="comment">/* offset to this dirent 在目录文件中的偏移 */</span></span><br><span class="line">　　<span class="keyword">unsigned</span> <span class="keyword">short</span> d_reclen; <span class="comment">/* length of this d_name 文件名长 */</span></span><br><span class="line">　　<span class="keyword">unsigned</span> <span class="keyword">char</span> d_type; <span class="comment">/* the type of d_name 文件类型 */</span></span><br><span class="line">　　<span class="keyword">char</span> d_name [NAME_MAX+<span class="number">1</span>]; <span class="comment">/* file name (null-terminated) 文件名，最长255字符 */</span></span><br><span class="line">　　&#125;</span><br></pre></td></tr></table></figure>
-
-<h5 id="perror"><a href="#perror" class="headerlink" title="perror()"></a>perror()</h5><p><font color = red>将上一个函数发生错误的原因输出</font></p>
-<h5 id="closedir"><a href="#closedir" class="headerlink" title="closedir()"></a>closedir()</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;dirent.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">closedir</span><span class="params">(DIR *dir)</span></span>;</span><br></pre></td></tr></table></figure>
-
-<p>​     closedir()关闭参数dir所指的目录流。关闭成功则返回0，失败返回-1，错误原因存于errno 中。EBADF 参数dir为无效的目录流。注意：目录文件作为一种文件，再打开必须关闭，否则会由于文件的进程打开文件过多而不能打开新的文件。因此opendir函数和closedir函数同样是配对出现的</p>
-<h5 id="stat函数"><a href="#stat函数" class="headerlink" title="stat函数"></a>stat函数</h5><p> 作用：<font color = red>获取文件信息</font></p>
-<p> 头文件：include &lt;sys/types.h&gt; #include &lt;sys/stat.h&gt; #include &lt;unistd.h&gt;</p>
-<p> 函数原型：<code>int stat(const char *path, struct stat *buf)</code></p>
-<p> 返回值：成功返回0，失败返回-1；</p>
-<p> 参数：文件路径（名），struct stat 类型的结构体</p>
-<p>struct stat 结构体详解：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">stat</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">dev_t</span>     st_dev;     <span class="comment">/* ID of device containing file */</span>文件使用的设备号</span><br><span class="line">    <span class="keyword">ino_t</span>     st_ino;     <span class="comment">/* inode number */</span>    索引节点号 </span><br><span class="line">    <span class="keyword">mode_t</span>    st_mode;    <span class="comment">/* protection */</span>  文件对应的模式，文件，目录等</span><br><span class="line">    <span class="keyword">nlink_t</span>   st_nlink;   <span class="comment">/* number of hard links */</span>    文件的硬连接数  </span><br><span class="line">    <span class="keyword">uid_t</span>     st_uid;     <span class="comment">/* user ID of owner */</span>    所有者用户识别号</span><br><span class="line">    <span class="keyword">gid_t</span>     st_gid;     <span class="comment">/* group ID of owner */</span>   组识别号  </span><br><span class="line">    <span class="keyword">dev_t</span>     st_rdev;    <span class="comment">/* device ID (if special file) */</span> 设备文件的设备号</span><br><span class="line">    <span class="keyword">off_t</span>     st_size;    <span class="comment">/* total size, in bytes */</span> 以字节为单位的文件容量   </span><br><span class="line">    <span class="keyword">blksize_t</span> st_blksize; <span class="comment">/* blocksize for file system I/O */</span> 包含该文件的磁盘块的大小   </span><br><span class="line">    <span class="keyword">blkcnt_t</span>  st_blocks;  <span class="comment">/* number of 512B blocks allocated */</span> 该文件所占的磁盘块  </span><br><span class="line">    <span class="keyword">time_t</span>    st_atime;   <span class="comment">/* time of last access */</span> 最后一次访问该文件的时间   </span><br><span class="line">    <span class="keyword">time_t</span>    st_mtime;   <span class="comment">/* time of last modification */</span> /最后一次修改该文件的时间   </span><br><span class="line">    <span class="keyword">time_t</span>    st_ctime;   <span class="comment">/* time of last status change */</span> 最后一次改变该文件状态的时间   </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
-<p>stat结构体中的st_mode 则定义了下列数种情况：</p>
-<pre><code>S_IFMT   0170000    文件类型的位遮罩
-S_IFSOCK 0140000    套接字
-S_IFLNK 0120000     符号连接
-S_IFREG 0100000     一般文件
-S_IFBLK 0060000     区块装置
-S_IFDIR 0040000     目录
-S_IFCHR 0020000     字符装置
-S_IFIFO 0010000     先进先出
-
-S_ISUID 04000     文件的(set user-id on execution)位
-S_ISGID 02000     文件的(set group-id on execution)位
-S_ISVTX 01000     文件的sticky位
-
-S_IRUSR(S_IREAD) 00400     文件所有者具可读取权限
-S_IWUSR(S_IWRITE)00200     文件所有者具可写入权限
-S_IXUSR(S_IEXEC) 00100     文件所有者具可执行权限
-
-S_IRGRP 00040             用户组具可读取权限
-S_IWGRP 00020             用户组具可写入权限
-S_IXGRP 00010             用户组具可执行权限
-
-S_IROTH 00004             其他用户具可读取权限
-S_IWOTH 00002             其他用户具可写入权限
-S_IXOTH 00001             其他用户具可执行权限
-
-上述的文件类型在POSIX中定义了检查这些类型的宏定义：
-S_ISLNK (st_mode)    判断是否为符号连接
-S_ISREG (st_mode)    是否为一般文件
-S_ISDIR (st_mode)    是否为目录
-S_ISCHR (st_mode)    是否为字符装置文件
-S_ISBLK (s3e)        是否为先进先出
-S_ISSOCK (st_mode)   是否为socket
-若一目录具有sticky位(S_ISVTX)，则表示在此目录下的文件只能被该文件所有者、此目录所有者或root来删除或改名，在linux中，最典型的就是这个/tmp目录啦。</code></pre><p>st_mode 的结构</p>
-<p>st_mode 主要包含了 3 部分信息：</p>
-<p>15-12 位保存文件类型</p>
-<p>11-9 位保存执行文件时设置的信息</p>
-<p>8-0 位保存文件访问权限</p>
-<h5 id="getpwuid"><a href="#getpwuid" class="headerlink" title="getpwuid()"></a>getpwuid()</h5><p>头文件：#include &lt;sys/types.h&gt;  #include &lt;pwd.h&gt;</p>
-<p>getpwuid函数是通过用户的uid查找用户的passwd数据。如果出错时，它们都返回一个空<a href="https://baike.baidu.com/item/指针/2878304" target="_blank" rel="noopener">指针</a>并设置errno的值，用户可以根据perror函数查看出错的信息。</p>
-<p>函数说明</p>
-<p><font color =red>查找用户的passwd数据</font></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">和系统数据相关的passwd 结构 </span><br><span class="line">和系统数据相关的一个结构passwd定义如下 </span><br><span class="line"><span class="comment">/* The passwd structure.      */</span> </span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">passwd</span> </span></span><br><span class="line"><span class="class">&#123;</span> </span><br><span class="line">      <span class="keyword">char</span> *pw_name;       <span class="comment">/* 用户名*/</span> </span><br><span class="line">      <span class="keyword">char</span> *pw_passwd;     <span class="comment">/* 密码.*/</span> </span><br><span class="line">      <span class="keyword">__uid_t</span> pw_uid;      <span class="comment">/* 用户ID.*/</span> </span><br><span class="line">      <span class="keyword">__gid_t</span> pw_gid;      <span class="comment">/*组ID.*/</span> </span><br><span class="line">      <span class="keyword">char</span> *pw_gecos;      <span class="comment">/*真实名*/</span> </span><br><span class="line">      <span class="keyword">char</span> *pw_dir;        <span class="comment">/* 主目录.*/</span> </span><br><span class="line">      <span class="keyword">char</span> *pw_shell;      <span class="comment">/*使用的shell*/</span> </span><br><span class="line">&#125;; </span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt; </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt; </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/types.h&gt; </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/stat.h&gt; </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;fcntl.h&gt; </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt; </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;pwd.h&gt; </span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">(<span class="keyword">void</span>)</span> </span></span><br><span class="line"><span class="function"></span>&#123; </span><br><span class="line">       <span class="class"><span class="keyword">struct</span> <span class="title">passwd</span> *<span class="title">passwd</span>;</span> </span><br><span class="line">       passwd=getpwuid(getuid()); </span><br><span class="line">       <span class="comment">/** passwd=getcwnam("phpos"); **/</span> </span><br><span class="line">       <span class="built_in">printf</span>(<span class="string">"Username:%s/n"</span>,passwd-&gt;pw_name); </span><br><span class="line">       <span class="built_in">printf</span>(<span class="string">"Password:%s/n"</span>,passwd-&gt;pw_passwd); </span><br><span class="line">       <span class="built_in">printf</span>(<span class="string">"uid:%d/n"</span>,passwd-&gt;pw_uid); </span><br><span class="line">       <span class="built_in">printf</span>(<span class="string">"gid:%d/n"</span>,passwd-&gt;pw_gid); </span><br><span class="line">       <span class="built_in">printf</span>(<span class="string">"shell:%s/n"</span>,passwd-&gt;pw_shell); </span><br><span class="line">       <span class="built_in">printf</span>(<span class="string">"dir:%s/n"</span>,passwd-&gt;pw_dir); </span><br><span class="line">       <span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h5 id="getgrgid"><a href="#getgrgid" class="headerlink" title="getgrgid()"></a>getgrgid()</h5><p><strong>C语言getgrgid()函数：从组文件中取得指定gid的数据</strong></p>
-<p>头文件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;grp.h&gt;  #include &lt;sys/types.h&gt;</span><br></pre></td></tr></table></figure>
-
-<p>定义函数：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">strcut group * getgrgid(gid_t gid);</span><br></pre></td></tr></table></figure>
-
-<p>函数说明：getgrgid()用来依参数gid 指定的组识别码逐一搜索组文件, 找到时便将该组的数据以group 结构返回. 返回值：返回 group 结构数据, 如果返回NULL 则表示已无数据, 或有错误发生.</p>
-<p>通过gid,找到该组的相关信息,并以group结构体返回其信息, 头文件:#include &lt;grp.h&gt;,#include &lt;sys/types.h&gt; 参数     文件所属组的组id; 返回值:成功返回group结构体,错误返回NULL; group结构体: struct group { char <em>gr_name; /*组名称</em>/ char <em>gr_passwd; /</em> 组密码<em>/ gid_t gr_gid; /*组识别码</em>/ char <em><em>gr_mem; /</em>组成员账号</em>/ } 看个例子:</p>
-<p>范例</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">/* 取得gid＝3 的组数据 */</span><br><span class="line">#include &lt;grp.h&gt;</span><br><span class="line">#include &lt;sys/types.h&gt;</span><br><span class="line">main()</span><br><span class="line">&#123;</span><br><span class="line">  strcut group *data;</span><br><span class="line">  int i = 0;</span><br><span class="line">  data = getgrgid(3);</span><br><span class="line">  printf(&quot;%s:%s:%d:&quot;, data-&gt;gr_name, data-&gt;gr_passwd, data-&gt;gr_gid);</span><br><span class="line">    while(data-&gt;gr_mem[i])</span><br><span class="line">    printf(&quot;%s, &quot;, data-&gt;mem[i++]);</span><br><span class="line">    printf(&quot;\n&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">passwd</span>  </span></span><br><span class="line"><span class="class">&#123;</span>  </span><br><span class="line">    <span class="keyword">char</span> * pw_name; <span class="comment">/* Username, POSIX.1 */</span>  </span><br><span class="line">    <span class="keyword">char</span> * pw_passwd; <span class="comment">/* Password */</span>  </span><br><span class="line">    <span class="keyword">__uid_t</span> pw_uid; <span class="comment">/* User ID, POSIX.1 */</span>  </span><br><span class="line">    <span class="keyword">__gid_t</span> pw_gid; <span class="comment">/* Group ID, POSIX.1 */</span>  </span><br><span class="line">    <span class="keyword">char</span> * pw_gecos; <span class="comment">/* Real Name or Comment field */</span>  </span><br><span class="line">    <span class="keyword">char</span> * pw_dir; <span class="comment">/* Home directory, POSIX.1 */</span>  </span><br><span class="line">    <span class="keyword">char</span> * pw_shell; <span class="comment">/* Shell Program, POSIX.1 */</span>  </span><br><span class="line">&#125;;  </span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">group</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">char</span> *gr_name;  <span class="comment">/* Group name */</span></span><br><span class="line">    <span class="keyword">char</span> *gr_passwd;  <span class="comment">/* password */</span></span><br><span class="line">    <span class="keyword">__gid_t</span> gr_gid;  <span class="comment">/* Group ID */</span></span><br><span class="line">    <span class="keyword">char</span> **gr_mem;  <span class="comment">/* Member list */</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span><span class="comment">//0</span></span></span><br></pre></td></tr></table></figure>
-
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-Mynotes/linux学习笔记/文件与目录操作" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/04/02/Mynotes/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%96%87%E4%BB%B6%E4%B8%8E%E7%9B%AE%E5%BD%95%E6%93%8D%E4%BD%9C/"
-    >Mynotes/linux学习笔记/文件与目录操作</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/04/02/Mynotes/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%96%87%E4%BB%B6%E4%B8%8E%E7%9B%AE%E5%BD%95%E6%93%8D%E4%BD%9C/" class="article-date">
-  <time datetime="2020-04-01T16:33:54.865Z" itemprop="datePublished">2020-04-01</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h1 id="文件与目录操作"><a href="#文件与目录操作" class="headerlink" title="文件与目录操作"></a>文件与目录操作</h1><h4 id="CD切换工作目录"><a href="#CD切换工作目录" class="headerlink" title="CD切换工作目录"></a>CD切换工作目录</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cd /etc #直接切换到/etc目录</span><br><span class="line">cd .. #切换到上层目录</span><br><span class="line">cd . #切换到当前目录</span><br><span class="line">cd #回到自己的家目录</span><br><span class="line">cd ~#回到自己的家目录</span><br><span class="line">cd -#回到上次的工作目录</span><br></pre></td></tr></table></figure>
-
-<h4 id="PWD"><a href="#PWD" class="headerlink" title="PWD"></a>PWD</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">L 显示逻辑工作目录</span><br><span class="line">P 显示物理工作目录</span><br></pre></td></tr></table></figure>
-
-<h4 id="MkDIR创建目录"><a href="#MkDIR创建目录" class="headerlink" title="MkDIR创建目录"></a>MkDIR创建目录</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-p 自动创建父目录</span><br><span class="line">-m 设置权限</span><br></pre></td></tr></table></figure>
-
-<h4 id="RMDIR删除目录"><a href="#RMDIR删除目录" class="headerlink" title="RMDIR删除目录"></a>RMDIR删除目录</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p删除祖先</span><br></pre></td></tr></table></figure>
-
-<h4 id="CP"><a href="#CP" class="headerlink" title="CP"></a>CP</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">-i :若文件存在，询问用户</span><br><span class="line">-r :递归赋值</span><br><span class="line">-a ：pdr的集合</span><br><span class="line">-p: 连同文件属性一起复制</span><br><span class="line">-d:若源文件为链接文件的属性，则赋值链接文件的属性</span><br><span class="line">-s:拷贝为软连接</span><br><span class="line">-l:拷贝为硬链接</span><br><span class="line">-u：原文件比目的文件新才拷贝</span><br></pre></td></tr></table></figure>
-
-<h4 id="RM"><a href="#RM" class="headerlink" title="RM"></a>RM</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-i :互动模式</span><br><span class="line">-r :递归删除</span><br><span class="line">-f：force</span><br></pre></td></tr></table></figure>
-
-<h4 id="MV"><a href="#MV" class="headerlink" title="MV"></a>MV</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-i :互动模式</span><br><span class="line">-f：force</span><br><span class="line">-u:源文件跟新才会移动</span><br></pre></td></tr></table></figure>
-
-<h4 id="CAT"><a href="#CAT" class="headerlink" title="CAT"></a>CAT</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-A:相当于-VET</span><br><span class="line">-v:列出看不到的字符</span><br><span class="line">-E:显示断行符为￥</span><br><span class="line">-T：显示TAB为^I</span><br><span class="line">-b:列出行号</span><br><span class="line">-n:列出行号，空行也编号</span><br></pre></td></tr></table></figure>
-
-<h4 id="NL输出行号显示文件"><a href="#NL输出行号显示文件" class="headerlink" title="NL输出行号显示文件"></a>NL输出行号显示文件</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-b a:相当于cat -a</span><br><span class="line">-b t:相当于cat -b</span><br><span class="line">-n ln:行号在屏幕的最左边显示</span><br><span class="line">-n rn:行号在自己字段的最右边显示</span><br><span class="line">-n rz:行号在自己字段的最右边显示，前面自动补0</span><br><span class="line">-w &lt;num&gt;：行号所占位数</span><br></pre></td></tr></table></figure>
-
-<h4 id="HEAD查看头几行"><a href="#HEAD查看头几行" class="headerlink" title="HEAD查看头几行"></a>HEAD查看头几行</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">head [-n num] &lt;file&gt;</span><br><span class="line">-n num:显示前几行</span><br><span class="line">-n -num:除后几行外，其他都显示</span><br></pre></td></tr></table></figure>
-
-<h4 id="TAIL查看末尾几行"><a href="#TAIL查看末尾几行" class="headerlink" title="TAIL查看末尾几行"></a>TAIL查看末尾几行</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tail [-n num] &lt;file&gt;</span><br><span class="line">-n num:显示文件后num行</span><br><span class="line">-n +num:除前几行外，其他都显示</span><br></pre></td></tr></table></figure>
-
-<h4 id="TAIL查看末尾几行-1"><a href="#TAIL查看末尾几行-1" class="headerlink" title="TAIL查看末尾几行"></a>TAIL查看末尾几行</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tail [-n num] &lt;file&gt;</span><br><span class="line">-n num:显示文件后num行</span><br><span class="line">-n +num:除前几行外，其他都显示</span><br></pre></td></tr></table></figure>
-
-<h4 id="文件时间及隐藏属性"><a href="#文件时间及隐藏属性" class="headerlink" title="文件时间及隐藏属性"></a>文件时间及隐藏属性</h4><blockquote>
-<p>文件的三个时间</p>
-<blockquote>
-<p>mtime :内容数据改动时才更新这个时间</p>
-<p>ctime:文件的权限，文件改动更新这个时间</p>
-<p>atime:文件的内容被取用access时，更新这个时间</p>
-</blockquote>
-</blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -l --time=ctime /etc/hostname</span><br></pre></td></tr></table></figure>
-
-<p>ls -l #是行列表形式<br>–time=ctime# 显示这个时间为ctime, –后面通常加原型<br>每个文件都有这三种属性</p>
-<h4 id="修改文件时间与新建文件"><a href="#修改文件时间与新建文件" class="headerlink" title="修改文件时间与新建文件"></a>修改文件时间与新建文件</h4><blockquote>
-<p>touch [-acdmt] <file></p>
-<blockquote>
-<p>-a:仅修改访问时间<br>-c:金修改文件的时间，若文件不存在，不新建<br>-d:修改文件日期<br>-m:金修改mtime<br>-t:修改文件时间[yymmddhhmm]</p>
-</blockquote>
-</blockquote>
-<h4 id="文件隐藏属性"><a href="#文件隐藏属性" class="headerlink" title="文件隐藏属性"></a>文件隐藏属性</h4><blockquote>
-<p>chattr [+-=] [ASacdistu] <file_or_dir></p>
-<p>A:不修改atime<br>S:同步写入 //不缓存直接写到磁盘上，例如银行<br>a:只能增加数据　//通常用在日志上<br>c:自动压缩，解压<br>d:不会被dump程序备份<br>i:不能删除修改建立连接 //写死了<br>s:文件删除时，直接从磁盘删除<br>u:文件删除时，文件内容存在磁盘中</p>
-</blockquote>
-<h4 id="文件的特殊权限"><a href="#文件的特殊权限" class="headerlink" title="文件的特殊权限"></a>文件的特殊权限</h4><blockquote>
-<p>set_uid    s占位符       作用二进制程序文件，费脚本　　　　　用户在执行该程序时获取程序所有者权限<br>set_git　s占位符        目录和二进制文件　　　　　　　　　　用户在该目录下，有效组变为目录所属组<br>sticky Bit　t占位符　　目录　　　　　　　　　再改目录下，用户只能删除自己穿就爱你的内容</p>
-</blockquote>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
     <article id="post-Mynotes/linux学习笔记/数据提取操作" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -710,73 +607,6 @@ S_ISSOCK (st_mode)   是否为socket
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cat fangsong | tr -s -c [a-z] ' ' | tr ' ' '\n' | sort | uniq -c | sort -n -r | head -n 20</span><br><span class="line">先把不是字符的去掉，然后把空格替换为'\n',然后排序去重然后逆序输出前二十行</span><br></pre></td></tr></table></figure>
 
 
-
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-Mynotes/linux学习笔记/linux配置" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/04/02/Mynotes/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E9%85%8D%E7%BD%AE/"
-    >Mynotes/linux学习笔记/linux配置</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/04/02/Mynotes/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E9%85%8D%E7%BD%AE/" class="article-date">
-  <time datetime="2020-04-01T16:33:54.861Z" itemprop="datePublished">2020-04-01</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get upgrate</span><br><span class="line">sudo apt-get upinstall</span><br><span class="line">sudo apt-get install git</span><br><span class="line">sudo apt-get install dpkg<span class="comment">//安装包安装软件</span></span><br><span class="line"><span class="comment">//sudo apt-get install tar//解压缩 软件</span></span><br><span class="line">sudo apt-get ifcongig</span><br><span class="line">wget -qO- https:<span class="comment">//raw.github.com/ma6174/vim/master/setup.sh | sh -x//配置vim</span></span><br><span class="line">sudo apt-get install net-tools<span class="comment">//ifconfig</span></span><br><span class="line"><span class="comment">//apt-get install install net-tools</span></span><br><span class="line"><span class="comment">//apt-get install traceroute</span></span><br><span class="line">sudo apt-get install ssh</span><br><span class="line">sudo apt-get install openssh-server</span><br><span class="line">配置 google</span><br><span class="line">下载typora，zoom， 钉钉，⽹易云，搜狗，迅雷,xmind</span><br></pre></td></tr></table></figure>
-
-<h2 id="ssh，github配置"><a href="#ssh，github配置" class="headerlink" title="ssh，github配置"></a>ssh，github配置</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">cd .ssh</span><br><span class="line">ls</span><br><span class="line">ssh-keygen -t rsa</span><br><span class="line">找到id_rsa.pub复制. 登录github 点击头像 选择settings 进⼊设置，然后选择ssh GPG keys 按钮 点击</span><br><span class="line">ssh添加 粘贴</span><br><span class="line">ssh -T git@github.com</span><br><span class="line"># GitHub Start</span><br><span class="line"><span class="number">192.30</span><span class="number">.253</span><span class="number">.112</span> github.com</span><br><span class="line"><span class="number">192.30</span><span class="number">.253</span><span class="number">.119</span> gist.github.com</span><br><span class="line"><span class="number">151.101</span><span class="number">.100</span><span class="number">.133</span> assets-cdn.github.com</span><br><span class="line"><span class="number">151.101</span><span class="number">.100</span><span class="number">.133</span> raw.githubusercontent.com</span><br><span class="line"><span class="number">151.101</span><span class="number">.100</span><span class="number">.133</span> gist.githubusercontent.com</span><br><span class="line"><span class="number">151.101</span><span class="number">.100</span><span class="number">.133</span> cloud.githubusercontent.com</span><br><span class="line"><span class="number">151.101</span><span class="number">.100</span><span class="number">.133</span> camo.githubusercontent.com</span><br><span class="line"><span class="number">151.101</span><span class="number">.100</span><span class="number">.133</span> avatars0.githubusercontent.com</span><br><span class="line"><span class="number">151.101</span><span class="number">.100</span><span class="number">.133</span> avatars1.githubusercontent.com</span><br><span class="line"><span class="number">151.101</span><span class="number">.100</span><span class="number">.133</span> avatars2.githubusercontent.com</span><br><span class="line"><span class="number">151.101</span><span class="number">.100</span><span class="number">.133</span> avatars3.githubusercontent.com</span><br><span class="line"><span class="number">151.101</span><span class="number">.100</span><span class="number">.133</span> avatars4.githubusercontent.com</span><br><span class="line"><span class="number">151.101</span><span class="number">.100</span><span class="number">.133</span> avatars5.githubusercontent.com</span><br><span class="line"><span class="number">151.101</span><span class="number">.100</span><span class="number">.133</span> avatars6.githubusercontent.com</span><br><span class="line"><span class="number">151.101</span><span class="number">.100</span><span class="number">.133</span> avatars7.githubusercontent.com</span><br></pre></td></tr></table></figure>
 
 
       
@@ -2397,6 +2227,73 @@ S_ISSOCK (st_mode)   是否为socket
 
 </article>
     
+    <article id="post-Mynotes/linux学习笔记/linux配置" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/04/02/Mynotes/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E9%85%8D%E7%BD%AE/"
+    >Mynotes/linux学习笔记/linux配置</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/04/02/Mynotes/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E9%85%8D%E7%BD%AE/" class="article-date">
+  <time datetime="2020-04-01T16:33:54.861Z" itemprop="datePublished">2020-04-01</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get upgrate</span><br><span class="line">sudo apt-get upinstall</span><br><span class="line">sudo apt-get install git</span><br><span class="line">sudo apt-get install dpkg<span class="comment">//安装包安装软件</span></span><br><span class="line"><span class="comment">//sudo apt-get install tar//解压缩 软件</span></span><br><span class="line">sudo apt-get ifcongig</span><br><span class="line">wget -qO- https:<span class="comment">//raw.github.com/ma6174/vim/master/setup.sh | sh -x//配置vim</span></span><br><span class="line">sudo apt-get install net-tools<span class="comment">//ifconfig</span></span><br><span class="line"><span class="comment">//apt-get install install net-tools</span></span><br><span class="line"><span class="comment">//apt-get install traceroute</span></span><br><span class="line">sudo apt-get install ssh</span><br><span class="line">sudo apt-get install openssh-server</span><br><span class="line">配置 google</span><br><span class="line">下载typora，zoom， 钉钉，⽹易云，搜狗，迅雷,xmind</span><br></pre></td></tr></table></figure>
+
+<h2 id="ssh，github配置"><a href="#ssh，github配置" class="headerlink" title="ssh，github配置"></a>ssh，github配置</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">cd .ssh</span><br><span class="line">ls</span><br><span class="line">ssh-keygen -t rsa</span><br><span class="line">找到id_rsa.pub复制. 登录github 点击头像 选择settings 进⼊设置，然后选择ssh GPG keys 按钮 点击</span><br><span class="line">ssh添加 粘贴</span><br><span class="line">ssh -T git@github.com</span><br><span class="line"># GitHub Start</span><br><span class="line"><span class="number">192.30</span><span class="number">.253</span><span class="number">.112</span> github.com</span><br><span class="line"><span class="number">192.30</span><span class="number">.253</span><span class="number">.119</span> gist.github.com</span><br><span class="line"><span class="number">151.101</span><span class="number">.100</span><span class="number">.133</span> assets-cdn.github.com</span><br><span class="line"><span class="number">151.101</span><span class="number">.100</span><span class="number">.133</span> raw.githubusercontent.com</span><br><span class="line"><span class="number">151.101</span><span class="number">.100</span><span class="number">.133</span> gist.githubusercontent.com</span><br><span class="line"><span class="number">151.101</span><span class="number">.100</span><span class="number">.133</span> cloud.githubusercontent.com</span><br><span class="line"><span class="number">151.101</span><span class="number">.100</span><span class="number">.133</span> camo.githubusercontent.com</span><br><span class="line"><span class="number">151.101</span><span class="number">.100</span><span class="number">.133</span> avatars0.githubusercontent.com</span><br><span class="line"><span class="number">151.101</span><span class="number">.100</span><span class="number">.133</span> avatars1.githubusercontent.com</span><br><span class="line"><span class="number">151.101</span><span class="number">.100</span><span class="number">.133</span> avatars2.githubusercontent.com</span><br><span class="line"><span class="number">151.101</span><span class="number">.100</span><span class="number">.133</span> avatars3.githubusercontent.com</span><br><span class="line"><span class="number">151.101</span><span class="number">.100</span><span class="number">.133</span> avatars4.githubusercontent.com</span><br><span class="line"><span class="number">151.101</span><span class="number">.100</span><span class="number">.133</span> avatars5.githubusercontent.com</span><br><span class="line"><span class="number">151.101</span><span class="number">.100</span><span class="number">.133</span> avatars6.githubusercontent.com</span><br><span class="line"><span class="number">151.101</span><span class="number">.100</span><span class="number">.133</span> avatars7.githubusercontent.com</span><br></pre></td></tr></table></figure>
+
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-Mynotes/linux学习笔记/linux服务器免密登陆" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -3103,7 +3000,7 @@ S_ISSOCK (st_mode)   是否为socket
 
 </article>
     
-    <article id="post-Mynotes/c语言项目" class="article article-type-post" itemscope
+    <article id="post-Mynotes/acwing基础/（并查集）连通块中点的数量" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -3111,8 +3008,8 @@ S_ISSOCK (st_mode)   是否为socket
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/04/02/Mynotes/c%E8%AF%AD%E8%A8%80%E9%A1%B9%E7%9B%AE/"
-    >Mynotes/c语言项目</a> 
+  <a class="article-title" href="/2020/04/02/Mynotes/acwing%E5%9F%BA%E7%A1%80/%EF%BC%88%E5%B9%B6%E6%9F%A5%E9%9B%86%EF%BC%89%E8%BF%9E%E9%80%9A%E5%9D%97%E4%B8%AD%E7%82%B9%E7%9A%84%E6%95%B0%E9%87%8F/"
+    >Mynotes/acwing基础/（并查集）连通块中点的数量</a> 
 </h2>
  
 
@@ -3121,7 +3018,7 @@ S_ISSOCK (st_mode)   是否为socket
 
     
     <div class="article-meta">
-      <a href="/2020/04/02/Mynotes/c%E8%AF%AD%E8%A8%80%E9%A1%B9%E7%9B%AE/" class="article-date">
+      <a href="/2020/04/02/Mynotes/acwing%E5%9F%BA%E7%A1%80/%EF%BC%88%E5%B9%B6%E6%9F%A5%E9%9B%86%EF%BC%89%E8%BF%9E%E9%80%9A%E5%9D%97%E4%B8%AD%E7%82%B9%E7%9A%84%E6%95%B0%E9%87%8F/" class="article-date">
   <time datetime="2020-04-01T16:33:54.411Z" itemprop="datePublished">2020-04-01</time>
 </a>
       
@@ -3139,115 +3036,25 @@ S_ISSOCK (st_mode)   是否为socket
       
 
       
-      <h1 id="谷歌测试框架"><a href="#谷歌测试框架" class="headerlink" title="谷歌测试框架"></a>谷歌测试框架</h1><p>##　安装Google test</p>
-<p>下载解压 googletest-master</p>
-<p>下载地址：<a href="https://github.com/google/googletest.git" target="_blank" rel="noopener">https://github.com/google/googletest.git</a></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cmake ./ </span><br><span class="line">sudo apt-get install cmake <span class="comment">//unbantu安装cmake</span></span><br><span class="line">cmake ./</span><br><span class="line">make</span><br></pre></td></tr></table></figure>
+      <p>给定一个包含n个点（编号为1~n）的无向图，初始时图中没有边。</p>
+<p>现在要进行m个操作，操作共有三种：</p>
+<ol>
+<li>“C a b”，在点a和点b之间连一条边，a和b可能相等；</li>
+<li>“Q1 a b”，询问点a和点b是否在同一个连通块中，a和b可能相等；</li>
+<li>“Q2 a”，询问点a所在连通块中点的数量；</li>
+</ol>
+<h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行输入整数n和m。</p>
+<p>接下来m行，每行包含一个操作指令，指令为“C a b”，“Q1 a b”或“Q2 a”中的一种。</p>
+<h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>对于每个询问指令”Q1 a b”，如果a和b在同一个连通块中，则输出“Yes”，否则输出“No”。</p>
+<p>对于每个询问指令“Q2 a”，输出一个整数表示点a所在连通块中点的数量</p>
+<p>每个结果占一行。</p>
+<h4 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h4><p>1≤n,m≤1051≤n,m≤105</p>
+<h4 id="输入样例："><a href="#输入样例：" class="headerlink" title="输入样例："></a>输入样例：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">5 5</span><br><span class="line">C 1 2</span><br><span class="line">Q1 1 2</span><br><span class="line">Q2 1</span><br><span class="line">C 2 5</span><br><span class="line">Q2 5</span><br></pre></td></tr></table></figure>
 
-<p>![](./图片/2020-01-12 15-07-50屏幕截图.png)</p>
-<p>以上命令会将gtest编译好</p>
-<p>此时完成cmake的安装</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">fangsong@fangsong-FX503VD:~/Mycode/project$ mv googletest-master googletest-master.zip thirdpart/   <span class="comment">//(1)</span></span><br><span class="line">fangsong@fangsong-FX503VD:~/Mycode/project$ ll</span><br><span class="line">总用量 <span class="number">12</span></span><br><span class="line">drwxr-xr-x  <span class="number">3</span> fangsong fangsong <span class="number">4096</span> <span class="number">1</span>月  <span class="number">12</span> <span class="number">15</span>:<span class="number">31</span> ./</span><br><span class="line">drwxr-xr-x <span class="number">10</span> fangsong fangsong <span class="number">4096</span> <span class="number">1</span>月  <span class="number">12</span> <span class="number">14</span>:<span class="number">43</span> ../</span><br><span class="line">drwxr-xr-x  <span class="number">3</span> fangsong fangsong <span class="number">4096</span> <span class="number">1</span>月  <span class="number">12</span> <span class="number">15</span>:<span class="number">31</span> thirdpart/</span><br><span class="line">fangsong@fangsong-FX503VD:~/Mycode/project$ cp -R thirdpart/googletest-master/lib ./ </span><br><span class="line">    <span class="comment">//(2)</span></span><br><span class="line">fangsong@fangsong-FX503VD:~/Mycode/project$ ll</span><br><span class="line">总用量 <span class="number">16</span></span><br><span class="line">drwxr-xr-x  <span class="number">4</span> fangsong fangsong <span class="number">4096</span> <span class="number">1</span>月  <span class="number">12</span> <span class="number">15</span>:<span class="number">31</span> ./</span><br><span class="line">drwxr-xr-x <span class="number">10</span> fangsong fangsong <span class="number">4096</span> <span class="number">1</span>月  <span class="number">12</span> <span class="number">14</span>:<span class="number">43</span> ../</span><br><span class="line">drwxr-xr-x  <span class="number">2</span> fangsong fangsong <span class="number">4096</span> <span class="number">1</span>月  <span class="number">12</span> <span class="number">15</span>:<span class="number">31</span> lib/</span><br><span class="line">drwxr-xr-x  <span class="number">3</span> fangsong fangsong <span class="number">4096</span> <span class="number">1</span>月  <span class="number">12</span> <span class="number">15</span>:<span class="number">31</span> thirdpart/</span><br><span class="line">fangsong@fangsong-FX503VD:~/Mycode/project$ cp -R thirdpart/googletest-master/googletest/include ./ <span class="comment">//(3)</span></span><br><span class="line">fangsong@fangsong-FX503VD:~/Mycode/project$ ll</span><br><span class="line">总用量 <span class="number">20</span></span><br><span class="line">drwxr-xr-x  <span class="number">5</span> fangsong fangsong <span class="number">4096</span> <span class="number">1</span>月  <span class="number">12</span> <span class="number">15</span>:<span class="number">32</span> ./</span><br><span class="line">drwxr-xr-x <span class="number">10</span> fangsong fangsong <span class="number">4096</span> <span class="number">1</span>月  <span class="number">12</span> <span class="number">14</span>:<span class="number">43</span> ../</span><br><span class="line">drwxr-xr-x  <span class="number">3</span> fangsong fangsong <span class="number">4096</span> <span class="number">1</span>月  <span class="number">12</span> <span class="number">15</span>:<span class="number">32</span> include/</span><br><span class="line">drwxr-xr-x  <span class="number">2</span> fangsong fangsong <span class="number">4096</span> <span class="number">1</span>月  <span class="number">12</span> <span class="number">15</span>:<span class="number">31</span> lib/</span><br><span class="line">drwxr-xr-x  <span class="number">3</span> fangsong fangsong <span class="number">4096</span> <span class="number">1</span>月  <span class="number">12</span> <span class="number">15</span>:<span class="number">31</span> thirdpart/</span><br><span class="line">fangsong@fangsong-FX503VD:~/Mycode/project$ ls</span><br><span class="line">include  lib  thirdpart</span><br><span class="line">fangsong@fangsong-FX503VD:~/Mycode/project$ ll</span><br><span class="line">总用量 <span class="number">20</span></span><br><span class="line">drwxr-xr-x  <span class="number">5</span> fangsong fangsong <span class="number">4096</span> <span class="number">1</span>月  <span class="number">12</span> <span class="number">15</span>:<span class="number">32</span> ./</span><br><span class="line">drwxr-xr-x <span class="number">10</span> fangsong fangsong <span class="number">4096</span> <span class="number">1</span>月  <span class="number">12</span> <span class="number">14</span>:<span class="number">43</span> ../</span><br><span class="line">drwxr-xr-x  <span class="number">3</span> fangsong fangsong <span class="number">4096</span> <span class="number">1</span>月  <span class="number">12</span> <span class="number">15</span>:<span class="number">32</span> include/</span><br><span class="line">drwxr-xr-x  <span class="number">2</span> fangsong fangsong <span class="number">4096</span> <span class="number">1</span>月  <span class="number">12</span> <span class="number">15</span>:<span class="number">31</span> lib/</span><br><span class="line">drwxr-xr-x  <span class="number">3</span> fangsong fangsong <span class="number">4096</span> <span class="number">1</span>月  <span class="number">12</span> <span class="number">15</span>:<span class="number">31</span> thirdpart/</span><br><span class="line">fangsong@fangsong-FX503VD:~/Mycode/project$</span><br></pre></td></tr></table></figure>
+<h4 id="输出样例："><a href="#输出样例：" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Yes</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g++ main.cpp -I ./include</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g++ -c main.cpp -I ./include</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g++ -L./lib main.o unit.o -lgtest</span><br></pre></td></tr></table></figure>
-
-<p>![](/home/fangsong/文档/图片/2020-01-12 15-27-45屏幕截图.png)</p>
-<p>![](/home/fangsong/文档/图片/2020-01-12 15-19-42屏幕截图.png)</p>
-<p>![](/home/fangsong/文档/图片/2020-01-12 14-58-52屏幕截图.png)</p>
-<p>![](/home/fangsong/文档/图片/2020-01-12 15-29-47屏幕截图.png)</p>
-<p>![](/home/fangsong/文档/图片/2020-01-12 15-35-35屏幕截图.png)</p>
-<p>![](/home/fangsong/文档/图片/2020-01-12 15-38-22屏幕截图.png)</p>
-<p>编译：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">g++ -L./lib main.cpp unit.c -I./include -lgtest -lpthread </span><br><span class="line">    或者</span><br><span class="line">g++ --<span class="built_in">std</span>=c++<span class="number">11</span> -I./include -L./lib main.cpp unit.c -lgtest -lpthread</span><br></pre></td></tr></table></figure>
-
-<p>![](./图片/2020-01-12 17-01-40屏幕截图.png)</p>
-<h2 id="使用gtest"><a href="#使用gtest" class="headerlink" title="使用gtest"></a>使用gtest</h2><p>main.cpp</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iomanip&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;gtest/gtest.h&gt; //谷歌框架的头文件</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"unit.h"</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"> <span class="comment">// TEST此处应该是一个宏</span></span><br><span class="line">TEST(test, add_function) &#123;　<span class="comment">// test是一个测试用例</span></span><br><span class="line">    EXPECT_EQ(add(<span class="number">3</span>, <span class="number">4</span>), <span class="number">7</span>);</span><br><span class="line">    EXPECT_EQ(add(<span class="number">0</span>, <span class="number">0</span>), <span class="number">0</span>);　<span class="comment">// ASSERT_EQ(add(), )　, ASSERT是如果错误到此处，强行停止</span></span><br><span class="line">    EXPECT_EQ(add(<span class="number">-1</span>, <span class="number">-7</span>), <span class="number">-8</span>);　</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span> </span>&#123;</span><br><span class="line">    ::testing::InitGoogleTest(&amp;argc, argv);　<span class="comment">// 初始化谷歌框架调用</span></span><br><span class="line">    <span class="keyword">return</span> RUN_ALL_TESTS();　<span class="comment">// 运行所有的测试用例</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>unit.h</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> _UNIT_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _UNIT_H</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>
-
-<p>unit.c</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"unit.h"</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>编译和链接程序：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g++ --<span class="built_in">std</span>=c++<span class="number">11</span> -I./include -L./lib main.cpp unit.c -lgtest -lpthread</span><br></pre></td></tr></table></figure>
-
-<p>-L./lib添加静态链接库搜索路径</p>
-<p>-lgtest去找libgtest.a文件</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./a.out</span><br></pre></td></tr></table></figure>
-
-<p>结束！</p>
-<p>![](/home/fangsong/文档/图片/2020-01-12 17-01-40屏幕截图.png)</p>
-<h3 id="知识点：编译和链接程序"><a href="#知识点：编译和链接程序" class="headerlink" title="知识点：编译和链接程序"></a>知识点：编译和链接程序</h3><blockquote>
-<p>-E 预先，将#include的文件展开等<br>-S生成汇编文件<br>-c生成目标文件<br>gcc XX.o -o XX  链接，，输出文件称为XX -O1</p>
-<p>，-O2，-O3 优化代码，-O3级最高，-O1为体积<br>-g及-ggdb等，，生成调试信息</p>
-<p>-fPIC及-fpic，生成动态链接库时使用，，前者在多平台通用，但程序运行速度慢</p>
-<p>-M，-MM，输出文件的依赖关系（各种各样各种.h）文件（写makefile时可以使用）</p>
-<dl><dt>-std = c ++ 14（或-std = gnu ++ 14）-std = c ++ 11（或-std = gnu ++ 11）启用c ++ 14/11的信息，其中使用gnu ++ 14会启用gcc的扩展：<br>https</dt><dd>//gcc.gnu.org/projects/cxx0x.html <a href="https://gcc.gnu.org/projects/cxx1y。" target="_blank" rel="noopener">https://gcc.gnu.org/projects/cxx1y。</a> html</dd></dl><p>一般直接用-c生成对象文件，再多个对象文件链接一下即可或<br>不指定参数，直接从多个.cpp文件生成重定向文件-</p>
-<p>墙壁输出放置多的警告</p>
-<p>-I 头文件路径<br>-L 库文件路径（静态，动态）</p>
-<p>-l库文件（不包含扩展名.so或.a)</p>
-</blockquote>
-<blockquote>
-<h2 id="lpthread和-pthread的区别"><a href="#lpthread和-pthread的区别" class="headerlink" title="-lpthread和-pthread的区别"></a><a href="https://www.cnblogs.com/suntp/p/6473751.html" target="_blank" rel="noopener">-lpthread和-pthread的区别</a></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;编译程序包括 预编译， 编译，汇编，链接，包含头文件了，仅能说明有了线程函数的声明， 但是还没有实现， 加上-lpthread是在链接阶段，链接这个库。&lt;stdio.h&gt;等都是静态库，不需要做额外的表示，连接时会直接链接进代码里。pthread是动态库，需要用-lpthread，所有的动态库都需要用-lxxx来引用</span><br></pre></td></tr></table></figure>
-
-<p>用gcc编译使用了POSIX thread的程序时通常需要加额外的选项，以便使用thread-safe的库及头文件，一些老的书里说直接增加链接选项 -lpthread 就可以了</p>
-<p>而gcc手册里则指出应该在编译和链接时都增加 -pthread 选项</p>
-<p>编译选项中指定 -pthread 会附加一个宏定义 <strong>-D_REENTRANT</strong>，该宏会导致 libc 头文件选择那些thread-safe的实现；链接选项中指定 -pthread 则同 -lpthread 一样，只表示链接 POSIX thread 库。由于 libc 用于适应 thread-safe 的宏定义可能变化，因此在编译和链接时都使用 -pthread 选项而不是传统的 -lpthread 能够保持向后兼容，并提高命令行的一致性。</p>
-<p>目前gcc 4.5.2中已经没有了关于 -lpthread的介绍了。所以以后的多线程编译应该用-pthread，而不是-lpthread。</p>
-<p>参考地址：<a href="http://blog.csdn.net/skylinethj/article/details/38569243" target="_blank" rel="noopener">http://blog.csdn.net/skylinethj/article/details/38569243</a></p>
-</blockquote>
-<p>参考：<a href="https://www.jianshu.com/p/778f835cc18c" target="_blank" rel="noopener">https://www.jianshu.com/p/778f835cc18c</a></p>
-<h1 id="修改为自己的测试框架"><a href="#修改为自己的测试框架" class="headerlink" title="修改为自己的测试框架"></a>修改为自己的测试框架</h1><p>mian.cpp</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iomanip&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"haizei_test.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"unit.h"</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line">__attribute__((constructor))  <span class="comment">//属性构造</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">haizei_init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"hello haizei\n"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">__attribute__((constructor)) <span class="comment">//属性构造:先执行此处，在执行主函数</span></span><br><span class="line">TEST(test, add_function) &#123;</span><br><span class="line">    EXPECT_EQ(add(<span class="number">3</span>, <span class="number">4</span>), <span class="number">7</span>);</span><br><span class="line">    EXPECT_EQ(add(<span class="number">0</span>, <span class="number">0</span>), <span class="number">0</span>);</span><br><span class="line">    EXPECT_EQ(add(<span class="number">-1</span>, <span class="number">-7</span>), <span class="number">-8</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> RUN_ALL_TESTS();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>unit.h</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> _UNIT_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _UNIT_H</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>
-
-<p>unit.cc</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"unit.h"</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>haizei_test.h</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> _HAIZEI_TEST_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _HAIZEI_TEST_H</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TEST(a, b) void a##b()</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> EXPECT_EQ(a, b) &#123;\</span></span><br><span class="line">    <span class="keyword">if</span>(a == b) &#123;\</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"YES\n"</span>);\</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;\</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"NO\n"</span>);\</span><br><span class="line">    &#125;\</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">RUN_ALL_TESTS</span><span class="params">()</span></span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>
-
-<p>haizei_test.cc</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">RUN_ALL_TESTS</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="改进"><a href="#改进" class="headerlink" title="改进"></a>改进</h4><p>haizei_test.h</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> _HAIZEI_TEST_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _HAIZEI_TEST_H</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX_N 1000</span></span><br><span class="line"><span class="function"><span class="keyword">typedef</span> <span class="title">void</span> <span class="params">(*Func_T)</span><span class="params">()</span></span>;</span><br><span class="line"><span class="keyword">extern</span> Func_T func_arr[MAX_N];</span><br><span class="line"></span><br><span class="line"><span class="keyword">extern</span> <span class="keyword">int</span> func_cnt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TEST(a, b) \</span></span><br><span class="line">         <span class="keyword">void</span> a#<span class="meta">#b(); \</span></span><br><span class="line">         __attribute__((constructor)) \</span><br><span class="line">         <span class="keyword">void</span> add_#<span class="meta">#a##b() &#123; \</span></span><br><span class="line">             func_arr[func_cnt++] = a##b;\</span><br><span class="line">         &#125; \</span><br><span class="line">         <span class="keyword">void</span> a#<span class="meta">#b()</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> EXPECT_EQ(a, b) &#123;\</span></span><br><span class="line">    <span class="keyword">if</span>(a == b) &#123;\</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"YES\n"</span>);\</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;\</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"NO\n"</span>);\</span><br><span class="line">    &#125;\</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">RUN_ALL_TESTS</span><span class="params">()</span></span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>
-
-<p>haizei_test.cc</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"haizei_test.h"</span></span></span><br><span class="line"></span><br><span class="line">Func_T func_arr[MAX_N];</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> func_cnt = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">RUN_ALL_TESTS</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; func_cnt; i++) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"run TEST %d \n"</span>, i + <span class="number">1</span>);</span><br><span class="line">         func_arr[i]();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-<p>##　泛型宏</p>
-<p>根据类型不一样，替换操作</p>
-<p>＃停</p>
-<p>文件：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">haizei_test.c </span><br><span class="line">main.c    </span><br><span class="line">test.cpp   </span><br><span class="line">unit.c</span><br><span class="line">bin    </span><br><span class="line">haizei_test.h  lib      </span><br><span class="line">makefile  </span><br><span class="line">thirdpart  </span><br><span class="line">unit.h</span><br></pre></td></tr></table></figure>
-
-
-
-<p>![](./图片/2020-01-14 18-43-28屏幕截图.png)建立makefile</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">all: <span class="comment">//目标</span></span><br><span class="line">	gcc -o ./bin/haizei_test -<span class="built_in">std</span>=c11 ./main.c ./haizei_test.c ./unit.c　<span class="comment">// 编译 </span></span><br><span class="line">	./bin/haizei_test　<span class="comment">// 执行</span></span><br><span class="line">clean:　<span class="comment">// 编译目标</span></span><br><span class="line">	rm ./bin/haizei_test</span><br></pre></td></tr></table></figure>
-
-<p>然后make</p>
-<p>颜色控制：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> COLOR(str, code) <span class="meta-string">"\033["</span> #code <span class="meta-string">"m"</span> str <span class="meta-string">"\033[0m"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> YELLOW(str) COLOR(str, 33)</span></span><br><span class="line"><span class="comment">//#define YELLOW(str) "\033[33m" str"\033[0m"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(YELLOW(<span class="string">"ping攻击中...\n"</span>));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\033[5;33;46m警告！！！\033[0m"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
+<p><img src="https://github.com/fangsong0517/Mynotes/blob/master/%E5%9B%BE%E7%89%87/2020-02-05%2021-32-11%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt=""></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e5</span> + <span class="number">5</span>;</span><br><span class="line"><span class="keyword">int</span> n, m;</span><br><span class="line"><span class="keyword">int</span> p[N], sum[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(p[x] != x) p[x] = find(p[x]);</span><br><span class="line">    <span class="keyword">return</span> p[x];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;m);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)p[i] = i, sum[i] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(m--) &#123;</span><br><span class="line">        <span class="keyword">char</span> op[<span class="number">5</span>];</span><br><span class="line">        <span class="keyword">int</span> a, b;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%s"</span>, op);</span><br><span class="line">        <span class="keyword">if</span>(op[<span class="number">0</span>] ==<span class="string">'C'</span>) &#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;a, &amp;b);</span><br><span class="line">            <span class="keyword">if</span>(find(a) == find(b)) <span class="keyword">continue</span>;</span><br><span class="line">            sum[find(b)] += sum[find(a)];</span><br><span class="line">            p[find(a)] = find(b);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span>(op[<span class="number">1</span>] ==<span class="string">'1'</span>) &#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;a, &amp;b);</span><br><span class="line">            <span class="keyword">if</span>(find(a) == find(b))<span class="built_in">puts</span>(<span class="string">"Yes"</span>);</span><br><span class="line">            <span class="keyword">else</span> <span class="built_in">puts</span>(<span class="string">"No"</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;a);</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, sum[find(a)]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
       
