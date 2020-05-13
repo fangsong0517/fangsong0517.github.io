@@ -73,7 +73,7 @@
     
     
     
-    <article id="post-Mynotes/acwing基础/（并查集）连通块中点的数量" class="article article-type-post" itemscope
+    <article id="post-Mynotes/计算机网络/DNS协议" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -81,8 +81,8 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/04/02/Mynotes/acwing%E5%9F%BA%E7%A1%80/%EF%BC%88%E5%B9%B6%E6%9F%A5%E9%9B%86%EF%BC%89%E8%BF%9E%E9%80%9A%E5%9D%97%E4%B8%AD%E7%82%B9%E7%9A%84%E6%95%B0%E9%87%8F/"
-    >Mynotes/acwing基础/（并查集）连通块中点的数量</a> 
+  <a class="article-title" href="/2020/05/14/Mynotes/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/DNS%E5%8D%8F%E8%AE%AE/"
+    >Mynotes/计算机网络/DNS协议</a> 
 </h2>
  
 
@@ -91,8 +91,8 @@
 
     
     <div class="article-meta">
-      <a href="/2020/04/02/Mynotes/acwing%E5%9F%BA%E7%A1%80/%EF%BC%88%E5%B9%B6%E6%9F%A5%E9%9B%86%EF%BC%89%E8%BF%9E%E9%80%9A%E5%9D%97%E4%B8%AD%E7%82%B9%E7%9A%84%E6%95%B0%E9%87%8F/" class="article-date">
-  <time datetime="2020-04-01T16:33:54.411Z" itemprop="datePublished">2020-04-01</time>
+      <a href="/2020/05/14/Mynotes/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/DNS%E5%8D%8F%E8%AE%AE/" class="article-date">
+  <time datetime="2020-05-13T18:05:21.855Z" itemprop="datePublished">2020-05-13</time>
 </a>
       
       
@@ -109,881 +109,1085 @@
       
 
       
-      <p>给定一个包含n个点（编号为1~n）的无向图，初始时图中没有边。</p>
-<p>现在要进行m个操作，操作共有三种：</p>
-<ol>
-<li>“C a b”，在点a和点b之间连一条边，a和b可能相等；</li>
-<li>“Q1 a b”，询问点a和点b是否在同一个连通块中，a和b可能相等；</li>
-<li>“Q2 a”，询问点a所在连通块中点的数量；</li>
-</ol>
-<h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行输入整数n和m。</p>
-<p>接下来m行，每行包含一个操作指令，指令为“C a b”，“Q1 a b”或“Q2 a”中的一种。</p>
-<h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>对于每个询问指令”Q1 a b”，如果a和b在同一个连通块中，则输出“Yes”，否则输出“No”。</p>
-<p>对于每个询问指令“Q2 a”，输出一个整数表示点a所在连通块中点的数量</p>
-<p>每个结果占一行。</p>
-<h4 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h4><p>1≤n,m≤1051≤n,m≤105</p>
-<h4 id="输入样例："><a href="#输入样例：" class="headerlink" title="输入样例："></a>输入样例：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">5 5</span><br><span class="line">C 1 2</span><br><span class="line">Q1 1 2</span><br><span class="line">Q2 1</span><br><span class="line">C 2 5</span><br><span class="line">Q2 5</span><br></pre></td></tr></table></figure>
-
-<h4 id="输出样例："><a href="#输出样例：" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Yes</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://github.com/fangsong0517/Mynotes/blob/master/%E5%9B%BE%E7%89%87/2020-02-05%2021-32-11%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt=""></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e5</span> + <span class="number">5</span>;</span><br><span class="line"><span class="keyword">int</span> n, m;</span><br><span class="line"><span class="keyword">int</span> p[N], sum[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(p[x] != x) p[x] = find(p[x]);</span><br><span class="line">    <span class="keyword">return</span> p[x];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;m);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)p[i] = i, sum[i] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(m--) &#123;</span><br><span class="line">        <span class="keyword">char</span> op[<span class="number">5</span>];</span><br><span class="line">        <span class="keyword">int</span> a, b;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%s"</span>, op);</span><br><span class="line">        <span class="keyword">if</span>(op[<span class="number">0</span>] ==<span class="string">'C'</span>) &#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;a, &amp;b);</span><br><span class="line">            <span class="keyword">if</span>(find(a) == find(b)) <span class="keyword">continue</span>;</span><br><span class="line">            sum[find(b)] += sum[find(a)];</span><br><span class="line">            p[find(a)] = find(b);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span>(op[<span class="number">1</span>] ==<span class="string">'1'</span>) &#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;a, &amp;b);</span><br><span class="line">            <span class="keyword">if</span>(find(a) == find(b))<span class="built_in">puts</span>(<span class="string">"Yes"</span>);</span><br><span class="line">            <span class="keyword">else</span> <span class="built_in">puts</span>(<span class="string">"No"</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;a);</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, sum[find(a)]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-Mynotes/acwing基础/动态规划（背包）" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/04/02/Mynotes/acwing%E5%9F%BA%E7%A1%80/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%EF%BC%88%E8%83%8C%E5%8C%85%EF%BC%89/"
-    >Mynotes/acwing基础/动态规划（背包）</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/04/02/Mynotes/acwing%E5%9F%BA%E7%A1%80/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%EF%BC%88%E8%83%8C%E5%8C%85%EF%BC%89/" class="article-date">
-  <time datetime="2020-04-01T16:33:54.411Z" itemprop="datePublished">2020-04-01</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h2 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h2><p>​                                                        dp 优化（代码计算方程的变换）</p>
-<p>​           </p>
-<p>​                                                                          所有选法                                      </p>
-<p>​                                              集合：                                        1.只从前i个中选取</p>
-<p>​            状态表示 f(i, j)  :                              条件 :         </p>
-<p>​                                                                                                    2.总体积 &lt;= j</p>
-<p>​                                              属性 :  max ，min ，数量</p>
-<p>dp：</p>
-<p>​             状态计算:   ————集合的划分 </p>
-<p>​                                            </p>
-<h2 id="1-0-1-背包问题"><a href="#1-0-1-背包问题" class="headerlink" title="1 .0 1 背包问题"></a>1 .0 1 背包问题</h2><p>每个物品只能用一次</p>
-<p>例如 N件物品， V 体积</p>
-<p>输入 ：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">4         5   // N    V</span><br><span class="line">1         2   // 体积  价值</span><br><span class="line">2         4</span><br><span class="line">3         4</span><br><span class="line">4         7</span><br></pre></td></tr></table></figure>
-
-<p>输出：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">8</span><br></pre></td></tr></table></figure>
-
-
-
-<p>​            集合  f(i, j) 化为两大类， 不含i和含i， 划分时不重不漏</p>
-<p>不含i：只从i- 1中选， 总体积不大于j</p>
-<p>​             左边最大值f(i - 1, j)；</p>
-<p>含i ：从1 ～i中选， 不超过j， 含i</p>
-<p>​             右边最大值 ： 先把第i去掉， 1 ～ i- 1 中选， j - Vi 最大值 f(i - 1, j - Vi)  + Wi;</p>
-<p>f(i, j) = max(f[i - 1, j], f(i - 1, j - Vi)  + Wi);</p>
-<p>朴素代码：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> n, m;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1010</span>;</span><br><span class="line"><span class="keyword">int</span> v[N], w[N];</span><br><span class="line"><span class="keyword">int</span> f[N][N];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; v[i] &gt;&gt; w[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">          <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= m; j++) &#123;</span><br><span class="line">              f[i][j] = f[i - <span class="number">1</span>][j];   <span class="comment">// f[i - 1][j]一定存在  含i时可能不存在； </span></span><br><span class="line">              <span class="keyword">if</span>(j &gt;= v[i]) f[i][j] = max(f[i][j] , f[i - <span class="number">1</span>][j - v[i]] + w[i]);</span><br><span class="line">          &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; f[n][m] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>优化：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1010</span>;</span><br><span class="line"><span class="keyword">int</span> n, m;</span><br><span class="line"><span class="keyword">int</span> v[N], w[N];</span><br><span class="line"><span class="keyword">int</span> f[N];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) <span class="built_in">cin</span> &gt;&gt; v[i] &gt;&gt; w[i];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n ;i++) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = m; j &gt;= v[i]; j--) &#123;</span><br><span class="line">                f[j] = max(f[j] , f[j - v[i]] + w[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; f[m] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="2-完全背包"><a href="#2-完全背包" class="headerlink" title="2  .完全背包"></a>2  .完全背包</h2><p>每件物品无限个</p>
-<p>与0 1背包的区别在于时状态计算中</p>
-<p>集合的划分 ：</p>
-<p>f[i ,j] </p>
-<p>可以划分很多份 0， 1， 2， 3 …. k - 1, .. k 物品的个数</p>
-<p>f[i - 1, j], </p>
-<p>曲线救国： </p>
-<ol>
-<li><p>去掉k个物品i</p>
-<pre><code>2. 求max， f[i - 1, j - k * v[i]];
-   3. 再加回来k个物品i</code></pre></li>
-</ol>
-<p>​    f[i - 1, j - k * v[i]] + k * w[i];</p>
-<p>​    f[i, j] = f[i - 1, j - v[i] * k] + w[i] * k</p>
-<h2 id="3-多重背包"><a href="#3-多重背包" class="headerlink" title="3 .多重背包"></a>3 .多重背包</h2><p>每个物品有限制</p>
-<h2 id="4-分组背包"><a href="#4-分组背包" class="headerlink" title="4 .分组背包"></a>4 .分组背包</h2><p>每一组里只能选一个物品</p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-Mynotes/acwing基础/KMP" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/04/02/Mynotes/acwing%E5%9F%BA%E7%A1%80/KMP/"
-    >Mynotes/acwing基础/KMP</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/04/02/Mynotes/acwing%E5%9F%BA%E7%A1%80/KMP/" class="article-date">
-  <time datetime="2020-04-01T16:33:54.407Z" itemprop="datePublished">2020-04-01</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h2 id="KMP"><a href="#KMP" class="headerlink" title="KMP"></a>KMP</h2><ol>
-<li>暴力算法怎么做？</li>
-<li>如何去优化？</li>
-</ol>
-<p>​    </p>
-<p>暴力：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">s[N] = &#123;hellow,world&#125;</span><br><span class="line">p[N] = &#123;world&#125;</span><br><span class="line"> </span><br><span class="line">  h  e  l   l   o  w  ,  w  o  r  l  d</span><br><span class="line">  w o  r   l  d</span><br><span class="line">      w o  r   l  d</span><br><span class="line">          w  o  r  l  d</span><br><span class="line">               w o  r  l  d</span><br><span class="line">                    w o r  l  d</span><br><span class="line">                         w o r  l  d</span><br><span class="line">                             w  o  r  l  d</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">s[N],  p[N];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i ++) &#123;</span><br><span class="line">    <span class="keyword">bool</span> flag = <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; j++) &#123;</span><br><span class="line">      <span class="keyword">if</span>(s[i + j - <span class="number">1</span>] != p[j]) &#123;</span><br><span class="line">          flag = <span class="literal">false</span>;</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">      &#125;  </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">10010</span>, M = <span class="number">100010</span>;</span><br><span class="line"><span class="keyword">char</span> s[M], p[N];</span><br><span class="line"><span class="keyword">int</span> ne[N];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n, m;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; p + <span class="number">1</span> &gt;&gt; m &gt;&gt; s + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>, j = <span class="number">0</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        <span class="keyword">while</span>(j &amp;&amp; p[i] != p[j + <span class="number">1</span>]) j = ne[j];</span><br><span class="line">        <span class="keyword">if</span>(p[i] == p[j + <span class="number">1</span>])j++;</span><br><span class="line">        ne[i] = j;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>, j = <span class="number">0</span>; i &lt;= m; i++) &#123;</span><br><span class="line">        <span class="keyword">while</span>(j &amp;&amp; s[i] != p[j + <span class="number">1</span>]) j = ne[j];</span><br><span class="line">        <span class="keyword">if</span>(s[i] == p[j + <span class="number">1</span>])j ++;</span><br><span class="line">        <span class="keyword">if</span>(j == n) &#123;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; i - n &lt;&lt; <span class="string">' '</span>;</span><br><span class="line">        j = ne[j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-Mynotes/acwing基础/(并查集)合并集合" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/04/02/Mynotes/acwing%E5%9F%BA%E7%A1%80/(%E5%B9%B6%E6%9F%A5%E9%9B%86)%E5%90%88%E5%B9%B6%E9%9B%86%E5%90%88/"
-    >Mynotes/acwing基础/(并查集)合并集合</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/04/02/Mynotes/acwing%E5%9F%BA%E7%A1%80/(%E5%B9%B6%E6%9F%A5%E9%9B%86)%E5%90%88%E5%B9%B6%E9%9B%86%E5%90%88/" class="article-date">
-  <time datetime="2020-04-01T16:33:54.407Z" itemprop="datePublished">2020-04-01</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>并查集：</p>
-<p>１．将两个集合合并</p>
-<p>２．询问两个元素是否在一个集合中</p>
-<p>基本原理：每个集合用一棵树来表示，树根的编号就是整个集合的编号。每个节点存储它的父节点，p[x]表示ｘ的父节点</p>
-<p>问题１：如何判断树根：if(p[x] == x)</p>
-<p>问题２：如何求ｘ的集合编号：while(p[x]!= x) x = p[x];</p>
-<p>问题３：如何合并两个集合：px 是x 的集合编号，py 是ｙ的集合编号。p[x] = y; </p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iomanip&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">100010</span>;</span><br><span class="line"><span class="keyword">int</span> p[N];</span><br><span class="line"><span class="keyword">int</span> n, m;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;　<span class="comment">// 查找ｘ的父节点并返回，p[x] == x 时</span></span><br><span class="line">    <span class="keyword">if</span>(p[x] != x) p[x] = find(p[x]); </span><br><span class="line">    <span class="keyword">return</span> p[x];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) p[i] = i;</span><br><span class="line">    <span class="keyword">int</span> a ,b;</span><br><span class="line">    <span class="keyword">char</span> op[<span class="number">2</span>];</span><br><span class="line">    <span class="keyword">while</span>(m --)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%s%d%d"</span>, op, &amp;a, &amp;b);</span><br><span class="line">        <span class="keyword">if</span>(op[<span class="number">0</span>] == <span class="string">'M'</span>)p[find(a)] = find(b);　<span class="comment">// 合并两个集合</span></span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">if</span>(find(a) == find(b)) <span class="built_in">puts</span>(<span class="string">"Yes"</span>);　<span class="comment">// 查询是否在同一个集合</span></span><br><span class="line">            <span class="keyword">else</span> <span class="built_in">puts</span>(<span class="string">"No"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-Mynotes/acwing基础/(Trie树)最大异或对" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/04/02/Mynotes/acwing%E5%9F%BA%E7%A1%80/(Trie%E6%A0%91)%E6%9C%80%E5%A4%A7%E5%BC%82%E6%88%96%E5%AF%B9/"
-    >Mynotes/acwing基础/(Trie树)最大异或对</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/04/02/Mynotes/acwing%E5%9F%BA%E7%A1%80/(Trie%E6%A0%91)%E6%9C%80%E5%A4%A7%E5%BC%82%E6%88%96%E5%AF%B9/" class="article-date">
-  <time datetime="2020-04-01T16:33:54.407Z" itemprop="datePublished">2020-04-01</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>题目：</p>
-<p>在给定的N个整数A1，A2……ANA1，A2……AN中选出两个进行xor（异或）运算，得到的结果最大是多少？</p>
-<h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行输入一个整数N。</p>
-<p>第二行输入N个整数A1A1～ANAN。</p>
-<h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出一个整数表示答案。</p>
-<h4 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h4><p>1≤N≤105 1≤N≤105,<br>0≤Ai&lt;2310≤Ai&lt;231</p>
-<h4 id="输入样例："><a href="#输入样例：" class="headerlink" title="输入样例："></a>输入样例：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">1 2 3</span><br></pre></td></tr></table></figure>
-
-<h4 id="输出样例："><a href="#输出样例：" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3</span><br></pre></td></tr></table></figure>
-
-
-
-<p>１．暴力</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> res;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; i; j++) &#123;</span><br><span class="line">        res = max(a[i] ^ a[j]);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p>２．改进（ｔｒｉｅ树优化第二层）</p>
-<p><img src="/home/fangsong/%E6%96%87%E6%A1%A3/%E5%9B%BE%E7%89%87/trie.png" alt=""></p>
-<p>查询的时候从根节点开始，有分支尽量与不同节点的分支走，没有直接走，　走到叶子尽头时候此时是最大的。</p>
-<p>只要走３１位</p>
-<p>１０００００　＊　３１　＝　３１０００００则优化很快，　n * log(n) 级别</p>
-<p>一个节点代表一个集合，也就是二进制这一位是０或１的值</p>
-<p>例如：</p>
-<p>５　６　３　４　</p>
-<p>101  110  011  100</p>
-<p><font color = red>主要模拟思路先查找后插入－&gt;</font></p>
-<p><img src="/home/fangsong/%E6%96%87%E6%A1%A3/%E5%9B%BE%E7%89%87/trie2.png" alt=""></p>
-<p>代码：(trie树改进)</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">100010</span>, M = <span class="number">31</span> * N;</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">int</span> a[N];</span><br><span class="line"><span class="keyword">int</span> son[M][<span class="number">2</span>], idx;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> p = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span>  i = <span class="number">30</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">        <span class="keyword">int</span> u = x &gt;&gt; i &amp; <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(!son[p][u])son[p][u] = ++ idx;</span><br><span class="line">        p = son[p][u];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> p = <span class="number">0</span>, res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">30</span>; i &gt;= <span class="number">0</span>; i --) &#123;</span><br><span class="line">        <span class="keyword">int</span> u = x &gt;&gt; i &amp; <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(son[p][!u]) &#123;    <span class="comment">// 如果另外一个方向存在，就走另外一个方向</span></span><br><span class="line">            p = son[p][!u];</span><br><span class="line">            res = res * <span class="number">2</span> + !u;　<span class="comment">// res * 2 + !u= res &lt;&lt; 1 + !u </span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;　 <span class="comment">// 如果另外一个方向不存在，就直接走</span></span><br><span class="line">            p = son[p][u];　</span><br><span class="line">            res = res * <span class="number">2</span> + u;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) <span class="built_in">cin</span> &gt;&gt; a[i];</span><br><span class="line">    <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        insert(a[i]);</span><br><span class="line">        <span class="keyword">int</span> t = query(a[i]);</span><br><span class="line">        res = max(res, a[i] ^ t);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; res; </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-Mynotes/acwing基础/(并查集)食物链" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/04/02/Mynotes/acwing%E5%9F%BA%E7%A1%80/(%E5%B9%B6%E6%9F%A5%E9%9B%86)%E9%A3%9F%E7%89%A9%E9%93%BE/"
-    >Mynotes/acwing基础/(并查集)食物链</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/04/02/Mynotes/acwing%E5%9F%BA%E7%A1%80/(%E5%B9%B6%E6%9F%A5%E9%9B%86)%E9%A3%9F%E7%89%A9%E9%93%BE/" class="article-date">
-  <time datetime="2020-04-01T16:33:54.407Z" itemprop="datePublished">2020-04-01</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>动物王国中有三类动物A,B,C，这三类动物的食物链构成了有趣的环形。</p>
-<p>A吃B， B吃C，C吃A。</p>
-<p>现有N个动物，以1－N编号。</p>
-<p>每个动物都是A,B,C中的一种，但是我们并不知道它到底是哪一种。</p>
-<p>有人用两种说法对这N个动物所构成的食物链关系进行描述：</p>
-<p>第一种说法是”1 X Y”，表示X和Y是同类。</p>
-<p>第二种说法是”2 X Y”，表示X吃Y。</p>
-<p>此人对N个动物，用上述两种说法，一句接一句地说出K句话，这K句话有的是真的，有的是假的。</p>
-<p>当一句话满足下列三条之一时，这句话就是假话，否则就是真话。</p>
-<p>1） 当前的话与前面的某些真的话冲突，就是假话；<br>2） 当前的话中X或Y比N大，就是假话；<br>3） 当前的话表示X吃X，就是假话。</p>
-<p>你的任务是根据给定的N和K句话，输出假话的总数。</p>
-<h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行是两个整数N和K，以一个空格分隔。</p>
-<p>以下K行每行是三个正整数 D，X，Y，两数之间用一个空格隔开，其中D表示说法的种类。</p>
-<p>若D=1，则表示X和Y是同类。</p>
-<p>若D=2，则表示X吃Y。</p>
-<h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>只有一个整数，表示假话的数目。</p>
-<h4 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h4><p>1≤N≤500001≤N≤50000,<br>0≤K≤1000000≤K≤100000</p>
-<h4 id="输入样例："><a href="#输入样例：" class="headerlink" title="输入样例："></a>输入样例：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">100 7</span><br><span class="line">1 101 1 </span><br><span class="line">2 1 2</span><br><span class="line">2 2 3 </span><br><span class="line">2 3 3 </span><br><span class="line">1 1 3 </span><br><span class="line">2 3 1 </span><br><span class="line">1 5 5</span><br></pre></td></tr></table></figure>
-
-<h4 id="输出样例："><a href="#输出样例：" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3</span><br></pre></td></tr></table></figure>
-
-<p><img src="/home/fangsong/%E6%96%87%E6%A1%A3/%E5%9B%BE%E7%89%87/%E5%B9%B6%E6%9F%A5%E9%9B%86%EF%BC%91.png" alt=""></p>
-<p><img src="/home/fangsong/%E6%96%87%E6%A1%A3/%E5%9B%BE%E7%89%87/%E5%B9%B6%E6%9F%A5%E9%9B%86%EF%BC%92.png" alt=""></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iomanip&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">50010</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, m;</span><br><span class="line"><span class="keyword">int</span> p[N], d[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(p[x] != x) &#123;</span><br><span class="line">        <span class="keyword">int</span> t = find(p[x]);</span><br><span class="line">        d[x] += d[p[x]];</span><br><span class="line">        p[x] = t;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> p[x];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;m);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) p[i] = i;</span><br><span class="line">    <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(m --) &#123;</span><br><span class="line">        <span class="keyword">int</span> t, x, y;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;t, &amp;x, &amp;y);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(x &gt; n|| y &gt; n) res ++;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">int</span> px = find(x), py = find(y);　<span class="comment">// 找出两个根节点</span></span><br><span class="line">            <span class="keyword">if</span>(t == <span class="number">1</span>) &#123; <span class="comment">// 同类时</span></span><br><span class="line">                <span class="keyword">if</span>(px == py &amp;&amp; (d[x] - d[y]) % <span class="number">3</span>)res++;　<span class="comment">// x, y到根节点的距离摸３是不同的，因为余数是哪一类它就是哪一类</span></span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(px != py) &#123;　<span class="comment">// x, y不在一个集合里</span></span><br><span class="line">                    p[px] = py;</span><br><span class="line">                    d[px] = d[y] - d[x];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">if</span>(p[x] == p[y]&amp;&amp;(d[x] - d[y] - <span class="number">1</span>)%<span class="number">3</span>) res++;　<span class="comment">//ｘ比ｙ多１</span></span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(px != py)&#123;　<span class="comment">// x, y不在一个集合</span></span><br><span class="line">                    p[px] = py;</span><br><span class="line">                    d[px] = d[y] + <span class="number">1</span> - d[x];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, res);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/home/fangsong/%E6%96%87%E6%A1%A3/%E5%9B%BE%E7%89%87/%E5%B9%B6%E6%9F%A5%E9%9B%86%EF%BC%93.png" alt=""></p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-Mynotes/acwing基础/(堆)（手写堆）" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/04/02/Mynotes/acwing%E5%9F%BA%E7%A1%80/(%E5%A0%86)%EF%BC%88%E6%89%8B%E5%86%99%E5%A0%86%EF%BC%89/"
-    >Mynotes/acwing基础/(堆)（手写堆）</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/04/02/Mynotes/acwing%E5%9F%BA%E7%A1%80/(%E5%A0%86)%EF%BC%88%E6%89%8B%E5%86%99%E5%A0%86%EF%BC%89/" class="article-date">
-  <time datetime="2020-04-01T16:33:54.407Z" itemprop="datePublished">2020-04-01</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>如何手写一个堆</p>
-<p>１．插入一个数</p>
-<p>２．求集合中最小值</p>
-<p>３．删除最小值</p>
-<p>４．删除任意一个元素</p>
-<p>５．修改任意一个元素</p>
-<p><font color=red>完全二叉树</font></p>
-<p>性质：小跟堆：（小顶堆）根小于等于左右</p>
-<p><img src="/home/fangsong/%E6%96%87%E6%A1%A3/%E5%9B%BE%E7%89%87/%E5%A0%86%EF%BC%91.png" alt=""></p>
-<p>存储：全新的存储方式</p>
-<p><img src="/home/fangsong/%E6%96%87%E6%A1%A3/%E5%9B%BE%E7%89%87/%E5%A0%86%EF%BC%92.png" alt=""></p>
-<p>操作：</p>
-<p>１.down()节点往下移动</p>
-<p>与子节点比较</p>
-<p>２.up()节点往上操作</p>
-<p>与父节点比较往上移动</p>
-<p><font color=red>下表从１开始</font></p>
-<p>ｄｏｗｎ　＋　ｕｐ</p>
-<p>１．插入一个数　heap[++size] = x; up(size)</p>
-<p>２．求集合中最小值　heap[1];</p>
-<p>３．删除最小值　heap[1] = heap[size]; size–;down(1);</p>
-<p>４．删除任意一个元素　heap[k] = heap[size]; size–;down(k);up(k);</p>
-<p>５．修改任意一个元素　heap[k] = x; down(k); up(k);</p>
-<p>为什么初建堆从n/ 2开始：</p>
-<p><img src="/home/fangsong/%E6%96%87%E6%A1%A3/%E5%9B%BE%E7%89%87/%E5%A0%86%EF%BC%93.png" alt=""></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">100010</span>;</span><br><span class="line"><span class="keyword">int</span> n, m;</span><br><span class="line"><span class="keyword">int</span> p[N], s;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">down</span><span class="params">(<span class="keyword">int</span> u)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> t = u;</span><br><span class="line">    <span class="keyword">if</span>(u * <span class="number">2</span> &lt;= s &amp;&amp; p[u * <span class="number">2</span>] &lt; p[t])t = u * <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span>(u * <span class="number">2</span> + <span class="number">1</span> &lt;= s &amp;&amp; p[u * <span class="number">2</span> + <span class="number">1</span>] &lt; p[t]) t = u * <span class="number">2</span> + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span>(u != t) &#123;</span><br><span class="line">        swap(p[u], p[t]);</span><br><span class="line">        down(t);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">up</span><span class="params">(<span class="keyword">int</span> u)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(u / <span class="number">2</span> &amp;&amp; h[u / <span class="number">2</span>] &gt; h[u]) &#123;</span><br><span class="line">        swap(h[u / <span class="number">2</span>], h[u]);</span><br><span class="line">        u /= <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;m);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n;i++) <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;p[i]);</span><br><span class="line">    s = n;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = n / <span class="number">2</span>; i ; i --) down(i);</span><br><span class="line">    <span class="keyword">while</span>(m --) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d "</span>, p[<span class="number">1</span>]);</span><br><span class="line">        p[<span class="number">1</span>] = p[s];</span><br><span class="line">        s --;</span><br><span class="line">        down(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-Mynotes/acwing基础/(Trie树)" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/04/02/Mynotes/acwing%E5%9F%BA%E7%A1%80/(Trie%E6%A0%91)/"
-    >Mynotes/acwing基础/(Trie树)</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/04/02/Mynotes/acwing%E5%9F%BA%E7%A1%80/(Trie%E6%A0%91)/" class="article-date">
-  <time datetime="2020-04-01T16:33:54.406Z" itemprop="datePublished">2020-04-01</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h2 id="Trie-树"><a href="#Trie-树" class="headerlink" title="Trie 树"></a>Trie 树</h2><p>高效的存储和查找字符串的集合的数据结构</p>
-<p>例如如果要是存储：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">abcdef</span><br><span class="line">abdef</span><br><span class="line">aced</span><br><span class="line">bcdf</span><br><span class="line">bcdf</span><br><span class="line">bcff</span><br><span class="line">cdaa</span><br><span class="line">bcdc</span><br></pre></td></tr></table></figure>
-
-
-
-<img src="./图片/trie树.png" style="zoom:50%;" />
-
-<p>先做个标记 <code>f , f, d, f, c, f, a,</code></p>
-<p>插入：</p>
-<p>如果要是插入一个<code>abc</code>, 就是以’c’结尾的标记</p>
-<img src="/home/fangsong/文档/图片/trie树１.png" style="zoom:50%;" />
-
-<p>查找：（快速查找）</p>
-<p>例如我们想要查询一个存在的字符串<code>aced</code>，从根节点开始查询，ａｃｅｄ，　ｄ正好未标记的一个点，所以查找到，存在。若查找不存在的<code>acbf</code> , acb ,f不存在，未找到。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iomanip&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1000010</span>;</span><br><span class="line"><span class="keyword">char</span> str[N];</span><br><span class="line"><span class="keyword">int</span> son[N][<span class="number">26</span>], cnt[N], idx;　 <span class="comment">// 下表是０的点也是根节点，空节点,  son[N][26]：因为一个节点最多有２６个子节点，ｃｎｔ是以当前这个点结尾的单词有多少个，　ｉｄｘ当前用到的是那个下表，　如果一个带你没有子节点，　也让他指向０</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">char</span> str[])</span> </span>&#123;　<span class="comment">// 插入操作，　插入一个字符串</span></span><br><span class="line">    <span class="keyword">int</span> p = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;str[i]; i++) &#123;　 <span class="comment">// p = 0, 从根节点开始，　遍历这个个字符串</span></span><br><span class="line">        <span class="keyword">int</span> u = str[i] - <span class="string">'a'</span>;　　<span class="comment">// 将小写字母a ~z 映射成0 ~ 25;</span></span><br><span class="line">        <span class="keyword">if</span>(!son[p][u]) son[p][u] = ++idx;  <span class="comment">// 如果不存在就创建出来</span></span><br><span class="line">        p = son[p][u];</span><br><span class="line">    &#125; </span><br><span class="line">    cnt[p]++;　<span class="comment">// 就是说以这个结尾的单词多了一个</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">char</span> str[])</span> </span>&#123;　<span class="comment">// 查询操作</span></span><br><span class="line">    <span class="keyword">int</span> p = <span class="number">0</span>;　</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; str[i]; i++) &#123;</span><br><span class="line">        <span class="keyword">int</span> u = str[i] - <span class="string">'a'</span>;</span><br><span class="line">        <span class="keyword">if</span>(!son[p][u]) <span class="keyword">return</span> <span class="number">0</span>; <span class="comment">// 如不存在的话结束</span></span><br><span class="line">        p = son[p][u];　<span class="comment">// 继续走</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> cnt[p];　<span class="comment">// 返回以ｐ结尾的个数</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">    <span class="keyword">while</span>(n --) &#123;</span><br><span class="line">        <span class="keyword">char</span> op[<span class="number">2</span>];</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%s%s"</span>, op, str);</span><br><span class="line">        <span class="keyword">if</span>(op[<span class="number">0</span>] == <span class="string">'I'</span>)insert(str);</span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, query(str));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-Mynotes/README" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/04/02/Mynotes/README/"
-    >Mynotes/README</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/04/02/Mynotes/README/" class="article-date">
-  <time datetime="2020-04-01T16:33:54.402Z" itemprop="datePublished">2020-04-01</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h1 id="Mynotes"><a href="#Mynotes" class="headerlink" title="Mynotes"></a>Mynotes</h1><p>笔记记录<br>平常学习时的笔记整理，包括数据结构，C语言，linux学习，系统编程，计算机网络等</p>
-<p>##　C语言目录</p>
-<img src="https://github.com/fangsong0517/Figure-bed/blob/master/c%E8%AF%AD%E8%A8%80%E7%9B%AE%E5%BD%95.png?raw=true" alt="c语言目录.png" style="zoom: 50%;" />
-
-<p>##　数据结构目录</p>
-<p><img src="https://github.com/fangsong0517/Figure-bed/blob/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%9B%AE%E5%BD%951.png?raw=true" alt="数据结构目录1.png" style="zoom:50%;" /><img src="https://github.com/fangsong0517/Figure-bed/blob/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%9B%AE%E5%BD%952.png?raw=true" alt="数据结构目录2.png"></p>
-<p>##　欧拉计划目录</p>
-<img src="https://github.com/fangsong0517/Figure-bed/blob/master/%E6%AC%A7%E6%8B%89%E8%AE%A1%E5%88%92%E7%9B%AE%E5%BD%95.png?raw=true" alt="欧拉计划目录.png" style="zoom:50%;" />
-
-
-
-
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-Mynotes/Hzoj_Code/递归与DFS" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/04/02/Mynotes/Hzoj_Code/%E9%80%92%E5%BD%92%E4%B8%8EDFS/"
-    >Mynotes/Hzoj_Code/递归与DFS</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/04/02/Mynotes/Hzoj_Code/%E9%80%92%E5%BD%92%E4%B8%8EDFS/" class="article-date">
-  <time datetime="2020-04-01T16:33:54.402Z" itemprop="datePublished">2020-04-01</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>[TOC]</p>
-<h4 id="83-N分"><a href="#83-N分" class="headerlink" title="#83.N分"></a>#<code>83.N分</code></h4><p><a href="http://oj.haizeix.com/problem/83" target="_blank" rel="noopener">题目</a></p>
-<p><strong>题解:</strong></p>
-<p>层数是固定的，后面的数是&gt;=前面的数，输出方法总数；</p>
-<p>每一层从谁开始，选多少数，还应该选几个；</p>
-<h4 id="235-递归实现指数型枚举"><a href="#235-递归实现指数型枚举" class="headerlink" title="#235.递归实现指数型枚举"></a>#<code>235.递归实现指数型枚举</code></h4><p><a href="http://oj.haizeix.com/problem/235" target="_blank" rel="noopener">题目</a></p>
-<p><strong>题解：</strong></p>
-<p><img src="%E9%80%92%E5%BD%92%E4%B8%8EDFS.assets/2020-03-12%2011-12-06%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt=""><br><img src="%E9%80%92%E5%BD%92%E4%B8%8EDFS.assets/2020-03-12%2011-13-24%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt=""></p>
-<p>如果第一层是１那么第二层就应该从２开始，如果第一层是２那么下一层就应该从３开始；<br>递归函数：func(int s), s是从谁开始<br>n, num[15]记录，cnt 计数<br>保证下一层比本层大所以进行func(i + 1)<br><font color = red><strong>他这是每次选择一个，就输出num[];</strong></font></p>
-<h4 id="236-递归实现组合型枚举"><a href="#236-递归实现组合型枚举" class="headerlink" title="#236.递归实现组合型枚举"></a>#<code>236.递归实现组合型枚举</code></h4><p><a href="http://oj.haizeix.com/problem/236" target="_blank" rel="noopener">题目</a></p>
-<p><strong>题解：</strong></p>
-<p><font color = red><strong>什么时候能选够ｍ个数就输出num[]</strong></font></p>
-<h4 id="237-递归实现排列型枚举"><a href="#237-递归实现排列型枚举" class="headerlink" title="#237.递归实现排列型枚举"></a>#<code>237.递归实现排列型枚举</code></h4><p><a href="http://oj.haizeix.com/problem/237" target="_blank" rel="noopener">题目</a></p>
-<p><strong>题解：</strong><br>后面的数可以比前面数小，与前两个题不同，所以每次遍历要从１～ｎ，为了避免重复，开一个标记组<br><font color = red><strong>也是选择ｍ个数输出num[]，避免重复要标记</strong></font><br>回溯的时候标记别忘取消了；</p>
-<h4 id="240-图形打印四"><a href="#240-图形打印四" class="headerlink" title="#240.图形打印四"></a>#<code>240.图形打印四</code></h4><p><a href="http://oj.haizeix.com/problem/240" target="_blank" rel="noopener">题目</a></p>
-<p><strong>题解：</strong></p>
-<p><img src="%E9%80%92%E5%BD%92%E4%B8%8EDFS.assets/2020-03-12%2010-27-09%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt=""></p>
-<p>当ｎ= 1时边长为１，当ｎ= 2时边长为３,当ｎ=3时，边长为９，….27…81…243….</p>
-<p>可以由左上角对五个位置进行填充，可得</p>
-<p>设边长为num[n]</p>
-<p>左上角:(<code>x, y</code>);</p>
-<p>右上角:(<code>x, y + num[n]/3*2</code>)</p>
-<p>左下角:(<code>x + num[n]/3*2, y</code>)</p>
-<p>右下角:(<code>x + num[n]/3*2, y + num[n]/3*2</code>)</p>
-<p>中心：(<code>x + num[n]/3, y + num[n]/3</code>)</p>
-<p>主要思路是将从１～７个全部打印出来，最后进行选择</p>
-<p>当递归到１时将二维字符数组对应的ｘ, y打印成’X’，也就是递归出口；</p>
-<p>因为２是由１转变过来的，３是由２转变过来的，４是由３转变过来的，即可递归回溯</p>
-<h4 id="396填涂颜色"><a href="#396填涂颜色" class="headerlink" title="#396填涂颜色"></a>#<code>396填涂颜色</code></h4><p><a href="http://oj.haizeix.com/problem/396" target="_blank" rel="noopener">题目</a></p>
-<p>题解: 可以先在外围加一堵0墙，然后进行对外围搜0，然后都标记为３，最后将全部扫一遍，将０变为２，３变０即可：</p>
+      <h1 id="DNS协议"><a href="#DNS协议" class="headerlink" title="DNS协议"></a>DNS协议</h1><p>域名转IP</p>
+<ul>
+<li><p>中文名</p>
+<p>域名解析协议</p>
+</li>
+<li><p>外文名</p>
+<p>DNS protocol</p>
+</li>
+<li><p>作  用</p>
+<p>完成域名地址与IP地址的转换</p>
+</li>
+</ul>
+<h2 id="1、-什么是DNS协议？"><a href="#1、-什么是DNS协议？" class="headerlink" title="1、 什么是DNS协议？"></a>1、 什么是DNS协议？</h2><p>&lt;1&gt;DNS协议就是用来将域名解析到IP地址的一种协议，当然，也可以将IP地址转换为域名的一种协议。<br>&lt;2&gt;DNS协议基于UDP和TCP协议的，端口号53，用户到服务器采用UDP，DNS服务器通信采用TCP<br>&lt;3&gt;大型运营商、互联网机构等会向公众提供免费的DNS服务，例如，谷歌的8.8.8.8 8.8.4.4 阿里巴巴223.5.5.5 223.6.6.6<br>&lt;4&gt;如果DNS服务器down掉了，那么你只能通过IP地址来访问服务了。<br>&lt;5&gt;我们从以下几部分来理解DNS协议：</p>
+<ul>
+<li>域名结构</li>
+<li>域名服务器</li>
+</ul>
+<h2 id="2、域名结构"><a href="#2、域名结构" class="headerlink" title="2、域名结构"></a>2、域名结构</h2><p>像Linux目录结构一样，现代因特网采用层次树状结构的命名方法，任何一个连接在因特网上的主机或路由器，都有一个唯一的层次结构的名字，该名字称为域名。域名查询</p>
+<p><img src="https://img-blog.csdn.net/20180105145627203?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamluOTcwNTA1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="img"></p>
 <blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;0 0 0 0 0 0</span><br><span class="line">&gt;0 0 1 1 1 1</span><br><span class="line">&gt;0 1 0 0 0 1</span><br><span class="line">&gt;1 0 0 0 0 1</span><br><span class="line">&gt;1 0 0 0 0 1</span><br><span class="line">&gt;1 1 1 1 1 1</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;0 0 0 0 0 0 0 0 //先在外围加一堵0墙</span><br><span class="line">&gt;0 0 0 1 1 1 1 0//然后进行对外围搜0，然后都标记为３</span><br><span class="line">&gt;0 0 1 0 0 0 1 0</span><br><span class="line">&gt;0 1 0 0 0 0 1 0</span><br><span class="line">&gt;0 1 0 0 0 0 1 0</span><br><span class="line">&gt;0 1 1 1 1 1 1 0</span><br><span class="line">&gt;0 0 0 0 0 0 0 0</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;0 0 0 0 0 0//最后将全部扫一遍，将０变为２，３变０即可：</span><br><span class="line">&gt;0 0 1 1 1 1</span><br><span class="line">&gt;0 1 1 2 2 1</span><br><span class="line">&gt;1 1 2 2 2 1</span><br><span class="line">&gt;1 2 2 2 2 1</span><br><span class="line">&gt;1 1 1 1 1 1</span><br></pre></td></tr></table></figure>
+<p>国家顶级域名：中国:cn， 美国:us，英国uk…    </p>
+<p>通用顶级域名：com 公司企业  edu教育机构 gov政府部门  int国际组织  mil军事部门  net网络 org非盈利组织…    </p>
+<p>反向域名：只有一个arpa，用于PTR查询（IP地址转换为域名） 。</p>
 </blockquote>
-<h4 id="397僵尸来袭"><a href="#397僵尸来袭" class="headerlink" title="#397僵尸来袭"></a>#<code>397僵尸来袭</code></h4><p><a href="http://oj.haizeix.com/problem/397" target="_blank" rel="noopener">题目</a></p>
-<p>题解: </p>
-<p>直接对二维数组遍历，在便利的同时如果非０那就开始搜索，进行吧能搜到的所有僵尸变为０，直至最后，记录了几次调用函数搜索即可！</p>
-<p>模拟一下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">0 1 2 3 4 0</span><br><span class="line">1 0 0 0 0 0</span><br><span class="line">2 9 3 0 2 4</span><br><span class="line">0 0 2 0 2 8</span><br><span class="line">1 0 0 0 0 0</span><br></pre></td></tr></table></figure>
+<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gef9bj5hfsj30se0gvwjd.jpg" alt="image.png"></p>
+<h2 id="3、DNS污染"><a href="#3、DNS污染" class="headerlink" title="3、DNS污染"></a>3、DNS污染</h2><p><strong>网域服务器缓存污染</strong>（DNS cache pollution），又称<strong>域名服务器缓存投毒</strong>（DNS cache poisoning），是指一些刻意制造或无意中制造出来的域名服务器<a href="https://baike.baidu.com/item/数据包" target="_blank" rel="noopener">数据包</a>，把域名指往不正确的IP地址。一般来说，在<a href="https://baike.baidu.com/item/互联网" target="_blank" rel="noopener">互联网</a>上都有可信赖的网域服务器，但为减低网络上的流量压力，一般的域名服务器都会把从上游的域名服务器获得的解析记录暂存起来，待下次有其他机器要求解析域名时，可以立即提供服务。一旦有关网域的局域域名服务器的缓存受到污染，就会把网域内的计算机导引往错误的服务器或服务器的网址。</p>
+<p>某些<a href="https://baike.baidu.com/item/网络运营商" target="_blank" rel="noopener">网络运营商</a>为了某些目的，对<a href="https://baike.baidu.com/item/DNS/427444" target="_blank" rel="noopener">DNS</a>进行了某些操作，导致使用<a href="https://baike.baidu.com/item/ISP/10152" target="_blank" rel="noopener">ISP</a>的正常上网设置无法通过域名取得正确的IP地址。</p>
+<p>某些国家或地区出于某些目的为了防止某网站被访问，而且其又掌握部分国际DNS根目录服务器或镜像，也会利用此方法进行屏蔽。</p>
+<p>常用的手段有：<a href="https://baike.baidu.com/item/DNS劫持" target="_blank" rel="noopener">DNS劫持</a>和DNS污染。</p>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">0 0 0 0 0 0</span><br><span class="line">1 0 0 0 0 0</span><br><span class="line">2 9 3 0 2 4      第一次</span><br><span class="line">0 0 2 0 2 8</span><br><span class="line">1 0 0 0 0 0</span><br></pre></td></tr></table></figure>
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">0 0 0 0 0 0</span><br><span class="line">0 0 0 0 0 0</span><br><span class="line">0 0 0 0 2 4      第二次</span><br><span class="line">0 0 0 0 2 8</span><br><span class="line">1 0 0 0 0 0</span><br></pre></td></tr></table></figure>
+    </footer>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">0 0 0 0 0 0</span><br><span class="line">0 0 0 0 0 0</span><br><span class="line">0 0 0 0 0 0      第三次</span><br><span class="line">0 0 0 0 0 0</span><br><span class="line">1 0 0 0 0 0</span><br></pre></td></tr></table></figure>
+  </div>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">0 0 0 0 0 0</span><br><span class="line">0 0 0 0 0 0</span><br><span class="line">0 0 0 0 0 0      第四次</span><br><span class="line">0 0 0 0 0 0</span><br><span class="line">0 0 0 0 0 0</span><br></pre></td></tr></table></figure>
+  
 
-<h4 id="404-01迷宫简易版"><a href="#404-01迷宫简易版" class="headerlink" title="#404  01迷宫简易版"></a>#<code>404  01迷宫简易版</code></h4><p><a href="http://oj.haizeix.com/problem/404" target="_blank" rel="noopener">题目</a></p>
-<p>题解: </p>
-<p>如果上一次坐标与本次坐标不同即可走，然后把标记数组置为１，加数；</p>
-<p>此题用到了记录数组；切记刚开始坐标对应的标记数组应该置为一；</p>
-<h4 id="405-01迷宫"><a href="#405-01迷宫" class="headerlink" title="#405  01迷宫"></a>#<code>405  01迷宫</code></h4><p><a href="http://oj.haizeix.com/problem/405" target="_blank" rel="noopener">题目</a></p>
-<p>题解: </p>
-<p>本体由于数量大，按正常思路走会超时，所以本题使用了用队列记录了所要能到达的坐标位置，计数，到一小块结束后，将队列所存的坐标对应全赋值为这一块计数的那个值，继续同理操作，到最后只要索引下表就可以快速找到多大；</p>
-<h4 id="406水坑数量"><a href="#406水坑数量" class="headerlink" title="#406水坑数量"></a>#<code>406水坑数量</code></h4><p><a href="http://oj.haizeix.com/problem/406" target="_blank" rel="noopener">题目</a></p>
-<p>题解: </p>
-<p>本题同３９７僵尸来袭，都是直接遍历二维数组，符合条件就直接搜进行原图标记，记录搜了几波就ＯＫ了；</p>
-<h4 id="534体积"><a href="#534体积" class="headerlink" title="#534体积"></a>#<code>534体积</code></h4><p><a href="http://oj.haizeix.com/problem/534" target="_blank" rel="noopener">题目</a></p>
-<p>题解: </p>
-<p>此题就是235的改进，每走一步记录所走的当前路径的和，然后到最后去重，去重的时候可以使用标记数组，用sun当索引进行标记,记录最后有多少数就是表示不同提及的组合数</p>
-<h4 id="535瓷砖"><a href="#535瓷砖" class="headerlink" title="#535瓷砖"></a>#<code>535瓷砖</code></h4><p><a href="http://oj.haizeix.com/problem/535" target="_blank" rel="noopener">题目</a></p>
-<p>题解: </p>
-<p>直接DFS,先找到开始坐标，进行DFS,能走的地方一直走，每走一步记录一步sum++;最终sum就是最大能走多少；</p>
-<h4 id="536-最大黑色区域"><a href="#536-最大黑色区域" class="headerlink" title="#536 最大黑色区域"></a>#<code>536 最大黑色区域</code></h4><p><a href="http://oj.haizeix.com/problem/536" target="_blank" rel="noopener">题目</a></p>
-<p>题解: </p>
-<p>从头开始走，每当能走时进行搜索记录本次搜索的步数，然后每一波搜索记录一下最大的值，然后就得到最大黑色区域的面积；</p>
-<h4 id="537门票问题"><a href="#537门票问题" class="headerlink" title="#537门票问题"></a>#<code>537门票问题</code></h4><p><a href="http://oj.haizeix.com/problem/537" target="_blank" rel="noopener">题目</a></p>
-<p>题解: </p>
-<p>改进的236题;首先有一个记录路径的，而且还要记录元音和辅音有多少个为了当走了合法left时而且元音辅音符合条件时才能满足打印情况，就是这样。</p>
-<h4 id="538图的遍历"><a href="#538图的遍历" class="headerlink" title="#538图的遍历"></a>#<code>538图的遍历</code></h4><p><a href="http://oj.haizeix.com/problem/538" target="_blank" rel="noopener">题目</a></p>
-<p>已知结点个数，必须整一个标记数组check[], 当没走过的进行遍历周围所能到达的</p>
-<p><img src="%E9%80%92%E5%BD%92%E4%B8%8EDFS.assets/Whiteboard%5B2%5D-01.png" alt="Whiteboard[2]-01"></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(flag == <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"-"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    flag = <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; x;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(num[x][i] == <span class="number">1</span> &amp;&amp; check[i] == <span class="number">0</span>) &#123;</span><br><span class="line">            check[i] = <span class="number">1</span>;</span><br><span class="line">            func(i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  
+  
+  
 
-<h4 id="540生日购物"><a href="#540生日购物" class="headerlink" title="#540生日购物"></a>#<code>540生日购物</code></h4><p><a href="http://oj.haizeix.com/problem/540" target="_blank" rel="noopener">题目</a></p>
-<p>由于题目N &lt;= 40, 最大40由于很大,达到2 ^ 40多；会超时，因此将其分为两部分进行处理，一部分0 ~ 20 ,21~40进行处理；和235题近似</p>
-<p><img src="%E9%80%92%E5%BD%92%E4%B8%8EDFS.assets/image-20200327173733020.png" alt="image-20200327173733020"> </p>
-<h4 id="541相遇问题"><a href="#541相遇问题" class="headerlink" title="#541相遇问题"></a>#<code>541相遇问题</code></h4><p><a href="http://oj.haizeix.com/problem/541" target="_blank" rel="noopener">题目</a></p>
-<p>对于每个人来讲，把他走到ｎ号点的时间都存起来，最后会得到两个人的数组，找两个数组中是否有一样的；邻接矩阵进行存储；</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cin</span> &gt;&gt; a &gt;&gt; b &gt;&gt; c &gt;&gt; d;</span><br><span class="line">atime[<span class="number">0</span>][a][b] = atime[<span class="number">0</span>][b][a] = c;</span><br><span class="line">atime[<span class="number">1</span>][a][b] = atime[<span class="number">1</span>][b][a] = d;</span><br></pre></td></tr></table></figure>
+  
 
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> n, m, atime[<span class="number">2</span>][<span class="number">20</span>][<span class="number">20</span>], ans[<span class="number">2</span>][<span class="number">100000</span>], ans_num[<span class="number">2</span>];</span><br><span class="line"><span class="comment">//atime 存时间, ans存到达所需要的时间，ans_num计数</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">(<span class="keyword">int</span> people, <span class="keyword">int</span> locate, <span class="keyword">int</span> cost)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(locate == n) &#123;</span><br><span class="line">        ans[people][ans_num[people]] = cost;</span><br><span class="line">        ans_num[people]++;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = locate + <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(atime[people][locate][i]) &#123;</span><br><span class="line">            func(people, i, cost + atime[people][locate][i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</article>
+    
+    <article id="post-Mynotes/操作系统与系统编程/理解select、poll和epoll区别/理解select、poll和epoll区别" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/%E7%90%86%E8%A7%A3select%E3%80%81poll%E5%92%8Cepoll%E5%8C%BA%E5%88%AB/%E7%90%86%E8%A7%A3select%E3%80%81poll%E5%92%8Cepoll%E5%8C%BA%E5%88%AB/"
+    >Mynotes/操作系统与系统编程/理解select、poll和epoll区别/理解select、poll和epoll区别</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/%E7%90%86%E8%A7%A3select%E3%80%81poll%E5%92%8Cepoll%E5%8C%BA%E5%88%AB/%E7%90%86%E8%A7%A3select%E3%80%81poll%E5%92%8Cepoll%E5%8C%BA%E5%88%AB/" class="article-date">
+  <time datetime="2020-05-13T18:05:21.825Z" itemprop="datePublished">2020-05-13</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h1 id="理解select、poll和epoll区别"><a href="#理解select、poll和epoll区别" class="headerlink" title="理解select、poll和epoll区别"></a>理解select、poll和epoll区别</h1><h2 id="１、IO复用模型"><a href="#１、IO复用模型" class="headerlink" title="１、IO复用模型"></a>１、IO复用模型</h2><p><img src="https://static.dingtalk.com/media/lALPDiQ3KR9S0PHNApTNA5Q_916_660.png_620x10000q90g.jpg?auth_bizType=IM&auth_bizEntity=%7B%22cid%22%3A%22627064533%3A627064533%22%2C%22msgId%22%3A%223484896791903%22%7D&bizType=im&open_id=627064533" alt="图片"></p>
+<h2 id="２、目前的常用的IO复用模型有三种：select，poll，epoll"><a href="#２、目前的常用的IO复用模型有三种：select，poll，epoll" class="headerlink" title="２、目前的常用的IO复用模型有三种：select，poll，epoll"></a>２、目前的常用的IO复用模型有三种：select，poll，epoll</h2><p>(1)select时间复杂度O(n)</p>
+<p>他仅仅知道有I/O事件发生了，却不知道是哪那几个流(可能有一个，多个，甚至全部),我们只能无差别轮询所有的流，找出能读出数据，或者能写入数据的流，对他们进行操作。所以<font color = red>select具有o(n)无差别轮询的时间复杂度</font>，同时处理的流越多，无差别轮询时间就越长。</p>
+<p>(2)poll时间复杂度O(n)</p>
+<p>poll本质上与select没有区别,他讲用户传入的数组拷贝到内核空间，然后查询每个fd对应的设备状态，但是<font color = red>它没有最大连接的限制</font>，原因是它给予链表来存储的。</p>
+<p>(3)epoll时间复杂度O(1)</p>
+<p>epoll可以理解为evnt poll, 不同于忙轮训和无差别轮训,epoll会把那个流发生怎样的I/O时间通知我们。所以我们说epoll实际上是<font color = red>事件驱动(每个事件关联上fd)</font>的，此时我们对这些流的操作都是有意义的,它是红黑树,(复杂度降到了O(1));</p>
+<p>select, poll, epoll 都是IO多路复用机制。I/O多路复用就是通过这种机制，可以监视多个描述度，一旦某个描述符就绪(一般是读就绪或者写就绪)，能够通知程序进行相应的读写操作。但select,poll,epoll本质上都是I/O,因为他们都需要在读写时间就绪后自己负责进行读写，也就是说这个读写过程是阻塞的，而异步I/O则无需自己负责进行读写，异步I/O的实现会负责吧数据从内核拷贝到用户空间。</p>
+<p>epoll跟select都能提供多路I/O服用的解决方案。在现在的Linux内核中都能够支持，其中epoll是linux所特有，而select则应该是POSIX所规定,一般操作系统均有实现;</p>
+<h2 id="３、select、poll、epoll-区别总结："><a href="#３、select、poll、epoll-区别总结：" class="headerlink" title="３、select、poll、epoll 区别总结："></a>３、<strong>select、poll、epoll 区别总结：</strong></h2><h3 id="3-1、支持一个进程所能打开的最大连接数"><a href="#3-1、支持一个进程所能打开的最大连接数" class="headerlink" title="3.1、支持一个进程所能打开的最大连接数"></a>3.1、支持一个进程所能打开的<font color = red>最大连接数</font></h3><p>select：单个进程所能打开的最大连接数有FD_SETSIZE宏定义，其大小是32个整数的大小（在32位的机器上，大小就是32×32，同理64位机器上FD_SETSIZE为32×64），当然我们可以对进行修改，然后重新编译内核，但是性能可能会受到影响，这需要进一步的测试。</p>
+<p>poll：poll本质上和select没有区别，但是它没有最大连接数的限制，原因是它是基于链表来存储的。</p>
+<p>epoll：虽然连接数有上限，但是很大，1G内存的机器上可以打开10万左右的连接，2G内存的机器可以打开20万左右的连接。</p>
+<h3 id="3-2、FD剧增后带来的IO效率问题"><a href="#3-2、FD剧增后带来的IO效率问题" class="headerlink" title="3.2、FD剧增后带来的IO效率问题"></a>3.2、FD剧增后带来的IO<font color = red>效率问题</font></h3><p>select：因为每次调用时都会对连接进行线性遍历，所以随着FD的增加会造成遍历速度慢的“线性下降性能问题”。</p>
+<p>poll:    同上。</p>
+<p>epoll:    因为epoll内核中实现是根据每个fd上的callback函数实现的，只有活跃的socket才会主动调用callback,所以在活跃socket较少的情况下,使用epoll没有前面两者线性下降的性能问题，但是所有的sockfd都在活跃情况下，可能会出现性能问题。</p>
+<h3 id="3-3、消息传递方式"><a href="#3-3、消息传递方式" class="headerlink" title="3.3、消息传递方式"></a>3.3、<font color = red>消息传递方式</font></h3><p>select：内核需要将消息传递到用户空间，都需要内核拷贝动作</p>
+<p>poll：同上</p>
+<p>epoll：epoll通过内核和用户空间共享一块内存来实现的。</p>
+<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a><strong>总结：</strong></h3><p>综上，在选择select，poll，epoll时要根据具体的使用场合以及这三种方式的自身特点。</p>
+<p><strong>1、表面上看epoll的性能最好，但是在连接数少并且连接都十分活跃的情况下，select和poll的性能可能比epoll好，毕竟epoll的通知机制需要很多函数回调</strong></p>
+<p><strong>2、select低效是因为每次它都需要轮询。但低效也是相对的，视情况而定，也可通过良好的设计改善</strong> </p>
+<p><img src="https://static.dingtalk.com/media/lALPDhJzr-nhBnbNApPNA8U_965_659.png_620x10000q90g.jpg?auth_bizType=IM&auth_bizEntity=%7B%22cid%22%3A%22627064533%3A627064533%22%2C%22msgId%22%3A%223485696508656%22%7D&bizType=im&open_id=627064533" alt="图片"></p>
+<img src="https://static.dingtalk.com/media/lALPDiCpqpJJGZLNAY7NA84_974_398.png_620x10000q90g.jpg?auth_bizType=IM&amp;auth_bizEntity=%7B%22cid%22%3A%22627064533%3A627064533%22%2C%22msgId%22%3A%223505296142785%22%7D&amp;bizType=im&amp;open_id=627064533" alt="图片" style="zoom:150%;" />
+
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-Mynotes/操作系统与系统编程/理解select、poll和epoll区别/README" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/%E7%90%86%E8%A7%A3select%E3%80%81poll%E5%92%8Cepoll%E5%8C%BA%E5%88%AB/README/"
+    >Mynotes/操作系统与系统编程/理解select、poll和epoll区别/README</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/%E7%90%86%E8%A7%A3select%E3%80%81poll%E5%92%8Cepoll%E5%8C%BA%E5%88%AB/README/" class="article-date">
+  <time datetime="2020-05-13T18:05:21.824Z" itemprop="datePublished">2020-05-13</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h1 id="理解select、poll和epoll区别"><a href="#理解select、poll和epoll区别" class="headerlink" title="理解select、poll和epoll区别"></a>理解select、poll和epoll区别</h1><h2 id="１、IO复用模型"><a href="#１、IO复用模型" class="headerlink" title="１、IO复用模型"></a>１、IO复用模型</h2><p><img src="https://static.dingtalk.com/media/lALPDiQ3KR9S0PHNApTNA5Q_916_660.png_620x10000q90g.jpg?auth_bizType=IM&auth_bizEntity=%7B%22cid%22%3A%22627064533%3A627064533%22%2C%22msgId%22%3A%223484896791903%22%7D&bizType=im&open_id=627064533" alt="图片"></p>
+<h2 id="２、目前的常用的IO复用模型有三种：select，poll，epoll"><a href="#２、目前的常用的IO复用模型有三种：select，poll，epoll" class="headerlink" title="２、目前的常用的IO复用模型有三种：select，poll，epoll"></a>２、目前的常用的IO复用模型有三种：select，poll，epoll</h2><p>(1)select时间复杂度O(n)</p>
+<p>他仅仅知道有I/O事件发生了，却不知道是哪那几个流(可能有一个，多个，甚至全部),我们只能无差别轮询所有的流，找出能读出数据，或者能写入数据的流，对他们进行操作。所以<font color = red>select具有o(n)无差别轮询的时间复杂度</font>，同时处理的流越多，无差别轮询时间就越长。</p>
+<p>(2)poll时间复杂度O(n)</p>
+<p>poll本质上与select没有区别,他讲用户传入的数组拷贝到内核空间，然后查询每个fd对应的设备状态，但是<font color = red>它没有最大连接的限制</font>，原因是它给予链表来存储的。</p>
+<p>(3)epoll时间复杂度O(1)</p>
+<p>epoll可以理解为evnt poll, 不同于忙轮训和无差别轮训,epoll会把那个流发生怎样的I/O时间通知我们。所以我们说epoll实际上是<font color = red>事件驱动(每个事件关联上fd)</font>的，此时我们对这些流的操作都是有意义的,它是红黑树,(复杂度降到了O(1));</p>
+<p>select, poll, epoll 都是IO多路复用机制。I/O多路复用就是通过这种机制，可以监视多个描述度，一旦某个描述符就绪(一般是读就绪或者写就绪)，能够通知程序进行相应的读写操作。但select,poll,epoll本质上都是I/O,因为他们都需要在读写时间就绪后自己负责进行读写，也就是说这个读写过程是阻塞的，而异步I/O则无需自己负责进行读写，异步I/O的实现会负责吧数据从内核拷贝到用户空间。</p>
+<p>epoll跟select都能提供多路I/O服用的解决方案。在现在的Linux内核中都能够支持，其中epoll是linux所特有，而select则应该是POSIX所规定,一般操作系统均有实现;</p>
+<h2 id="３、select、poll、epoll-区别总结："><a href="#３、select、poll、epoll-区别总结：" class="headerlink" title="３、select、poll、epoll 区别总结："></a>３、<strong>select、poll、epoll 区别总结：</strong></h2><h3 id="3-1、支持一个进程所能打开的最大连接数"><a href="#3-1、支持一个进程所能打开的最大连接数" class="headerlink" title="3.1、支持一个进程所能打开的最大连接数"></a>3.1、支持一个进程所能打开的<font color = red>最大连接数</font></h3><p>select：单个进程所能打开的最大连接数有FD_SETSIZE宏定义，其大小是32个整数的大小（在32位的机器上，大小就是32×32，同理64位机器上FD_SETSIZE为32×64），当然我们可以对进行修改，然后重新编译内核，但是性能可能会受到影响，这需要进一步的测试。</p>
+<p>poll：poll本质上和select没有区别，但是它没有最大连接数的限制，原因是它是基于链表来存储的。</p>
+<p>epoll：虽然连接数有上限，但是很大，1G内存的机器上可以打开10万左右的连接，2G内存的机器可以打开20万左右的连接。</p>
+<h3 id="3-2、FD剧增后带来的IO效率问题"><a href="#3-2、FD剧增后带来的IO效率问题" class="headerlink" title="3.2、FD剧增后带来的IO效率问题"></a>3.2、FD剧增后带来的IO<font color = red>效率问题</font></h3><p>select：因为每次调用时都会对连接进行线性遍历，所以随着FD的增加会造成遍历速度慢的“线性下降性能问题”。</p>
+<p>poll:    同上。</p>
+<p>epoll:    因为epoll内核中实现是根据每个fd上的callback函数实现的，只有活跃的socket才会主动调用callback,所以在活跃socket较少的情况下,使用epoll没有前面两者线性下降的性能问题，但是所有的sockfd都在活跃情况下，可能会出现性能问题。</p>
+<h3 id="3-3、消息传递方式"><a href="#3-3、消息传递方式" class="headerlink" title="3.3、消息传递方式"></a>3.3、<font color = red>消息传递方式</font></h3><p>select：内核需要将消息传递到用户空间，都需要内核拷贝动作</p>
+<p>poll：同上</p>
+<p>epoll：epoll通过内核和用户空间共享一块内存来实现的。</p>
+<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a><strong>总结：</strong></h3><p>综上，在选择select，poll，epoll时要根据具体的使用场合以及这三种方式的自身特点。</p>
+<p><strong>1、表面上看epoll的性能最好，但是在连接数少并且连接都十分活跃的情况下，select和poll的性能可能比epoll好，毕竟epoll的通知机制需要很多函数回调</strong></p>
+<p><strong>2、select低效是因为每次它都需要轮询。但低效也是相对的，视情况而定，也可通过良好的设计改善</strong> </p>
+<p><img src="https://static.dingtalk.com/media/lALPDhJzr-nhBnbNApPNA8U_965_659.png_620x10000q90g.jpg?auth_bizType=IM&auth_bizEntity=%7B%22cid%22%3A%22627064533%3A627064533%22%2C%22msgId%22%3A%223485696508656%22%7D&bizType=im&open_id=627064533" alt="图片"></p>
+<img src="https://static.dingtalk.com/media/lALPDiCpqpJJGZLNAY7NA84_974_398.png_620x10000q90g.jpg?auth_bizType=IM&amp;auth_bizEntity=%7B%22cid%22%3A%22627064533%3A627064533%22%2C%22msgId%22%3A%223505296142785%22%7D&amp;bizType=im&amp;open_id=627064533" alt="图片" style="zoom:150%;" />
+
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-Mynotes/操作系统与系统编程/消息队列/README" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/README/"
+    >Mynotes/操作系统与系统编程/消息队列/README</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/README/" class="article-date">
+  <time datetime="2020-05-13T18:05:21.823Z" itemprop="datePublished">2020-05-13</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h1 id="消息队列"><a href="#消息队列" class="headerlink" title="消息队列"></a>消息队列</h1><blockquote>
+<p>消息队列函数由<code>msgget</code>、<code>msgctl</code>、<code>msgsnd</code>、<code>msgrcv</code>四个函数组成。下面的表格列出了这四个函数的函数原型及其具体说明。</p>
+</blockquote>
+<h4 id="1-msgget函数原型"><a href="#1-msgget函数原型" class="headerlink" title="1.  msgget函数原型"></a>1.  <code>msgget</code>函数原型</h4><table>
+<thead>
+<tr>
+<th><code>msgget</code>(得到消息队列标识符或创建一个消息队列对象)</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>所需头文件</td>
+<td><code>#include &lt;sys/types.h&gt;#include &lt;sys/ipc.h&gt;#include &lt;sys/msg.h&gt;</code></td>
+<td></td>
+</tr>
+<tr>
+<td>函数说明</td>
+<td>得到消息队列标识符或创建一个消息队列对象并返回消息队列标识符</td>
+<td></td>
+</tr>
+<tr>
+<td>函数原型</td>
+<td><code>int msgget(key_t key, int msgflg)</code></td>
+<td></td>
+</tr>
+<tr>
+<td>函数传入值</td>
+<td>key</td>
+<td>0(IPC_PRIVATE)：会建立新的消息队列</td>
+</tr>
+<tr>
+<td>大于0的32位整数：视参数<code>msgflg</code>来确定操作。通常要求此值来源于<code>ftok</code>返回的<code>IPC</code>键值</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>msgflg</code></td>
+<td>0：取消息队列标识符，若不存在则函数会报错</td>
+<td></td>
+</tr>
+<tr>
+<td><code>IPC_CREAT</code>：当<code>msgflg&amp;IPC_CREAT</code>为真时，如果内核中不存在键值与key相等的消息队列，则新建一个消息队列；如果存在这样的消息队列，返回此消息队列的标识符</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>`IPC_CREAT</td>
+<td>IPC_EXCL`：如果内核中不存在键值与key相等的消息队列，则新建一个消息队列；如果存在这样的消息队列则报错</td>
+<td></td>
+</tr>
+<tr>
+<td>函数返回值</td>
+<td>成功：返回消息队列的标识符</td>
+<td></td>
+</tr>
+<tr>
+<td>出错：-1，错误原因存于error中</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>附加说明</td>
+<td>上述<code>msgflg</code>参数为模式标志参数，使用时需要与<code>IPC</code>对象存取权限（如0600）进行|运算来确定消息队列的存取权限</td>
+<td></td>
+</tr>
+<tr>
+<td>错误代码</td>
+<td><code>EACCES</code>：指定的消息队列已存在，但调用进程没有权限访问它<code>EEXIST：key</code>指定的消息队列已存在，而<code>msgflg</code>中同时指定<code>IPC_CREAT</code>和<code>IPC_EXCL</code>标志<code>ENOENT：key</code>指定的消息队列不存在同时<code>msgflg</code>中没有指定<code>IPC_CREAT标志``ENOMEM</code>：需要建立消息队列，但内存不足<code>ENOSPC</code>：需要建立消息队列，但已达到系统的限制</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>如果用msgget创建了一个新的消息队列对象时，则msqid_ds结构成员变量的值设置如下：</p>
+<p>​    msg_qnum、msg_lspid、msg_lrpid、 msg_stime、msg_rtime设置为0。</p>
+<p>​    msg_ctime设置为当前时间。</p>
+<p>​    msg_qbytes设成系统的限制值。</p>
+<p>​    msgflg的读写权限写入msg_perm.mode中。</p>
+<p>​    msg_perm结构的uid和cuid成员被设置成当前进程的有效用户ID，gid和cuid成员被设置成当前进程的有效组ID。</p>
+<h4 id="2-msgctl函数原型"><a href="#2-msgctl函数原型" class="headerlink" title="2.  msgctl函数原型"></a>2.  <code>msgctl</code>函数原型</h4><table>
+<thead>
+<tr>
+<th>msgctl (获取和设置消息队列的属性)</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>所需头文件</td>
+<td>#include &lt;sys/types.h&gt;#include &lt;sys/ipc.h&gt;#include &lt;sys/msg.h&gt;</td>
+<td></td>
+</tr>
+<tr>
+<td>函数说明</td>
+<td>获取和设置消息队列的属性</td>
+<td></td>
+</tr>
+<tr>
+<td>函数原型</td>
+<td>int msgctl(int msqid, int cmd, struct msqid_ds *buf)</td>
+<td></td>
+</tr>
+<tr>
+<td>函数传入值</td>
+<td>msqid</td>
+<td>消息队列标识符</td>
+</tr>
+<tr>
+<td>cmd</td>
+<td>IPC_STAT:获得msgid的消息队列头数据到buf中</td>
+<td></td>
+</tr>
+<tr>
+<td>IPC_SET：设置消息队列的属性，要设置的属性需先存储在buf中，可设置的属性包括：msg_perm.uid、msg_perm.gid、msg_perm.mode以及msg_qbytes</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>buf：消息队列管理结构体，请参见消息队列内核结构说明部分</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>函数返回值</td>
+<td>成功：0</td>
+<td></td>
+</tr>
+<tr>
+<td>出错：-1，错误原因存于error中</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>错误代码</td>
+<td>EACCESS：参数cmd为IPC_STAT，确无权限读取该消息队列EFAULT：参数buf指向无效的内存地址EIDRM：标识符为msqid的消息队列已被删除EINVAL：无效的参数cmd或msqidEPERM：参数cmd为IPC_SET或IPC_RMID，却无足够的权限执行</td>
+<td></td>
+</tr>
+</tbody></table>
+<h4 id="3-msgsnd函数原型"><a href="#3-msgsnd函数原型" class="headerlink" title="3.  msgsnd函数原型"></a>3.  <code>msgsnd</code>函数原型</h4><table>
+<thead>
+<tr>
+<th>msgsnd (将消息写入到消息队列)</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>所需头文件</td>
+<td>#include &lt;sys/types.h&gt;#include &lt;sys/ipc.h&gt;#include &lt;sys/msg.h&gt;</td>
+<td></td>
+</tr>
+<tr>
+<td>函数说明</td>
+<td>将msgp消息写入到标识符为msqid的消息队列</td>
+<td></td>
+</tr>
+<tr>
+<td>函数原型</td>
+<td>int msgsnd(int msqid, const void *msgp, size_t msgsz, int msgflg)</td>
+<td></td>
+</tr>
+<tr>
+<td>函数传入值</td>
+<td>msqid</td>
+<td>消息队列标识符</td>
+</tr>
+<tr>
+<td>msgp</td>
+<td>发送给队列的消息。msgp可以是任何类型的结构体，但第一个字段必须为long类型，即表明此发送消息的类型，msgrcv根据此接收消息。msgp定义的参照格式如下：  struct s_msg{ /<em>msgp定义的参照格式</em>/    long type; /* 必须大于0,消息类型 <em>/       char mtext[256]; /*消息正文，可以是其他任何类型</em>/   } msgp;</td>
+<td></td>
+</tr>
+<tr>
+<td>msgsz</td>
+<td>要发送消息的大小，不含消息类型占用的4个字节,即mtext的长度</td>
+<td></td>
+</tr>
+<tr>
+<td>msgflg</td>
+<td>0：当消息队列满时，msgsnd将会阻塞，直到消息能写进消息队列</td>
+<td></td>
+</tr>
+<tr>
+<td>IPC_NOWAIT：当消息队列已满的时候，msgsnd函数不等待立即返回</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>IPC_NOERROR：若发送的消息大于size字节，则把该消息截断，截断部分将被丢弃，且不通知发送进程。</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>函数返回值</td>
+<td>成功：0</td>
+<td></td>
+</tr>
+<tr>
+<td>出错：-1，错误原因存于error中</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>错误代码</td>
+<td>EAGAIN：参数msgflg设为IPC_NOWAIT，而消息队列已满EIDRM：标识符为msqid的消息队列已被删除EACCESS：无权限写入消息队列EFAULT：参数msgp指向无效的内存地址EINTR：队列已满而处于等待情况下被信号中断EINVAL：无效的参数msqid、msgsz或参数消息类型type小于0</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>  msgsnd()为阻塞函数，当消息队列容量满或消息个数满会阻塞。消息队列已被删除，则返回EIDRM错误；被信号中断返回E_INTR错误。</p>
+<p> 如果设置IPC_NOWAIT消息队列满或个数满时会返回-1，并且置EAGAIN错误。</p>
+<p>msgsnd()解除阻塞的条件有以下三个条件：</p>
+<p>①  不满足消息队列满或个数满两个条件，即消息队列中有容纳该消息的空间。</p>
+<p>②  msqid代表的消息队列被删除。</p>
+<p>③  调用msgsnd函数的进程被信号中断。</p>
+<h4 id="4-msgrcv函数原型"><a href="#4-msgrcv函数原型" class="headerlink" title="4. msgrcv函数原型"></a>4. <code>msgrcv</code>函数原型</h4><table>
+<thead>
+<tr>
+<th>msgrcv (从消息队列读取消息)</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>所需头文件</td>
+<td>#include &lt;sys/types.h&gt;#include &lt;sys/ipc.h&gt;#include &lt;sys/msg.h&gt;</td>
+<td></td>
+</tr>
+<tr>
+<td>函数说明</td>
+<td>从标识符为msqid的消息队列读取消息并存于msgp中，读取后把此消息从消息队列中删除</td>
+<td></td>
+</tr>
+<tr>
+<td>函数原型</td>
+<td>ssize_t msgrcv(int msqid, void *msgp, size_t msgsz, long msgtyp,           int msgflg);</td>
+<td></td>
+</tr>
+<tr>
+<td>函数传入值</td>
+<td>msqid</td>
+<td>消息队列标识符</td>
+</tr>
+<tr>
+<td>msgp</td>
+<td>存放消息的结构体，结构体类型要与msgsnd函数发送的类型相同</td>
+<td></td>
+</tr>
+<tr>
+<td>msgsz</td>
+<td>要接收消息的大小，不含消息类型占用的4个字节</td>
+<td></td>
+</tr>
+<tr>
+<td>msgtyp</td>
+<td>0：接收第一个消息</td>
+<td></td>
+</tr>
+<tr>
+<td>&gt;0：接收类型等于msgtyp的第一个消息</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>&lt;0：接收类型等于或者小于msgtyp绝对值的第一个消息</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>msgflg</td>
+<td>0: 阻塞式接收消息，没有该类型的消息msgrcv函数一直阻塞等待</td>
+<td></td>
+</tr>
+<tr>
+<td>IPC_NOWAIT：如果没有返回条件的消息调用立即返回，此时错误码为ENOMSG</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>IPC_EXCEPT：与msgtype配合使用返回队列中第一个类型不为msgtype的消息</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>IPC_NOERROR：如果队列中满足条件的消息内容大于所请求的size字节，则把该消息截断，截断部分将被丢弃</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>函数返回值</td>
+<td>成功：实际读取到的消息数据长度</td>
+<td></td>
+</tr>
+<tr>
+<td>出错：-1，错误原因存于error中</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>错误代码</td>
+<td>E2BIG：消息数据长度大于msgsz而msgflag没有设置IPC_NOERROREIDRM：标识符为msqid的消息队列已被删除EACCESS：无权限读取该消息队列EFAULT：参数msgp指向无效的内存地址ENOMSG：参数msgflg设为IPC_NOWAIT，而消息队列中无消息可读EINTR：等待读取队列内的消息情况下被信号中断</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>msgrcv()解除阻塞的条件有以下三个：</p>
+<p>①  消息队列中有了满足条件的消息。</p>
+<p>②  msqid代表的消息队列被删除。</p>
+<p>③  调用msgrcv()的进程被信号中断。</p>
+<p>消息队列使用程序范例</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*************************************************************************</span></span><br><span class="line"><span class="comment">	&gt; File Name: msg.c</span></span><br><span class="line"><span class="comment">	&gt; Author:fangsong</span></span><br><span class="line"><span class="comment">	&gt; Mail: </span></span><br><span class="line"><span class="comment">	&gt; Created Time: 2020年05月10日 星期日 16时52分54秒</span></span><br><span class="line"><span class="comment"> ************************************************************************/</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;time.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;errno.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/ipc.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/msg.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">msgbuf</span> &#123;</span></span><br><span class="line">    <span class="keyword">long</span> mtype;</span><br><span class="line">    <span class="keyword">char</span> mtext[<span class="number">80</span>];</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">usage</span><span class="params">(<span class="keyword">char</span> *prog_name, <span class="keyword">char</span> *msg)</span> </span>&#123; <span class="comment">//出错函数</span></span><br><span class="line">    <span class="keyword">if</span> (msg != <span class="literal">NULL</span>)</span><br><span class="line">        <span class="built_in">fputs</span>(msg, <span class="built_in">stderr</span>);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">"Usage: %s [options]\n"</span>, prog_name);</span><br><span class="line">    <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">"Options are:\n"</span>);</span><br><span class="line">    <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">"-s        send message using msgsnd()\n"</span>);</span><br><span class="line">    <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">"-r        read message using msgrcv()\n"</span>);</span><br><span class="line">    <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">"-t        message type (default is 1)\n"</span>);</span><br><span class="line">    <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">"-k        message queue key (default is 1234)\n"</span>);</span><br><span class="line">    <span class="built_in">exit</span>(EXIT_FAILURE);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">send_msg</span><span class="params">(<span class="keyword">int</span> qid, <span class="keyword">int</span> msgtype)</span> </span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">msgbuf</span> <span class="title">msg</span>;</span></span><br><span class="line">    <span class="keyword">time_t</span> t;</span><br><span class="line"></span><br><span class="line">    msg.mtype = msgtype;</span><br><span class="line"></span><br><span class="line">    time(&amp;t);<span class="comment">//取时间</span></span><br><span class="line">    <span class="built_in">snprintf</span>(msg.mtext, <span class="keyword">sizeof</span>(msg.mtext), <span class="string">"a message at %s"</span>, </span><br><span class="line">             ctime(&amp;t));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (msgsnd(qid, (<span class="keyword">void</span> *) &amp;msg, <span class="keyword">sizeof</span>(msg.mtext),</span><br><span class="line">                IPC_NOWAIT) == <span class="number">-1</span>) &#123;</span><br><span class="line">        perror(<span class="string">"msgsnd error"</span>);</span><br><span class="line">        <span class="built_in">exit</span>(EXIT_FAILURE);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"sent: %s\n"</span>, msg.mtext);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">get_msg</span><span class="params">(<span class="keyword">int</span> qid, <span class="keyword">int</span> msgtype)</span> </span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">msgbuf</span> <span class="title">msg</span>;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (msgrcv(qid, (<span class="keyword">void</span> *) &amp;msg, <span class="keyword">sizeof</span>(msg.mtext), msgtype,</span><br><span class="line">               MSG_NOERROR | IPC_NOWAIT) == <span class="number">-1</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (errno != ENOMSG) &#123;</span><br><span class="line">            perror(<span class="string">"msgrcv"</span>);</span><br><span class="line">            <span class="built_in">exit</span>(EXIT_FAILURE);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"No message available for msgrcv()\n"</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"message received: %s\n"</span>, msg.mtext);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> qid, opt;</span><br><span class="line">    <span class="keyword">int</span> mode = <span class="number">0</span>;               <span class="comment">/* 1 = send, 2 = receive */</span></span><br><span class="line">    <span class="keyword">int</span> msgtype = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> msgkey = <span class="number">1234</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> ((opt = getopt(argc, argv, <span class="string">"srt:k:"</span>)) != <span class="number">-1</span>) &#123;</span><br><span class="line">        <span class="keyword">switch</span> (opt) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">'s'</span>:</span><br><span class="line">            mode = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">'r'</span>:</span><br><span class="line">            mode = <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">'t'</span>:</span><br><span class="line">            msgtype = atoi(optarg);</span><br><span class="line">            <span class="keyword">if</span> (msgtype &lt;= <span class="number">0</span>)</span><br><span class="line">                usage(argv[<span class="number">0</span>], <span class="string">"-t option must be greater than 0\n"</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">'k'</span>:</span><br><span class="line">            msgkey = atoi(optarg);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            usage(argv[<span class="number">0</span>], <span class="string">"Unrecognized option\n"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (mode == <span class="number">0</span>)</span><br><span class="line">        usage(argv[<span class="number">0</span>], <span class="string">"must use either -s or -r option\n"</span>);</span><br><span class="line"></span><br><span class="line">    qid = msgget(msgkey, IPC_CREAT | <span class="number">0666</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (qid == <span class="number">-1</span>) &#123;</span><br><span class="line">        perror(<span class="string">"msgget"</span>);</span><br><span class="line">        <span class="built_in">exit</span>(EXIT_FAILURE);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (mode == <span class="number">2</span>)</span><br><span class="line">        get_msg(qid, msgtype);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        send_msg(qid, msgtype);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">exit</span>(EXIT_SUCCESS);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
-<h4 id="542奶酪"><a href="#542奶酪" class="headerlink" title="#542奶酪"></a>#<code>542奶酪</code></h4><p><a href="http://oj.haizeix.com/problem/542" target="_blank" rel="noopener">题目</a></p>
-<p><img src="%E9%80%92%E5%BD%92%E4%B8%8EDFS.assets/image-20200327220747451.png" alt="image-20200327220747451"></p>
-<p>求上下表面数组：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cin</span> &gt;&gt;qiu[i][<span class="number">0</span>] &gt;&gt; qiu[i][<span class="number">1</span>] &gt;&gt; qiu[i][<span class="number">2</span>];</span><br><span class="line">           <span class="keyword">if</span>(qiu[i][<span class="number">2</span>] &lt;= r) &#123;</span><br><span class="line">               low[low_num++] = i;</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="keyword">if</span>(qiu[i][<span class="number">2</span>] + r &gt;= h) &#123;</span><br><span class="line">               up[i] = <span class="number">1</span>;</span><br><span class="line">           &#125;</span><br></pre></td></tr></table></figure>
 
-<p>构建邻接矩阵：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; i; j++) &#123;</span><br><span class="line">              <span class="keyword">int</span> t0 = qiu[i][<span class="number">0</span>] - qiu[j][<span class="number">0</span>];</span><br><span class="line">              <span class="keyword">int</span> t1 = qiu[i][<span class="number">1</span>] - qiu[j][<span class="number">1</span>];</span><br><span class="line">              <span class="keyword">int</span> t2 = qiu[i][<span class="number">2</span>] - qiu[j][<span class="number">2</span>];</span><br><span class="line">              <span class="keyword">if</span>(<span class="built_in">sqrt</span>(t0 * t0 + t1 * t1 + t2 * t2) &lt;= <span class="number">2</span> * r) &#123;</span><br><span class="line">                  arr[i][j] = arr[j][i] = <span class="number">1</span>;</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;</span><br></pre></td></tr></table></figure>
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
 
-<p>遍历下表面进行搜索</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= low_num; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(check[i] == <span class="number">0</span>) &#123;</span><br><span class="line">            check[i] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(dfs(i)) &#123;</span><br><span class="line">                <span class="built_in">cout</span> &lt;&lt; <span class="string">"Yes"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">            flag = <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+    </footer>
 
-<p>dfs函数：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> now)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(up[now] == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(arr[now][i] &amp;&amp; check[i] == <span class="number">0</span>) &#123;</span><br><span class="line">            check[i] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(func(i)) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  </div>
 
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-Mynotes/操作系统与系统编程/文件锁/文件锁" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/%E6%96%87%E4%BB%B6%E9%94%81/%E6%96%87%E4%BB%B6%E9%94%81/"
+    >Mynotes/操作系统与系统编程/文件锁/文件锁</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/%E6%96%87%E4%BB%B6%E9%94%81/%E6%96%87%E4%BB%B6%E9%94%81/" class="article-date">
+  <time datetime="2020-05-13T18:05:21.820Z" itemprop="datePublished">2020-05-13</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h3 id="flock-函数"><a href="#flock-函数" class="headerlink" title="flock()函数"></a>flock()函数</h3><p>####　定义与用法</p>
+<p>​    flock()函数锁死那个或释放文件</p>
+<p>如果成功，则返回true,失败返回false</p>
+<h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">flock(file, lock, block);</span><br><span class="line">原型：<span class="function"><span class="keyword">int</span> <span class="title">flock</span><span class="params">(<span class="keyword">int</span> fd, <span class="keyword">int</span> operation)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>file</p>
+<ul>
+<li><p>必须</p>
+</li>
+<li><p>规定要锁定或释放的一打开的文件</p>
+</li>
+</ul>
+</li>
+<li><p>lock</p>
+<ul>
+<li><p>必须</p>
+</li>
+<li><p>规定要使用那种锁定的类型</p>
+</li>
+<li><p>可能的值：</p>
+</li>
+</ul>
+<p>​        LOCK_SH-共享锁定(读取的程序)。允许其他进程访问该文件</p>
+<p>​        LOCK_EX-独占锁定(写入的程序)。防止其他进程访问该文件</p>
+<p>​        LOCK_UN-释放一个共享锁定或独占锁定</p>
+<p>​        LOCK_NB-锁定的情况下避免阻塞其他进程</p>
+</li>
+<li><p>block</p>
+<ul>
+<li><p>可选</p>
+</li>
+<li><p>若设置为１，则当进行锁定时阻塞其他的进程。</p>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-Mynotes/操作系统与系统编程/信号量/README" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/%E4%BF%A1%E5%8F%B7%E9%87%8F/README/"
+    >Mynotes/操作系统与系统编程/信号量/README</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/%E4%BF%A1%E5%8F%B7%E9%87%8F/README/" class="article-date">
+  <time datetime="2020-05-13T18:05:21.817Z" itemprop="datePublished">2020-05-13</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h1 id="信号量"><a href="#信号量" class="headerlink" title="信号量"></a>信号量</h1><p>目录：</p>
+<ul>
+<li><a href="#一、什么是信号量">一、什么是信号量</a></li>
+</ul>
+<h3 id="一、什么是信号量"><a href="#一、什么是信号量" class="headerlink" title="一、什么是信号量"></a><font color = red>一、什么是信号量</font></h3><p>为了防止出现因多个程序同时访问一个共享资源而引发的一系列问题，我们需要一种方法，它可以通过生成并使用令牌来授权，在任一时刻只能有一个执行线程访问代码的临界区域。临界区域是指执行数据更新的代码需要独占式地执行。而信号量就可以提供这样的一种访问机制，让一个临界区同一时间只有一个线程在访问它，也就是说信号量是用来调协进程对共享资源的访问的。</p>
+<p>信号量是一个特殊的变量，程序对其访问都是原子操作，且只允许对它进行等待（即P(信号变量))和发送（即V(信号变量))信息操作。最简单的信号量是只能取0和1的变量，这也是信号量最常见的一种形式，叫做二进制信号量。而可以取多个正整数的信号量被称为通用信号量。这里主要讨论二进制信号量。</p>
+<h3 id="二、信号量的工作原理"><a href="#二、信号量的工作原理" class="headerlink" title="二、信号量的工作原理"></a><font color = red>二、信号量的工作原理</font></h3><p>由于信号量只能进行两种操作等待和发送信号，即P(sv)和V(sv),他们的行为是这样的：</p>
+<p>P(sv)：如果sv的值大于零，就给它减1；如果它的值为零，就挂起该进程的执行</p>
+<p>V(sv)：如果有其他进程因等待sv而被挂起，就让它恢复运行，如果没有进程因等待sv而挂起，就给它加1.</p>
+<p>举个例子，就是两个进程共享信号量sv，一旦其中一个进程执行了P(sv)操作，它将得到信号量，并可以进入临界区，使sv减1。而第二个进程将被阻止进入临界区，因为当它试图执行P(sv)时，sv为0，它会被挂起以等待第一个进程离开临界区域并执行V(sv)释放信号量，这时第二个进程就可以恢复执行。</p>
+<h3 id="三、Linux的信号量机制"><a href="#三、Linux的信号量机制" class="headerlink" title="三、Linux的信号量机制"></a><font color = red>三、Linux的信号量机制</font></h3><p>Linux提供了一组精心设计的信号量接口来对信号进行操作，它们不只是针对二进制信号量，下面将会对这些函数进行介绍，但请注意，这些函数都是用来对成组的信号量值进行操作的。它们声明在头文件<code>sys/sem.h</code>中。</p>
+<p><strong>1、<code>semget()</code>函数</strong></p>
+<p>它的作用是创建一个新的信号量或取得一个已有的信号量，原型为：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">semget</span><span class="params">(<span class="keyword">key_t</span> key, <span class="keyword">int</span> num_sems, <span class="keyword">int</span> sem_flages)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p>第一个参数key是整数值（唯一非零），不相关的进程可以通过它访问一个信号量，它代表程序可能需要使用某个西园，程序对所有的信号量访问都是间接的，程序先通过调用<code>semget()</code>函数并提供一个键，再由系统生成一个相应的信号标识符（semget()函数的返回值），只有semget()函数才直接使用信号量键，所有其他的信号量函数使用由semget()函数返回的信号量标识符。如果多个程序使用相同的key值，key将负责协调工作。</p>
+<p>第二个参数num_sems指定需要的信号量数目，它的值几乎总是1。</p>
+<p>第三个参数sem_flags是一组标志，当想要当信号量不存在时创建一个新的信号量，可以和值IPC_CREAT做按位或操作。设置了IPC_CREAT标志后，即使给出的键是一个已有信号量的键，也不会产生错误。而IPC_CREAT | IPC_EXCL则可以创建一个新的，唯一的信号量，如果信号量已存在，返回一个错误。</p>
+<p>semget()函数成功返回一个相应信号标识符（非零），失败返回-1.</p>
+<p><strong>2、semop()函数</strong></p>
+<p>它的作用是改变信号量的值，原型为：</p>
+<blockquote>
+<p>int semop(int sem_id, struct sembuf *sem_opa, size_t num_sem_ops);</p>
+</blockquote>
+<p>sem_id是由semget()返回的信号量标识符，sembuf结构的定义如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`struct` `sembuf&#123;``  ``short` `sem_num; ``// 除非使用一组信号量，否则它为0``  ``short` `sem_op; ``// 信号量在一次操作中需要改变的数据，通常是两个数，一个是-1，即P（等待）操作，``          ``// 一个是+1，即V（发送信号）操作。``  ``short` `sem_flg; ``// 通常为SEM_UNDO,使操作系统跟踪信号，``          ``// 并在进程没有释放该信号量而终止时，操作系统释放信号量``&#125;;`</span><br></pre></td></tr></table></figure>
+
+<p><strong>3、semctl()函数</strong></p>
+<p>该函数用来直接控制信号量信息，它的原型为：</p>
+<blockquote>
+<p>int semctl(int sem_id, int sem_num, int command, …);</p>
+</blockquote>
+<p>如果有第四个参数，它通常是一个union semum结构，定义如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`union` `semun &#123;``  ``int` `val;``  ``struct` `semid_ds *buf;``  ``unsigned ``short` `*arry;``&#125;;`</span><br></pre></td></tr></table></figure>
+
+<p>前两个参数与前面一个函数中的一样，command通常是下面两个值中的其中一个</p>
+<p>SETVAL：用来把信号量初始化为一个已知的值。p 这个值通过union semun中的val成员设置，其作用是在信号量第一次使用前对它进行设置。</p>
+<p>IPC_RMID：用于删除一个已经无需继续使用的信号量标识符。</p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-Mynotes/操作系统与系统编程/server_select/README" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/server_select/README/"
+    >Mynotes/操作系统与系统编程/server_select/README</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/server_select/README/" class="article-date">
+  <time datetime="2020-05-13T18:05:21.814Z" itemprop="datePublished">2020-05-13</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p><img src="https://static.dingtalk.com/media/lALPDiQ3KR9S0PHNApTNA5Q_916_660.png_620x10000q90g.jpg?auth_bizType=IM&auth_bizEntity=%7B%22cid%22%3A%22627064533%3A627064533%22%2C%22msgId%22%3A%223484896791903%22%7D&bizType=im&open_id=627064533" alt="图片"></p>
+<p><img src="https://static.dingtalk.com/media/lALPDhJzr-nhBnbNApPNA8U_965_659.png_620x10000q90g.jpg?auth_bizType=IM&auth_bizEntity=%7B%22cid%22%3A%22627064533%3A627064533%22%2C%22msgId%22%3A%223485696508656%22%7D&bizType=im&open_id=627064533" alt="图片"></p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-Mynotes/操作系统与系统编程/server_epoll/README" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/server_epoll/README/"
+    >Mynotes/操作系统与系统编程/server_epoll/README</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/server_epoll/README/" class="article-date">
+  <time datetime="2020-05-13T18:05:21.809Z" itemprop="datePublished">2020-05-13</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p><img src="https://static.dingtalk.com/media/lALPDiCpqpJJGZLNAY7NA84_974_398.png_620x10000q90g.jpg?auth_bizType=IM&auth_bizEntity=%7B%22cid%22%3A%22627064533%3A627064533%22%2C%22msgId%22%3A%223505296142785%22%7D&bizType=im&open_id=627064533" alt="图片"></p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-Mynotes/操作系统与系统编程/popen/README" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/popen/README/"
+    >Mynotes/操作系统与系统编程/popen/README</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/popen/README/" class="article-date">
+  <time datetime="2020-05-13T18:05:21.806Z" itemprop="datePublished">2020-05-13</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p>  主要通过pipe管道实现，具体思路如下：</p>
+<p>​    1、使用pipe()建立管道</p>
+<p>​    2、使用fork()创建子进程</p>
+<p>​    3、在子进程中调用exec族函数执行命令，通过管道将结果传送至父进程</p>
+<p>​    4、在主进程中等待子进程执行，子进程执行完成后将接收其结果，返回结果的文件指针</p>
+<p>下面是popen()在linux中的实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> *	popen.c		Written by W. Richard Stevens</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span>	<span class="meta-string">&lt;sys/wait.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span>	<span class="meta-string">&lt;errno.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span>	<span class="meta-string">&lt;fcntl.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span>	<span class="meta-string">"ourhdr.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">pid_t</span>	*childpid = <span class="literal">NULL</span>;</span><br><span class="line">						<span class="comment">/* ptr to array allocated at run-time */</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">int</span>		maxfd;	<span class="comment">/* from our open_max(), &#123;Prog openmax&#125; */</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span>	SHELL	<span class="meta-string">"/bin/sh"</span></span></span><br><span class="line"></span><br><span class="line">FILE *</span><br><span class="line">popen(<span class="keyword">const</span> <span class="keyword">char</span> *cmdstring, <span class="keyword">const</span> <span class="keyword">char</span> *type)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">int</span>		i, pfd[<span class="number">2</span>];</span><br><span class="line">	<span class="keyword">pid_t</span>	pid;</span><br><span class="line">	FILE	*fp;</span><br><span class="line"></span><br><span class="line">			<span class="comment">/* only allow "r" or "w" */</span></span><br><span class="line">	<span class="keyword">if</span> ((type[<span class="number">0</span>] != <span class="string">'r'</span> &amp;&amp; type[<span class="number">0</span>] != <span class="string">'w'</span>) || type[<span class="number">1</span>] != <span class="number">0</span>) &#123;</span><br><span class="line">		errno = EINVAL;		<span class="comment">/* required by POSIX.2 */</span></span><br><span class="line">		<span class="keyword">return</span>(<span class="literal">NULL</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (childpid == <span class="literal">NULL</span>) &#123;		<span class="comment">/* first time through */</span></span><br><span class="line">				<span class="comment">/* allocate zeroed out array for child pids */</span></span><br><span class="line">		maxfd = open_max();</span><br><span class="line">		<span class="keyword">if</span> ( (childpid = <span class="built_in">calloc</span>(maxfd, <span class="keyword">sizeof</span>(<span class="keyword">pid_t</span>))) == <span class="literal">NULL</span>)</span><br><span class="line">			<span class="keyword">return</span>(<span class="literal">NULL</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (pipe(pfd) &lt; <span class="number">0</span>)</span><br><span class="line">		<span class="keyword">return</span>(<span class="literal">NULL</span>);	<span class="comment">/* errno set by pipe() */</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> ( (pid = fork()) &lt; <span class="number">0</span>)</span><br><span class="line">		<span class="keyword">return</span>(<span class="literal">NULL</span>);	<span class="comment">/* errno set by fork() */</span></span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span> (pid == <span class="number">0</span>) &#123;							<span class="comment">/* child */</span></span><br><span class="line">		<span class="keyword">if</span> (*type == <span class="string">'r'</span>) &#123;</span><br><span class="line">			close(pfd[<span class="number">0</span>]);</span><br><span class="line">			<span class="keyword">if</span> (pfd[<span class="number">1</span>] != STDOUT_FILENO) &#123;</span><br><span class="line">				dup2(pfd[<span class="number">1</span>], STDOUT_FILENO);</span><br><span class="line">				close(pfd[<span class="number">1</span>]);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			close(pfd[<span class="number">1</span>]);</span><br><span class="line">			<span class="keyword">if</span> (pfd[<span class="number">0</span>] != STDIN_FILENO) &#123;</span><br><span class="line">				dup2(pfd[<span class="number">0</span>], STDIN_FILENO);</span><br><span class="line">				close(pfd[<span class="number">0</span>]);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">			<span class="comment">/* close all descriptors in childpid[] */</span></span><br><span class="line">		<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; maxfd; i++)</span><br><span class="line">			<span class="keyword">if</span> (childpid[ i ] &gt; <span class="number">0</span>)</span><br><span class="line">				close(i);</span><br><span class="line"></span><br><span class="line">		execl(SHELL, <span class="string">"sh"</span>, <span class="string">"-c"</span>, cmdstring, (<span class="keyword">char</span> *) <span class="number">0</span>);</span><br><span class="line">		_exit(<span class="number">127</span>);</span><br><span class="line">	&#125;</span><br><span class="line">								<span class="comment">/* parent */</span></span><br><span class="line">	<span class="keyword">if</span> (*type == <span class="string">'r'</span>) &#123;</span><br><span class="line">		close(pfd[<span class="number">1</span>]);</span><br><span class="line">		<span class="keyword">if</span> ( (fp = fdopen(pfd[<span class="number">0</span>], type)) == <span class="literal">NULL</span>)</span><br><span class="line">			<span class="keyword">return</span>(<span class="literal">NULL</span>);</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		close(pfd[<span class="number">0</span>]);</span><br><span class="line">		<span class="keyword">if</span> ( (fp = fdopen(pfd[<span class="number">1</span>], type)) == <span class="literal">NULL</span>)</span><br><span class="line">			<span class="keyword">return</span>(<span class="literal">NULL</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	childpid[fileno(fp)] = pid;	<span class="comment">/* remember child pid for this fd */</span></span><br><span class="line">	<span class="keyword">return</span>(fp);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span></span><br><span class="line">pclose(FILE *fp)</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span>		fd, stat;</span><br><span class="line">	<span class="keyword">pid_t</span>	pid;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (childpid == <span class="literal">NULL</span>)</span><br><span class="line">		<span class="keyword">return</span>(<span class="number">-1</span>);		<span class="comment">/* popen() has never been called */</span></span><br><span class="line"></span><br><span class="line">	fd = fileno(fp);</span><br><span class="line">	<span class="keyword">if</span> ( (pid = childpid[fd]) == <span class="number">0</span>)</span><br><span class="line">		<span class="keyword">return</span>(<span class="number">-1</span>);		<span class="comment">/* fp wasn't opened by popen() */</span></span><br><span class="line"></span><br><span class="line">	childpid[fd] = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">if</span> (fclose(fp) == EOF)</span><br><span class="line">		<span class="keyword">return</span>(<span class="number">-1</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span> (waitpid(pid, &amp;stat, <span class="number">0</span>) &lt; <span class="number">0</span>)</span><br><span class="line">		<span class="keyword">if</span> (errno != EINTR)</span><br><span class="line">			<span class="keyword">return</span>(<span class="number">-1</span>);	<span class="comment">/* error other than EINTR from waitpid() */</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span>(stat);	<span class="comment">/* return child's termination status */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-Mynotes/操作系统与系统编程/PIPE/README" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/PIPE/README/"
+    >Mynotes/操作系统与系统编程/PIPE/README</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/PIPE/README/" class="article-date">
+  <time datetime="2020-05-13T18:05:21.796Z" itemprop="datePublished">2020-05-13</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h1 id="进程间的通信方式——pipe（管道）"><a href="#进程间的通信方式——pipe（管道）" class="headerlink" title="进程间的通信方式——pipe（管道）"></a>进程间的通信方式——pipe（管道）</h1><h1 id="1-进程间通信"><a href="#1-进程间通信" class="headerlink" title="1.进程间通信"></a>1.进程间通信</h1><blockquote>
+<p>每个进程各自有不同的用户地址空间,任何一个进程的全局变量在另一个进程中都看不到，所以进程之间要交换数据必须通过内核,在内核中开辟一块缓冲区,进程A把数据从用户空间拷到内核缓冲区,进程B再从内核缓冲区把数据读走,内核提供的这种机制称为进程间通信。 </p>
+</blockquote>
+<p><img src="https://img-blog.csdn.net/20170509155514495?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc2t5cm9iZW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<p>不同进程间的通信本质：进程之间可以看到一份公共资源；而提供这份资源的形式或者提供者不同，造成了通信方式不同，而 pipe就是提供这份公共资源的形式的一种。</p>
+<h2 id="1-1管道的概念"><a href="#1-1管道的概念" class="headerlink" title="1.1管道的概念"></a>1.1管道的概念</h2><p>​        管道是一种剧本的<code>ＩＰＣ</code>机制，作用于有血缘关系的进程之间，完成数据传输。调用<code>ｐｉｐｅ</code>系统函数即可创建一个管道。有如下性质:</p>
+<p>​        1.其本质是一个伪文件（实质为内核缓冲区）</p>
+<p>​        2.有两个文件描述符引用，一个表示独断，一个表示写端</p>
+<p>​        3.规定数据从管道的写段流入管道，从读端流出。</p>
+<p>管道的原理：管道式为内核使用环形队列机制，借助内核缓冲区(<code>4k</code>)实现</p>
+<p><img src="README.assets/2020-04-08%2016-12-38%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt=""></p>
+<h1 id="2-匿名管道"><a href="#2-匿名管道" class="headerlink" title="2.匿名管道"></a>2.匿名管道</h1><h2 id="2-1管道的创建"><a href="#2-1管道的创建" class="headerlink" title="2.1管道的创建"></a>2.1管道的创建</h2><blockquote>
+<p>管道是由调用pipe函数来创建</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pipe</span> <span class="params">(<span class="keyword">int</span> fd[<span class="number">2</span>])</span></span>;</span><br><span class="line">                         <span class="comment">//返回:成功返回0，出错返回-1</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fd参数返回两个文件描述符,fd[<span class="number">0</span>]指向管道的读端,fd[<span class="number">1</span>]指向管道的写端。fd[<span class="number">1</span>]的输出是fd[<span class="number">0</span>]的输入。</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-2管道如何实现进程间的通信"><a href="#2-2管道如何实现进程间的通信" class="headerlink" title="2.2管道如何实现进程间的通信"></a>2.2管道如何实现进程间的通信</h2><p>（1）父进程创建管道，得到两个⽂件描述符指向管道的两端</p>
+<p>（2）父进程fork出子进程，⼦进程也有两个⽂件描述符指向同⼀管道。</p>
+<p>（3）父进程关闭fd[0],子进程关闭fd[1]，即⽗进程关闭管道读端,⼦进程关闭管道写端（因为管道只支持单向通信）。⽗进程可以往管道⾥写,⼦进程可以从管道⾥读,管道是⽤环形队列实现的,数据从写端流⼊从读端流出,这样就实现了进程间通信。</p>
+<p><img src="https://img-blog.csdn.net/20170509162502566?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc2t5cm9iZW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<h2 id="2-3如和用代码实现管道通信"><a href="#2-3如和用代码实现管道通信" class="headerlink" title="2.3如和用代码实现管道通信"></a>2.3如和用代码实现管道通信</h2><p>见上文档</p>
+<h2 id="2-4管道读取数据的四种的情况"><a href="#2-4管道读取数据的四种的情况" class="headerlink" title="2.4管道读取数据的四种的情况"></a>2.4管道读取数据的四种的情况</h2><p>（1）读端不读，写端一直写</p>
+<p><img src="https://img-blog.csdn.net/20170509235601938?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc2t5cm9iZW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<p>（2）写端不写，但是读端一直读</p>
+<p><img src="https://img-blog.csdn.net/20170510000703098?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc2t5cm9iZW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<p>（3）读端一直读，且fd[0]保持打开，而写端写了一部分数据不写了，并且关闭fd[1]。<img src="https://img-blog.csdn.net/20170510001736356?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc2t5cm9iZW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<p><font color = red>如果一个管道读端一直在读数据，而管道写端的引⽤计数⼤于0决定管道是否会堵塞，引用计数大于0，只读不写会导致管道堵塞。</font></p>
+<p>（4）读端读了一部分数据，不读了且关闭fd[0]，写端一直在写且f[1]还保持打开状态。</p>
+<p><img src="https://img-blog.csdn.net/20170510002648368?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc2t5cm9iZW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<p><font color =red>总结：<br>如果一个管道的写端一直在写，而读端的引⽤计数是否⼤于0决定管道是否会堵塞，引用计数大于0，只写不读再次调用write会导致管道堵塞；<br>如果一个管道的读端一直在读，而写端的引⽤计数是否⼤于0决定管道是否会堵塞，引用计数大于0，只读不写再次调用read会导致管道堵塞；<br>而当他们的引用计数等于0时，只写不读会导致写端的进程收到一个SIGPIPE信号，导致进程终止，只写不读会导致read返回0,就像读到⽂件末尾⼀样。</font></p>
+<h2 id="2-5管道特点"><a href="#2-5管道特点" class="headerlink" title="2.5管道特点"></a>2.5管道特点</h2><blockquote>
+<p>1.管道只允许具有血缘关系的进程间通信，如父子进程间的通信。 </p>
+<p>2.管道只允许单向通信。 </p>
+<p>3.管道内部保证同步机制，从而保证访问数据的一致性。 </p>
+<p>4.面向字节流 </p>
+<p>5.管道随进程，进程在管道在，进程消失管道对应的端口也关闭，两个进程都消失管道也消失。</p>
+</blockquote>
 
       
       <!-- reward -->
@@ -1017,7 +1221,7 @@
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/2/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/2/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/4/">下一页</a>
   </nav>
   
 </section>

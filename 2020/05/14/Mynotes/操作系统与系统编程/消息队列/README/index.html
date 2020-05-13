@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-hanzi" >
+
+
+<head>
+  <meta charset="utf-8" />
+    
+  <meta name="description" content="不要尽力而为，而要全力以赴，即使没有出色的外表和能力，也要压倒一切的霸气，用自己的光，照亮自己的路。" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    Mynotes/操作系统与系统编程/消息队列/README |  恁村扛把子
+  </title>
+  <meta name="generator" content="hexo-theme-yilia-plus">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  <link rel="stylesheet" href="/dist/main.css">
+  <link rel="stylesheet" href="/css/custom.css">
+  
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+  
+  
+
+  
+
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content on">
+      <section class="outer">
+  <article id="post-Mynotes/操作系统与系统编程/消息队列/README" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  Mynotes/操作系统与系统编程/消息队列/README
+</h1>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/README/" class="article-date">
+  <time datetime="2020-05-13T18:05:21.823Z" itemprop="datePublished">2020-05-13</time>
+</a>
+      
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">2.3k字</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">9分钟</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h1 id="消息队列"><a href="#消息队列" class="headerlink" title="消息队列"></a>消息队列</h1><blockquote>
+<p>消息队列函数由<code>msgget</code>、<code>msgctl</code>、<code>msgsnd</code>、<code>msgrcv</code>四个函数组成。下面的表格列出了这四个函数的函数原型及其具体说明。</p>
+</blockquote>
+<h4 id="1-msgget函数原型"><a href="#1-msgget函数原型" class="headerlink" title="1.  msgget函数原型"></a>1.  <code>msgget</code>函数原型</h4><table>
+<thead>
+<tr>
+<th><code>msgget</code>(得到消息队列标识符或创建一个消息队列对象)</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>所需头文件</td>
+<td><code>#include &lt;sys/types.h&gt;#include &lt;sys/ipc.h&gt;#include &lt;sys/msg.h&gt;</code></td>
+<td></td>
+</tr>
+<tr>
+<td>函数说明</td>
+<td>得到消息队列标识符或创建一个消息队列对象并返回消息队列标识符</td>
+<td></td>
+</tr>
+<tr>
+<td>函数原型</td>
+<td><code>int msgget(key_t key, int msgflg)</code></td>
+<td></td>
+</tr>
+<tr>
+<td>函数传入值</td>
+<td>key</td>
+<td>0(IPC_PRIVATE)：会建立新的消息队列</td>
+</tr>
+<tr>
+<td>大于0的32位整数：视参数<code>msgflg</code>来确定操作。通常要求此值来源于<code>ftok</code>返回的<code>IPC</code>键值</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>msgflg</code></td>
+<td>0：取消息队列标识符，若不存在则函数会报错</td>
+<td></td>
+</tr>
+<tr>
+<td><code>IPC_CREAT</code>：当<code>msgflg&amp;IPC_CREAT</code>为真时，如果内核中不存在键值与key相等的消息队列，则新建一个消息队列；如果存在这样的消息队列，返回此消息队列的标识符</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>`IPC_CREAT</td>
+<td>IPC_EXCL`：如果内核中不存在键值与key相等的消息队列，则新建一个消息队列；如果存在这样的消息队列则报错</td>
+<td></td>
+</tr>
+<tr>
+<td>函数返回值</td>
+<td>成功：返回消息队列的标识符</td>
+<td></td>
+</tr>
+<tr>
+<td>出错：-1，错误原因存于error中</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>附加说明</td>
+<td>上述<code>msgflg</code>参数为模式标志参数，使用时需要与<code>IPC</code>对象存取权限（如0600）进行|运算来确定消息队列的存取权限</td>
+<td></td>
+</tr>
+<tr>
+<td>错误代码</td>
+<td><code>EACCES</code>：指定的消息队列已存在，但调用进程没有权限访问它<code>EEXIST：key</code>指定的消息队列已存在，而<code>msgflg</code>中同时指定<code>IPC_CREAT</code>和<code>IPC_EXCL</code>标志<code>ENOENT：key</code>指定的消息队列不存在同时<code>msgflg</code>中没有指定<code>IPC_CREAT标志``ENOMEM</code>：需要建立消息队列，但内存不足<code>ENOSPC</code>：需要建立消息队列，但已达到系统的限制</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>如果用msgget创建了一个新的消息队列对象时，则msqid_ds结构成员变量的值设置如下：</p>
+<p>​    msg_qnum、msg_lspid、msg_lrpid、 msg_stime、msg_rtime设置为0。</p>
+<p>​    msg_ctime设置为当前时间。</p>
+<p>​    msg_qbytes设成系统的限制值。</p>
+<p>​    msgflg的读写权限写入msg_perm.mode中。</p>
+<p>​    msg_perm结构的uid和cuid成员被设置成当前进程的有效用户ID，gid和cuid成员被设置成当前进程的有效组ID。</p>
+<h4 id="2-msgctl函数原型"><a href="#2-msgctl函数原型" class="headerlink" title="2.  msgctl函数原型"></a>2.  <code>msgctl</code>函数原型</h4><table>
+<thead>
+<tr>
+<th>msgctl (获取和设置消息队列的属性)</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>所需头文件</td>
+<td>#include &lt;sys/types.h&gt;#include &lt;sys/ipc.h&gt;#include &lt;sys/msg.h&gt;</td>
+<td></td>
+</tr>
+<tr>
+<td>函数说明</td>
+<td>获取和设置消息队列的属性</td>
+<td></td>
+</tr>
+<tr>
+<td>函数原型</td>
+<td>int msgctl(int msqid, int cmd, struct msqid_ds *buf)</td>
+<td></td>
+</tr>
+<tr>
+<td>函数传入值</td>
+<td>msqid</td>
+<td>消息队列标识符</td>
+</tr>
+<tr>
+<td>cmd</td>
+<td>IPC_STAT:获得msgid的消息队列头数据到buf中</td>
+<td></td>
+</tr>
+<tr>
+<td>IPC_SET：设置消息队列的属性，要设置的属性需先存储在buf中，可设置的属性包括：msg_perm.uid、msg_perm.gid、msg_perm.mode以及msg_qbytes</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>buf：消息队列管理结构体，请参见消息队列内核结构说明部分</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>函数返回值</td>
+<td>成功：0</td>
+<td></td>
+</tr>
+<tr>
+<td>出错：-1，错误原因存于error中</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>错误代码</td>
+<td>EACCESS：参数cmd为IPC_STAT，确无权限读取该消息队列EFAULT：参数buf指向无效的内存地址EIDRM：标识符为msqid的消息队列已被删除EINVAL：无效的参数cmd或msqidEPERM：参数cmd为IPC_SET或IPC_RMID，却无足够的权限执行</td>
+<td></td>
+</tr>
+</tbody></table>
+<h4 id="3-msgsnd函数原型"><a href="#3-msgsnd函数原型" class="headerlink" title="3.  msgsnd函数原型"></a>3.  <code>msgsnd</code>函数原型</h4><table>
+<thead>
+<tr>
+<th>msgsnd (将消息写入到消息队列)</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>所需头文件</td>
+<td>#include &lt;sys/types.h&gt;#include &lt;sys/ipc.h&gt;#include &lt;sys/msg.h&gt;</td>
+<td></td>
+</tr>
+<tr>
+<td>函数说明</td>
+<td>将msgp消息写入到标识符为msqid的消息队列</td>
+<td></td>
+</tr>
+<tr>
+<td>函数原型</td>
+<td>int msgsnd(int msqid, const void *msgp, size_t msgsz, int msgflg)</td>
+<td></td>
+</tr>
+<tr>
+<td>函数传入值</td>
+<td>msqid</td>
+<td>消息队列标识符</td>
+</tr>
+<tr>
+<td>msgp</td>
+<td>发送给队列的消息。msgp可以是任何类型的结构体，但第一个字段必须为long类型，即表明此发送消息的类型，msgrcv根据此接收消息。msgp定义的参照格式如下：  struct s_msg{ /<em>msgp定义的参照格式</em>/    long type; /* 必须大于0,消息类型 <em>/       char mtext[256]; /*消息正文，可以是其他任何类型</em>/   } msgp;</td>
+<td></td>
+</tr>
+<tr>
+<td>msgsz</td>
+<td>要发送消息的大小，不含消息类型占用的4个字节,即mtext的长度</td>
+<td></td>
+</tr>
+<tr>
+<td>msgflg</td>
+<td>0：当消息队列满时，msgsnd将会阻塞，直到消息能写进消息队列</td>
+<td></td>
+</tr>
+<tr>
+<td>IPC_NOWAIT：当消息队列已满的时候，msgsnd函数不等待立即返回</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>IPC_NOERROR：若发送的消息大于size字节，则把该消息截断，截断部分将被丢弃，且不通知发送进程。</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>函数返回值</td>
+<td>成功：0</td>
+<td></td>
+</tr>
+<tr>
+<td>出错：-1，错误原因存于error中</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>错误代码</td>
+<td>EAGAIN：参数msgflg设为IPC_NOWAIT，而消息队列已满EIDRM：标识符为msqid的消息队列已被删除EACCESS：无权限写入消息队列EFAULT：参数msgp指向无效的内存地址EINTR：队列已满而处于等待情况下被信号中断EINVAL：无效的参数msqid、msgsz或参数消息类型type小于0</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>  msgsnd()为阻塞函数，当消息队列容量满或消息个数满会阻塞。消息队列已被删除，则返回EIDRM错误；被信号中断返回E_INTR错误。</p>
+<p> 如果设置IPC_NOWAIT消息队列满或个数满时会返回-1，并且置EAGAIN错误。</p>
+<p>msgsnd()解除阻塞的条件有以下三个条件：</p>
+<p>①  不满足消息队列满或个数满两个条件，即消息队列中有容纳该消息的空间。</p>
+<p>②  msqid代表的消息队列被删除。</p>
+<p>③  调用msgsnd函数的进程被信号中断。</p>
+<h4 id="4-msgrcv函数原型"><a href="#4-msgrcv函数原型" class="headerlink" title="4. msgrcv函数原型"></a>4. <code>msgrcv</code>函数原型</h4><table>
+<thead>
+<tr>
+<th>msgrcv (从消息队列读取消息)</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>所需头文件</td>
+<td>#include &lt;sys/types.h&gt;#include &lt;sys/ipc.h&gt;#include &lt;sys/msg.h&gt;</td>
+<td></td>
+</tr>
+<tr>
+<td>函数说明</td>
+<td>从标识符为msqid的消息队列读取消息并存于msgp中，读取后把此消息从消息队列中删除</td>
+<td></td>
+</tr>
+<tr>
+<td>函数原型</td>
+<td>ssize_t msgrcv(int msqid, void *msgp, size_t msgsz, long msgtyp,           int msgflg);</td>
+<td></td>
+</tr>
+<tr>
+<td>函数传入值</td>
+<td>msqid</td>
+<td>消息队列标识符</td>
+</tr>
+<tr>
+<td>msgp</td>
+<td>存放消息的结构体，结构体类型要与msgsnd函数发送的类型相同</td>
+<td></td>
+</tr>
+<tr>
+<td>msgsz</td>
+<td>要接收消息的大小，不含消息类型占用的4个字节</td>
+<td></td>
+</tr>
+<tr>
+<td>msgtyp</td>
+<td>0：接收第一个消息</td>
+<td></td>
+</tr>
+<tr>
+<td>&gt;0：接收类型等于msgtyp的第一个消息</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>&lt;0：接收类型等于或者小于msgtyp绝对值的第一个消息</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>msgflg</td>
+<td>0: 阻塞式接收消息，没有该类型的消息msgrcv函数一直阻塞等待</td>
+<td></td>
+</tr>
+<tr>
+<td>IPC_NOWAIT：如果没有返回条件的消息调用立即返回，此时错误码为ENOMSG</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>IPC_EXCEPT：与msgtype配合使用返回队列中第一个类型不为msgtype的消息</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>IPC_NOERROR：如果队列中满足条件的消息内容大于所请求的size字节，则把该消息截断，截断部分将被丢弃</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>函数返回值</td>
+<td>成功：实际读取到的消息数据长度</td>
+<td></td>
+</tr>
+<tr>
+<td>出错：-1，错误原因存于error中</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>错误代码</td>
+<td>E2BIG：消息数据长度大于msgsz而msgflag没有设置IPC_NOERROREIDRM：标识符为msqid的消息队列已被删除EACCESS：无权限读取该消息队列EFAULT：参数msgp指向无效的内存地址ENOMSG：参数msgflg设为IPC_NOWAIT，而消息队列中无消息可读EINTR：等待读取队列内的消息情况下被信号中断</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>msgrcv()解除阻塞的条件有以下三个：</p>
+<p>①  消息队列中有了满足条件的消息。</p>
+<p>②  msqid代表的消息队列被删除。</p>
+<p>③  调用msgrcv()的进程被信号中断。</p>
+<p>消息队列使用程序范例</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*************************************************************************</span></span><br><span class="line"><span class="comment">	&gt; File Name: msg.c</span></span><br><span class="line"><span class="comment">	&gt; Author:fangsong</span></span><br><span class="line"><span class="comment">	&gt; Mail: </span></span><br><span class="line"><span class="comment">	&gt; Created Time: 2020年05月10日 星期日 16时52分54秒</span></span><br><span class="line"><span class="comment"> ************************************************************************/</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;time.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;errno.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/ipc.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/msg.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">msgbuf</span> &#123;</span></span><br><span class="line">    <span class="keyword">long</span> mtype;</span><br><span class="line">    <span class="keyword">char</span> mtext[<span class="number">80</span>];</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">usage</span><span class="params">(<span class="keyword">char</span> *prog_name, <span class="keyword">char</span> *msg)</span> </span>&#123; <span class="comment">//出错函数</span></span><br><span class="line">    <span class="keyword">if</span> (msg != <span class="literal">NULL</span>)</span><br><span class="line">        <span class="built_in">fputs</span>(msg, <span class="built_in">stderr</span>);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">"Usage: %s [options]\n"</span>, prog_name);</span><br><span class="line">    <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">"Options are:\n"</span>);</span><br><span class="line">    <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">"-s        send message using msgsnd()\n"</span>);</span><br><span class="line">    <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">"-r        read message using msgrcv()\n"</span>);</span><br><span class="line">    <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">"-t        message type (default is 1)\n"</span>);</span><br><span class="line">    <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">"-k        message queue key (default is 1234)\n"</span>);</span><br><span class="line">    <span class="built_in">exit</span>(EXIT_FAILURE);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">send_msg</span><span class="params">(<span class="keyword">int</span> qid, <span class="keyword">int</span> msgtype)</span> </span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">msgbuf</span> <span class="title">msg</span>;</span></span><br><span class="line">    <span class="keyword">time_t</span> t;</span><br><span class="line"></span><br><span class="line">    msg.mtype = msgtype;</span><br><span class="line"></span><br><span class="line">    time(&amp;t);<span class="comment">//取时间</span></span><br><span class="line">    <span class="built_in">snprintf</span>(msg.mtext, <span class="keyword">sizeof</span>(msg.mtext), <span class="string">"a message at %s"</span>, </span><br><span class="line">             ctime(&amp;t));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (msgsnd(qid, (<span class="keyword">void</span> *) &amp;msg, <span class="keyword">sizeof</span>(msg.mtext),</span><br><span class="line">                IPC_NOWAIT) == <span class="number">-1</span>) &#123;</span><br><span class="line">        perror(<span class="string">"msgsnd error"</span>);</span><br><span class="line">        <span class="built_in">exit</span>(EXIT_FAILURE);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"sent: %s\n"</span>, msg.mtext);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">get_msg</span><span class="params">(<span class="keyword">int</span> qid, <span class="keyword">int</span> msgtype)</span> </span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">msgbuf</span> <span class="title">msg</span>;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (msgrcv(qid, (<span class="keyword">void</span> *) &amp;msg, <span class="keyword">sizeof</span>(msg.mtext), msgtype,</span><br><span class="line">               MSG_NOERROR | IPC_NOWAIT) == <span class="number">-1</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (errno != ENOMSG) &#123;</span><br><span class="line">            perror(<span class="string">"msgrcv"</span>);</span><br><span class="line">            <span class="built_in">exit</span>(EXIT_FAILURE);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"No message available for msgrcv()\n"</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"message received: %s\n"</span>, msg.mtext);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> qid, opt;</span><br><span class="line">    <span class="keyword">int</span> mode = <span class="number">0</span>;               <span class="comment">/* 1 = send, 2 = receive */</span></span><br><span class="line">    <span class="keyword">int</span> msgtype = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> msgkey = <span class="number">1234</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> ((opt = getopt(argc, argv, <span class="string">"srt:k:"</span>)) != <span class="number">-1</span>) &#123;</span><br><span class="line">        <span class="keyword">switch</span> (opt) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">'s'</span>:</span><br><span class="line">            mode = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">'r'</span>:</span><br><span class="line">            mode = <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">'t'</span>:</span><br><span class="line">            msgtype = atoi(optarg);</span><br><span class="line">            <span class="keyword">if</span> (msgtype &lt;= <span class="number">0</span>)</span><br><span class="line">                usage(argv[<span class="number">0</span>], <span class="string">"-t option must be greater than 0\n"</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">'k'</span>:</span><br><span class="line">            msgkey = atoi(optarg);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            usage(argv[<span class="number">0</span>], <span class="string">"Unrecognized option\n"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (mode == <span class="number">0</span>)</span><br><span class="line">        usage(argv[<span class="number">0</span>], <span class="string">"must use either -s or -r option\n"</span>);</span><br><span class="line"></span><br><span class="line">    qid = msgget(msgkey, IPC_CREAT | <span class="number">0666</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (qid == <span class="number">-1</span>) &#123;</span><br><span class="line">        perror(<span class="string">"msgget"</span>);</span><br><span class="line">        <span class="built_in">exit</span>(EXIT_FAILURE);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (mode == <span class="number">2</span>)</span><br><span class="line">        get_msg(qid, msgtype);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        send_msg(qid, msgtype);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">exit</span>(EXIT_SUCCESS);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>版权声明： </strong s>
+              本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow"
+                target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/README/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+      <a href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/%E7%90%86%E8%A7%A3select%E3%80%81poll%E5%92%8Cepoll%E5%8C%BA%E5%88%AB/README/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            Mynotes/操作系统与系统编程/理解select、poll和epoll区别/README
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/%E6%96%87%E4%BB%B6%E9%94%81/%E6%96%87%E4%BB%B6%E9%94%81/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">Mynotes/操作系统与系统编程/文件锁/文件锁</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: '',
+        app_key: '',
+        path: window.location.pathname,
+        notify: 'false',
+        verify: 'false',
+        avatar: 'mp',
+        placeholder: '给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>
+        &copy;
+        2015-2020
+        fangsong
+      </li>
+      <li>
+        
+      </li>
+    </ul>
+    <ul class="list-inline">
+      <li>
+        
+        
+        <span>
+  <i>PV:<span id="busuanzi_value_page_pv"></span></i>
+  <i>UV:<span id="busuanzi_value_site_uv"></span></i>
+</span>
+        
+      </li>
+      
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="恁村扛把子"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2019/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+      strings: ['面朝大海，春暖花开', '愿你一生努力，一生被爱', '想要的都拥有，得不到的都释怀'],
+      startDelay: 0,
+      typeSpeed: 200,
+      loop: true,
+      backSpeed: 100,
+      showCursor: true
+    });
+  } catch (err) {
+  }
+
+</script>
+
+
+
+<script src="/js/tocbot.min.js"></script>
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+<script src="/dist/main.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.6/unpacked/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true
+  }
+</script>
+
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+
+  <script src="/js/clickLove.js"></script>
+
+
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
+        src="//music.163.com/outchain/player?type=2&id=436514312&auto=1&height=32"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+  </div>
+</body>
+
+</html>
