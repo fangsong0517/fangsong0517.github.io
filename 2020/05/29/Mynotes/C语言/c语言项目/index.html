@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-hanzi" >
+
+
+<head>
+  <meta charset="utf-8" />
+    
+  <meta name="description" content="不要尽力而为，而要全力以赴，即使没有出色的外表和能力，也要压倒一切的霸气，用自己的光，照亮自己的路。" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    Mynotes/C语言/c语言项目 |  恁村扛把子
+  </title>
+  <meta name="generator" content="hexo-theme-yilia-plus">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  <link rel="stylesheet" href="/dist/main.css">
+  <link rel="stylesheet" href="/css/custom.css">
+  
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+  
+  
+
+  
+
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content on">
+      <section class="outer">
+  <article id="post-Mynotes/C语言/c语言项目" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  Mynotes/C语言/c语言项目
+</h1>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/29/Mynotes/C%E8%AF%AD%E8%A8%80/c%E8%AF%AD%E8%A8%80%E9%A1%B9%E7%9B%AE/" class="article-date">
+  <time datetime="2020-05-29T06:22:35.926Z" itemprop="datePublished">2020-05-29</time>
+</a>
+      
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">1.8k字</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">9分钟</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h1 id="谷歌测试框架"><a href="#谷歌测试框架" class="headerlink" title="谷歌测试框架"></a>谷歌测试框架</h1><p>##　安装Google test</p>
+<p>下载解压 googletest-master</p>
+<p>下载地址：<a href="https://github.com/google/googletest.git" target="_blank" rel="noopener">https://github.com/google/googletest.git</a></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cmake ./ </span><br><span class="line">sudo apt-get install cmake <span class="comment">//unbantu安装cmake</span></span><br><span class="line">cmake ./</span><br><span class="line">make</span><br></pre></td></tr></table></figure>
+
+<p>![](./图片/2020-01-12 15-07-50屏幕截图.png)</p>
+<p>以上命令会将gtest编译好</p>
+<p>此时完成cmake的安装</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">fangsong@fangsong-FX503VD:~/Mycode/project$ mv googletest-master googletest-master.zip thirdpart/   <span class="comment">//(1)</span></span><br><span class="line">fangsong@fangsong-FX503VD:~/Mycode/project$ ll</span><br><span class="line">总用量 <span class="number">12</span></span><br><span class="line">drwxr-xr-x  <span class="number">3</span> fangsong fangsong <span class="number">4096</span> <span class="number">1</span>月  <span class="number">12</span> <span class="number">15</span>:<span class="number">31</span> ./</span><br><span class="line">drwxr-xr-x <span class="number">10</span> fangsong fangsong <span class="number">4096</span> <span class="number">1</span>月  <span class="number">12</span> <span class="number">14</span>:<span class="number">43</span> ../</span><br><span class="line">drwxr-xr-x  <span class="number">3</span> fangsong fangsong <span class="number">4096</span> <span class="number">1</span>月  <span class="number">12</span> <span class="number">15</span>:<span class="number">31</span> thirdpart/</span><br><span class="line">fangsong@fangsong-FX503VD:~/Mycode/project$ cp -R thirdpart/googletest-master/lib ./ </span><br><span class="line">    <span class="comment">//(2)</span></span><br><span class="line">fangsong@fangsong-FX503VD:~/Mycode/project$ ll</span><br><span class="line">总用量 <span class="number">16</span></span><br><span class="line">drwxr-xr-x  <span class="number">4</span> fangsong fangsong <span class="number">4096</span> <span class="number">1</span>月  <span class="number">12</span> <span class="number">15</span>:<span class="number">31</span> ./</span><br><span class="line">drwxr-xr-x <span class="number">10</span> fangsong fangsong <span class="number">4096</span> <span class="number">1</span>月  <span class="number">12</span> <span class="number">14</span>:<span class="number">43</span> ../</span><br><span class="line">drwxr-xr-x  <span class="number">2</span> fangsong fangsong <span class="number">4096</span> <span class="number">1</span>月  <span class="number">12</span> <span class="number">15</span>:<span class="number">31</span> lib/</span><br><span class="line">drwxr-xr-x  <span class="number">3</span> fangsong fangsong <span class="number">4096</span> <span class="number">1</span>月  <span class="number">12</span> <span class="number">15</span>:<span class="number">31</span> thirdpart/</span><br><span class="line">fangsong@fangsong-FX503VD:~/Mycode/project$ cp -R thirdpart/googletest-master/googletest/include ./ <span class="comment">//(3)</span></span><br><span class="line">fangsong@fangsong-FX503VD:~/Mycode/project$ ll</span><br><span class="line">总用量 <span class="number">20</span></span><br><span class="line">drwxr-xr-x  <span class="number">5</span> fangsong fangsong <span class="number">4096</span> <span class="number">1</span>月  <span class="number">12</span> <span class="number">15</span>:<span class="number">32</span> ./</span><br><span class="line">drwxr-xr-x <span class="number">10</span> fangsong fangsong <span class="number">4096</span> <span class="number">1</span>月  <span class="number">12</span> <span class="number">14</span>:<span class="number">43</span> ../</span><br><span class="line">drwxr-xr-x  <span class="number">3</span> fangsong fangsong <span class="number">4096</span> <span class="number">1</span>月  <span class="number">12</span> <span class="number">15</span>:<span class="number">32</span> include/</span><br><span class="line">drwxr-xr-x  <span class="number">2</span> fangsong fangsong <span class="number">4096</span> <span class="number">1</span>月  <span class="number">12</span> <span class="number">15</span>:<span class="number">31</span> lib/</span><br><span class="line">drwxr-xr-x  <span class="number">3</span> fangsong fangsong <span class="number">4096</span> <span class="number">1</span>月  <span class="number">12</span> <span class="number">15</span>:<span class="number">31</span> thirdpart/</span><br><span class="line">fangsong@fangsong-FX503VD:~/Mycode/project$ ls</span><br><span class="line">include  lib  thirdpart</span><br><span class="line">fangsong@fangsong-FX503VD:~/Mycode/project$ ll</span><br><span class="line">总用量 <span class="number">20</span></span><br><span class="line">drwxr-xr-x  <span class="number">5</span> fangsong fangsong <span class="number">4096</span> <span class="number">1</span>月  <span class="number">12</span> <span class="number">15</span>:<span class="number">32</span> ./</span><br><span class="line">drwxr-xr-x <span class="number">10</span> fangsong fangsong <span class="number">4096</span> <span class="number">1</span>月  <span class="number">12</span> <span class="number">14</span>:<span class="number">43</span> ../</span><br><span class="line">drwxr-xr-x  <span class="number">3</span> fangsong fangsong <span class="number">4096</span> <span class="number">1</span>月  <span class="number">12</span> <span class="number">15</span>:<span class="number">32</span> include/</span><br><span class="line">drwxr-xr-x  <span class="number">2</span> fangsong fangsong <span class="number">4096</span> <span class="number">1</span>月  <span class="number">12</span> <span class="number">15</span>:<span class="number">31</span> lib/</span><br><span class="line">drwxr-xr-x  <span class="number">3</span> fangsong fangsong <span class="number">4096</span> <span class="number">1</span>月  <span class="number">12</span> <span class="number">15</span>:<span class="number">31</span> thirdpart/</span><br><span class="line">fangsong@fangsong-FX503VD:~/Mycode/project$</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g++ main.cpp -I ./include</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g++ -c main.cpp -I ./include</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g++ -L./lib main.o unit.o -lgtest</span><br></pre></td></tr></table></figure>
+
+<p>![](/home/fangsong/文档/图片/2020-01-12 15-27-45屏幕截图.png)</p>
+<p>![](/home/fangsong/文档/图片/2020-01-12 15-19-42屏幕截图.png)</p>
+<p>![](/home/fangsong/文档/图片/2020-01-12 14-58-52屏幕截图.png)</p>
+<p>![](/home/fangsong/文档/图片/2020-01-12 15-29-47屏幕截图.png)</p>
+<p>![](/home/fangsong/文档/图片/2020-01-12 15-35-35屏幕截图.png)</p>
+<p>![](/home/fangsong/文档/图片/2020-01-12 15-38-22屏幕截图.png)</p>
+<p>编译：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">g++ -L./lib main.cpp unit.c -I./include -lgtest -lpthread </span><br><span class="line">    或者</span><br><span class="line">g++ --<span class="built_in">std</span>=c++<span class="number">11</span> -I./include -L./lib main.cpp unit.c -lgtest -lpthread</span><br></pre></td></tr></table></figure>
+
+<p>![](./图片/2020-01-12 17-01-40屏幕截图.png)</p>
+<h2 id="使用gtest"><a href="#使用gtest" class="headerlink" title="使用gtest"></a>使用gtest</h2><p>main.cpp</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iomanip&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;gtest/gtest.h&gt; //谷歌框架的头文件</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"unit.h"</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"> <span class="comment">// TEST此处应该是一个宏</span></span><br><span class="line">TEST(test, add_function) &#123;　<span class="comment">// test是一个测试用例</span></span><br><span class="line">    EXPECT_EQ(add(<span class="number">3</span>, <span class="number">4</span>), <span class="number">7</span>);</span><br><span class="line">    EXPECT_EQ(add(<span class="number">0</span>, <span class="number">0</span>), <span class="number">0</span>);　<span class="comment">// ASSERT_EQ(add(), )　, ASSERT是如果错误到此处，强行停止</span></span><br><span class="line">    EXPECT_EQ(add(<span class="number">-1</span>, <span class="number">-7</span>), <span class="number">-8</span>);　</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span> </span>&#123;</span><br><span class="line">    ::testing::InitGoogleTest(&amp;argc, argv);　<span class="comment">// 初始化谷歌框架调用</span></span><br><span class="line">    <span class="keyword">return</span> RUN_ALL_TESTS();　<span class="comment">// 运行所有的测试用例</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>unit.h</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> _UNIT_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _UNIT_H</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+
+<p>unit.c</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"unit.h"</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>编译和链接程序：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g++ --<span class="built_in">std</span>=c++<span class="number">11</span> -I./include -L./lib main.cpp unit.c -lgtest -lpthread</span><br></pre></td></tr></table></figure>
+
+<p>-L./lib添加静态链接库搜索路径</p>
+<p>-lgtest去找libgtest.a文件</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./a.out</span><br></pre></td></tr></table></figure>
+
+<p>结束！</p>
+<p>![](/home/fangsong/文档/图片/2020-01-12 17-01-40屏幕截图.png)</p>
+<h3 id="知识点：编译和链接程序"><a href="#知识点：编译和链接程序" class="headerlink" title="知识点：编译和链接程序"></a>知识点：编译和链接程序</h3><blockquote>
+<p>-E 预先，将#include的文件展开等<br>-S生成汇编文件<br>-c生成目标文件<br>gcc XX.o -o XX  链接，，输出文件称为XX -O1</p>
+<p>，-O2，-O3 优化代码，-O3级最高，-O1为体积<br>-g及-ggdb等，，生成调试信息</p>
+<p>-fPIC及-fpic，生成动态链接库时使用，，前者在多平台通用，但程序运行速度慢</p>
+<p>-M，-MM，输出文件的依赖关系（各种各样各种.h）文件（写makefile时可以使用）</p>
+<dl><dt>-std = c ++ 14（或-std = gnu ++ 14）-std = c ++ 11（或-std = gnu ++ 11）启用c ++ 14/11的信息，其中使用gnu ++ 14会启用gcc的扩展：<br>https</dt><dd>//gcc.gnu.org/projects/cxx0x.html <a href="https://gcc.gnu.org/projects/cxx1y。" target="_blank" rel="noopener">https://gcc.gnu.org/projects/cxx1y。</a> html</dd></dl><p>一般直接用-c生成对象文件，再多个对象文件链接一下即可或<br>不指定参数，直接从多个.cpp文件生成重定向文件-</p>
+<p>墙壁输出放置多的警告</p>
+<p>-I 头文件路径<br>-L 库文件路径（静态，动态）</p>
+<p>-l库文件（不包含扩展名.so或.a)</p>
+</blockquote>
+<blockquote>
+<h2 id="lpthread和-pthread的区别"><a href="#lpthread和-pthread的区别" class="headerlink" title="-lpthread和-pthread的区别"></a><a href="https://www.cnblogs.com/suntp/p/6473751.html" target="_blank" rel="noopener">-lpthread和-pthread的区别</a></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;编译程序包括 预编译， 编译，汇编，链接，包含头文件了，仅能说明有了线程函数的声明， 但是还没有实现， 加上-lpthread是在链接阶段，链接这个库。&lt;stdio.h&gt;等都是静态库，不需要做额外的表示，连接时会直接链接进代码里。pthread是动态库，需要用-lpthread，所有的动态库都需要用-lxxx来引用</span><br></pre></td></tr></table></figure>
+
+<p>用gcc编译使用了POSIX thread的程序时通常需要加额外的选项，以便使用thread-safe的库及头文件，一些老的书里说直接增加链接选项 -lpthread 就可以了</p>
+<p>而gcc手册里则指出应该在编译和链接时都增加 -pthread 选项</p>
+<p>编译选项中指定 -pthread 会附加一个宏定义 <strong>-D_REENTRANT</strong>，该宏会导致 libc 头文件选择那些thread-safe的实现；链接选项中指定 -pthread 则同 -lpthread 一样，只表示链接 POSIX thread 库。由于 libc 用于适应 thread-safe 的宏定义可能变化，因此在编译和链接时都使用 -pthread 选项而不是传统的 -lpthread 能够保持向后兼容，并提高命令行的一致性。</p>
+<p>目前gcc 4.5.2中已经没有了关于 -lpthread的介绍了。所以以后的多线程编译应该用-pthread，而不是-lpthread。</p>
+<p>参考地址：<a href="http://blog.csdn.net/skylinethj/article/details/38569243" target="_blank" rel="noopener">http://blog.csdn.net/skylinethj/article/details/38569243</a></p>
+</blockquote>
+<p>参考：<a href="https://www.jianshu.com/p/778f835cc18c" target="_blank" rel="noopener">https://www.jianshu.com/p/778f835cc18c</a></p>
+<h1 id="修改为自己的测试框架"><a href="#修改为自己的测试框架" class="headerlink" title="修改为自己的测试框架"></a>修改为自己的测试框架</h1><p>mian.cpp</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iomanip&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"haizei_test.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"unit.h"</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line">__attribute__((constructor))  <span class="comment">//属性构造</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">haizei_init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"hello haizei\n"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">__attribute__((constructor)) <span class="comment">//属性构造:先执行此处，在执行主函数</span></span><br><span class="line">TEST(test, add_function) &#123;</span><br><span class="line">    EXPECT_EQ(add(<span class="number">3</span>, <span class="number">4</span>), <span class="number">7</span>);</span><br><span class="line">    EXPECT_EQ(add(<span class="number">0</span>, <span class="number">0</span>), <span class="number">0</span>);</span><br><span class="line">    EXPECT_EQ(add(<span class="number">-1</span>, <span class="number">-7</span>), <span class="number">-8</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> RUN_ALL_TESTS();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>unit.h</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> _UNIT_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _UNIT_H</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+
+<p>unit.cc</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"unit.h"</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>haizei_test.h</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> _HAIZEI_TEST_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _HAIZEI_TEST_H</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TEST(a, b) void a##b()</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> EXPECT_EQ(a, b) &#123;\</span></span><br><span class="line">    <span class="keyword">if</span>(a == b) &#123;\</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"YES\n"</span>);\</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;\</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"NO\n"</span>);\</span><br><span class="line">    &#125;\</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">RUN_ALL_TESTS</span><span class="params">()</span></span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+
+<p>haizei_test.cc</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">RUN_ALL_TESTS</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="改进"><a href="#改进" class="headerlink" title="改进"></a>改进</h4><p>haizei_test.h</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> _HAIZEI_TEST_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _HAIZEI_TEST_H</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX_N 1000</span></span><br><span class="line"><span class="function"><span class="keyword">typedef</span> <span class="title">void</span> <span class="params">(*Func_T)</span><span class="params">()</span></span>;</span><br><span class="line"><span class="keyword">extern</span> Func_T func_arr[MAX_N];</span><br><span class="line"></span><br><span class="line"><span class="keyword">extern</span> <span class="keyword">int</span> func_cnt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TEST(a, b) \</span></span><br><span class="line">         <span class="keyword">void</span> a#<span class="meta">#b(); \</span></span><br><span class="line">         __attribute__((constructor)) \</span><br><span class="line">         <span class="keyword">void</span> add_#<span class="meta">#a##b() &#123; \</span></span><br><span class="line">             func_arr[func_cnt++] = a##b;\</span><br><span class="line">         &#125; \</span><br><span class="line">         <span class="keyword">void</span> a#<span class="meta">#b()</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> EXPECT_EQ(a, b) &#123;\</span></span><br><span class="line">    <span class="keyword">if</span>(a == b) &#123;\</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"YES\n"</span>);\</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;\</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"NO\n"</span>);\</span><br><span class="line">    &#125;\</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">RUN_ALL_TESTS</span><span class="params">()</span></span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+
+<p>haizei_test.cc</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"haizei_test.h"</span></span></span><br><span class="line"></span><br><span class="line">Func_T func_arr[MAX_N];</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> func_cnt = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">RUN_ALL_TESTS</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; func_cnt; i++) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"run TEST %d \n"</span>, i + <span class="number">1</span>);</span><br><span class="line">         func_arr[i]();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<p>##　泛型宏</p>
+<p>根据类型不一样，替换操作</p>
+<p>＃停</p>
+<p>文件：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">haizei_test.c </span><br><span class="line">main.c    </span><br><span class="line">test.cpp   </span><br><span class="line">unit.c</span><br><span class="line">bin    </span><br><span class="line">haizei_test.h  lib      </span><br><span class="line">makefile  </span><br><span class="line">thirdpart  </span><br><span class="line">unit.h</span><br></pre></td></tr></table></figure>
+
+
+
+<p>![](./图片/2020-01-14 18-43-28屏幕截图.png)建立makefile</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">all: <span class="comment">//目标</span></span><br><span class="line">	gcc -o ./bin/haizei_test -<span class="built_in">std</span>=c11 ./main.c ./haizei_test.c ./unit.c　<span class="comment">// 编译 </span></span><br><span class="line">	./bin/haizei_test　<span class="comment">// 执行</span></span><br><span class="line">clean:　<span class="comment">// 编译目标</span></span><br><span class="line">	rm ./bin/haizei_test</span><br></pre></td></tr></table></figure>
+
+<p>然后make</p>
+<p>颜色控制：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> COLOR(str, code) <span class="meta-string">"\033["</span> #code <span class="meta-string">"m"</span> str <span class="meta-string">"\033[0m"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> YELLOW(str) COLOR(str, 33)</span></span><br><span class="line"><span class="comment">//#define YELLOW(str) "\033[33m" str"\033[0m"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(YELLOW(<span class="string">"ping攻击中...\n"</span>));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\033[5;33;46m警告！！！\033[0m"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>版权声明： </strong s>
+              本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow"
+                target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/05/29/Mynotes/C%E8%AF%AD%E8%A8%80/c%E8%AF%AD%E8%A8%80%E9%A1%B9%E7%9B%AE/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+      <a href="/2020/05/29/Mynotes/Hzoj_Code/README/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            Mynotes/Hzoj_Code/README
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/05/29/Mynotes/C%E8%AF%AD%E8%A8%80/C%E8%AF%AD%E8%A8%80csdn%E5%8D%9A%E5%AE%A2%E6%80%BB%E7%BB%93/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">Mynotes/C语言/C语言csdn博客总结</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: '',
+        app_key: '',
+        path: window.location.pathname,
+        notify: 'false',
+        verify: 'false',
+        avatar: 'mp',
+        placeholder: '给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>
+        &copy;
+        2015-2020
+        fangsong
+      </li>
+      <li>
+        
+      </li>
+    </ul>
+    <ul class="list-inline">
+      <li>
+        
+        
+        <span>
+  <i>PV:<span id="busuanzi_value_page_pv"></span></i>
+  <i>UV:<span id="busuanzi_value_site_uv"></span></i>
+</span>
+        
+      </li>
+      
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="恁村扛把子"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2019/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+      strings: ['面朝大海，春暖花开', '愿你一生努力，一生被爱', '想要的都拥有，得不到的都释怀'],
+      startDelay: 0,
+      typeSpeed: 200,
+      loop: true,
+      backSpeed: 100,
+      showCursor: true
+    });
+  } catch (err) {
+  }
+
+</script>
+
+
+
+<script src="/js/tocbot.min.js"></script>
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+<script src="/dist/main.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.6/unpacked/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true
+  }
+</script>
+
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+
+  <script src="/js/clickLove.js"></script>
+
+
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
+        src="//music.163.com/outchain/player?type=2&id=436514312&auto=1&height=32"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+  </div>
+</body>
+
+</html>
