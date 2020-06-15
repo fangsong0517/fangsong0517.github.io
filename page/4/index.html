@@ -73,7 +73,7 @@
     
     
     
-    <article id="post-Mynotes/计算机网络/封装成帧&amp;差错检测" class="article article-type-post" itemscope
+    <article id="post-Mynotes/计算机网络/网络层协议" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -81,8 +81,8 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/05/14/Mynotes/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E5%B0%81%E8%A3%85%E6%88%90%E5%B8%A7&%E5%B7%AE%E9%94%99%E6%A3%80%E6%B5%8B/"
-    >Mynotes/计算机网络/封装成帧&amp;差错检测</a> 
+  <a class="article-title" href="/2020/05/14/Mynotes/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%B1%82%E5%8D%8F%E8%AE%AE/"
+    >Mynotes/计算机网络/网络层协议</a> 
 </h2>
  
 
@@ -91,8 +91,8 @@
 
     
     <div class="article-meta">
-      <a href="/2020/05/14/Mynotes/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E5%B0%81%E8%A3%85%E6%88%90%E5%B8%A7&%E5%B7%AE%E9%94%99%E6%A3%80%E6%B5%8B/" class="article-date">
-  <time datetime="2020-05-13T18:05:21.898Z" itemprop="datePublished">2020-05-13</time>
+      <a href="/2020/05/14/Mynotes/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%B1%82%E5%8D%8F%E8%AE%AE/" class="article-date">
+  <time datetime="2020-05-13T18:05:21.900Z" itemprop="datePublished">2020-05-13</time>
 </a>
       
       
@@ -109,38 +109,198 @@
       
 
       
-      <h1 id="封装成帧"><a href="#封装成帧" class="headerlink" title="封装成帧"></a>封装成帧</h1><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gel1u2pcpzj31a80qi7j2.jpg" alt="image.png"></p>
-<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gel1wq08qej31c40kmqfi.jpg" alt="image.png"></p>
-<h1 id="差错检测"><a href="#差错检测" class="headerlink" title="差错检测"></a>差错检测</h1><ul>
-<li>在传输过程中0可能变为1，1可能变为0，这就是<strong>比特差错</strong></li>
-<li>在一段时间内所传输错误比特所占比特总数称为<strong>误码率BER</strong></li>
-<li>使用<strong>差错检测码</strong>来检测数据在传输过程中是否产生了比特差错，是数据链路层所要解决重要问题之一</li>
-</ul>
-<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gel3d4hyypj30jx064mzs.jpg" alt="image.png"></p>
-<blockquote>
-<p>图中FCS是检查是否产生误码</p>
-</blockquote>
+      <h1 id="网络层协议"><a href="#网络层协议" class="headerlink" title="网络层协议"></a>网络层协议</h1><h2 id="网络层概述"><a href="#网络层概述" class="headerlink" title="网络层概述"></a>网络层概述</h2><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gej34l6f1xj31930qx4gp.jpg" alt="image.png"></p>
+<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gej373mdotj31ax0qu4dn.jpg" alt="image.png"></p>
+<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gej38ani9vj30k20a3q7r.jpg" alt="image.png"></p>
+<h2 id="转发"><a href="#转发" class="headerlink" title="转发"></a>转发</h2><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gehsznz5mtj30ol03adj8.jpg" alt="image.png"></p>
+<h2 id="路由选择"><a href="#路由选择" class="headerlink" title="路由选择"></a>路由选择</h2><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1geht0lxsz8j30q201y0tw.jpg" alt="image.png"></p>
+<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1geht4g6v0cj30qo0f3ah9.jpg" alt="image.png"></p>
+<h2 id="一个简单的虚电路网络"><a href="#一个简单的虚电路网络" class="headerlink" title="一个简单的虚电路网络"></a>一个简单的虚电路网络</h2><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gehtdjymw5j30pf0ae78i.jpg" alt="image.png"></p>
+<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gej3y4ul9zj31h20nxawl.jpg" alt="image.png"></p>
+<h2 id="虚电路建立"><a href="#虚电路建立" class="headerlink" title="虚电路建立"></a>虚电路建立</h2><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gehtdzyd5vj30mk087tep.jpg" alt="image.png"></p>
+<h2 id="数据报网络"><a href="#数据报网络" class="headerlink" title="数据报网络"></a>数据报网络</h2><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gej40p09v9j31g80naqqa.jpg" alt="image.png"></p>
+<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gehtetrx9hj30qh08xdkv.jpg" alt="image.png"></p>
+<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gehtf8wcqjj30i50f9q8d.jpg" alt="image.png"></p>
+<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gej41g0728j31dq0kb16q.jpg" alt="image.png"></p>
+<h2 id="路由选择协议概述"><a href="#路由选择协议概述" class="headerlink" title="路由选择协议概述"></a>路由选择协议概述</h2><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gej480h9isj30o50a6tez.jpg" alt="image.png"></p>
+<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gej4aap4gyj30pu0c40xj.jpg" alt="image.png"></p>
+<h2 id="路由器"><a href="#路由器" class="headerlink" title="路由器"></a>路由器</h2><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gehtgi19poj30lx09bwim.jpg" alt="image.png"></p>
+<h3 id="输入端口"><a href="#输入端口" class="headerlink" title="输入端口"></a>输入端口</h3><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gehtievlmqj30pm07h40e.jpg" alt="image.png"></p>
+<p>数据链路处理：数据拆分</p>
+<p>###　交换结构</p>
+<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gehtp3qcuaj30og07qwic.jpg" alt="image.png"> </p>
+<p>内存:速度慢，cpu性能，不稳定枷锁…</p>
+<p>纵横式:独立控制，减少冲突，高端</p>
+<h3 id="输出端口"><a href="#输出端口" class="headerlink" title="输出端口"></a>输出端口</h3><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gehtmqtnfmj30p907hdhj.jpg" alt="image.png"></p>
+<h2 id="网络层主要三块"><a href="#网络层主要三块" class="headerlink" title="网络层主要三块"></a>网络层主要三块</h2><p><img src="/home/fangsong/.config/Typora/typora-user-images/image-20200505200636360.png" alt="image-20200505200636360"></p>
+<h2 id="IP数据报"><a href="#IP数据报" class="headerlink" title="IP数据报"></a>IP数据报</h2><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gehu8qforuj30zk0k0dh9.jpg" alt="undefined"></p>
+<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gehue96y5yj30zk0k0di4.jpg" alt="undefined"></p>
+<h2 id="网络地址转换"><a href="#网络地址转换" class="headerlink" title="网络地址转换"></a>网络地址转换</h2><p>局域网ip之所以能进行通信，在于网络转换…</p>
+<p>网络地址转换是干什么的?</p>
+<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gehun1frplj30ru0ecjvw.jpg" alt="image.png"></p>
+<p>NAT右边10.0.0.1等是局域网，靠近局域网10.0.0.4是个路由器，如果要进行通信,在NAT转换表加一记录</p>
+<h2 id="ICMP协议"><a href="#ICMP协议" class="headerlink" title="ICMP协议"></a>ICMP协议</h2><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gehuyq8dvfj30on04rwgd.jpg" alt="image.png"></p>
+<h3 id="ICMP报文类型"><a href="#ICMP报文类型" class="headerlink" title="ICMP报文类型"></a>ICMP报文类型</h3><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gehv0xmab7j30db0apn1k.jpg" alt="image.png"></p>
+<h2 id="自制系统间的路由选择BGP"><a href="#自制系统间的路由选择BGP" class="headerlink" title="自制系统间的路由选择BGP"></a>自制系统间的路由选择BGP</h2><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gehwbjts0sj30oq08ptdp.jpg" alt="image.png"></p>
+<p>将自制系统连接</p>
+<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gej4vdwpz1j30pa0bu447.jpg" alt="image.png"></p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-Mynotes/计算机网络/流量控制" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/05/14/Mynotes/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6/"
+    >Mynotes/计算机网络/流量控制</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/14/Mynotes/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6/" class="article-date">
+  <time datetime="2020-05-13T18:05:21.899Z" itemprop="datePublished">2020-05-13</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h1 id="流量控制"><a href="#流量控制" class="headerlink" title="流量控制"></a>流量控制</h1><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gefpe9pjhpj30l80al0v0.jpg" alt="image.png"></p>
+<p>为了解决上图中的溢出等，从而引入<strong>流量控制</strong></p>
 <ul>
-<li><p><strong>奇偶校验</strong></p>
-<p>在代码送数据后面<strong>添加1位奇偶校验位</strong>，使整个数据中的*<em>“1”的个数 *</em>为奇数（奇校验）或偶数</p>
-<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gel3i7pyfwj30ms03974w.jpg" alt="image.png"></p>
-<p>在传输的过程中发现比特1的个数为偶数不是奇数，就知道传输过程中发生误码！</p>
-<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gel3jo8tpej30m601874n.jpg" alt="image.png"></p>
-<p>如果发生2位误码，在传输的过程中发现比特1的个数为奇数，就误认为传输过程中没发生误码</p>
-<p>（奇数性质不变）无法识别</p>
-<p>则<strong>偶校验类似</strong></p>
-<p>得之：只有奇数变偶数或偶数变奇数才能发现误码</p>
+<li><p>流量控制(flow control)<font color = red> 让发送方发送速度不要太快，让接收方的来得及接收</font></p>
 </li>
-<li><p><strong>循环冗余检验</strong></p>
-<p>收发双方约定好一个<code>生成多项式G(x)</code>;</p>
-<p>发送方基于待发送数据和多项式计算出错检测码（<code>冗余码</code>），将其添加到待传输数据后面一起传输；</p>
-<p>接收方通过生成多项式来计算收到的数据是否产生误码；</p>
-<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gel4em51nfj30or07rmzl.jpg" alt="image.png"></p>
-<p>​</p>
-<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gel4h2n8tsj30q00bsjw6.jpg" alt="image.png"></p>
+<li><p>流量控制的基本方法就是<font color =red>由接收方控制发送方的发送数据的速率</font>.常见的方法有以下两种：</p>
+<ul>
+<li><font color = red> 停止-等待</font>流量控制</li>
+<li><font color =red> 滑动窗口</font>流量控制</li>
+</ul>
 </li>
 </ul>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gel4inblk0j30oe08ktex.jpg" alt="image.png"></p>
+<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gefpllxuvij31fl0ng7mo.jpg" alt="image.png"></p>
+<h2 id="停止-等待流量控制"><a href="#停止-等待流量控制" class="headerlink" title="停止-等待流量控制"></a><font color = red>停止-等待</font>流量控制</h2><p>发送方先发送后停止，当接收方返回信息确认，才可以发送下一帧。<br><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gefpqiiwayj302q06d74a.jpg" alt="image.png" style="zoom: 80%;" /><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gefpu1q8szj31g60pwh2c.jpg" alt="image.png"></p>
+<h2 id="滑动窗口流量控制"><a href="#滑动窗口流量控制" class="headerlink" title=" 滑动窗口流量控制"></a><font color =red> 滑动窗口</font>流量控制</h2><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gefpxm5bxsj30lf0603yz.jpg" alt="image.png"></p>
+<h2 id="二者对比"><a href="#二者对比" class="headerlink" title="二者对比"></a>二者对比</h2><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gefpzl8a1ej31gb0prts7.jpg" alt="image.png"></p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-Mynotes/计算机网络/数据链路层概述" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/05/14/Mynotes/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82%E6%A6%82%E8%BF%B0/"
+    >Mynotes/计算机网络/数据链路层概述</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/14/Mynotes/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82%E6%A6%82%E8%BF%B0/" class="article-date">
+  <time datetime="2020-05-13T18:05:21.899Z" itemprop="datePublished">2020-05-13</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h1 id="数据链路层概述"><a href="#数据链路层概述" class="headerlink" title="数据链路层概述"></a>数据链路层概述</h1><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gekacot1cfj30l50b0djp.jpg" alt="image.png"></p>
+<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gekaeecslij30j30avtcj.jpg" alt="image.png"></p>
+<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gekahbmt1dj31bz0qoqrn.jpg" alt="image.png"></p>
+<h2 id="数据链路层的三个重要问题"><a href="#数据链路层的三个重要问题" class="headerlink" title="数据链路层的三个重要问题"></a>数据链路层的三个重要问题</h2><h3 id="分装成帧"><a href="#分装成帧" class="headerlink" title="分装成帧"></a>分装成帧</h3><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gekajj0rqzj317s0m7tgv.jpg" alt="image.png"></p>
+<p><img src="/home/fangsong/.config/Typora/typora-user-images/image-20200507231401026.png" alt="image-20200507231401026"></p>
+<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gekakuhymdj31830oowni.jpg" alt="image.png"></p>
+<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gekalpszq4j317m0mdjyr.jpg" alt="image.png"></p>
+<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gekanlnqlmj30pa05977o.jpg" alt="image.png"></p>
+<h3 id="差错检测"><a href="#差错检测" class="headerlink" title="差错检测"></a>差错检测</h3><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gekapjg5hxj316z0os12b.jpg" alt="image.png"></p>
+<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gekaqds31vj31710okq97.jpg" alt="image.png"></p>
+<h3 id="可靠传输"><a href="#可靠传输" class="headerlink" title="可靠传输"></a>可靠传输</h3><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gekary80loj316i0oqgxc.jpg" alt="image.png"></p>
+<h2 id="使用广播信道的数据链路层"><a href="#使用广播信道的数据链路层" class="headerlink" title="使用广播信道的数据链路层"></a>使用广播信道的数据链路层</h2><p>1.为什么B D E 能分清不是传给自己的?</p>
+<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gekaugfhztj31ai0motib.jpg" alt="image.png">2.碰撞</p>
+<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gekaxar2rbj319g0dtn4x.jpg" alt="image.png"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gekay5tjrkj30ub0njn6c.jpg" alt="image.png"></p>
 
       
       <!-- reward -->
@@ -249,6 +409,101 @@ IP地址＋端口号: 可以在网络环境中，唯一标识别一个进程
 6个标志位。
 16位窗口大小。2^16=65536</code></pre></li>
 </ul>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-Mynotes/计算机网络/封装成帧&amp;差错检测" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/05/14/Mynotes/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E5%B0%81%E8%A3%85%E6%88%90%E5%B8%A7&%E5%B7%AE%E9%94%99%E6%A3%80%E6%B5%8B/"
+    >Mynotes/计算机网络/封装成帧&amp;差错检测</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/14/Mynotes/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E5%B0%81%E8%A3%85%E6%88%90%E5%B8%A7&%E5%B7%AE%E9%94%99%E6%A3%80%E6%B5%8B/" class="article-date">
+  <time datetime="2020-05-13T18:05:21.898Z" itemprop="datePublished">2020-05-13</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h1 id="封装成帧"><a href="#封装成帧" class="headerlink" title="封装成帧"></a>封装成帧</h1><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gel1u2pcpzj31a80qi7j2.jpg" alt="image.png"></p>
+<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gel1wq08qej31c40kmqfi.jpg" alt="image.png"></p>
+<h1 id="差错检测"><a href="#差错检测" class="headerlink" title="差错检测"></a>差错检测</h1><ul>
+<li>在传输过程中0可能变为1，1可能变为0，这就是<strong>比特差错</strong></li>
+<li>在一段时间内所传输错误比特所占比特总数称为<strong>误码率BER</strong></li>
+<li>使用<strong>差错检测码</strong>来检测数据在传输过程中是否产生了比特差错，是数据链路层所要解决重要问题之一</li>
+</ul>
+<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gel3d4hyypj30jx064mzs.jpg" alt="image.png"></p>
+<blockquote>
+<p>图中FCS是检查是否产生误码</p>
+</blockquote>
+<ul>
+<li><p><strong>奇偶校验</strong></p>
+<p>在代码送数据后面<strong>添加1位奇偶校验位</strong>，使整个数据中的*<em>“1”的个数 *</em>为奇数（奇校验）或偶数</p>
+<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gel3i7pyfwj30ms03974w.jpg" alt="image.png"></p>
+<p>在传输的过程中发现比特1的个数为偶数不是奇数，就知道传输过程中发生误码！</p>
+<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gel3jo8tpej30m601874n.jpg" alt="image.png"></p>
+<p>如果发生2位误码，在传输的过程中发现比特1的个数为奇数，就误认为传输过程中没发生误码</p>
+<p>（奇数性质不变）无法识别</p>
+<p>则<strong>偶校验类似</strong></p>
+<p>得之：只有奇数变偶数或偶数变奇数才能发现误码</p>
+</li>
+<li><p><strong>循环冗余检验</strong></p>
+<p>收发双方约定好一个<code>生成多项式G(x)</code>;</p>
+<p>发送方基于待发送数据和多项式计算出错检测码（<code>冗余码</code>），将其添加到待传输数据后面一起传输；</p>
+<p>接收方通过生成多项式来计算收到的数据是否产生误码；</p>
+<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gel4em51nfj30or07rmzl.jpg" alt="image.png"></p>
+<p>​</p>
+<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gel4h2n8tsj30q00bsjw6.jpg" alt="image.png"></p>
+</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gel4inblk0j30oe08ktex.jpg" alt="image.png"></p>
 
       
       <!-- reward -->
@@ -417,6 +672,81 @@ IP地址＋端口号: 可以在网络环境中，唯一标识别一个进程
 
 </article>
     
+    <article id="post-Mynotes/计算机网络/可靠传输的实现机制" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/05/14/Mynotes/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E5%8F%AF%E9%9D%A0%E4%BC%A0%E8%BE%93%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%9C%BA%E5%88%B6/"
+    >Mynotes/计算机网络/可靠传输的实现机制</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/14/Mynotes/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E5%8F%AF%E9%9D%A0%E4%BC%A0%E8%BE%93%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%9C%BA%E5%88%B6/" class="article-date">
+  <time datetime="2020-05-13T18:05:21.897Z" itemprop="datePublished">2020-05-13</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h1 id="可靠传输的实现机制"><a href="#可靠传输的实现机制" class="headerlink" title="可靠传输的实现机制"></a>可靠传输的实现机制</h1><h2 id="1-停止等待"><a href="#1-停止等待" class="headerlink" title="1.停止等待"></a>1.停止等待</h2><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gel8tkismgj30q20cl477.jpg" alt="image.png"></p>
+<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gel8wjy1b1j30qy05ojwe.jpg" alt="image.png"></p>
+<h3 id="1-1信道利用率"><a href="#1-1信道利用率" class="headerlink" title="1.1信道利用率"></a>1.1信道利用率</h3><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gel8yyavsjj30ps0960w0.jpg" alt="image.png">)<img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gelb0wkh72j30pn0a6jy1.jpg" alt="image.png"></p>
+<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gelb3mjfd8j30pz09vtd7.jpg" alt="image.png"><br>$$<br>信号利用率=数据帧发送时延/（数据帧发送时延 + 端到端往返时延）<br>$$</p>
+<h3 id="1-2总结："><a href="#1-2总结：" class="headerlink" title="1.2总结："></a>1.2<strong>总结：</strong></h3><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gelb6pqd9rj30qs0dsqex.jpg" alt="image.png"></p>
+<h2 id="2-回退N帧协议GBN"><a href="#2-回退N帧协议GBN" class="headerlink" title="2.回退N帧协议GBN"></a>2.回退N帧协议GBN</h2><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gelbc5la9tj30pf0a5jxg.jpg" alt="image.png"></p>
+<p>在流水线基础上引入回退N帧协议GBN</p>
+<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1geles1nrecj31er0nlkhg.jpg" alt="image.png"></p>
+<h2 id="3-选择重传协议"><a href="#3-选择重传协议" class="headerlink" title="3.选择重传协议"></a>3.选择重传协议</h2><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gelett3u57j31g20k1nn5.jpg" alt="image.png"></p>
+<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gelf10hagcj30pi0bwq7e.jpg" alt="image.png"></p>
+<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gelf1dc4z7j30ag018t90.jpg" alt="image.png"></p>
+<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gelf35y2a6j31fj0o31aj.jpg" alt="image.png"></p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-Mynotes/计算机网络/可靠传输概念" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -479,81 +809,6 @@ IP地址＋端口号: 可以在网络环境中，唯一标识别一个进程
 <li>可靠传输服务不仅限于数据链路层</li>
 </ul>
 <p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gel52ze5inj30pi08779d.jpg" alt="image.png"></p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-Mynotes/计算机网络/可靠传输的实现机制" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/05/14/Mynotes/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E5%8F%AF%E9%9D%A0%E4%BC%A0%E8%BE%93%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%9C%BA%E5%88%B6/"
-    >Mynotes/计算机网络/可靠传输的实现机制</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/05/14/Mynotes/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E5%8F%AF%E9%9D%A0%E4%BC%A0%E8%BE%93%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%9C%BA%E5%88%B6/" class="article-date">
-  <time datetime="2020-05-13T18:05:21.897Z" itemprop="datePublished">2020-05-13</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h1 id="可靠传输的实现机制"><a href="#可靠传输的实现机制" class="headerlink" title="可靠传输的实现机制"></a>可靠传输的实现机制</h1><h2 id="1-停止等待"><a href="#1-停止等待" class="headerlink" title="1.停止等待"></a>1.停止等待</h2><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gel8tkismgj30q20cl477.jpg" alt="image.png"></p>
-<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gel8wjy1b1j30qy05ojwe.jpg" alt="image.png"></p>
-<h3 id="1-1信道利用率"><a href="#1-1信道利用率" class="headerlink" title="1.1信道利用率"></a>1.1信道利用率</h3><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gel8yyavsjj30ps0960w0.jpg" alt="image.png">)<img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gelb0wkh72j30pn0a6jy1.jpg" alt="image.png"></p>
-<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gelb3mjfd8j30pz09vtd7.jpg" alt="image.png"><br>$$<br>信号利用率=数据帧发送时延/（数据帧发送时延 + 端到端往返时延）<br>$$</p>
-<h3 id="1-2总结："><a href="#1-2总结：" class="headerlink" title="1.2总结："></a>1.2<strong>总结：</strong></h3><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gelb6pqd9rj30qs0dsqex.jpg" alt="image.png"></p>
-<h2 id="2-回退N帧协议GBN"><a href="#2-回退N帧协议GBN" class="headerlink" title="2.回退N帧协议GBN"></a>2.回退N帧协议GBN</h2><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gelbc5la9tj30pf0a5jxg.jpg" alt="image.png"></p>
-<p>在流水线基础上引入回退N帧协议GBN</p>
-<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1geles1nrecj31er0nlkhg.jpg" alt="image.png"></p>
-<h2 id="3-选择重传协议"><a href="#3-选择重传协议" class="headerlink" title="3.选择重传协议"></a>3.选择重传协议</h2><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gelett3u57j31g20k1nn5.jpg" alt="image.png"></p>
-<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gelf10hagcj30pi0bwq7e.jpg" alt="image.png"></p>
-<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gelf1dc4z7j30ag018t90.jpg" alt="image.png"></p>
-<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gelf35y2a6j31fj0o31aj.jpg" alt="image.png"></p>
 
       
       <!-- reward -->
@@ -694,267 +949,6 @@ IP地址＋端口号: 可以在网络环境中，唯一标识别一个进程
 <p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gefounztuvj30lm0c842e.jpg" alt="image.png"></p>
 <p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gefp0wtiu3j30ob0dtq9a.jpg" alt="image.png"></p>
 <p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gefp2uowt1j30lh0c0goe.jpg" alt="image.png"></p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-Mynotes/计算机网络/TCP的流量控制" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/05/14/Mynotes/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/TCP%E7%9A%84%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6/"
-    >Mynotes/计算机网络/TCP的流量控制</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/05/14/Mynotes/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/TCP%E7%9A%84%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6/" class="article-date">
-  <time datetime="2020-05-13T18:05:21.896Z" itemprop="datePublished">2020-05-13</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h1 id="TCP的流量控制"><a href="#TCP的流量控制" class="headerlink" title="TCP的流量控制"></a>TCP的流量控制</h1><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gefqd5q9cej30l7071q5a.jpg" alt="image.png"></p>
-<h2 id="TCP流量控制举例"><a href="#TCP流量控制举例" class="headerlink" title="TCP流量控制举例"></a>TCP流量控制举例</h2><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gefqoto3srj31hc0r3h9j.jpg" alt="image.png" style="zoom:200%;" />
-
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-Mynotes/计算机网络/SMTP、POP3、IMAP协议" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/05/14/Mynotes/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/SMTP%E3%80%81POP3%E3%80%81IMAP%E5%8D%8F%E8%AE%AE/"
-    >Mynotes/计算机网络/SMTP、POP3、IMAP协议</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/05/14/Mynotes/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/SMTP%E3%80%81POP3%E3%80%81IMAP%E5%8D%8F%E8%AE%AE/" class="article-date">
-  <time datetime="2020-05-13T18:05:21.895Z" itemprop="datePublished">2020-05-13</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h1 id="SMTP、POP3、IMAP协议"><a href="#SMTP、POP3、IMAP协议" class="headerlink" title="SMTP、POP3、IMAP协议"></a>SMTP、POP3、IMAP协议</h1><p>电子邮件协议</p>
-<h2 id="SMTP简单邮件传输协议"><a href="#SMTP简单邮件传输协议" class="headerlink" title="SMTP简单邮件传输协议"></a>SMTP简单邮件传输协议</h2><p>SMTP的全称是“Simple Mail Transfer Protocol”，即简单邮件传输协议（25号端口）。它是一组用于从源地址到目的地址传输邮件的规范，通过它来控制邮件的中转方式。SMTP 协议属于 TCP/IP 协议簇，它帮助每台计算机在发送或中转信件时找到下一个目的地。</p>
-<p>　　SMTP是一个“推”的协议，它不允许根据需要从远程服务器上“拉”来消息。SMTP服务器就是遵循SMTP协议的发送邮件服务器，SMTP认证就是要求必须在提供了账户名和密码之后才可以登录 SMTP 服务器，这就使得那些垃圾邮件的散播者无可乘之机。</p>
-<p>SMTP已是事实上的E-Mail传输的标准。</p>
-<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gef8wjqpiaj30ry07wn0a.jpg" alt="image.png"></p>
-<h2 id="IMAP"><a href="#IMAP" class="headerlink" title="IMAP"></a>IMAP</h2><p>　　IMAP全称是Internet Mail Access Protocol，即交互式邮件访问协议，是一个应用层协议（端口是143）。用来从本地邮件客户端（Outlook Express、Foxmail、Mozilla Thunderbird等）访问远程服务器上的邮件。</p>
-<h2 id="POP3"><a href="#POP3" class="headerlink" title="POP3"></a>POP3</h2><p>　　POP3是Post Office Protocol 3的简称，即邮局协议的第3个版本，是TCP/IP协议族中的一员（默认端口是110）。本协议主要用于支持使用客户端远程管理在服务器上的电子邮件。</p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-Mynotes/计算机网络/HTTP协议与HTTPS协议" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/05/14/Mynotes/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/HTTP%E5%8D%8F%E8%AE%AE%E4%B8%8EHTTPS%E5%8D%8F%E8%AE%AE/"
-    >Mynotes/计算机网络/HTTP协议与HTTPS协议</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/05/14/Mynotes/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/HTTP%E5%8D%8F%E8%AE%AE%E4%B8%8EHTTPS%E5%8D%8F%E8%AE%AE/" class="article-date">
-  <time datetime="2020-05-13T18:05:21.861Z" itemprop="datePublished">2020-05-13</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h1 id="HTTP协议与HTTPS协议"><a href="#HTTP协议与HTTPS协议" class="headerlink" title="HTTP协议与HTTPS协议"></a>HTTP协议与HTTPS协议</h1><h5 id="什么是HTTP"><a href="#什么是HTTP" class="headerlink" title="什么是HTTP?"></a>什么是HTTP?</h5><blockquote>
-<p>超文本传输协议，是一个基于请求与响应，无状态的，应用层的协议，常基于TCP/IP协议传输数据，互联网上应用最为广泛的一种网络协议,所有的WWW文件都必须遵守这个标准。设计HTTP的初衷是为了提供一种发布和接收HTML页面的方法。</p>
-</blockquote>
-<p>什么是HTTPS？</p>
-<blockquote>
-<p>《图解HTTP》这本书中曾提过HTTPS是身披SSL外壳的HTTP。HTTPS是一种通过计算机网络进行安全通信的传输协议，经由HTTP进行通信，利用SSL/TLS建立全信道，加密数据包。HTTPS使用的主要目的是提供对网站服务器的身份认证，同时保护交换数据的隐私与完整性。</p>
-<p>PS:TLS是传输层加密协议，前身是SSL协议，由网景公司1995年发布，有时候两者不区分。</p>
-</blockquote>
-<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1geed3bdeiwj30oe08jmye.jpg" alt="image.png"></p>
-<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1geed5pugvzj30n709rtf9.jpg" alt="image.png"></p>
-<table>
-<thead>
-<tr>
-<th>版本</th>
-<th>产生时间</th>
-<th>内容</th>
-<th>发展现状</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>HTTP/0.9</td>
-<td>1991年</td>
-<td>不涉及数据包传输，规定客户端和服务器之间通信格式，只能GET请求</td>
-<td>没有作为正式的标准</td>
-</tr>
-<tr>
-<td>HTTP/1.0</td>
-<td>1996年</td>
-<td>传输内容格式不限制，增加PUT、PATCH、HEAD、 OPTIONS、DELETE命令</td>
-<td>正式作为标准</td>
-</tr>
-<tr>
-<td>HTTP/1.1</td>
-<td>1997年</td>
-<td>持久连接(长连接)、节约带宽、HOST域、管道机制、分块传输编码</td>
-<td>2015年前使用最广泛</td>
-</tr>
-<tr>
-<td>HTTP/2</td>
-<td>2015年</td>
-<td>多路复用、服务器推送、头信息压缩、二进制协议等</td>
-<td>逐渐覆盖市场</td>
-</tr>
-</tbody></table>
-<p><img src="https://img-blog.csdn.net/20180723103857872?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3hpYW9taW5nMTAwMDAx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述">这个Akamai公司建立的一个官方的演示，使用HTTP/1.1和HTTP/2同时请求379张图片，观察请求的时间，明显看出HTTP/2性能占优势。</p>
-<p><img src="https://img-blog.csdn.net/20180723105652242?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3hpYW9taW5nMTAwMDAx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"></p>
-<p>多路复用：通过单一的HTTP/2连接请求发起多重的请求-响应消息，多个请求stream共享一个TCP连接，实现多留并行而不是依赖建立多个TCP连接。</p>
-<h5 id="HTTP特点："><a href="#HTTP特点：" class="headerlink" title="HTTP特点："></a>HTTP特点：</h5><ol>
-<li>无状态：协议对客户端没有状态存储，对事物处理没有“记忆”能力，比如访问一个网站需要反复进行登录操作</li>
-<li>无连接：HTTP/1.1之前，由于无状态特点，每次请求需要通过TCP三次握手四次挥手，和服务器重新建立连接。比如某个客户机在短时间多次请求同一个资源，服务器并不能区别是否已经响应过用户的请求，所以每次需要重新响应请求，需要耗费不必要的时间和流量。</li>
-<li>基于请求和响应：基本的特性，由客户端发起请求，服务端响应</li>
-<li>简单快速、灵活</li>
-<li>通信使用明文、请求和响应不会对通信方进行确认、无法保护数据的完整性</li>
-</ol>
-<p>而且HTTPS有如下特点：</p>
-<ol>
-<li>内容加密：采用混合加密技术，中间者无法直接查看明文内容</li>
-<li>验证身份：通过证书认证客户端访问的是自己的服务器</li>
-<li>保护数据完整性：防止传输的内容被中间人冒充或者篡改</li>
-</ol>
-<p><img src="https://img-blog.csdn.net/20180719103559793?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3hpYW9taW5nMTAwMDAx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="内容加密和数据完整性保护"></p>
-<p>摘录:<a href="https://blog.csdn.net/xiaoming100001/article/details/81109617" target="_blank" rel="noopener">https://blog.csdn.net/xiaoming100001/article/details/81109617</a></p>
 
       
       <!-- reward -->

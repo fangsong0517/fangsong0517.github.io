@@ -73,6 +73,336 @@
     
     
     
+    <article id="post-Mynotes/操作系统与系统编程/文件锁/文件锁" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/%E6%96%87%E4%BB%B6%E9%94%81/%E6%96%87%E4%BB%B6%E9%94%81/"
+    >Mynotes/操作系统与系统编程/文件锁/文件锁</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/%E6%96%87%E4%BB%B6%E9%94%81/%E6%96%87%E4%BB%B6%E9%94%81/" class="article-date">
+  <time datetime="2020-05-13T18:05:21.820Z" itemprop="datePublished">2020-05-13</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h3 id="flock-函数"><a href="#flock-函数" class="headerlink" title="flock()函数"></a>flock()函数</h3><p>####　定义与用法</p>
+<p>​    flock()函数锁死那个或释放文件</p>
+<p>如果成功，则返回true,失败返回false</p>
+<h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">flock(file, lock, block);</span><br><span class="line">原型：<span class="function"><span class="keyword">int</span> <span class="title">flock</span><span class="params">(<span class="keyword">int</span> fd, <span class="keyword">int</span> operation)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>file</p>
+<ul>
+<li><p>必须</p>
+</li>
+<li><p>规定要锁定或释放的一打开的文件</p>
+</li>
+</ul>
+</li>
+<li><p>lock</p>
+<ul>
+<li><p>必须</p>
+</li>
+<li><p>规定要使用那种锁定的类型</p>
+</li>
+<li><p>可能的值：</p>
+</li>
+</ul>
+<p>​        LOCK_SH-共享锁定(读取的程序)。允许其他进程访问该文件</p>
+<p>​        LOCK_EX-独占锁定(写入的程序)。防止其他进程访问该文件</p>
+<p>​        LOCK_UN-释放一个共享锁定或独占锁定</p>
+<p>​        LOCK_NB-锁定的情况下避免阻塞其他进程</p>
+</li>
+<li><p>block</p>
+<ul>
+<li><p>可选</p>
+</li>
+<li><p>若设置为１，则当进行锁定时阻塞其他的进程。</p>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-Mynotes/操作系统与系统编程/信号量/README" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/%E4%BF%A1%E5%8F%B7%E9%87%8F/README/"
+    >Mynotes/操作系统与系统编程/信号量/README</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/%E4%BF%A1%E5%8F%B7%E9%87%8F/README/" class="article-date">
+  <time datetime="2020-05-13T18:05:21.817Z" itemprop="datePublished">2020-05-13</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h1 id="信号量"><a href="#信号量" class="headerlink" title="信号量"></a>信号量</h1><p>目录：</p>
+<ul>
+<li><a href="#一、什么是信号量">一、什么是信号量</a></li>
+</ul>
+<h3 id="一、什么是信号量"><a href="#一、什么是信号量" class="headerlink" title="一、什么是信号量"></a><font color = red>一、什么是信号量</font></h3><p>为了防止出现因多个程序同时访问一个共享资源而引发的一系列问题，我们需要一种方法，它可以通过生成并使用令牌来授权，在任一时刻只能有一个执行线程访问代码的临界区域。临界区域是指执行数据更新的代码需要独占式地执行。而信号量就可以提供这样的一种访问机制，让一个临界区同一时间只有一个线程在访问它，也就是说信号量是用来调协进程对共享资源的访问的。</p>
+<p>信号量是一个特殊的变量，程序对其访问都是原子操作，且只允许对它进行等待（即P(信号变量))和发送（即V(信号变量))信息操作。最简单的信号量是只能取0和1的变量，这也是信号量最常见的一种形式，叫做二进制信号量。而可以取多个正整数的信号量被称为通用信号量。这里主要讨论二进制信号量。</p>
+<h3 id="二、信号量的工作原理"><a href="#二、信号量的工作原理" class="headerlink" title="二、信号量的工作原理"></a><font color = red>二、信号量的工作原理</font></h3><p>由于信号量只能进行两种操作等待和发送信号，即P(sv)和V(sv),他们的行为是这样的：</p>
+<p>P(sv)：如果sv的值大于零，就给它减1；如果它的值为零，就挂起该进程的执行</p>
+<p>V(sv)：如果有其他进程因等待sv而被挂起，就让它恢复运行，如果没有进程因等待sv而挂起，就给它加1.</p>
+<p>举个例子，就是两个进程共享信号量sv，一旦其中一个进程执行了P(sv)操作，它将得到信号量，并可以进入临界区，使sv减1。而第二个进程将被阻止进入临界区，因为当它试图执行P(sv)时，sv为0，它会被挂起以等待第一个进程离开临界区域并执行V(sv)释放信号量，这时第二个进程就可以恢复执行。</p>
+<h3 id="三、Linux的信号量机制"><a href="#三、Linux的信号量机制" class="headerlink" title="三、Linux的信号量机制"></a><font color = red>三、Linux的信号量机制</font></h3><p>Linux提供了一组精心设计的信号量接口来对信号进行操作，它们不只是针对二进制信号量，下面将会对这些函数进行介绍，但请注意，这些函数都是用来对成组的信号量值进行操作的。它们声明在头文件<code>sys/sem.h</code>中。</p>
+<p><strong>1、<code>semget()</code>函数</strong></p>
+<p>它的作用是创建一个新的信号量或取得一个已有的信号量，原型为：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">semget</span><span class="params">(<span class="keyword">key_t</span> key, <span class="keyword">int</span> num_sems, <span class="keyword">int</span> sem_flages)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p>第一个参数key是整数值（唯一非零），不相关的进程可以通过它访问一个信号量，它代表程序可能需要使用某个西园，程序对所有的信号量访问都是间接的，程序先通过调用<code>semget()</code>函数并提供一个键，再由系统生成一个相应的信号标识符（semget()函数的返回值），只有semget()函数才直接使用信号量键，所有其他的信号量函数使用由semget()函数返回的信号量标识符。如果多个程序使用相同的key值，key将负责协调工作。</p>
+<p>第二个参数num_sems指定需要的信号量数目，它的值几乎总是1。</p>
+<p>第三个参数sem_flags是一组标志，当想要当信号量不存在时创建一个新的信号量，可以和值IPC_CREAT做按位或操作。设置了IPC_CREAT标志后，即使给出的键是一个已有信号量的键，也不会产生错误。而IPC_CREAT | IPC_EXCL则可以创建一个新的，唯一的信号量，如果信号量已存在，返回一个错误。</p>
+<p>semget()函数成功返回一个相应信号标识符（非零），失败返回-1.</p>
+<p><strong>2、semop()函数</strong></p>
+<p>它的作用是改变信号量的值，原型为：</p>
+<blockquote>
+<p>int semop(int sem_id, struct sembuf *sem_opa, size_t num_sem_ops);</p>
+</blockquote>
+<p>sem_id是由semget()返回的信号量标识符，sembuf结构的定义如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`struct` `sembuf&#123;``  ``short` `sem_num; ``// 除非使用一组信号量，否则它为0``  ``short` `sem_op; ``// 信号量在一次操作中需要改变的数据，通常是两个数，一个是-1，即P（等待）操作，``          ``// 一个是+1，即V（发送信号）操作。``  ``short` `sem_flg; ``// 通常为SEM_UNDO,使操作系统跟踪信号，``          ``// 并在进程没有释放该信号量而终止时，操作系统释放信号量``&#125;;`</span><br></pre></td></tr></table></figure>
+
+<p><strong>3、semctl()函数</strong></p>
+<p>该函数用来直接控制信号量信息，它的原型为：</p>
+<blockquote>
+<p>int semctl(int sem_id, int sem_num, int command, …);</p>
+</blockquote>
+<p>如果有第四个参数，它通常是一个union semum结构，定义如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`union` `semun &#123;``  ``int` `val;``  ``struct` `semid_ds *buf;``  ``unsigned ``short` `*arry;``&#125;;`</span><br></pre></td></tr></table></figure>
+
+<p>前两个参数与前面一个函数中的一样，command通常是下面两个值中的其中一个</p>
+<p>SETVAL：用来把信号量初始化为一个已知的值。p 这个值通过union semun中的val成员设置，其作用是在信号量第一次使用前对它进行设置。</p>
+<p>IPC_RMID：用于删除一个已经无需继续使用的信号量标识符。</p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-Mynotes/操作系统与系统编程/server_select/README" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/server_select/README/"
+    >Mynotes/操作系统与系统编程/server_select/README</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/server_select/README/" class="article-date">
+  <time datetime="2020-05-13T18:05:21.814Z" itemprop="datePublished">2020-05-13</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p><img src="https://static.dingtalk.com/media/lALPDiQ3KR9S0PHNApTNA5Q_916_660.png_620x10000q90g.jpg?auth_bizType=IM&auth_bizEntity=%7B%22cid%22%3A%22627064533%3A627064533%22%2C%22msgId%22%3A%223484896791903%22%7D&bizType=im&open_id=627064533" alt="图片"></p>
+<p><img src="https://static.dingtalk.com/media/lALPDhJzr-nhBnbNApPNA8U_965_659.png_620x10000q90g.jpg?auth_bizType=IM&auth_bizEntity=%7B%22cid%22%3A%22627064533%3A627064533%22%2C%22msgId%22%3A%223485696508656%22%7D&bizType=im&open_id=627064533" alt="图片"></p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-Mynotes/操作系统与系统编程/server_epoll/README" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/server_epoll/README/"
+    >Mynotes/操作系统与系统编程/server_epoll/README</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/server_epoll/README/" class="article-date">
+  <time datetime="2020-05-13T18:05:21.809Z" itemprop="datePublished">2020-05-13</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p><img src="https://static.dingtalk.com/media/lALPDiCpqpJJGZLNAY7NA84_974_398.png_620x10000q90g.jpg?auth_bizType=IM&auth_bizEntity=%7B%22cid%22%3A%22627064533%3A627064533%22%2C%22msgId%22%3A%223505296142785%22%7D&bizType=im&open_id=627064533" alt="图片"></p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-Mynotes/操作系统与系统编程/popen/README" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -686,510 +1016,6 @@ S_ISSOCK (st_mode)   是否为socket
 
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">passwd</span>  </span></span><br><span class="line"><span class="class">&#123;</span>  </span><br><span class="line">    <span class="keyword">char</span> * pw_name; <span class="comment">/* Username, POSIX.1 */</span>  </span><br><span class="line">    <span class="keyword">char</span> * pw_passwd; <span class="comment">/* Password */</span>  </span><br><span class="line">    <span class="keyword">__uid_t</span> pw_uid; <span class="comment">/* User ID, POSIX.1 */</span>  </span><br><span class="line">    <span class="keyword">__gid_t</span> pw_gid; <span class="comment">/* Group ID, POSIX.1 */</span>  </span><br><span class="line">    <span class="keyword">char</span> * pw_gecos; <span class="comment">/* Real Name or Comment field */</span>  </span><br><span class="line">    <span class="keyword">char</span> * pw_dir; <span class="comment">/* Home directory, POSIX.1 */</span>  </span><br><span class="line">    <span class="keyword">char</span> * pw_shell; <span class="comment">/* Shell Program, POSIX.1 */</span>  </span><br><span class="line">&#125;;  </span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">group</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">char</span> *gr_name;  <span class="comment">/* Group name */</span></span><br><span class="line">    <span class="keyword">char</span> *gr_passwd;  <span class="comment">/* password */</span></span><br><span class="line">    <span class="keyword">__gid_t</span> gr_gid;  <span class="comment">/* Group ID */</span></span><br><span class="line">    <span class="keyword">char</span> **gr_mem;  <span class="comment">/* Member list */</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span><span class="comment">//0</span></span></span><br></pre></td></tr></table></figure>
 
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-Mynotes/操作系统与系统编程/socket/Linux Socket编程（不限Linux）" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/04/02/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/socket/Linux%20Socket%E7%BC%96%E7%A8%8B%EF%BC%88%E4%B8%8D%E9%99%90Linux%EF%BC%89/"
-    >Mynotes/操作系统与系统编程/socket/Linux Socket编程（不限Linux）</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/04/02/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/socket/Linux%20Socket%E7%BC%96%E7%A8%8B%EF%BC%88%E4%B8%8D%E9%99%90Linux%EF%BC%89/" class="article-date">
-  <time datetime="2020-04-01T16:33:55.417Z" itemprop="datePublished">2020-04-01</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h2 id="Linux-Socket编程（不限Linux）"><a href="#Linux-Socket编程（不限Linux）" class="headerlink" title="Linux Socket编程（不限Linux）"></a><a href="https://www.cnblogs.com/skynet/archive/2010/12/12/1903949.html" target="_blank" rel="noopener">Linux Socket编程（不限Linux）</a></h2><p>“一切皆Socket！”</p>
-<p>话虽些许夸张，但是事实也是，现在的网络编程几乎都是用的socket。</p>
-<p>——有感于实际编程和开源项目研究。</p>
-<p>我们深谙信息交流的价值，那网络中进程之间如何通信，如我们每天打开浏览器浏览网页时，浏览器的进程怎么与web服务器通信的？当你用QQ聊天时，QQ进程怎么与服务器或你好友所在的QQ进程通信？这些都得靠socket？那什么是socket？socket的类型有哪些？还有socket的基本函数，这些都是本文想介绍的。本文的主要内容如下：</p>
-<ul>
-<li>1、网络中进程之间如何通信？</li>
-<li>2、Socket是什么？</li>
-<li>3、socket的基本操作<ul>
-<li>3.1、socket()函数</li>
-<li>3.2、bind()函数</li>
-<li>3.3、listen()、connect()函数</li>
-<li>3.4、accept()函数</li>
-<li>3.5、read()、write()函数等</li>
-<li>3.6、close()函数</li>
-</ul>
-</li>
-<li>4、socket中TCP的三次握手建立连接详解</li>
-<li>5、socket中TCP的四次握手释放连接详解</li>
-</ul>
-<h1 id="1、网络中进程之间如何通信？"><a href="#1、网络中进程之间如何通信？" class="headerlink" title="1、网络中进程之间如何通信？"></a>1、网络中进程之间如何通信？</h1><p>本地的进程间通信（IPC）有很多种方式，但可以总结为下面4类：</p>
-<ul>
-<li>消息传递（管道、FIFO、消息队列）</li>
-<li>同步（互斥量、条件变量、读写锁、文件和写记录锁、信号量）</li>
-<li>共享内存（匿名的和具名的）</li>
-<li>远程过程调用（Solaris门和Sun RPC）</li>
-</ul>
-<p>但这些都不是本文的主题！我们要讨论的是网络中进程之间如何通信？首要解决的问题是如何唯一标识一个进程，否则通信无从谈起！在本地可以通过进程PID来唯一标识一个进程，但是在网络中这是行不通的。其实TCP/IP协议族已经帮我们解决了这个问题，网络层的“<strong>ip地址</strong>”可以唯一标识网络中的主机，而传输层的“<strong>协议+端口</strong>”可以唯一标识主机中的应用程序（进程）。这样利用三元组（ip地址，协议，端口）就可以标识网络的进程了，网络中的进程通信就可以利用这个标志与其它进程进行交互。</p>
-<p>使用TCP/IP协议的应用程序通常采用应用编程接口：UNIX BSD的套接字（socket）和UNIX System V的TLI（已经被淘汰），来实现网络进程之间的通信。就目前而言，几乎所有的应用程序都是采用socket，而现在又是网络时代，网络中进程通信是无处不在，这就是我为什么说“一切皆socket”。</p>
-<h1 id="2、什么是Socket？"><a href="#2、什么是Socket？" class="headerlink" title="2、什么是Socket？"></a>2、什么是Socket？</h1><p>上面我们已经知道网络中的进程是通过socket来通信的，那什么是socket呢？socket起源于Unix，而Unix/Linux基本哲学之一就是“一切皆文件”，都可以用“打开open –&gt; 读写write/read –&gt; 关闭close”模式来操作。我的理解就是Socket就是该模式的一个实现，socket即是一种特殊的文件，一些socket函数就是对其进行的操作（读/写IO、打开、关闭），这些函数我们在后面进行介绍。</p>
-<blockquote>
-<h3 id="socket一词的起源"><a href="#socket一词的起源" class="headerlink" title="socket一词的起源"></a>socket一词的起源</h3><p>在组网领域的首次使用是在1970年2月12日发布的文献<a href="http://datatracker.ietf.org/doc/rfc33/" target="_blank" rel="noopener">IETF RFC33</a>中发现的，撰写者为Stephen Carr、Steve Crocker和Vint Cerf。根据美国计算机历史博物馆的记载，Croker写道：“命名空间的元素都可称为套接字接口。一个套接字接口构成一个连接的一端，而一个连接可完全由一对套接字接口规定。”计算机历史博物馆补充道：“这比BSD的套接字接口定义早了大约12年。”</p>
-</blockquote>
-<h1 id="3、socket的基本操作"><a href="#3、socket的基本操作" class="headerlink" title="3、socket的基本操作"></a>3、socket的基本操作</h1><p>既然socket是“open—write/read—close”模式的一种实现，那么socket就提供了这些操作对应的函数接口。下面以TCP为例，介绍几个基本的socket接口函数。</p>
-<h2 id="3-1、socket-函数"><a href="#3-1、socket-函数" class="headerlink" title="3.1、socket()函数"></a>3.1、socket()函数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int socket(int domain, int type, int protocol);</span><br></pre></td></tr></table></figure>
-
-<p>socket函数对应于普通文件的打开操作。普通文件的打开操作返回一个文件描述字，而<strong>socket()</strong>用于创建一个socket描述符（socket descriptor），它唯一标识一个socket。这个socket描述字跟文件描述字一样，后续的操作都有用到它，把它作为参数，通过它来进行一些读写操作。</p>
-<p>正如可以给fopen的传入不同参数值，以打开不同的文件。创建socket的时候，也可以指定不同的参数创建不同的socket描述符，socket函数的三个参数分别为：</p>
-<ul>
-<li>domain：即协议域，又称为协议族（family）。常用的协议族有，AF_INET、AF_INET6、AF_LOCAL（或称AF_UNIX，Unix域socket）、AF_ROUTE等等。协议族决定了socket的地址类型，在通信中必须采用对应的地址，如AF_INET决定了要用ipv4地址（32位的）与端口号（16位的）的组合、AF_UNIX决定了要用一个绝对路径名作为地址。</li>
-<li>type：指定socket类型。常用的socket类型有，SOCK_STREAM、SOCK_DGRAM、SOCK_RAW、SOCK_PACKET、SOCK_SEQPACKET等等（socket的类型有哪些？）。</li>
-<li>protocol：故名思意，就是指定协议。常用的协议有，IPPROTO_TCP、IPPTOTO_UDP、IPPROTO_SCTP、IPPROTO_TIPC等，它们分别对应TCP传输协议、UDP传输协议、STCP传输协议、TIPC传输协议（这个协议我将会单独开篇讨论！）。</li>
-</ul>
-<p>注意：并不是上面的type和protocol可以随意组合的，如SOCK_STREAM不可以跟IPPROTO_UDP组合。当protocol为0时，会自动选择type类型对应的默认协议。</p>
-<p>当我们调用<strong>socket</strong>创建一个socket时，返回的socket描述字它存在于协议族（address family，AF_XXX）空间中，但没有一个具体的地址。如果想要给它赋值一个地址，就必须调用bind()函数，否则就当调用connect()、listen()时系统会自动随机分配一个端口。</p>
-<h2 id="3-2、bind-函数"><a href="#3-2、bind-函数" class="headerlink" title="3.2、bind()函数"></a>3.2、bind()函数</h2><p>正如上面所说bind()函数把一个地址族中的特定地址赋给socket。例如对应AF_INET、AF_INET6就是把一个ipv4或ipv6地址和端口号组合赋给socket。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int bind(int sockfd, const struct sockaddr *addr, socklen_t addrlen);</span><br></pre></td></tr></table></figure>
-
-<p>函数的三个参数分别为：</p>
-<ul>
-<li><p>sockfd：即socket描述字，它是通过socket()函数创建了，唯一标识一个socket。bind()函数就是将给这个描述字绑定一个名字。</p>
-</li>
-<li><p>addr：一个</p>
-<p>const</p>
-</li>
-</ul>
-<p>  struct</p>
-<p>  sockaddr *指针，指向要绑定给sockfd的协议地址。这个地址结构根据地址创建socket时的地址协议族的不同而不同，如ipv4对应的是：</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">struct sockaddr_in &#123;</span><br><span class="line">    sa_family_t    sin_family; /* address family: AF_INET */</span><br><span class="line">    in_port_t      sin_port;   /* port in network byte order */</span><br><span class="line">    struct in_addr sin_addr;   /* internet address */</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">/* Internet address. */</span><br><span class="line">struct in_addr &#123;</span><br><span class="line">    uint32_t       s_addr;     /* address in network byte order */</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>  ipv6对应的是：</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">struct sockaddr_in6 &#123; </span><br><span class="line">    sa_family_t     sin6_family;   /* AF_INET6 */ </span><br><span class="line">    in_port_t       sin6_port;     /* port number */ </span><br><span class="line">    uint32_t        sin6_flowinfo; /* IPv6 flow information */ </span><br><span class="line">    struct in6_addr sin6_addr;     /* IPv6 address */ </span><br><span class="line">    uint32_t        sin6_scope_id; /* Scope ID (new in 2.4) */ </span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">struct in6_addr &#123; </span><br><span class="line">    unsigned char   s6_addr[16];   /* IPv6 address */ </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>  Unix域对应的是：</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#define UNIX_PATH_MAX    108</span><br><span class="line"></span><br><span class="line">struct sockaddr_un &#123; </span><br><span class="line">    sa_family_t sun_family;               /* AF_UNIX */ </span><br><span class="line">    char        sun_path[UNIX_PATH_MAX];  /* pathname */ </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>addrlen：对应的是地址的长度。</li>
-</ul>
-<p>通常服务器在启动的时候都会绑定一个众所周知的地址（如ip地址+端口号），用于提供服务，客户就可以通过它来接连服务器；而客户端就不用指定，有系统自动分配一个端口号和自身的ip地址组合。这就是为什么通常服务器端在listen之前会调用bind()，而客户端就不会调用，而是在connect()时由系统随机生成一个。</p>
-<blockquote>
-<h3 id="网络字节序与主机字节序"><a href="#网络字节序与主机字节序" class="headerlink" title="网络字节序与主机字节序"></a>网络字节序与主机字节序</h3><p><strong>主机字节序</strong>就是我们平常说的大端和小端模式：不同的CPU有不同的字节序类型，这些字节序是指整数在内存中保存的顺序，这个叫做主机序。引用标准的Big-Endian和Little-Endian的定义如下：</p>
-<p>　　a) Little-Endian就是低位字节排放在内存的低地址端，高位字节排放在内存的高地址端。</p>
-<p>　　b) Big-Endian就是高位字节排放在内存的低地址端，低位字节排放在内存的高地址端。</p>
-<p><strong>网络字节序</strong>：4个字节的32 bit值以下面的次序传输：首先是0～7bit，其次8～15bit，然后16～23bit，最后是24~31bit。这种传输次序称作大端字节序。<strong>由于TCP/IP首部中所有的二进制整数在网络中传输时都要求以这种次序，因此它又称作网络字节序。</strong>字节序，顾名思义字节的顺序，就是大于一个字节类型的数据在内存中的存放顺序，一个字节的数据没有顺序的问题了。</p>
-<p>所以：在将一个地址绑定到socket的时候，请先将主机字节序转换成为网络字节序，而不要假定主机字节序跟网络字节序一样使用的是Big-Endian。由于这个问题曾引发过血案！公司项目代码中由于存在这个问题，导致了很多莫名其妙的问题，所以请谨记对主机字节序不要做任何假定，务必将其转化为网络字节序再赋给socket。</p>
-</blockquote>
-<h2 id="3-3、listen-、connect-函数"><a href="#3-3、listen-、connect-函数" class="headerlink" title="3.3、listen()、connect()函数"></a>3.3、listen()、connect()函数</h2><p>如果作为一个服务器，在调用socket()、bind()之后就会调用listen()来监听这个socket，如果客户端这时调用connect()发出连接请求，服务器端就会接收到这个请求。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int listen(int sockfd, int backlog);</span><br><span class="line">int connect(int sockfd, const struct sockaddr *addr, socklen_t addrlen);</span><br></pre></td></tr></table></figure>
-
-<p>listen函数的第一个参数即为要监听的socket描述字，第二个参数为相应socket可以排队的最大连接个数。socket()函数创建的socket默认是一个主动类型的，listen函数将socket变为被动类型的，等待客户的连接请求。</p>
-<p>connect函数的第一个参数即为客户端的socket描述字，第二参数为服务器的socket地址，第三个参数为socket地址的长度。客户端通过调用connect函数来建立与TCP服务器的连接。</p>
-<h2 id="3-4、accept-函数"><a href="#3-4、accept-函数" class="headerlink" title="3.4、accept()函数"></a>3.4、accept()函数</h2><p>TCP服务器端依次调用socket()、bind()、listen()之后，就会监听指定的socket地址了。TCP客户端依次调用socket()、connect()之后就想TCP服务器发送了一个连接请求。TCP服务器监听到这个请求之后，就会调用accept()函数取接收请求，这样连接就建立好了。之后就可以开始网络I/O操作了，即类同于普通文件的读写I/O操作。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int accept(int sockfd, struct sockaddr *addr, socklen_t *addrlen);</span><br></pre></td></tr></table></figure>
-
-<p>accept函数的第一个参数为服务器的socket描述字，第二个参数为指向struct sockaddr *的指针，用于返回客户端的协议地址，第三个参数为协议地址的长度。如果accpet成功，那么其返回值是由内核自动生成的一个全新的描述字，代表与返回客户的TCP连接。</p>
-<p>注意：accept的第一个参数为服务器的socket描述字，是服务器开始调用socket()函数生成的，称为监听socket描述字；而accept函数返回的是已连接的socket描述字。一个服务器通常通常仅仅只创建一个监听socket描述字，它在该服务器的生命周期内一直存在。内核为每个由服务器进程接受的客户连接创建了一个已连接socket描述字，当服务器完成了对某个客户的服务，相应的已连接socket描述字就被关闭。</p>
-<h2 id="3-5、read-、write-等函数"><a href="#3-5、read-、write-等函数" class="headerlink" title="3.5、read()、write()等函数"></a>3.5、read()、write()等函数</h2><p>万事具备只欠东风，至此服务器与客户已经建立好连接了。可以调用网络I/O进行读写操作了，即实现了网咯中不同进程之间的通信！网络I/O操作有下面几组：</p>
-<ul>
-<li>read()/write()</li>
-<li>recv()/send()</li>
-<li>readv()/writev()</li>
-<li>recvmsg()/sendmsg()</li>
-<li>recvfrom()/sendto()</li>
-</ul>
-<p>我推荐使用recvmsg()/sendmsg()函数，这两个函数是最通用的I/O函数，实际上可以把上面的其它函数都替换成这两个函数。它们的声明如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;unistd.h&gt;</span><br><span class="line"></span><br><span class="line">ssize_t read(int fd, void *buf, size_t count);</span><br><span class="line">ssize_t write(int fd, const void *buf, size_t count);</span><br><span class="line"></span><br><span class="line">#include &lt;sys/types.h&gt;</span><br><span class="line">#include &lt;sys/socket.h&gt;</span><br><span class="line"></span><br><span class="line">ssize_t send(int sockfd, const void *buf, size_t len, int flags);</span><br><span class="line">ssize_t recv(int sockfd, void *buf, size_t len, int flags);</span><br><span class="line"></span><br><span class="line">ssize_t sendto(int sockfd, const void *buf, size_t len, int flags,</span><br><span class="line">               const struct sockaddr *dest_addr, socklen_t addrlen);</span><br><span class="line">ssize_t recvfrom(int sockfd, void *buf, size_t len, int flags,</span><br><span class="line">                 struct sockaddr *src_addr, socklen_t *addrlen);</span><br><span class="line"></span><br><span class="line">ssize_t sendmsg(int sockfd, const struct msghdr *msg, int flags);</span><br><span class="line">ssize_t recvmsg(int sockfd, struct msghdr *msg, int flags);</span><br></pre></td></tr></table></figure>
-
-<p>read函数是负责从fd中读取内容.当读成功时，read返回实际所读的字节数，如果返回的值是0表示已经读到文件的结束了，小于0表示出现了错误。如果错误为EINTR说明读是由中断引起的，如果是ECONNREST表示网络连接出了问题。</p>
-<p>write函数将buf中的nbytes字节内容写入文件描述符fd.成功时返回写的字节数。失败时返回-1，并设置errno变量。 在网络程序中，当我们向套接字文件描述符写时有俩种可能。1)write的返回值大于0，表示写了部分或者是全部的数据。2)返回的值小于0，此时出现了错误。我们要根据错误类型来处理。如果错误为EINTR表示在写的时候出现了中断错误。如果为EPIPE表示网络连接出现了问题(对方已经关闭了连接)。</p>
-<p>其它的我就不一一介绍这几对I/O函数了，具体参见man文档或者baidu、Google，下面的例子中将使用到send/recv。</p>
-<h2 id="3-6、close-函数"><a href="#3-6、close-函数" class="headerlink" title="3.6、close()函数"></a>3.6、close()函数</h2><p>在服务器与客户端建立连接之后，会进行一些读写操作，完成了读写操作就要关闭相应的socket描述字，好比操作完打开的文件要调用fclose关闭打开的文件。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;unistd.h&gt;</span><br><span class="line">int close(int fd);</span><br></pre></td></tr></table></figure>
-
-<p>close一个TCP socket的缺省行为时把该socket标记为以关闭，然后立即返回到调用进程。该描述字不能再由调用进程使用，也就是说不能再作为read或write的第一个参数。</p>
-<p>注意：close操作只是使相应socket描述字的引用计数-1，只有当引用计数为0的时候，才会触发TCP客户端向服务器发送终止连接请求。</p>
-<h1 id="4、socket中TCP的三次握手建立连接详解"><a href="#4、socket中TCP的三次握手建立连接详解" class="headerlink" title="4、socket中TCP的三次握手建立连接详解"></a>4、socket中TCP的三次握手建立连接详解</h1><p>我们知道tcp建立连接要进行“三次握手”，即交换三个分组。大致流程如下：</p>
-<ul>
-<li>客户端向服务器发送一个SYN J</li>
-<li>服务器向客户端响应一个SYN K，并对SYN J进行确认ACK J+1</li>
-<li>客户端再想服务器发一个确认ACK K+1</li>
-</ul>
-<p>只有就完了三次握手，但是这个三次握手发生在socket的那几个函数中呢？请看下图：</p>
-<p><img src="https://images.cnblogs.com/cnblogs_com/skynet/201012/201012122157476286.png" alt="image"></p>
-<p>​                                                  图1、socket中发送的TCP三次握手</p>
-<p>从图中可以看出，当客户端调用connect时，触发了连接请求，向服务器发送了SYN J包，这时connect进入阻塞状态；服务器监听到连接请求，即收到SYN J包，调用accept函数接收请求向客户端发送SYN K ，ACK J+1，这时accept进入阻塞状态；客户端收到服务器的SYN K ，ACK J+1之后，这时connect返回，并对SYN K进行确认；服务器收到ACK K+1时，accept返回，至此三次握手完毕，连接建立。</p>
-<blockquote>
-<p>总结：客户端的connect在三次握手的第二个次返回，而服务器端的accept在三次握手的第三次返回。</p>
-</blockquote>
-<h1 id="5、socket中TCP的四次握手释放连接详解"><a href="#5、socket中TCP的四次握手释放连接详解" class="headerlink" title="5、socket中TCP的四次握手释放连接详解"></a>5、socket中TCP的四次握手释放连接详解</h1><p>上面介绍了socket中TCP的三次握手建立过程，及其涉及的socket函数。现在我们介绍socket中的四次握手释放连接的过程，请看下图：</p>
-<p><img src="https://images.cnblogs.com/cnblogs_com/skynet/201012/201012122157494693.png" alt="image"></p>
-<p>​                                                  图2、socket中发送的TCP四次握手</p>
-<p>图示过程如下：</p>
-<ul>
-<li>某个应用进程首先调用close主动关闭连接，这时TCP发送一个FIN M；</li>
-<li>另一端接收到FIN M之后，执行被动关闭，对这个FIN进行确认。它的接收也作为文件结束符传递给应用进程，因为FIN的接收意味着应用进程在相应的连接上再也接收不到额外数据；</li>
-<li>一段时间之后，接收到文件结束符的应用进程调用close关闭它的socket。这导致它的TCP也发送一个FIN N；</li>
-<li>接收到这个FIN的源发送端TCP对它进行确认。</li>
-</ul>
-<p>这样每个方向上都有一个FIN和ACK。</p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-Mynotes/操作系统与系统编程/cp/实现cp所用到的函数" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/04/02/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/cp/%E5%AE%9E%E7%8E%B0cp%E6%89%80%E7%94%A8%E5%88%B0%E7%9A%84%E5%87%BD%E6%95%B0/"
-    >Mynotes/操作系统与系统编程/cp/实现cp所用到的函数</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/04/02/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/cp/%E5%AE%9E%E7%8E%B0cp%E6%89%80%E7%94%A8%E5%88%B0%E7%9A%84%E5%87%BD%E6%95%B0/" class="article-date">
-  <time datetime="2020-04-01T16:33:55.413Z" itemprop="datePublished">2020-04-01</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h1 id="实现cp所用到的函数"><a href="#实现cp所用到的函数" class="headerlink" title="实现cp所用到的函数"></a>实现cp所用到的函数</h1><h3 id="open-打开和创建文件"><a href="#open-打开和创建文件" class="headerlink" title="open()打开和创建文件"></a>open()打开和创建文件</h3><p>open是多种语言、环境的一种<a href="https://baike.baidu.com/item/函数/18686609" target="_blank" rel="noopener">函数</a>，LINUX中open函数作用：<a href="https://baike.baidu.com/item/打开/1306427" target="_blank" rel="noopener">打开</a>和创建文件。PB程序语言中open功能：打开窗口。</p>
-<p><a href="https://baike.baidu.com/item/打开" target="_blank" rel="noopener"><br>打开</a>和创建文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int  open(constchar*pathname,int  flags);</span><br></pre></td></tr></table></figure>
-
-<p>pathname 是待<a href="https://baike.baidu.com/item/打开" target="_blank" rel="noopener">打开</a>/创建文件的POSIX路径名（如/home/user/a.cpp）；flags 用于指定文件的打开/创建模式，这个参数可由以下<a href="https://baike.baidu.com/item/常量" target="_blank" rel="noopener">常量</a>（定义于<a href="https://baike.baidu.com/item/fcntl.h" target="_blank" rel="noopener">fcntl.h</a>）通过逻辑位或逻辑构成。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">O_RDONLY只读模式</span><br><span class="line">O_WRONLY只写模式</span><br><span class="line">O_RDWR读写模式</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">if</span>((fd_in = open(argv[<span class="number">1</span>], O_RDONLY)) == <span class="number">-1</span>) &#123;</span><br><span class="line">        perror(argv[<span class="number">1</span>]);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="creat-创建一个文件并以只写的方式打开"><a href="#creat-创建一个文件并以只写的方式打开" class="headerlink" title="creat()创建一个文件并以只写的方式打开"></a>creat()创建一个文件并以只写的方式打开</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int creat(const char * pathname, mode_t mode);</span><br></pre></td></tr></table></figure>
-
-<p><strong>函数功能：</strong></p>
-<p>创建一个文件并以只写的方式打开。如果原来该文件存在，会将这个文件的长度截短为0。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>((fd_out= creat(argv[<span class="number">2</span>], <span class="number">0644</span>)) == <span class="number">-1</span>) &#123;</span><br><span class="line">      perror(argv[<span class="number">2</span>]);</span><br><span class="line">      <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="read-从文件中读"><a href="#read-从文件中读" class="headerlink" title="read()从文件中读"></a>read()从文件中读</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">include &lt;unistd.h&gt;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssize_t read  (int fd, void *buf, size_t count);</span><br></pre></td></tr></table></figure>
-
-<p>参数count是请求读取的字节数，读上来的数据保存在缓冲区buf中</p>
-<p>成功返回读取的字节数，出错返回-1并设置errno，如果在调read之前已到达文件末尾，则这次read返回0。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>((nread = read(fd_in, buf, BUFSSIZE)) &gt; <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(write(fd_out, buf, <span class="built_in">strlen</span>(buf)) != nread)&#123;</span><br><span class="line">            perror(<span class="string">"write"</span>);</span><br><span class="line">            <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">memset</span>(buf, <span class="number">0</span>, BUFSSIZE + <span class="number">5</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="write-函数"><a href="#write-函数" class="headerlink" title="write()函数"></a>write()函数</h3><p>将数据写入已打开的文件内</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">write有两种用法。一种是：ssize_t write(int fd, const void *buf, size_t nbyte);</span><br><span class="line">fd：文件描述符；</span><br><span class="line">buf：指定的缓冲区，即指针，指向一段内存单元；</span><br><span class="line">nbyte：要写入文件指定的字节数；</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">while((nread = read(fd_in, buf, BUFSSIZE)) &gt; 0)&#123;</span><br><span class="line">        if(write(fd_out, buf, strlen(buf)) != nread)&#123;</span><br><span class="line">            perror(&quot;write&quot;);</span><br><span class="line">            exit(1);</span><br><span class="line">        &#125;</span><br><span class="line">        memset(buf, 0, BUFSSIZE + 5);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-Mynotes/linux学习笔记/认识SHELL并使用相关文件" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/04/02/Mynotes/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E8%AE%A4%E8%AF%86SHELL%E5%B9%B6%E4%BD%BF%E7%94%A8%E7%9B%B8%E5%85%B3%E6%96%87%E4%BB%B6/"
-    >Mynotes/linux学习笔记/认识SHELL并使用相关文件</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/04/02/Mynotes/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E8%AE%A4%E8%AF%86SHELL%E5%B9%B6%E4%BD%BF%E7%94%A8%E7%9B%B8%E5%85%B3%E6%96%87%E4%BB%B6/" class="article-date">
-  <time datetime="2020-04-01T16:33:54.869Z" itemprop="datePublished">2020-04-01</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h4 id="shell："><a href="#shell：" class="headerlink" title="shell："></a>shell：</h4><p><font color = red>简单来说就是一个”工具”，它是一个命令行解释器，把用户输入的命令传输到内核去执行。</font></p>
-<p>shell命令：可以让shell工具解释的命令（代码）。</p>
-<p>shell脚本：一系列shell命令的集合。</p>
-<p><img src="/home/fangsong/Git/Figure-bed/2020-03-12%2012-13-15%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt=""></p>
-<p><img src="/home/fangsong/Git/Figure-bed/2020-03-12%2012-14-25%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt=""></p>
-<p> Bash，也就是 Bourne Again Shell，由于易用和免费，Bash 在日常工作中被广泛使用。同时，Bash 也是大多数Linux 系统默认的 Shell。</p>
-<p>在一般情况下，人们并不区分 Bourne Shell 和 Bourne Again Shell，所以，像 <strong>#!/bin/sh</strong>，它同样也可以改为 <strong>#!/bin/bash</strong>。</p>
-<p><font color = red><strong>#!</strong> 告诉系统其后路径所指定的程序即是解释此脚本文件的 Shell 程序。</font></p>
-<h4 id="什么是terminal"><a href="#什么是terminal" class="headerlink" title="什么是terminal"></a><strong>什么是terminal</strong></h4><p>我们在Linux下使用的terminal，<font color = red>实际上是一个“终端模拟软件”</font>，它模拟了一台真正的终端，也就是几十年前时候的终端：只包括键盘+显示器，甚至是再之前时的电传打字机。现在，我们用的终端软件指的是可以运行shell命令的软件。它一般是捆绑在桌面环境上的，例如gnome terminal等等，我们自己也可以安装另外的terminal.它就是类似于输入法的一个应用程序。</p>
-<h4 id="什么是-bashrc"><a href="#什么是-bashrc" class="headerlink" title="什么是.bashrc"></a><strong>什么是.bashrc</strong></h4><p>.bashrc位于/home/&lt;用户名&gt;的目录下</p>
-<blockquote>
-<p>来源：<a href="https://linux.cn/article-9298-1.html" target="_blank" rel="noopener">https://linux.cn/article-9298-1.html</a></p>
-</blockquote>
-<p>bash 是一个能解释你输入进终端程序的东西，并且基于你的输入来运行命令。它在一定程度上支持使用脚本来定制功能，这时候就要用到 <code>.bashrc</code> 了。</p>
-<p> 为了加载你的配置，bash 在每次启动时都会加载 <code>.bashrc</code> 文件的内容。每个用户的 home 目录都有这个 shell 脚本。它用来存储并加载你的终端配置和环境变量。</p>
-<h4 id="进入-bashrc"><a href="#进入-bashrc" class="headerlink" title="进入.bashrc"></a>进入.bashrc</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.bashrc</span><br></pre></td></tr></table></figure>
-
-<p>打开之后可以看到有许多项。</p>
-<p>我们可以在这里追加alias来为命令取别名，从而简化在terminal中的输入。例如，我们可以将常用的ssh连接命令取别名，这样就不需要每次都输入一长串了。</p>
-<h4 id="bash的运行模式"><a href="#bash的运行模式" class="headerlink" title="bash的运行模式"></a>bash的运行模式</h4><blockquote>
-<p>来源：<a href="http://blog.sciencenet.cn/blog-3238131-1037461.html" target="_blank" rel="noopener">http://blog.sciencenet.cn/blog-3238131-1037461.html</a></p>
-<p>Bash有几种不同的运行模式，login shell与non-login shell，interactive shell与non-interactive shell（比如执行shell脚本）。这两种分类方法是交叉的，也就是说一个login shell可能是一个interactive shell，也可能是个non-interactive shell。</p>
-<p>在下列情况下，我们可以获得一个login shell：</p>
-<ol>
-<li>登录系统时获得的顶层shell，无论是通过本地终端登录，还是通过网络ssh登录。这种情况下获得的login shell是一个交互式shell。</li>
-<li>在终端下使用–login选项调用bash，可以获得一个交互式login shell。</li>
-<li>在脚本中使用–login选项调用bash（比如在shell脚本第一行做如下指定：#!/bin/bash –login），此时得到一个非交互式的login shell。</li>
-<li>使用”su -“切换到指定用户时，获得此用户的login shell。如果不使用”-“，则获得non-login shell。</li>
-</ol>
-<p>login shell与non-login shell的主要区别在于它们启动时会读取不同的配置文件，从而导致环境不一样。login shell启动时首先读取/etc/profile全局配置，然后依次查找<del>/.bash_profile、</del>/.bash_login、<del>/.profile三个配置文件，并且读取第一个找到的并且可读的文件。login shell退出时读取并执行</del>/.bash_logout中的命令。<br>交互式的non-login shell启动时读取~/.bashrc资源文件。非交互式的non-login shell不读取上述所有配置文件，而是查找环境变量BASH_ENV，读取并执行BASH_ENV指向的文件中的命令。</p>
-<p><strong>通常我们要定制一些配置时，将配置写在<del>/.bashrc中，然后在</del>/.bash_profile中读取~/.bashrc，这样可以保证login shell和交互式non-login shell得到相同的配置。至于/etc/profile就不要轻易去改啦，毕竟会影响系统全局的配置。</strong></p>
-</blockquote>
-<p>####　全局与个人设置</p>
-<p><img src="%E8%AE%A4%E8%AF%86SHELL%E5%B9%B6%E4%BD%BF%E7%94%A8%E7%9B%B8%E5%85%B3%E6%96%87%E4%BB%B6.assets/2020-03-12%2012-46-48%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt=""></p>
-<p>####　全局设置</p>
-<p>System-wide Config ans Setup</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/etc/bash.bashrc</span><br><span class="line">/etc/bash.profile</span><br><span class="line">/etc/bash.bash.logout</span><br></pre></td></tr></table></figure>
-
-<h4 id="个人设置"><a href="#个人设置" class="headerlink" title="个人设置"></a>个人设置</h4><p>Individual Config ans Setup</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">~/.bashrc</span><br><span class="line">~/.bsh_profile</span><br><span class="line">~/.bash_logout</span><br><span class="line">~/.input</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="shell脚本运行"><a href="#shell脚本运行" class="headerlink" title="shell脚本运行"></a>shell脚本运行</h4><p>当 Shell 脚本运行时，它会先查找系统环境变量 ENV，该变量指定了环境文件<font color = red>（加载顺序通常是 /etc/profile、<del>/.bash_profile、</del>/.bashrc、/etc/bashrc等）</font>，在加载了上述环境变量文件后，Shell 就开始执行 Shell 脚本中的内容。</p>
-<p>Shell 脚本是从上到下，从左至右依次执行每一行的命令及语句的，既执行完了一个命令后在执行下一个，如果在 Shell 脚本中遇到子脚本（即脚本嵌套）时，就会先执行子脚本的内容，完成后再返回父脚本继续执行父脚本内后续的命令及语句，</p>
-<p>通常情况下，在执行 Shell 脚本时，会向系统内核请求启动一个新的进程，以便在该进程中执行脚本的命令及子Shell脚本，基本流程如下图所示。</p>
-<p>设置 Linux 的 crond 任务时，最好能在定时任务脚本中重新定义系统环境变量，否则，一些系统环境变量将不会被加载，这个问题需要注意 </p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-Mynotes/linux学习笔记/文件与目录操作" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/04/02/Mynotes/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%96%87%E4%BB%B6%E4%B8%8E%E7%9B%AE%E5%BD%95%E6%93%8D%E4%BD%9C/"
-    >Mynotes/linux学习笔记/文件与目录操作</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/04/02/Mynotes/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%96%87%E4%BB%B6%E4%B8%8E%E7%9B%AE%E5%BD%95%E6%93%8D%E4%BD%9C/" class="article-date">
-  <time datetime="2020-04-01T16:33:54.865Z" itemprop="datePublished">2020-04-01</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h1 id="文件与目录操作"><a href="#文件与目录操作" class="headerlink" title="文件与目录操作"></a>文件与目录操作</h1><h4 id="CD切换工作目录"><a href="#CD切换工作目录" class="headerlink" title="CD切换工作目录"></a>CD切换工作目录</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cd /etc #直接切换到/etc目录</span><br><span class="line">cd .. #切换到上层目录</span><br><span class="line">cd . #切换到当前目录</span><br><span class="line">cd #回到自己的家目录</span><br><span class="line">cd ~#回到自己的家目录</span><br><span class="line">cd -#回到上次的工作目录</span><br></pre></td></tr></table></figure>
-
-<h4 id="PWD"><a href="#PWD" class="headerlink" title="PWD"></a>PWD</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">L 显示逻辑工作目录</span><br><span class="line">P 显示物理工作目录</span><br></pre></td></tr></table></figure>
-
-<h4 id="MkDIR创建目录"><a href="#MkDIR创建目录" class="headerlink" title="MkDIR创建目录"></a>MkDIR创建目录</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-p 自动创建父目录</span><br><span class="line">-m 设置权限</span><br></pre></td></tr></table></figure>
-
-<h4 id="RMDIR删除目录"><a href="#RMDIR删除目录" class="headerlink" title="RMDIR删除目录"></a>RMDIR删除目录</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p删除祖先</span><br></pre></td></tr></table></figure>
-
-<h4 id="CP"><a href="#CP" class="headerlink" title="CP"></a>CP</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">-i :若文件存在，询问用户</span><br><span class="line">-r :递归赋值</span><br><span class="line">-a ：pdr的集合</span><br><span class="line">-p: 连同文件属性一起复制</span><br><span class="line">-d:若源文件为链接文件的属性，则赋值链接文件的属性</span><br><span class="line">-s:拷贝为软连接</span><br><span class="line">-l:拷贝为硬链接</span><br><span class="line">-u：原文件比目的文件新才拷贝</span><br></pre></td></tr></table></figure>
-
-<h4 id="RM"><a href="#RM" class="headerlink" title="RM"></a>RM</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-i :互动模式</span><br><span class="line">-r :递归删除</span><br><span class="line">-f：force</span><br></pre></td></tr></table></figure>
-
-<h4 id="MV"><a href="#MV" class="headerlink" title="MV"></a>MV</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-i :互动模式</span><br><span class="line">-f：force</span><br><span class="line">-u:源文件跟新才会移动</span><br></pre></td></tr></table></figure>
-
-<h4 id="CAT"><a href="#CAT" class="headerlink" title="CAT"></a>CAT</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-A:相当于-VET</span><br><span class="line">-v:列出看不到的字符</span><br><span class="line">-E:显示断行符为￥</span><br><span class="line">-T：显示TAB为^I</span><br><span class="line">-b:列出行号</span><br><span class="line">-n:列出行号，空行也编号</span><br></pre></td></tr></table></figure>
-
-<h4 id="NL输出行号显示文件"><a href="#NL输出行号显示文件" class="headerlink" title="NL输出行号显示文件"></a>NL输出行号显示文件</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-b a:相当于cat -a</span><br><span class="line">-b t:相当于cat -b</span><br><span class="line">-n ln:行号在屏幕的最左边显示</span><br><span class="line">-n rn:行号在自己字段的最右边显示</span><br><span class="line">-n rz:行号在自己字段的最右边显示，前面自动补0</span><br><span class="line">-w &lt;num&gt;：行号所占位数</span><br></pre></td></tr></table></figure>
-
-<h4 id="HEAD查看头几行"><a href="#HEAD查看头几行" class="headerlink" title="HEAD查看头几行"></a>HEAD查看头几行</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">head [-n num] &lt;file&gt;</span><br><span class="line">-n num:显示前几行</span><br><span class="line">-n -num:除后几行外，其他都显示</span><br></pre></td></tr></table></figure>
-
-<h4 id="TAIL查看末尾几行"><a href="#TAIL查看末尾几行" class="headerlink" title="TAIL查看末尾几行"></a>TAIL查看末尾几行</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tail [-n num] &lt;file&gt;</span><br><span class="line">-n num:显示文件后num行</span><br><span class="line">-n +num:除前几行外，其他都显示</span><br></pre></td></tr></table></figure>
-
-<h4 id="TAIL查看末尾几行-1"><a href="#TAIL查看末尾几行-1" class="headerlink" title="TAIL查看末尾几行"></a>TAIL查看末尾几行</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tail [-n num] &lt;file&gt;</span><br><span class="line">-n num:显示文件后num行</span><br><span class="line">-n +num:除前几行外，其他都显示</span><br></pre></td></tr></table></figure>
-
-<h4 id="文件时间及隐藏属性"><a href="#文件时间及隐藏属性" class="headerlink" title="文件时间及隐藏属性"></a>文件时间及隐藏属性</h4><blockquote>
-<p>文件的三个时间</p>
-<blockquote>
-<p>mtime :内容数据改动时才更新这个时间</p>
-<p>ctime:文件的权限，文件改动更新这个时间</p>
-<p>atime:文件的内容被取用access时，更新这个时间</p>
-</blockquote>
-</blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -l --time=ctime /etc/hostname</span><br></pre></td></tr></table></figure>
-
-<p>ls -l #是行列表形式<br>–time=ctime# 显示这个时间为ctime, –后面通常加原型<br>每个文件都有这三种属性</p>
-<h4 id="修改文件时间与新建文件"><a href="#修改文件时间与新建文件" class="headerlink" title="修改文件时间与新建文件"></a>修改文件时间与新建文件</h4><blockquote>
-<p>touch [-acdmt] <file></p>
-<blockquote>
-<p>-a:仅修改访问时间<br>-c:金修改文件的时间，若文件不存在，不新建<br>-d:修改文件日期<br>-m:金修改mtime<br>-t:修改文件时间[yymmddhhmm]</p>
-</blockquote>
-</blockquote>
-<h4 id="文件隐藏属性"><a href="#文件隐藏属性" class="headerlink" title="文件隐藏属性"></a>文件隐藏属性</h4><blockquote>
-<p>chattr [+-=] [ASacdistu] <file_or_dir></p>
-<p>A:不修改atime<br>S:同步写入 //不缓存直接写到磁盘上，例如银行<br>a:只能增加数据　//通常用在日志上<br>c:自动压缩，解压<br>d:不会被dump程序备份<br>i:不能删除修改建立连接 //写死了<br>s:文件删除时，直接从磁盘删除<br>u:文件删除时，文件内容存在磁盘中</p>
-</blockquote>
-<h4 id="文件的特殊权限"><a href="#文件的特殊权限" class="headerlink" title="文件的特殊权限"></a>文件的特殊权限</h4><blockquote>
-<p>set_uid    s占位符       作用二进制程序文件，费脚本　　　　　用户在执行该程序时获取程序所有者权限<br>set_git　s占位符        目录和二进制文件　　　　　　　　　　用户在该目录下，有效组变为目录所属组<br>sticky Bit　t占位符　　目录　　　　　　　　　再改目录下，用户只能删除自己穿就爱你的内容</p>
-</blockquote>
 
       
       <!-- reward -->

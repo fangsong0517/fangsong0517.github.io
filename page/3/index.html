@@ -73,6 +73,257 @@
     
     
     
+    <article id="post-Mynotes/操作系统与系统编程/UDP编程/使用UDP编程" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/05/29/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/UDP%E7%BC%96%E7%A8%8B/%E4%BD%BF%E7%94%A8UDP%E7%BC%96%E7%A8%8B/"
+    >Mynotes/操作系统与系统编程/UDP编程/使用UDP编程</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/29/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/UDP%E7%BC%96%E7%A8%8B/%E4%BD%BF%E7%94%A8UDP%E7%BC%96%E7%A8%8B/" class="article-date">
+  <time datetime="2020-05-29T06:22:35.936Z" itemprop="datePublished">2020-05-29</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h1 id="使用UDP编程"><a href="#使用UDP编程" class="headerlink" title="使用UDP编程"></a>使用UDP编程</h1><h2 id="基本信息"><a href="#基本信息" class="headerlink" title="基本信息"></a>基本信息</h2><p>由于UDP通信不需要事先建立连接，因此不需要TCP中的connect函数。</p>
+<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gf8byl9q7qj30k30ii0wc.jpg" alt="image.png"><br><img src="https://static.dingtalk.com/media/lALPDgtYtcpsexvNAyLNA3E_881_802.png_620x10000q90g.jpg?auth_bizType=IM&auth_bizEntity=%7B%22cid%22%3A%22627064533%3A627064533%22%2C%22msgId%22%3A%224001648499702%22%7D&bizType=im&open_id=627064533" alt="图片"></p>
+<p><strong>服务器端的步骤如下：</strong></p>
+<p><strong>1. socket</strong>：    建立一个socket</p>
+<p><strong>2. bind</strong>：      将这个socket绑定在某个端口上（AF_INET）</p>
+<p><strong>3. recvfrom</strong>：  如果没有客户端发起请求，则会阻塞在这个函数里</p>
+<p><strong>4. close</strong>：     通信完成后关闭socket</p>
+<p><strong>客户端的步骤如下：</strong></p>
+<p><strong>1. socket</strong>：    建立一个socket</p>
+<p><strong>2. sendto</strong>：   相服务器的某个端口发起请求（AF_INET）</p>
+<p><strong>3. close</strong>：     通信完成后关闭socket</p>
+<p>可以看到，和TCP相比，步骤少了一些。</p>
+<h2 id="sendto"><a href="#sendto" class="headerlink" title="sendto"></a>sendto</h2><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gf8c4q8y6nj319x06j44f.jpg" alt="image.png"></p>
+<p><strong>socket：</strong>socket套接字</p>
+<p><strong>buf：</strong>要发送的数据的起始地址</p>
+<p><strong>flags：</strong>一般情况下为0</p>
+<p><strong>dest_addr：</strong>发送到的目的地址</p>
+<p><strong>addrlen：</strong>地址长度</p>
+<h2 id="recvfrom"><a href="#recvfrom" class="headerlink" title="recvfrom"></a>recvfrom</h2><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gf8c5j7o4tj31bl073jx9.jpg" alt="image.png"></p>
+<p><strong>socket：</strong>socket套接字</p>
+<p><strong>buf：</strong>接收到的数据的存放位置</p>
+<p><strong>flags：</strong>一般情况下为0</p>
+<p><strong>src_addr：</strong>接收的源地址</p>
+<p><strong>addrlen：</strong>地址长度</p>
+<h3 id="client-c"><a href="#client-c" class="headerlink" title="client.c"></a>client.c</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;   </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;   </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;errno.h&gt;   </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;   </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;   </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/types.h&gt;   </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/socket.h&gt;   </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;netinet/in.h&gt;   </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;arpa/inet.h&gt;   </span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> **argv)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> sockfd, port;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">sockaddr_in</span> <span class="title">addr_serv</span>;</span></span><br><span class="line">    <span class="keyword">if</span>(argc != <span class="number">3</span>) &#123;</span><br><span class="line">        <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">"Usage: %s ip port\n"</span>, argv[<span class="number">0</span>]);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">memset</span>(&amp;addr_serv, <span class="number">0</span>, <span class="keyword">sizeof</span>(addr_serv));  </span><br><span class="line">    port = atoi(argv[<span class="number">2</span>]);</span><br><span class="line">    addr_serv.sin_family = AF_INET;</span><br><span class="line">    addr_serv.sin_port = htons(port);</span><br><span class="line">    addr_serv.sin_addr.s_addr = inet_addr(argv[<span class="number">1</span>]);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>((sockfd = socket(AF_INET, SOCK_DGRAM, <span class="number">0</span>)) &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        perror(<span class="string">"socket"</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> len = <span class="keyword">sizeof</span>(addr_serv);</span><br><span class="line">    <span class="keyword">int</span> send_num;</span><br><span class="line">    <span class="keyword">int</span> recv_num;</span><br><span class="line">    <span class="keyword">char</span> send_buf[<span class="number">20</span>] = <span class="string">"666666666666"</span>;</span><br><span class="line">    <span class="keyword">char</span> recv_buf[<span class="number">20</span>];</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"client send: %s\n"</span>, send_buf);</span><br><span class="line">    send_num = sendto(sockfd, send_buf, <span class="built_in">strlen</span>(send_buf), <span class="number">0</span>, (struct sockaddr *)&amp;addr_serv, len);     </span><br><span class="line">    <span class="keyword">if</span>(send_num &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        perror(<span class="string">"sendto"</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    sleep(<span class="number">5</span>);</span><br><span class="line">    recv_num = recvfrom(sockfd, recv_buf, <span class="keyword">sizeof</span>(recv_buf), <span class="number">0</span>, (struct sockaddr *)&amp;addr_serv, (<span class="keyword">socklen_t</span> *)&amp;len);     </span><br><span class="line">    <span class="keyword">if</span>(recv_num &lt; <span class="number">0</span>) &#123;  </span><br><span class="line">        perror(<span class="string">"recvfrom"</span>);  </span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">1</span>);  </span><br><span class="line">    &#125;</span><br><span class="line">    recv_buf[recv_num] = <span class="string">'\0'</span>;  </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"client receive %d bytes: %s\n"</span>, recv_num, recv_buf);  </span><br><span class="line">    close(sockfd);  </span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="server-c"><a href="#server-c" class="headerlink" title="server.c"></a>server.c</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;sys/socket.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;arpa/inet.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;sys/wait.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> **argv)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(argc != <span class="number">2</span>) &#123;</span><br><span class="line">        <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">"Usage: %s powrt\n"</span>, argv[<span class="number">0</span>]);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> port, sockfd;</span><br><span class="line">    port = atoi(argv[<span class="number">1</span>]);</span><br><span class="line">    <span class="keyword">if</span>((sockfd = socket(AF_INET, SOCK_DGRAM, <span class="number">0</span>)) &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        perror(<span class="string">"socket"</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">sockaddr_in</span> <span class="title">addr_serv</span>;</span></span><br><span class="line">    addr_serv.sin_family = AF_INET;</span><br><span class="line">    addr_serv.sin_port = htons(port);</span><br><span class="line">    addr_serv.sin_addr.s_addr = INADDR_ANY;</span><br><span class="line">    <span class="keyword">if</span>(bind(sockfd, (struct sockaddr *)&amp;addr_serv, <span class="keyword">sizeof</span>(addr_serv)) &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        perror(<span class="string">"bind"</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> recv_num;</span><br><span class="line">    <span class="keyword">int</span> send_num, len;</span><br><span class="line">    <span class="keyword">char</span> send_buf[<span class="number">20</span>] = <span class="string">"iamserver"</span>;</span><br><span class="line">    <span class="keyword">char</span> recv_buf[<span class="number">20</span>];</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">sockaddr_in</span> <span class="title">addr_client</span>;</span></span><br><span class="line">     len = <span class="keyword">sizeof</span>(addr_serv);</span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"server wait:\n"</span>);</span><br><span class="line">        recv_num = recvfrom(sockfd, recv_buf, <span class="keyword">sizeof</span>(recv_buf), <span class="number">0</span>, (struct sockaddr *) &amp;addr_client, (<span class="keyword">socklen_t</span> *)&amp;len);</span><br><span class="line">        <span class="keyword">if</span>(recv_num &lt; <span class="number">0</span>) &#123;</span><br><span class="line">            perror(<span class="string">"recvfrom"</span>);</span><br><span class="line">            <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        recv_buf[recv_num] = <span class="string">'\0'</span>;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"server receive %d bytes:%s \n"</span>, recv_num, recv_buf);</span><br><span class="line">        send_num = sendto(sockfd, send_buf, recv_num, <span class="number">0</span>, (struct sockaddr *)&amp;addr_client, len);  </span><br><span class="line">       <span class="comment">// send_num = sendto(sockfd, send_buf, recv_num, 0, (struct sockaddr *)&amp;addr_client,len);</span></span><br><span class="line">        <span class="keyword">if</span>(send_num &lt; <span class="number">0</span>) &#123;</span><br><span class="line">            perror(<span class="string">"sendto "</span>);</span><br><span class="line">            <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    close(sockfd);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-Mynotes/操作系统与系统编程/进程的高级管理/进程调度" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/05/29/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/%E8%BF%9B%E7%A8%8B%E7%9A%84%E9%AB%98%E7%BA%A7%E7%AE%A1%E7%90%86/%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6/"
+    >Mynotes/操作系统与系统编程/进程的高级管理/进程调度</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/29/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/%E8%BF%9B%E7%A8%8B%E7%9A%84%E9%AB%98%E7%BA%A7%E7%AE%A1%E7%90%86/%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6/" class="article-date">
+  <time datetime="2020-05-29T06:22:35.936Z" itemprop="datePublished">2020-05-29</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h1 id="进程调度"><a href="#进程调度" class="headerlink" title="进程调度"></a>进程调度</h1><h1 id="三态模型"><a href="#三态模型" class="headerlink" title="三态模型"></a>三态模型</h1><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gf60uf60b9j30ok0bytbz.jpg" alt="image.png"></p>
+<h1 id="从单任务到多任务"><a href="#从单任务到多任务" class="headerlink" title="从单任务到多任务"></a>从单任务到多任务</h1><ul>
+<li>DOS每次只进行一个进程</li>
+<li>现在基本上都是多任务</li>
+</ul>
+<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gf60z2um3pj30qu08b783.jpg" alt="image.png"></p>
+<p>多任务：同一时刻有多个任务跑</p>
+<p>并行：真实的运行</p>
+<p>并发：宏观时间运行</p>
+<h1 id="协同式和抢占式"><a href="#协同式和抢占式" class="headerlink" title="协同式和抢占式"></a>协同式和抢占式</h1><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gf614cz7rwj30je08oacq.jpg" alt="image.png"></p>
+<h1 id="时间片"><a href="#时间片" class="headerlink" title="时间片"></a>时间片</h1><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gf617vdd91j30kr09eaex.jpg" alt="image.png"></p>
+<h1 id="IO约束型和处理器约束性"><a href="#IO约束型和处理器约束性" class="headerlink" title="IO约束型和处理器约束性"></a>IO约束型和处理器约束性</h1><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gf61eoegs4j30k507gada.jpg" alt="image.png"></p>
+<p>处理器:写个fork炸弹，占CPU瞬间占满(时间片越长越好)</p>
+<p>IO:例如QQ等待(时间片越短越好)</p>
+<h2 id="要求"><a href="#要求" class="headerlink" title="要求"></a>要求</h2><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gf61mrwv5oj30pc0aitcw.jpg" alt="image.png"></p>
+<h1 id="抢占式调度"><a href="#抢占式调度" class="headerlink" title="抢占式调度"></a>抢占式调度</h1><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gf61nwyp53j30pw09aaez.jpg" alt="image.png"></p>
+<h1 id="完全公平调度器"><a href="#完全公平调度器" class="headerlink" title="完全公平调度器"></a>完全公平调度器</h1><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gf624ye57dj30qm09bwk1.jpg" alt="image.png"></p>
+<p>完全废弃了时间片；内核层次</p>
+<p>数字越低，优先级越高。优先级-20~+20；</p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-Mynotes/操作系统与系统编程/进程的高级管理/sched_yield()函数解析" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/05/29/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/%E8%BF%9B%E7%A8%8B%E7%9A%84%E9%AB%98%E7%BA%A7%E7%AE%A1%E7%90%86/sched_yield()%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/"
+    >Mynotes/操作系统与系统编程/进程的高级管理/sched_yield()函数解析</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/29/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/%E8%BF%9B%E7%A8%8B%E7%9A%84%E9%AB%98%E7%BA%A7%E7%AE%A1%E7%90%86/sched_yield()%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/" class="article-date">
+  <time datetime="2020-05-29T06:22:35.936Z" itemprop="datePublished">2020-05-29</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h1 id="sched-yield-函数解析"><a href="#sched-yield-函数解析" class="headerlink" title="sched_yield()函数解析"></a>sched_yield()函数解析</h1><h2 id="1、让出CPU"><a href="#1、让出CPU" class="headerlink" title="1、让出CPU"></a>1、让出CPU</h2><p>Linux提供一个系统调用运行进程主动让出执行权：sched_yield。进程运行的好好的，为什么需要这个函数呢？有一种情况是用户空间线程的锁定。如果一个线程试图取得另一个线程所持有的锁，则新的线程应该让出处理器知道该锁变为可用。用户空间锁没有内核的支持，这是一个最间单、最有效率的做法。但是现在Linux线程实现引入一个使用futexes的优化解决方案。</p>
+<p>另一个情况是在有处理器密集型程序可用周期性调用sched_yield，试图将该进程对系统的冲击减到最小。不管怎么说，如何调度程序应该是系统的事情，而不是进程自己去管。eg：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">int main()&#123;</span><br><span class="line">    int ret, i;</span><br><span class="line">    ret = sched_yield();</span><br><span class="line">    if(ret == -1)&#123;</span><br><span class="line">    printf(&quot;调用sched_yield失败!\n&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2、进程的优先级"><a href="#2、进程的优先级" class="headerlink" title="2、进程的优先级"></a>2、进程的优先级</h2><p>看过CFS中会看到进程的nice value会决定进程会运行多长时间，或者说是占用的百分比。可以通过系统调用nice来设置、获取进程的nice value。该值的范围是-20～19，越低的值越高的优先级（这个在计算虚拟时间的时候放在分母上），实时进程应该是负数，eg：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">int main()&#123;</span><br><span class="line">    int ret, i;</span><br><span class="line">    ret = nice(0);</span><br><span class="line">    printf(&quot;当前进程的nice value：%d\n&quot;, ret);</span><br><span class="line">    ret = nice(10);</span><br><span class="line">    printf(&quot;当前进程的nice value：%d\n&quot;, ret);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>因为ret本来就可以是-1，那么在判断是否系统调用失败的时候就要综合ret和errno。还有两个系统调用可以更灵活地设置，getpriority可以获得进程组、用户的任何进程中优先级最高的。setpriority将所指定的所有进程优先级设置为prio，eg：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">int main()&#123;</span><br><span class="line">    int ret, i;</span><br><span class="line">    ret = getpriority(PRIO_PROCESS, 0);</span><br><span class="line">    printf(&quot;nice value:%d\n&quot;, ret);</span><br><span class="line">    ret = setpriority(PRIO_PROCESS, 0, 10);</span><br><span class="line">    ret = getpriority(PRIO_PROCESS, 0);</span><br><span class="line">    printf(&quot;nice value:%d\n&quot;, ret);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>进程有在处理器上执行的优先级，也有传输数据的优先级：I/O优先级。linux有额外的两个系统调用可用显示设置和取得I/O nice value，但是尚未导出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int ioprio_get(int which, int who);</span><br><span class="line">int ioprio_set(int which, int who, int ioprio);</span><br></pre></td></tr></table></figure>
+
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-Mynotes/Hzoj_Code/README" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -891,217 +1142,6 @@
 
 </article>
     
-    <article id="post-Mynotes/计算机网络/网络层协议" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/05/14/Mynotes/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%B1%82%E5%8D%8F%E8%AE%AE/"
-    >Mynotes/计算机网络/网络层协议</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/05/14/Mynotes/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%B1%82%E5%8D%8F%E8%AE%AE/" class="article-date">
-  <time datetime="2020-05-13T18:05:21.900Z" itemprop="datePublished">2020-05-13</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h1 id="网络层协议"><a href="#网络层协议" class="headerlink" title="网络层协议"></a>网络层协议</h1><h2 id="网络层概述"><a href="#网络层概述" class="headerlink" title="网络层概述"></a>网络层概述</h2><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gej34l6f1xj31930qx4gp.jpg" alt="image.png"></p>
-<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gej373mdotj31ax0qu4dn.jpg" alt="image.png"></p>
-<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gej38ani9vj30k20a3q7r.jpg" alt="image.png"></p>
-<h2 id="转发"><a href="#转发" class="headerlink" title="转发"></a>转发</h2><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gehsznz5mtj30ol03adj8.jpg" alt="image.png"></p>
-<h2 id="路由选择"><a href="#路由选择" class="headerlink" title="路由选择"></a>路由选择</h2><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1geht0lxsz8j30q201y0tw.jpg" alt="image.png"></p>
-<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1geht4g6v0cj30qo0f3ah9.jpg" alt="image.png"></p>
-<h2 id="一个简单的虚电路网络"><a href="#一个简单的虚电路网络" class="headerlink" title="一个简单的虚电路网络"></a>一个简单的虚电路网络</h2><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gehtdjymw5j30pf0ae78i.jpg" alt="image.png"></p>
-<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gej3y4ul9zj31h20nxawl.jpg" alt="image.png"></p>
-<h2 id="虚电路建立"><a href="#虚电路建立" class="headerlink" title="虚电路建立"></a>虚电路建立</h2><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gehtdzyd5vj30mk087tep.jpg" alt="image.png"></p>
-<h2 id="数据报网络"><a href="#数据报网络" class="headerlink" title="数据报网络"></a>数据报网络</h2><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gej40p09v9j31g80naqqa.jpg" alt="image.png"></p>
-<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gehtetrx9hj30qh08xdkv.jpg" alt="image.png"></p>
-<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gehtf8wcqjj30i50f9q8d.jpg" alt="image.png"></p>
-<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gej41g0728j31dq0kb16q.jpg" alt="image.png"></p>
-<h2 id="路由选择协议概述"><a href="#路由选择协议概述" class="headerlink" title="路由选择协议概述"></a>路由选择协议概述</h2><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gej480h9isj30o50a6tez.jpg" alt="image.png"></p>
-<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gej4aap4gyj30pu0c40xj.jpg" alt="image.png"></p>
-<h2 id="路由器"><a href="#路由器" class="headerlink" title="路由器"></a>路由器</h2><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gehtgi19poj30lx09bwim.jpg" alt="image.png"></p>
-<h3 id="输入端口"><a href="#输入端口" class="headerlink" title="输入端口"></a>输入端口</h3><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gehtievlmqj30pm07h40e.jpg" alt="image.png"></p>
-<p>数据链路处理：数据拆分</p>
-<p>###　交换结构</p>
-<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gehtp3qcuaj30og07qwic.jpg" alt="image.png"> </p>
-<p>内存:速度慢，cpu性能，不稳定枷锁…</p>
-<p>纵横式:独立控制，减少冲突，高端</p>
-<h3 id="输出端口"><a href="#输出端口" class="headerlink" title="输出端口"></a>输出端口</h3><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gehtmqtnfmj30p907hdhj.jpg" alt="image.png"></p>
-<h2 id="网络层主要三块"><a href="#网络层主要三块" class="headerlink" title="网络层主要三块"></a>网络层主要三块</h2><p><img src="/home/fangsong/.config/Typora/typora-user-images/image-20200505200636360.png" alt="image-20200505200636360"></p>
-<h2 id="IP数据报"><a href="#IP数据报" class="headerlink" title="IP数据报"></a>IP数据报</h2><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gehu8qforuj30zk0k0dh9.jpg" alt="undefined"></p>
-<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gehue96y5yj30zk0k0di4.jpg" alt="undefined"></p>
-<h2 id="网络地址转换"><a href="#网络地址转换" class="headerlink" title="网络地址转换"></a>网络地址转换</h2><p>局域网ip之所以能进行通信，在于网络转换…</p>
-<p>网络地址转换是干什么的?</p>
-<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gehun1frplj30ru0ecjvw.jpg" alt="image.png"></p>
-<p>NAT右边10.0.0.1等是局域网，靠近局域网10.0.0.4是个路由器，如果要进行通信,在NAT转换表加一记录</p>
-<h2 id="ICMP协议"><a href="#ICMP协议" class="headerlink" title="ICMP协议"></a>ICMP协议</h2><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gehuyq8dvfj30on04rwgd.jpg" alt="image.png"></p>
-<h3 id="ICMP报文类型"><a href="#ICMP报文类型" class="headerlink" title="ICMP报文类型"></a>ICMP报文类型</h3><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gehv0xmab7j30db0apn1k.jpg" alt="image.png"></p>
-<h2 id="自制系统间的路由选择BGP"><a href="#自制系统间的路由选择BGP" class="headerlink" title="自制系统间的路由选择BGP"></a>自制系统间的路由选择BGP</h2><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gehwbjts0sj30oq08ptdp.jpg" alt="image.png"></p>
-<p>将自制系统连接</p>
-<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gej4vdwpz1j30pa0bu447.jpg" alt="image.png"></p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-Mynotes/计算机网络/网络基础" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/05/14/Mynotes/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/"
-    >Mynotes/计算机网络/网络基础</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/05/14/Mynotes/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" class="article-date">
-  <time datetime="2020-05-13T18:05:21.900Z" itemprop="datePublished">2020-05-13</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h2 id="协议"><a href="#协议" class="headerlink" title="协议"></a>协议</h2><ul>
-<li><p>语法</p>
-</li>
-<li><p>语义</p>
-</li>
-<li><p>同步：以什么样的事件发生的</p>
-<pre><code>一组规则.</code></pre><p> <img src="https://img-blog.csdnimg.cn/20200421094156666.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTIxNjcw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="分层模型结构"><a href="#分层模型结构" class="headerlink" title="分层模型结构"></a>分层模型结构</h2><pre><code>OSI七层模型：　物，数，网，传，会，表，应
-TCP/IP 4层模型：网(链路层)、网、　传、　应。
-                 应用层：http、ftp、nfs、ssh、telenet...
-                 传输层: TCP、UDP
-                 网络层: IP、ICMP、IGMP
-                 链路层: 以太网帧协议、ARP</code></pre><p><img src="https://img-blog.csdnimg.cn/20200421095531671.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTIxNjcw,size_16,color_FFFFFF,t_70" alt="osi模型"></p>
-<h2 id="c-s模型"><a href="#c-s模型" class="headerlink" title="c/s模型"></a>c/s模型</h2><p><code>client-server</code></p>
-</li>
-</ul>
-<h2 id="b-s模型"><a href="#b-s模型" class="headerlink" title="b/s模型"></a>b/s模型</h2><p><code>browser-server</code></p>
-<pre><code>                                                C/S                                　　            　        B/S
-优点：　　　　缓存大量的数据、协议灵活，　　　　　安全性、跨平台、开发工作量较小
-　　　　　　　自定义、速度快。
-
-缺点：　　　　安全性　　　　　　　　　　　　　　　不能大量缓存大量数据、严格遵守http　　　　　</code></pre><h2 id="网络传输流程"><a href="#网络传输流程" class="headerlink" title="网络传输流程"></a>网络传输流程</h2><pre><code>数据没有封装之前，是不能进行传输的</code></pre><p><img src="https://img-blog.csdnimg.cn/2020042110014481.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTIxNjcw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20200421100351159.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTIxNjcw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="IP协议"><a href="#IP协议" class="headerlink" title="IP协议"></a>IP协议</h2><pre><code>IPv4, IPv6
-TTL: time to live .设置数据包在路由器结点中的跳转上线。没经过一个路由结点，该值-1，减为0的路由，有义务将其数据包丢弃
-源IP: 32位。---4字节。192.168.1.108 -- 点分十进制 IP地址(string) -- 二进制
-目的IP: 32位。---４字节</code></pre><p>[video(video-z69PfkbT-1587434876097)(type-bilibili)(url-<a href="https://player.bilibili.com/player.html?aid=75555742&amp;page=7)(image-https://ss.csdn.net/p?http://i1.hdslb.com/bfs/archive/647c37c7f82ae6c060940551c4f17c4f7a8c9566.jpg)(title-IP协议视频-bilibili)]" target="_blank" rel="noopener">https://player.bilibili.com/player.html?aid=75555742&amp;page=7)(image-https://ss.csdn.net/p?http://i1.hdslb.com/bfs/archive/647c37c7f82ae6c060940551c4f17c4f7a8c9566.jpg)(title-IP协议视频-bilibili)]</a></p>
-<h2 id="UDP"><a href="#UDP" class="headerlink" title="UDP"></a>UDP</h2><p>丢包不处理</p>
-<ul>
-<li><p>不提供必要的服务轻量级运输服务</p>
-</li>
-<li><p>不可靠的数据传输</p>
-<pre><code>16位：源端口号　2^16=65536
-16位：目的端口号
-IP地址：　可以在网络环境中标示一台主机
-端口号:　   可以在网络的一台主机上，唯一标识别一个进程
-IP地址＋端口号: 可以在网络环境中，唯一标识别一个进程
-8080,8888</code></pre><h2 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h2></li>
-</ul>
-<p>丢包重传</p>
-<ul>
-<li><p>面向连接的服务</p>
-</li>
-<li><p>可靠地数据传输</p>
-<pre><code>16位：源端口号    2^16=65536
-16位:   目的端口号.
-32位序号
-32位确认序号　//发送到
-6个标志位。
-16位窗口大小。2^16=65536</code></pre></li>
-</ul>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
     <article id="post-Mynotes/计算机网络/计算机网络习题" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -1296,7 +1336,7 @@ IP地址＋端口号: 可以在网络环境中，唯一标识别一个进程
 
 </article>
     
-    <article id="post-Mynotes/计算机网络/数据链路层概述" class="article article-type-post" itemscope
+    <article id="post-Mynotes/计算机网络/网络基础" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -1304,8 +1344,8 @@ IP地址＋端口号: 可以在网络环境中，唯一标识别一个进程
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/05/14/Mynotes/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82%E6%A6%82%E8%BF%B0/"
-    >Mynotes/计算机网络/数据链路层概述</a> 
+  <a class="article-title" href="/2020/05/14/Mynotes/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/"
+    >Mynotes/计算机网络/网络基础</a> 
 </h2>
  
 
@@ -1314,8 +1354,8 @@ IP地址＋端口号: 可以在网络环境中，唯一标识别一个进程
 
     
     <div class="article-meta">
-      <a href="/2020/05/14/Mynotes/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82%E6%A6%82%E8%BF%B0/" class="article-date">
-  <time datetime="2020-05-13T18:05:21.899Z" itemprop="datePublished">2020-05-13</time>
+      <a href="/2020/05/14/Mynotes/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" class="article-date">
+  <time datetime="2020-05-13T18:05:21.900Z" itemprop="datePublished">2020-05-13</time>
 </a>
       
       
@@ -1332,100 +1372,56 @@ IP地址＋端口号: 可以在网络环境中，唯一标识别一个进程
       
 
       
-      <h1 id="数据链路层概述"><a href="#数据链路层概述" class="headerlink" title="数据链路层概述"></a>数据链路层概述</h1><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gekacot1cfj30l50b0djp.jpg" alt="image.png"></p>
-<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gekaeecslij30j30avtcj.jpg" alt="image.png"></p>
-<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gekahbmt1dj31bz0qoqrn.jpg" alt="image.png"></p>
-<h2 id="数据链路层的三个重要问题"><a href="#数据链路层的三个重要问题" class="headerlink" title="数据链路层的三个重要问题"></a>数据链路层的三个重要问题</h2><h3 id="分装成帧"><a href="#分装成帧" class="headerlink" title="分装成帧"></a>分装成帧</h3><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gekajj0rqzj317s0m7tgv.jpg" alt="image.png"></p>
-<p><img src="/home/fangsong/.config/Typora/typora-user-images/image-20200507231401026.png" alt="image-20200507231401026"></p>
-<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gekakuhymdj31830oowni.jpg" alt="image.png"></p>
-<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gekalpszq4j317m0mdjyr.jpg" alt="image.png"></p>
-<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gekanlnqlmj30pa05977o.jpg" alt="image.png"></p>
-<h3 id="差错检测"><a href="#差错检测" class="headerlink" title="差错检测"></a>差错检测</h3><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gekapjg5hxj316z0os12b.jpg" alt="image.png"></p>
-<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gekaqds31vj31710okq97.jpg" alt="image.png"></p>
-<h3 id="可靠传输"><a href="#可靠传输" class="headerlink" title="可靠传输"></a>可靠传输</h3><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gekary80loj316i0oqgxc.jpg" alt="image.png"></p>
-<h2 id="使用广播信道的数据链路层"><a href="#使用广播信道的数据链路层" class="headerlink" title="使用广播信道的数据链路层"></a>使用广播信道的数据链路层</h2><p>1.为什么B D E 能分清不是传给自己的?</p>
-<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gekaugfhztj31ai0motib.jpg" alt="image.png">2.碰撞</p>
-<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gekaxar2rbj319g0dtn4x.jpg" alt="image.png"></p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gekay5tjrkj30ub0njn6c.jpg" alt="image.png"></p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-Mynotes/计算机网络/流量控制" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/05/14/Mynotes/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6/"
-    >Mynotes/计算机网络/流量控制</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/05/14/Mynotes/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6/" class="article-date">
-  <time datetime="2020-05-13T18:05:21.899Z" itemprop="datePublished">2020-05-13</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h1 id="流量控制"><a href="#流量控制" class="headerlink" title="流量控制"></a>流量控制</h1><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gefpe9pjhpj30l80al0v0.jpg" alt="image.png"></p>
-<p>为了解决上图中的溢出等，从而引入<strong>流量控制</strong></p>
-<ul>
-<li><p>流量控制(flow control)<font color = red> 让发送方发送速度不要太快，让接收方的来得及接收</font></p>
+      <h2 id="协议"><a href="#协议" class="headerlink" title="协议"></a>协议</h2><ul>
+<li><p>语法</p>
 </li>
-<li><p>流量控制的基本方法就是<font color =red>由接收方控制发送方的发送数据的速率</font>.常见的方法有以下两种：</p>
-<ul>
-<li><font color = red> 停止-等待</font>流量控制</li>
-<li><font color =red> 滑动窗口</font>流量控制</li>
-</ul>
+<li><p>语义</p>
+</li>
+<li><p>同步：以什么样的事件发生的</p>
+<pre><code>一组规则.</code></pre><p> <img src="https://img-blog.csdnimg.cn/20200421094156666.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTIxNjcw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="分层模型结构"><a href="#分层模型结构" class="headerlink" title="分层模型结构"></a>分层模型结构</h2><pre><code>OSI七层模型：　物，数，网，传，会，表，应
+TCP/IP 4层模型：网(链路层)、网、　传、　应。
+                 应用层：http、ftp、nfs、ssh、telenet...
+                 传输层: TCP、UDP
+                 网络层: IP、ICMP、IGMP
+                 链路层: 以太网帧协议、ARP</code></pre><p><img src="https://img-blog.csdnimg.cn/20200421095531671.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTIxNjcw,size_16,color_FFFFFF,t_70" alt="osi模型"></p>
+<h2 id="c-s模型"><a href="#c-s模型" class="headerlink" title="c/s模型"></a>c/s模型</h2><p><code>client-server</code></p>
 </li>
 </ul>
-<p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gefpllxuvij31fl0ng7mo.jpg" alt="image.png"></p>
-<h2 id="停止-等待流量控制"><a href="#停止-等待流量控制" class="headerlink" title="停止-等待流量控制"></a><font color = red>停止-等待</font>流量控制</h2><p>发送方先发送后停止，当接收方返回信息确认，才可以发送下一帧。<br><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gefpqiiwayj302q06d74a.jpg" alt="image.png" style="zoom: 80%;" /><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gefpu1q8szj31g60pwh2c.jpg" alt="image.png"></p>
-<h2 id="滑动窗口流量控制"><a href="#滑动窗口流量控制" class="headerlink" title=" 滑动窗口流量控制"></a><font color =red> 滑动窗口</font>流量控制</h2><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gefpxm5bxsj30lf0603yz.jpg" alt="image.png"></p>
-<h2 id="二者对比"><a href="#二者对比" class="headerlink" title="二者对比"></a>二者对比</h2><p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1gefpzl8a1ej31gb0prts7.jpg" alt="image.png"></p>
+<h2 id="b-s模型"><a href="#b-s模型" class="headerlink" title="b/s模型"></a>b/s模型</h2><p><code>browser-server</code></p>
+<pre><code>                                                C/S                                　　            　        B/S
+优点：　　　　缓存大量的数据、协议灵活，　　　　　安全性、跨平台、开发工作量较小
+　　　　　　　自定义、速度快。
+
+缺点：　　　　安全性　　　　　　　　　　　　　　　不能大量缓存大量数据、严格遵守http　　　　　</code></pre><h2 id="网络传输流程"><a href="#网络传输流程" class="headerlink" title="网络传输流程"></a>网络传输流程</h2><pre><code>数据没有封装之前，是不能进行传输的</code></pre><p><img src="https://img-blog.csdnimg.cn/2020042110014481.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTIxNjcw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20200421100351159.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTIxNjcw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="IP协议"><a href="#IP协议" class="headerlink" title="IP协议"></a>IP协议</h2><pre><code>IPv4, IPv6
+TTL: time to live .设置数据包在路由器结点中的跳转上线。没经过一个路由结点，该值-1，减为0的路由，有义务将其数据包丢弃
+源IP: 32位。---4字节。192.168.1.108 -- 点分十进制 IP地址(string) -- 二进制
+目的IP: 32位。---４字节</code></pre><p>[video(video-z69PfkbT-1587434876097)(type-bilibili)(url-<a href="https://player.bilibili.com/player.html?aid=75555742&amp;page=7)(image-https://ss.csdn.net/p?http://i1.hdslb.com/bfs/archive/647c37c7f82ae6c060940551c4f17c4f7a8c9566.jpg)(title-IP协议视频-bilibili)]" target="_blank" rel="noopener">https://player.bilibili.com/player.html?aid=75555742&amp;page=7)(image-https://ss.csdn.net/p?http://i1.hdslb.com/bfs/archive/647c37c7f82ae6c060940551c4f17c4f7a8c9566.jpg)(title-IP协议视频-bilibili)]</a></p>
+<h2 id="UDP"><a href="#UDP" class="headerlink" title="UDP"></a>UDP</h2><p>丢包不处理</p>
+<ul>
+<li><p>不提供必要的服务轻量级运输服务</p>
+</li>
+<li><p>不可靠的数据传输</p>
+<pre><code>16位：源端口号　2^16=65536
+16位：目的端口号
+IP地址：　可以在网络环境中标示一台主机
+端口号:　   可以在网络的一台主机上，唯一标识别一个进程
+IP地址＋端口号: 可以在网络环境中，唯一标识别一个进程
+8080,8888</code></pre><h2 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h2></li>
+</ul>
+<p>丢包重传</p>
+<ul>
+<li><p>面向连接的服务</p>
+</li>
+<li><p>可靠地数据传输</p>
+<pre><code>16位：源端口号    2^16=65536
+16位:   目的端口号.
+32位序号
+32位确认序号　//发送到
+6个标志位。
+16位窗口大小。2^16=65536</code></pre></li>
+</ul>
 
       
       <!-- reward -->
