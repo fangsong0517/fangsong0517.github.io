@@ -1,1374 +1,192 @@
 <!DOCTYPE html>
-
-
-<html lang="zh-hanzi" >
-
-
+<html>
 <head>
-  <meta charset="utf-8" />
-    
-  <meta name="description" content="不要尽力而为，而要全力以赴，即使没有出色的外表和能力，也要压倒一切的霸气，用自己的光，照亮自己的路。" />
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-  <title>
-     恁村扛把子
-  </title>
-  <meta name="generator" content="hexo-theme-yilia-plus">
-  
-  <link rel="shortcut icon" href="/favicon.ico" />
-  
-  <link rel="stylesheet" href="/dist/main.css">
-  <link rel="stylesheet" href="/css/custom.css">
-  
-  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
-  
-  
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>恁村扛把子</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="fangsong">
+  <meta name="keywords" content="">
+  <meta name="description" content="不要尽力而为，而要全力以赴，即使没有出色的外表和能力，也要压倒一切的霸气，用自己的光，照亮自己的路。">
+  <script id="hexo-configurations">
+  var CONFIG = {
+    root: '/',
+    theme: 'master',
+    version: '1.4.5',
+    localsearch:{
+      "enable": false,
+      "trigger": "auto",
+      "top_n_per_article": 1,
+      "unescape": false,
+      "preload": false
+      },
+    path: '-'
+  };
+</script>
 
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/jquery.jside.menu.js"></script>
+	<script>
+	$(document).ready(function(){
+	$(".menu-container").jSideMenu({
+	    jSidePosition: "position-right",
+	    jSideSticky: true,
+	    jSideSkin: "endless-river",
+	     });
+	}); 
+	</script>
   
-
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300|Noto+Serif+SC&amp;display=swap">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
 </head>
-
-</html>
-
 <body>
-  <div id="app">
-    <main class="content on">
-      
-<section class="cover">
+<div id="page">
+<div id="lx-aside" style="background-image: url(/images/fs2.jpg)">
+  <div class="overlay">
+  <div class="featured">
+    <div class="avatar"><a href="/"><img src="/images/fs3.jpg"></a></div>
+    <span>fangsong</span>
+    <h2>恁村扛把子</h2>
+    <span>——天行健君子以自强不息， 地势坤君子以厚德载物！</span>
     
-      
-      <a class="forkMe" href="https://github.com/fangsong0517/fangsong0517.github.io"
-        target="_blank"><img width="149" height="149" src="/images/forkme.png"
-          class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a>
-    
-  <div class="cover-frame">
-    <div class="bg-box">
-      <img src="/images/cover1.jpg" alt="image frame" />
-    </div>
-    <div class="cover-inner text-center text-white">
-      <h1><a href="/">恁村扛把子</a></h1>
-      <div id="subtitle-box">
-        
-        <span id="subtitle"></span>
-        
-      </div>
-      <div>
-        
-      </div>
-    </div>
   </div>
-  <div class="cover-learn-more">
-    <a href="javascript:void(0)" class="anchor"><i class="ri-arrow-down-line"></i></a>
   </div>
-</section>
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js"></script>
-
-<div id="main">
-  <section class="outer">
-  <article class="articles">
-    
-    
-    
-    
-    <article id="post-Mynotes/操作系统与系统编程/文件锁/文件锁" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/%E6%96%87%E4%BB%B6%E9%94%81/%E6%96%87%E4%BB%B6%E9%94%81/"
-    >Mynotes/操作系统与系统编程/文件锁/文件锁</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/%E6%96%87%E4%BB%B6%E9%94%81/%E6%96%87%E4%BB%B6%E9%94%81/" class="article-date">
-  <time datetime="2020-05-13T18:05:21.820Z" itemprop="datePublished">2020-05-13</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h3 id="flock-函数"><a href="#flock-函数" class="headerlink" title="flock()函数"></a>flock()函数</h3><p>####　定义与用法</p>
-<p>​    flock()函数锁死那个或释放文件</p>
-<p>如果成功，则返回true,失败返回false</p>
-<h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">flock(file, lock, block);</span><br><span class="line">原型：<span class="function"><span class="keyword">int</span> <span class="title">flock</span><span class="params">(<span class="keyword">int</span> fd, <span class="keyword">int</span> operation)</span></span>;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>file</p>
-<ul>
-<li><p>必须</p>
-</li>
-<li><p>规定要锁定或释放的一打开的文件</p>
-</li>
-</ul>
-</li>
-<li><p>lock</p>
-<ul>
-<li><p>必须</p>
-</li>
-<li><p>规定要使用那种锁定的类型</p>
-</li>
-<li><p>可能的值：</p>
-</li>
-</ul>
-<p>​        LOCK_SH-共享锁定(读取的程序)。允许其他进程访问该文件</p>
-<p>​        LOCK_EX-独占锁定(写入的程序)。防止其他进程访问该文件</p>
-<p>​        LOCK_UN-释放一个共享锁定或独占锁定</p>
-<p>​        LOCK_NB-锁定的情况下避免阻塞其他进程</p>
-</li>
-<li><p>block</p>
-<ul>
-<li><p>可选</p>
-</li>
-<li><p>若设置为１，则当进行锁定时阻塞其他的进程。</p>
-</li>
-</ul>
-</li>
-</ul>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-Mynotes/操作系统与系统编程/信号量/README" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/%E4%BF%A1%E5%8F%B7%E9%87%8F/README/"
-    >Mynotes/操作系统与系统编程/信号量/README</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/%E4%BF%A1%E5%8F%B7%E9%87%8F/README/" class="article-date">
-  <time datetime="2020-05-13T18:05:21.817Z" itemprop="datePublished">2020-05-13</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h1 id="信号量"><a href="#信号量" class="headerlink" title="信号量"></a>信号量</h1><p>目录：</p>
-<ul>
-<li><a href="#一、什么是信号量">一、什么是信号量</a></li>
-</ul>
-<h3 id="一、什么是信号量"><a href="#一、什么是信号量" class="headerlink" title="一、什么是信号量"></a><font color = red>一、什么是信号量</font></h3><p>为了防止出现因多个程序同时访问一个共享资源而引发的一系列问题，我们需要一种方法，它可以通过生成并使用令牌来授权，在任一时刻只能有一个执行线程访问代码的临界区域。临界区域是指执行数据更新的代码需要独占式地执行。而信号量就可以提供这样的一种访问机制，让一个临界区同一时间只有一个线程在访问它，也就是说信号量是用来调协进程对共享资源的访问的。</p>
-<p>信号量是一个特殊的变量，程序对其访问都是原子操作，且只允许对它进行等待（即P(信号变量))和发送（即V(信号变量))信息操作。最简单的信号量是只能取0和1的变量，这也是信号量最常见的一种形式，叫做二进制信号量。而可以取多个正整数的信号量被称为通用信号量。这里主要讨论二进制信号量。</p>
-<h3 id="二、信号量的工作原理"><a href="#二、信号量的工作原理" class="headerlink" title="二、信号量的工作原理"></a><font color = red>二、信号量的工作原理</font></h3><p>由于信号量只能进行两种操作等待和发送信号，即P(sv)和V(sv),他们的行为是这样的：</p>
-<p>P(sv)：如果sv的值大于零，就给它减1；如果它的值为零，就挂起该进程的执行</p>
-<p>V(sv)：如果有其他进程因等待sv而被挂起，就让它恢复运行，如果没有进程因等待sv而挂起，就给它加1.</p>
-<p>举个例子，就是两个进程共享信号量sv，一旦其中一个进程执行了P(sv)操作，它将得到信号量，并可以进入临界区，使sv减1。而第二个进程将被阻止进入临界区，因为当它试图执行P(sv)时，sv为0，它会被挂起以等待第一个进程离开临界区域并执行V(sv)释放信号量，这时第二个进程就可以恢复执行。</p>
-<h3 id="三、Linux的信号量机制"><a href="#三、Linux的信号量机制" class="headerlink" title="三、Linux的信号量机制"></a><font color = red>三、Linux的信号量机制</font></h3><p>Linux提供了一组精心设计的信号量接口来对信号进行操作，它们不只是针对二进制信号量，下面将会对这些函数进行介绍，但请注意，这些函数都是用来对成组的信号量值进行操作的。它们声明在头文件<code>sys/sem.h</code>中。</p>
-<p><strong>1、<code>semget()</code>函数</strong></p>
-<p>它的作用是创建一个新的信号量或取得一个已有的信号量，原型为：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">semget</span><span class="params">(<span class="keyword">key_t</span> key, <span class="keyword">int</span> num_sems, <span class="keyword">int</span> sem_flages)</span></span>;</span><br></pre></td></tr></table></figure>
-
-<p>第一个参数key是整数值（唯一非零），不相关的进程可以通过它访问一个信号量，它代表程序可能需要使用某个西园，程序对所有的信号量访问都是间接的，程序先通过调用<code>semget()</code>函数并提供一个键，再由系统生成一个相应的信号标识符（semget()函数的返回值），只有semget()函数才直接使用信号量键，所有其他的信号量函数使用由semget()函数返回的信号量标识符。如果多个程序使用相同的key值，key将负责协调工作。</p>
-<p>第二个参数num_sems指定需要的信号量数目，它的值几乎总是1。</p>
-<p>第三个参数sem_flags是一组标志，当想要当信号量不存在时创建一个新的信号量，可以和值IPC_CREAT做按位或操作。设置了IPC_CREAT标志后，即使给出的键是一个已有信号量的键，也不会产生错误。而IPC_CREAT | IPC_EXCL则可以创建一个新的，唯一的信号量，如果信号量已存在，返回一个错误。</p>
-<p>semget()函数成功返回一个相应信号标识符（非零），失败返回-1.</p>
-<p><strong>2、semop()函数</strong></p>
-<p>它的作用是改变信号量的值，原型为：</p>
-<blockquote>
-<p>int semop(int sem_id, struct sembuf *sem_opa, size_t num_sem_ops);</p>
-</blockquote>
-<p>sem_id是由semget()返回的信号量标识符，sembuf结构的定义如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`struct` `sembuf&#123;``  ``short` `sem_num; ``// 除非使用一组信号量，否则它为0``  ``short` `sem_op; ``// 信号量在一次操作中需要改变的数据，通常是两个数，一个是-1，即P（等待）操作，``          ``// 一个是+1，即V（发送信号）操作。``  ``short` `sem_flg; ``// 通常为SEM_UNDO,使操作系统跟踪信号，``          ``// 并在进程没有释放该信号量而终止时，操作系统释放信号量``&#125;;`</span><br></pre></td></tr></table></figure>
-
-<p><strong>3、semctl()函数</strong></p>
-<p>该函数用来直接控制信号量信息，它的原型为：</p>
-<blockquote>
-<p>int semctl(int sem_id, int sem_num, int command, …);</p>
-</blockquote>
-<p>如果有第四个参数，它通常是一个union semum结构，定义如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`union` `semun &#123;``  ``int` `val;``  ``struct` `semid_ds *buf;``  ``unsigned ``short` `*arry;``&#125;;`</span><br></pre></td></tr></table></figure>
-
-<p>前两个参数与前面一个函数中的一样，command通常是下面两个值中的其中一个</p>
-<p>SETVAL：用来把信号量初始化为一个已知的值。p 这个值通过union semun中的val成员设置，其作用是在信号量第一次使用前对它进行设置。</p>
-<p>IPC_RMID：用于删除一个已经无需继续使用的信号量标识符。</p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-Mynotes/操作系统与系统编程/server_select/README" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/server_select/README/"
-    >Mynotes/操作系统与系统编程/server_select/README</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/server_select/README/" class="article-date">
-  <time datetime="2020-05-13T18:05:21.814Z" itemprop="datePublished">2020-05-13</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p><img src="https://static.dingtalk.com/media/lALPDiQ3KR9S0PHNApTNA5Q_916_660.png_620x10000q90g.jpg?auth_bizType=IM&auth_bizEntity=%7B%22cid%22%3A%22627064533%3A627064533%22%2C%22msgId%22%3A%223484896791903%22%7D&bizType=im&open_id=627064533" alt="图片"></p>
-<p><img src="https://static.dingtalk.com/media/lALPDhJzr-nhBnbNApPNA8U_965_659.png_620x10000q90g.jpg?auth_bizType=IM&auth_bizEntity=%7B%22cid%22%3A%22627064533%3A627064533%22%2C%22msgId%22%3A%223485696508656%22%7D&bizType=im&open_id=627064533" alt="图片"></p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-Mynotes/操作系统与系统编程/server_epoll/README" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/server_epoll/README/"
-    >Mynotes/操作系统与系统编程/server_epoll/README</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/server_epoll/README/" class="article-date">
-  <time datetime="2020-05-13T18:05:21.809Z" itemprop="datePublished">2020-05-13</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p><img src="https://static.dingtalk.com/media/lALPDiCpqpJJGZLNAY7NA84_974_398.png_620x10000q90g.jpg?auth_bizType=IM&auth_bizEntity=%7B%22cid%22%3A%22627064533%3A627064533%22%2C%22msgId%22%3A%223505296142785%22%7D&bizType=im&open_id=627064533" alt="图片"></p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-Mynotes/操作系统与系统编程/popen/README" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/popen/README/"
-    >Mynotes/操作系统与系统编程/popen/README</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/popen/README/" class="article-date">
-  <time datetime="2020-05-13T18:05:21.806Z" itemprop="datePublished">2020-05-13</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>  主要通过pipe管道实现，具体思路如下：</p>
-<p>​    1、使用pipe()建立管道</p>
-<p>​    2、使用fork()创建子进程</p>
-<p>​    3、在子进程中调用exec族函数执行命令，通过管道将结果传送至父进程</p>
-<p>​    4、在主进程中等待子进程执行，子进程执行完成后将接收其结果，返回结果的文件指针</p>
-<p>下面是popen()在linux中的实现：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> *	popen.c		Written by W. Richard Stevens</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span>	<span class="meta-string">&lt;sys/wait.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span>	<span class="meta-string">&lt;errno.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span>	<span class="meta-string">&lt;fcntl.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span>	<span class="meta-string">"ourhdr.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">pid_t</span>	*childpid = <span class="literal">NULL</span>;</span><br><span class="line">						<span class="comment">/* ptr to array allocated at run-time */</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">int</span>		maxfd;	<span class="comment">/* from our open_max(), &#123;Prog openmax&#125; */</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span>	SHELL	<span class="meta-string">"/bin/sh"</span></span></span><br><span class="line"></span><br><span class="line">FILE *</span><br><span class="line">popen(<span class="keyword">const</span> <span class="keyword">char</span> *cmdstring, <span class="keyword">const</span> <span class="keyword">char</span> *type)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">int</span>		i, pfd[<span class="number">2</span>];</span><br><span class="line">	<span class="keyword">pid_t</span>	pid;</span><br><span class="line">	FILE	*fp;</span><br><span class="line"></span><br><span class="line">			<span class="comment">/* only allow "r" or "w" */</span></span><br><span class="line">	<span class="keyword">if</span> ((type[<span class="number">0</span>] != <span class="string">'r'</span> &amp;&amp; type[<span class="number">0</span>] != <span class="string">'w'</span>) || type[<span class="number">1</span>] != <span class="number">0</span>) &#123;</span><br><span class="line">		errno = EINVAL;		<span class="comment">/* required by POSIX.2 */</span></span><br><span class="line">		<span class="keyword">return</span>(<span class="literal">NULL</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (childpid == <span class="literal">NULL</span>) &#123;		<span class="comment">/* first time through */</span></span><br><span class="line">				<span class="comment">/* allocate zeroed out array for child pids */</span></span><br><span class="line">		maxfd = open_max();</span><br><span class="line">		<span class="keyword">if</span> ( (childpid = <span class="built_in">calloc</span>(maxfd, <span class="keyword">sizeof</span>(<span class="keyword">pid_t</span>))) == <span class="literal">NULL</span>)</span><br><span class="line">			<span class="keyword">return</span>(<span class="literal">NULL</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (pipe(pfd) &lt; <span class="number">0</span>)</span><br><span class="line">		<span class="keyword">return</span>(<span class="literal">NULL</span>);	<span class="comment">/* errno set by pipe() */</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> ( (pid = fork()) &lt; <span class="number">0</span>)</span><br><span class="line">		<span class="keyword">return</span>(<span class="literal">NULL</span>);	<span class="comment">/* errno set by fork() */</span></span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span> (pid == <span class="number">0</span>) &#123;							<span class="comment">/* child */</span></span><br><span class="line">		<span class="keyword">if</span> (*type == <span class="string">'r'</span>) &#123;</span><br><span class="line">			close(pfd[<span class="number">0</span>]);</span><br><span class="line">			<span class="keyword">if</span> (pfd[<span class="number">1</span>] != STDOUT_FILENO) &#123;</span><br><span class="line">				dup2(pfd[<span class="number">1</span>], STDOUT_FILENO);</span><br><span class="line">				close(pfd[<span class="number">1</span>]);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			close(pfd[<span class="number">1</span>]);</span><br><span class="line">			<span class="keyword">if</span> (pfd[<span class="number">0</span>] != STDIN_FILENO) &#123;</span><br><span class="line">				dup2(pfd[<span class="number">0</span>], STDIN_FILENO);</span><br><span class="line">				close(pfd[<span class="number">0</span>]);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">			<span class="comment">/* close all descriptors in childpid[] */</span></span><br><span class="line">		<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; maxfd; i++)</span><br><span class="line">			<span class="keyword">if</span> (childpid[ i ] &gt; <span class="number">0</span>)</span><br><span class="line">				close(i);</span><br><span class="line"></span><br><span class="line">		execl(SHELL, <span class="string">"sh"</span>, <span class="string">"-c"</span>, cmdstring, (<span class="keyword">char</span> *) <span class="number">0</span>);</span><br><span class="line">		_exit(<span class="number">127</span>);</span><br><span class="line">	&#125;</span><br><span class="line">								<span class="comment">/* parent */</span></span><br><span class="line">	<span class="keyword">if</span> (*type == <span class="string">'r'</span>) &#123;</span><br><span class="line">		close(pfd[<span class="number">1</span>]);</span><br><span class="line">		<span class="keyword">if</span> ( (fp = fdopen(pfd[<span class="number">0</span>], type)) == <span class="literal">NULL</span>)</span><br><span class="line">			<span class="keyword">return</span>(<span class="literal">NULL</span>);</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		close(pfd[<span class="number">0</span>]);</span><br><span class="line">		<span class="keyword">if</span> ( (fp = fdopen(pfd[<span class="number">1</span>], type)) == <span class="literal">NULL</span>)</span><br><span class="line">			<span class="keyword">return</span>(<span class="literal">NULL</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	childpid[fileno(fp)] = pid;	<span class="comment">/* remember child pid for this fd */</span></span><br><span class="line">	<span class="keyword">return</span>(fp);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span></span><br><span class="line">pclose(FILE *fp)</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span>		fd, stat;</span><br><span class="line">	<span class="keyword">pid_t</span>	pid;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (childpid == <span class="literal">NULL</span>)</span><br><span class="line">		<span class="keyword">return</span>(<span class="number">-1</span>);		<span class="comment">/* popen() has never been called */</span></span><br><span class="line"></span><br><span class="line">	fd = fileno(fp);</span><br><span class="line">	<span class="keyword">if</span> ( (pid = childpid[fd]) == <span class="number">0</span>)</span><br><span class="line">		<span class="keyword">return</span>(<span class="number">-1</span>);		<span class="comment">/* fp wasn't opened by popen() */</span></span><br><span class="line"></span><br><span class="line">	childpid[fd] = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">if</span> (fclose(fp) == EOF)</span><br><span class="line">		<span class="keyword">return</span>(<span class="number">-1</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span> (waitpid(pid, &amp;stat, <span class="number">0</span>) &lt; <span class="number">0</span>)</span><br><span class="line">		<span class="keyword">if</span> (errno != EINTR)</span><br><span class="line">			<span class="keyword">return</span>(<span class="number">-1</span>);	<span class="comment">/* error other than EINTR from waitpid() */</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span>(stat);	<span class="comment">/* return child's termination status */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-Mynotes/操作系统与系统编程/PIPE/README" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/PIPE/README/"
-    >Mynotes/操作系统与系统编程/PIPE/README</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/PIPE/README/" class="article-date">
-  <time datetime="2020-05-13T18:05:21.796Z" itemprop="datePublished">2020-05-13</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h1 id="进程间的通信方式——pipe（管道）"><a href="#进程间的通信方式——pipe（管道）" class="headerlink" title="进程间的通信方式——pipe（管道）"></a>进程间的通信方式——pipe（管道）</h1><h1 id="1-进程间通信"><a href="#1-进程间通信" class="headerlink" title="1.进程间通信"></a>1.进程间通信</h1><blockquote>
-<p>每个进程各自有不同的用户地址空间,任何一个进程的全局变量在另一个进程中都看不到，所以进程之间要交换数据必须通过内核,在内核中开辟一块缓冲区,进程A把数据从用户空间拷到内核缓冲区,进程B再从内核缓冲区把数据读走,内核提供的这种机制称为进程间通信。 </p>
-</blockquote>
-<p><img src="https://img-blog.csdn.net/20170509155514495?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc2t5cm9iZW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
-<p>不同进程间的通信本质：进程之间可以看到一份公共资源；而提供这份资源的形式或者提供者不同，造成了通信方式不同，而 pipe就是提供这份公共资源的形式的一种。</p>
-<h2 id="1-1管道的概念"><a href="#1-1管道的概念" class="headerlink" title="1.1管道的概念"></a>1.1管道的概念</h2><p>​        管道是一种剧本的<code>ＩＰＣ</code>机制，作用于有血缘关系的进程之间，完成数据传输。调用<code>ｐｉｐｅ</code>系统函数即可创建一个管道。有如下性质:</p>
-<p>​        1.其本质是一个伪文件（实质为内核缓冲区）</p>
-<p>​        2.有两个文件描述符引用，一个表示独断，一个表示写端</p>
-<p>​        3.规定数据从管道的写段流入管道，从读端流出。</p>
-<p>管道的原理：管道式为内核使用环形队列机制，借助内核缓冲区(<code>4k</code>)实现</p>
-<p><img src="README.assets/2020-04-08%2016-12-38%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt=""></p>
-<h1 id="2-匿名管道"><a href="#2-匿名管道" class="headerlink" title="2.匿名管道"></a>2.匿名管道</h1><h2 id="2-1管道的创建"><a href="#2-1管道的创建" class="headerlink" title="2.1管道的创建"></a>2.1管道的创建</h2><blockquote>
-<p>管道是由调用pipe函数来创建</p>
-</blockquote>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pipe</span> <span class="params">(<span class="keyword">int</span> fd[<span class="number">2</span>])</span></span>;</span><br><span class="line">                         <span class="comment">//返回:成功返回0，出错返回-1</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fd参数返回两个文件描述符,fd[<span class="number">0</span>]指向管道的读端,fd[<span class="number">1</span>]指向管道的写端。fd[<span class="number">1</span>]的输出是fd[<span class="number">0</span>]的输入。</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-2管道如何实现进程间的通信"><a href="#2-2管道如何实现进程间的通信" class="headerlink" title="2.2管道如何实现进程间的通信"></a>2.2管道如何实现进程间的通信</h2><p>（1）父进程创建管道，得到两个⽂件描述符指向管道的两端</p>
-<p>（2）父进程fork出子进程，⼦进程也有两个⽂件描述符指向同⼀管道。</p>
-<p>（3）父进程关闭fd[0],子进程关闭fd[1]，即⽗进程关闭管道读端,⼦进程关闭管道写端（因为管道只支持单向通信）。⽗进程可以往管道⾥写,⼦进程可以从管道⾥读,管道是⽤环形队列实现的,数据从写端流⼊从读端流出,这样就实现了进程间通信。</p>
-<p><img src="https://img-blog.csdn.net/20170509162502566?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc2t5cm9iZW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
-<h2 id="2-3如和用代码实现管道通信"><a href="#2-3如和用代码实现管道通信" class="headerlink" title="2.3如和用代码实现管道通信"></a>2.3如和用代码实现管道通信</h2><p>见上文档</p>
-<h2 id="2-4管道读取数据的四种的情况"><a href="#2-4管道读取数据的四种的情况" class="headerlink" title="2.4管道读取数据的四种的情况"></a>2.4管道读取数据的四种的情况</h2><p>（1）读端不读，写端一直写</p>
-<p><img src="https://img-blog.csdn.net/20170509235601938?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc2t5cm9iZW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
-<p>（2）写端不写，但是读端一直读</p>
-<p><img src="https://img-blog.csdn.net/20170510000703098?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc2t5cm9iZW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
-<p>（3）读端一直读，且fd[0]保持打开，而写端写了一部分数据不写了，并且关闭fd[1]。<img src="https://img-blog.csdn.net/20170510001736356?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc2t5cm9iZW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
-<p><font color = red>如果一个管道读端一直在读数据，而管道写端的引⽤计数⼤于0决定管道是否会堵塞，引用计数大于0，只读不写会导致管道堵塞。</font></p>
-<p>（4）读端读了一部分数据，不读了且关闭fd[0]，写端一直在写且f[1]还保持打开状态。</p>
-<p><img src="https://img-blog.csdn.net/20170510002648368?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc2t5cm9iZW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
-<p><font color =red>总结：<br>如果一个管道的写端一直在写，而读端的引⽤计数是否⼤于0决定管道是否会堵塞，引用计数大于0，只写不读再次调用write会导致管道堵塞；<br>如果一个管道的读端一直在读，而写端的引⽤计数是否⼤于0决定管道是否会堵塞，引用计数大于0，只读不写再次调用read会导致管道堵塞；<br>而当他们的引用计数等于0时，只写不读会导致写端的进程收到一个SIGPIPE信号，导致进程终止，只写不读会导致read返回0,就像读到⽂件末尾⼀样。</font></p>
-<h2 id="2-5管道特点"><a href="#2-5管道特点" class="headerlink" title="2.5管道特点"></a>2.5管道特点</h2><blockquote>
-<p>1.管道只允许具有血缘关系的进程间通信，如父子进程间的通信。 </p>
-<p>2.管道只允许单向通信。 </p>
-<p>3.管道内部保证同步机制，从而保证访问数据的一致性。 </p>
-<p>4.面向字节流 </p>
-<p>5.管道随进程，进程在管道在，进程消失管道对应的端口也关闭，两个进程都消失管道也消失。</p>
-</blockquote>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-Mynotes/操作系统与系统编程/IPC/3.非亲缘进程间的内存共享/README" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/IPC/3.%E9%9D%9E%E4%BA%B2%E7%BC%98%E8%BF%9B%E7%A8%8B%E9%97%B4%E7%9A%84%E5%86%85%E5%AD%98%E5%85%B1%E4%BA%AB/README/"
-    >Mynotes/操作系统与系统编程/IPC/3.非亲缘进程间的内存共享/README</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/IPC/3.%E9%9D%9E%E4%BA%B2%E7%BC%98%E8%BF%9B%E7%A8%8B%E9%97%B4%E7%9A%84%E5%86%85%E5%AD%98%E5%85%B1%E4%BA%AB/README/" class="article-date">
-  <time datetime="2020-05-13T18:05:21.784Z" itemprop="datePublished">2020-05-13</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h2 id="Linux下利用共享空间来实现两个没有亲缘关系的进程间通信"><a href="#Linux下利用共享空间来实现两个没有亲缘关系的进程间通信" class="headerlink" title="Linux下利用共享空间来实现两个没有亲缘关系的进程间通信"></a>Linux下利用共享空间来实现两个没有亲缘关系的进程间通信</h2><blockquote>
-<p>功能需求：<br>1.打开一个Linux命令窗口作为写入端-&gt;客户端（client）<br>2.打开另一个Linux命令窗口作为读取端-&gt;服务器（server）<br>3.在客户端（client）写入数据后服务器（server）可以读取到客户端信息并返回信息内容，如果客户端没有写入消息则服务器进入等待状态<br>4.用户输入quit进程结束</p>
-</blockquote>
-<blockquote>
-<p>思路：<br>1.首先我们应该在客户端（client）和服务器（server）中创建一个可以共同使用的共享空间：<br>共享空间属于IPC对象中的一种，我们要实现两个没有亲缘关系的进程通信那就要求客户端和服务器传递的信息之间达成某种协议，这种协议可以使服务器收到客户端的写入内容，所以我们可以在共享空间创建时使用相同的key，这样客户端和服务器就可以访问同一个共享空间；</p>
-</blockquote>
-<p>2.实现两个进程之间的同步：</p>
-<blockquote>
-<p>共享空间里数据被读取时如果为空就会直接结束程序，所以为了使数据传输实现同步，就需要引入信号来实现；<br>（1）首先使用信号让两个进程互相获取到进程号（pid），这就需要在创建共享空间地址的时候使里面的数据包括进程的进程号（pid）和发送的数据区；<br>（2）然后当共享空间中没有数据时，服务器就等待客户端输入，当客户端输入消息后发送信号结束服务器的等待让服务器读取数据，服务器在读取数据时客户端进行等待，服务器读取完成后发送信号给客户端，此时客户端进行输入，服务器等待…然后依次循环进行从而实现进程之间的同步；</p>
-</blockquote>
-<p>3.实现客户端（client）的输入功能和服务器（server）的接收读取功能：</p>
-<blockquote>
-<p>定义一个全局的数据缓存区buf, 在客户端程序中先将数据写入到buf缓存区中, 再从缓存区传进共享空间，每次输入结束要将缓存区内容清空，方便下次输入；然后从服务器程序中去读取共享空间的内容；</p>
-</blockquote>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>创建共享空间：</span><br><span class="line">      它的组成信息有:</span><br><span class="line">    	  提取码-&gt;key,  标识id号-&gt;shmid,  所有者-&gt;owner,  权限-&gt;perms,   大小-&gt;bytes,  共享进程数量-&gt;nattch;</span><br><span class="line">     </span><br><span class="line">      创建步骤所利用函数:</span><br><span class="line">      	 <span class="number">1.</span> 创建一个提取码ftok()</span><br><span class="line">      	 <span class="number">2.</span> 创建一个共享空间shmget()</span><br><span class="line">      	 <span class="number">3.</span> 设置共享空间映射内存shmat()</span><br><span class="line">      	 <span class="number">4.</span> 撤销共享内存映射shmdt()</span><br><span class="line">      	 <span class="number">5.</span> 删除一个共享内存空间shmctl()</span><br><span class="line">      </span><br><span class="line">      共享空间的地址类型：</span><br><span class="line">      	<span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">shm</span>&#123;</span></span><br><span class="line">      		<span class="keyword">pid_t</span> pid;</span><br><span class="line">      		<span class="keyword">char</span> buf[MAX];</span><br><span class="line">      	&#125;SHM;</span><br><span class="line"></span><br><span class="line">    代码实现:</span><br></pre></td></tr></table></figure>
-<pre><code>#include &lt;sys/types.h&gt;
-#include &lt;sys/ipc.h&gt;
-#include &lt;sys/shm.h&gt;
-
-#define SIZE 1024            //定义一个宏来表示共享空间的大小
-#define MAX 64                //定义一个宏来表示缓存区的大小
-
-typedef struct shm{            //定义共享空间里面需要包含的数据类型
-           pid_t pid;
-           char buf[MAX];
-       }SHM;
-
-int main()
-{
-    key_t  key;            //定义自己的共享空间的提取码
-    int shmid;                //定义一个共享空间的ID
-    SHM *shmaddr = NULL;        //定义共享空间的首地址
-
-    //创建一个提取码
-    if((key = ftok(&apos;.&apos;, &apos;z&apos;)) &lt; 0)
-    {
-        perror(&quot;ftok&quot;);            //创建失败就返回错误信息
-        return  -1;
-    } 
-
-    //创建一个共享空间
-    if((shmid = shmget(key, SIZE, IPC_CREAT  | 0666)) == -1)
-    {
-        perror(&quot;shmget&quot;);
-        return -1;
-    }
-
-    //设置共享空间的映射
-    if((shmaddr = shmat(shmid, NULL, 0)) == (SHM *)-1)        //-1的类型要和shmaddr类型一致需要进行类型强转
-    {
-        perror(&quot;shmat&quot;);
-        return -1;
-    }
-
-    //删除共享空间
-    shmdt(shmaddr);
-    shmctl(shmid, IPC_RMID, NULL);
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">	</span><br><span class="line">2.实现两个进程之间同步：</span><br><span class="line">	使用信号signal()函数来创建两个用户信号（SIGUSR）来向两个进程发送信号；</span><br><span class="line">	用到的函数有：</span><br><span class="line">		1.信号捕捉函数signal()</span><br><span class="line">		2.等待信号函数pause()</span><br><span class="line">		3.信号发送函数kill()</span><br><span class="line">	</span><br><span class="line">	信号捕捉函数用来注册用户信号，等待信号函数用来设定进程执行顺序，信号发送函数用来将信号发送给指定进程进行下一步操作；</span><br><span class="line">这样使用三个信号函数就使两个进程之间产生同步通信；</span><br><span class="line"></span><br><span class="line">    代码实现</span><br></pre></td></tr></table></figure>
-client.c
-    pid_t pid_server;
-
-    //注册客户端信号
-    signal(SIGUSR1, myfun);
-    pid_server = shmaddr-&gt;pid;            //获取服务器的PID                
-    shmaddr-&gt;pid = getpid();        //把客户端的PID传到共享空间让服务器获取
-    kill(pid_server, SIGUSR2);        //给服务器发信号
-
-server.c
-    pid_t pid_client;
-
-    //注册服务器信号
-    signal(SIGUSR2, myfun);
-    shmaddr-&gt;pid = getpid();        //把服务器的PID传到共享空间让客户端获取
-    pause();                //等待客户端发送信号
-    pid_client = shmaddr-&gt;pid;        //获取客户端的PID
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">	</span><br><span class="line">3.实现客户端（client）的输入功能和服务器（server）的接收读取功能：</span><br><span class="line">     客户端：</span><br><span class="line">	（1）使用fgets函数从标准输入获取到客户端输入的字符信息存入共享空间缓存区；</span><br><span class="line">	（2）使用kill()函数给服务器发信号让它读取内容；</span><br><span class="line">	（3）使用pause()函数等待服务器读取完毕的信号；</span><br><span class="line">	（4）使用strncmp()函数来判断用户输入的退出信息结束来通信；</span><br><span class="line">	（5）使用memset()函数来清空共享空间缓存区内容；</span><br><span class="line">    服务器：</span><br><span class="line">    	（1）使用pause()函数等待客户端输入消息完成的信号；</span><br><span class="line">    	（2）使用strncmp()函数来判断用户输入的退出信息结束来通信；</span><br><span class="line">    	（3）使用printf直接读取共享空间缓存区的内容；	</span><br><span class="line">         (4)使用kill()函数给客户端发送信号表示读取完成；</span><br><span class="line">         </span><br><span class="line">    代码实现</span><br></pre></td></tr></table></figure>
-client.c
-    while(1)
-    {
-        printf(&quot;input&gt;&quot;);
-        fflush(stdout);
-        fgets(shmaddr-&gt;buf, MAX, stdin);
-        kill(pid, SIGUSR2);
-
-        if(strncmp(shmaddr-&gt;buf, &quot;quit&quot;, 4) == 0)
-              break;
-        pause();
-        memset(shmaddr-&gt;buf, 0, MAX);
-    }
-
-server.c
-    while(1)
-    {
-        pause();
-        if(strncmp(shmaddr-&gt;buf, &quot;quit&quot;, 4) == 0)
-              break;
-        printf(&quot;read:%s&quot;, shmaddr-&gt;buf);
-        kill(pid, SIGUSR1);
-    }
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">```c</span><br><span class="line">    客户端：</span><br><span class="line">    client.c</span><br><span class="line">    	#include &lt;stdio.h&gt;</span><br><span class="line">    	#include &lt;stdlib.h&gt;</span><br><span class="line">    	#include &lt;string.h&gt;</span><br><span class="line">    	#include &lt;sys/types.h&gt;</span><br><span class="line">    	#include &lt;sys/ipc.h&gt;</span><br><span class="line">    	#include &lt;sys/shm.h&gt;</span><br><span class="line">    	#include &lt;unistd.h&gt;</span><br><span class="line">    	#include &lt;signal.h&gt;</span><br><span class="line"></span><br><span class="line">	#define SIZE 1024</span><br><span class="line">	#dedine MAX 64</span><br><span class="line"></span><br><span class="line">	typedef struct shm&#123;</span><br><span class="line">	      pid_t pid;</span><br><span class="line">	      char buf[MAX];</span><br><span class="line">	&#125;SHM;</span><br><span class="line"></span><br><span class="line">	void myfun(int sig)</span><br><span class="line">	&#123;</span><br><span class="line">	      return ;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	int main()</span><br><span class="line">	&#123;</span><br><span class="line">	      key_t key;</span><br><span class="line">	      SHM *shmaddr = NULL;</span><br><span class="line">	      int shmid;</span><br><span class="line">	      pid_t pid_server;</span><br><span class="line">	      </span><br><span class="line">	      //创建一个提取码</span><br><span class="line">	      if((key = ftok(&quot;.&quot;, &apos;z&apos;)) == -1)</span><br><span class="line">	      &#123;</span><br><span class="line">	      	    perror(&quot;ftok&quot;);</span><br><span class="line">	      	    return -1;</span><br><span class="line">	      &#125;</span><br><span class="line">	      </span><br><span class="line">	      //创建共享空间</span><br><span class="line">	      if((shmid = shmget(key, SIZE, IPC_CREAT | 0666)) == -1)</span><br><span class="line">	      &#123;</span><br><span class="line">	      	    perror(&quot;shmget&quot;);</span><br><span class="line">	      	    return -1;</span><br><span class="line">	      &#125;</span><br><span class="line">	      </span><br><span class="line">	      //设置共享空间地址</span><br><span class="line">	      if((shmaddr = shmat(shmid, NULL, 0)) == (SHM *)-1)</span><br><span class="line">	      &#123;</span><br><span class="line">	      	    perror(&quot;shmat&quot;);</span><br><span class="line">	      	    return -1;</span><br><span class="line">	      &#125;</span><br><span class="line">	      </span><br><span class="line">	      //注册信号</span><br><span class="line">	      signal(SIGUSR1, myfun);</span><br><span class="line">	      pid_server = shmaddr-&gt;pid;</span><br><span class="line">	      shmaddr-&gt;pid = getpid();</span><br><span class="line">	      kill(pid_server, SIGUSR2);</span><br><span class="line">	      </span><br><span class="line">	      //写入发送程序</span><br><span class="line">	      while(1)</span><br><span class="line">	      &#123;</span><br><span class="line">	      	    printf(&quot;input&gt;&quot;);</span><br><span class="line">	      	    fflush(stdout);</span><br><span class="line">	      	    fgets(shmaddr-&gt;buf, MAX, stdin);</span><br><span class="line">	      	    kill(pid_server, SIGUSR2);</span><br><span class="line">	      	    if(strncmp(shmaddr-&gt;buf, &quot;quit&quot;, 4) == 0)</span><br><span class="line">	      	    	    break;</span><br><span class="line">	      	    pause();</span><br><span class="line">	      	    memset(shmaddr-&gt;buf, 0, MAX);</span><br><span class="line">	      &#125;</span><br><span class="line">	      </span><br><span class="line">	      //删除共享空间</span><br><span class="line">	      shmdt(shmaddr)；</span><br><span class="line">	      shmctl(shmid, IPC_RMID, NULL);</span><br><span class="line">	      return 0;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">服务器：</span><br><span class="line">server.c</span><br><span class="line">	#include &lt;stdio.h&gt;</span><br><span class="line">	#include &lt;stdlib.h&gt;</span><br><span class="line">	#include &lt;string.h&gt;</span><br><span class="line">	#include &lt;sys/types.h&gt;</span><br><span class="line">	#include &lt;sys/ipc.h&gt;</span><br><span class="line">	#include &lt;sys/shm.h&gt;</span><br><span class="line">	#include &lt;unistd.h&gt;</span><br><span class="line">	#include &lt;signal.h&gt;</span><br><span class="line">	</span><br><span class="line">	#define SIZE 1024</span><br><span class="line">	#define MAX 64</span><br><span class="line">	</span><br><span class="line">	typedef struct shm&#123;</span><br><span class="line">	      pid_t pid;</span><br><span class="line">	      char buf[MAX];</span><br><span class="line">	&#125;SHM;</span><br><span class="line">	</span><br><span class="line">	void myfun(int sig)</span><br><span class="line">	&#123;</span><br><span class="line">	      return ;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	int main()</span><br><span class="line">	&#123;</span><br><span class="line">	      key_t key;</span><br><span class="line">	      SHM *shmaddr = NULL;</span><br><span class="line">	      int shmid;</span><br><span class="line">	      pid_t pid_client;</span><br><span class="line">	      </span><br><span class="line">	      //创建一个提取码</span><br><span class="line">	      if((key = ftok(&quot;.&quot;, &apos;z&apos;)) == -1)</span><br><span class="line">	      &#123;</span><br><span class="line">	      	    perror(&quot;ftok&quot;);</span><br><span class="line">	      	    return -1;</span><br><span class="line">	      &#125;</span><br><span class="line">	      </span><br><span class="line">	      //创建一个共享空间</span><br><span class="line">	      if((shmid = shmget(key, SIZE, IPC_CREAT | 0666) == -1)</span><br><span class="line">	      &#123;</span><br><span class="line">	      	    perror(&quot;shmget&quot;);</span><br><span class="line">	      	    return -1;</span><br><span class="line">	      &#125;</span><br><span class="line">	      </span><br><span class="line">	      //设置共享空间地址</span><br><span class="line">	      if((shmaddr = shmat(shmid, NULL, 0) == (SHM *)-1)</span><br><span class="line">	      &#123;</span><br><span class="line">	      	    perror(&quot;shmat&quot;);</span><br><span class="line">	      	    return -1;</span><br><span class="line">	      &#125;</span><br><span class="line">	      </span><br><span class="line">	      //注册信号</span><br><span class="line">	      signal(SIGUSR2, myfun);</span><br><span class="line">	      shmaddr-&gt;pid = getpid();</span><br><span class="line">	      pause();</span><br><span class="line">	      pid_client = shmaddr-&gt;pid;</span><br><span class="line">	      </span><br><span class="line">	      //读取程序</span><br><span class="line">	      while(1)</span><br><span class="line">	      &#123;</span><br><span class="line">	      	    pause();</span><br><span class="line">	      	    if(strncmp(shmaddr-&gt;buf, &quot;quit&quot;, 4) == 0)</span><br><span class="line">	      	    	  break;</span><br><span class="line">	      	    printf(&quot;read:%s\n&quot;, shmaddr-&gt;buf);</span><br><span class="line">	      	    kill(pid_client, SIGUSR1);</span><br><span class="line">	      &#125;</span><br><span class="line">	      </span><br><span class="line">	      //删除共享空间</span><br><span class="line">	      shmdt(shmaddr);</span><br><span class="line">	      shmctl(shmid, IPC_RMID, NULL);</span><br><span class="line">	      return 0;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></code></pre>
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-Mynotes/操作系统与系统编程/IPC/2.SHM/README" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/IPC/2.SHM/README/"
-    >Mynotes/操作系统与系统编程/IPC/2.SHM/README</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/IPC/2.SHM/README/" class="article-date">
-  <time datetime="2020-05-13T18:05:21.782Z" itemprop="datePublished">2020-05-13</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>进程间的通信</p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-Mynotes/操作系统与系统编程/IPC/1.数字累加/README" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/IPC/1.%E6%95%B0%E5%AD%97%E7%B4%AF%E5%8A%A0/README/"
-    >Mynotes/操作系统与系统编程/IPC/1.数字累加/README</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/IPC/1.%E6%95%B0%E5%AD%97%E7%B4%AF%E5%8A%A0/README/" class="article-date">
-  <time datetime="2020-05-13T18:05:21.781Z" itemprop="datePublished">2020-05-13</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>#使用锁，将从1加到100</p>
-<h3 id="flock-函数"><a href="#flock-函数" class="headerlink" title="flock()函数"></a>flock()函数</h3><p>####　定义与用法</p>
-<pre><code>flock()函数锁死那个或释放文件</code></pre><p>如果成功，则返回true,失败返回false</p>
-<h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">flock(file, lock, block);</span><br><span class="line">原型：<span class="function"><span class="keyword">int</span> <span class="title">flock</span><span class="params">(<span class="keyword">int</span> fd, <span class="keyword">int</span> operation)</span></span>;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>file</p>
-<ul>
-<li><p>必须</p>
-</li>
-<li><p>规定要锁定或释放的一打开的文件</p>
-</li>
-</ul>
-</li>
-<li><p>lock</p>
-<ul>
-<li><p>必须</p>
-</li>
-<li><p>规定要使用那种锁定的类型</p>
-</li>
-<li><p>可能的值：</p>
-</li>
-</ul>
-<p>​        LOCK_SH-共享锁定(读取的程序)。允许其他进程访问该文件</p>
-<p>​        LOCK_EX-独占锁定(写入的程序)。防止其他进程访问该文件</p>
-<p>​        LOCK_UN-释放一个共享锁定或独占锁定</p>
-<p>​        LOCK_NB-锁定的情况下避免阻塞其他进程</p>
-</li>
-<li><p>block</p>
-<ul>
-<li><p>可选</p>
-</li>
-<li><p>若设置为１，则当进行锁定时阻塞其他的进程。</p>
-</li>
-</ul>
-</li>
-</ul>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-Mynotes/操作系统与系统编程/ls/实现ls需要用到的函数" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/04/02/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/ls/%E5%AE%9E%E7%8E%B0ls%E9%9C%80%E8%A6%81%E7%94%A8%E5%88%B0%E7%9A%84%E5%87%BD%E6%95%B0/"
-    >Mynotes/操作系统与系统编程/ls/实现ls需要用到的函数</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/04/02/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/ls/%E5%AE%9E%E7%8E%B0ls%E9%9C%80%E8%A6%81%E7%94%A8%E5%88%B0%E7%9A%84%E5%87%BD%E6%95%B0/" class="article-date">
-  <time datetime="2020-04-01T16:33:55.417Z" itemprop="datePublished">2020-04-01</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h4 id="实现ls需要用到的函数"><a href="#实现ls需要用到的函数" class="headerlink" title="实现ls需要用到的函数"></a>实现ls需要用到的函数</h4><h5 id="opendir"><a href="#opendir" class="headerlink" title="opendir()"></a>opendir()</h5><p><strong>头文件</strong><br>　　#include&lt;sys/types.h&gt;<br>　　#include&lt;dirent.h&gt;<br><strong>函数原型</strong><br>　　DIR* opendir (const char * path ); （获取path子目录下的所由文件和目录的列表，如果path是个文件则返回值为NULL）<br><strong>功能</strong><br>　　<font color= red>打开一个目录，在失败的时候返回一个空的指针。</font><br><strong>返回值(DIR)</strong><br>       DIR 结构体的原型为：struct_dirstream<br>       在Linux系统中：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> __<span class="title">dirstream</span> <span class="title">DIR</span>;</span></span><br><span class="line"></span><br><span class="line">      <span class="class"><span class="keyword">struct</span> __<span class="title">dirstream</span></span></span><br><span class="line"><span class="class">      &#123;</span></span><br><span class="line">        <span class="keyword">void</span> *__fd; <span class="comment">/* `struct hurd_fd' pointer for descriptor.   */</span></span><br><span class="line">        <span class="keyword">char</span> *__data; <span class="comment">/* Directory block.   */</span></span><br><span class="line">        <span class="keyword">int</span> __entry_data; <span class="comment">/* Entry number `__data' corresponds to.   */</span></span><br><span class="line">        <span class="keyword">char</span> *__ptr; <span class="comment">/* Current pointer into the block.   */</span></span><br><span class="line">        <span class="keyword">int</span> __entry_ptr; <span class="comment">/* Entry number `__ptr' corresponds to.   */</span></span><br><span class="line">        <span class="keyword">size_t</span> __allocation; <span class="comment">/* Space allocated for the block.   */</span></span><br><span class="line">        <span class="keyword">size_t</span> __size; <span class="comment">/* Total valid data in the block.   */</span></span><br><span class="line">        __libc_lock_define (, __lock) <span class="comment">/* Mutex lock for this structure.   */</span></span><br><span class="line">       &#125;;</span><br></pre></td></tr></table></figure>
-
-<h5 id="readdir"><a href="#readdir" class="headerlink" title="readdir()"></a>readdir()</h5><p><strong>头文件</strong><br>#include&lt;dirent.h&gt;<br><strong>函数原型</strong><br>struct dirent* readdir(DIR* dir_handle); （个人理解循环读取dir_handle,目录和文件都读）<br><strong>功能</strong><br><font color = red>读取opendir 返回值的那个列表</font><br><strong>返回值</strong><br>返回dirent结构体指针，dirent结构体成员如下，（文件和目录都行）</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">dirent</span></span></span><br><span class="line"><span class="class">　　&#123;</span></span><br><span class="line">　　<span class="keyword">long</span> d_ino; <span class="comment">/* inode number 索引节点号 */</span></span><br><span class="line">　　<span class="keyword">off_t</span> d_off; <span class="comment">/* offset to this dirent 在目录文件中的偏移 */</span></span><br><span class="line">　　<span class="keyword">unsigned</span> <span class="keyword">short</span> d_reclen; <span class="comment">/* length of this d_name 文件名长 */</span></span><br><span class="line">　　<span class="keyword">unsigned</span> <span class="keyword">char</span> d_type; <span class="comment">/* the type of d_name 文件类型 */</span></span><br><span class="line">　　<span class="keyword">char</span> d_name [NAME_MAX+<span class="number">1</span>]; <span class="comment">/* file name (null-terminated) 文件名，最长255字符 */</span></span><br><span class="line">　　&#125;</span><br></pre></td></tr></table></figure>
-
-<h5 id="perror"><a href="#perror" class="headerlink" title="perror()"></a>perror()</h5><p><font color = red>将上一个函数发生错误的原因输出</font></p>
-<h5 id="closedir"><a href="#closedir" class="headerlink" title="closedir()"></a>closedir()</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;dirent.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">closedir</span><span class="params">(DIR *dir)</span></span>;</span><br></pre></td></tr></table></figure>
-
-<p>​     closedir()关闭参数dir所指的目录流。关闭成功则返回0，失败返回-1，错误原因存于errno 中。EBADF 参数dir为无效的目录流。注意：目录文件作为一种文件，再打开必须关闭，否则会由于文件的进程打开文件过多而不能打开新的文件。因此opendir函数和closedir函数同样是配对出现的</p>
-<h5 id="stat函数"><a href="#stat函数" class="headerlink" title="stat函数"></a>stat函数</h5><p> 作用：<font color = red>获取文件信息</font></p>
-<p> 头文件：include &lt;sys/types.h&gt; #include &lt;sys/stat.h&gt; #include &lt;unistd.h&gt;</p>
-<p> 函数原型：<code>int stat(const char *path, struct stat *buf)</code></p>
-<p> 返回值：成功返回0，失败返回-1；</p>
-<p> 参数：文件路径（名），struct stat 类型的结构体</p>
-<p>struct stat 结构体详解：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">stat</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">dev_t</span>     st_dev;     <span class="comment">/* ID of device containing file */</span>文件使用的设备号</span><br><span class="line">    <span class="keyword">ino_t</span>     st_ino;     <span class="comment">/* inode number */</span>    索引节点号 </span><br><span class="line">    <span class="keyword">mode_t</span>    st_mode;    <span class="comment">/* protection */</span>  文件对应的模式，文件，目录等</span><br><span class="line">    <span class="keyword">nlink_t</span>   st_nlink;   <span class="comment">/* number of hard links */</span>    文件的硬连接数  </span><br><span class="line">    <span class="keyword">uid_t</span>     st_uid;     <span class="comment">/* user ID of owner */</span>    所有者用户识别号</span><br><span class="line">    <span class="keyword">gid_t</span>     st_gid;     <span class="comment">/* group ID of owner */</span>   组识别号  </span><br><span class="line">    <span class="keyword">dev_t</span>     st_rdev;    <span class="comment">/* device ID (if special file) */</span> 设备文件的设备号</span><br><span class="line">    <span class="keyword">off_t</span>     st_size;    <span class="comment">/* total size, in bytes */</span> 以字节为单位的文件容量   </span><br><span class="line">    <span class="keyword">blksize_t</span> st_blksize; <span class="comment">/* blocksize for file system I/O */</span> 包含该文件的磁盘块的大小   </span><br><span class="line">    <span class="keyword">blkcnt_t</span>  st_blocks;  <span class="comment">/* number of 512B blocks allocated */</span> 该文件所占的磁盘块  </span><br><span class="line">    <span class="keyword">time_t</span>    st_atime;   <span class="comment">/* time of last access */</span> 最后一次访问该文件的时间   </span><br><span class="line">    <span class="keyword">time_t</span>    st_mtime;   <span class="comment">/* time of last modification */</span> /最后一次修改该文件的时间   </span><br><span class="line">    <span class="keyword">time_t</span>    st_ctime;   <span class="comment">/* time of last status change */</span> 最后一次改变该文件状态的时间   </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
-<p>stat结构体中的st_mode 则定义了下列数种情况：</p>
-<pre><code>S_IFMT   0170000    文件类型的位遮罩
-S_IFSOCK 0140000    套接字
-S_IFLNK 0120000     符号连接
-S_IFREG 0100000     一般文件
-S_IFBLK 0060000     区块装置
-S_IFDIR 0040000     目录
-S_IFCHR 0020000     字符装置
-S_IFIFO 0010000     先进先出
-
-S_ISUID 04000     文件的(set user-id on execution)位
-S_ISGID 02000     文件的(set group-id on execution)位
-S_ISVTX 01000     文件的sticky位
-
-S_IRUSR(S_IREAD) 00400     文件所有者具可读取权限
-S_IWUSR(S_IWRITE)00200     文件所有者具可写入权限
-S_IXUSR(S_IEXEC) 00100     文件所有者具可执行权限
-
-S_IRGRP 00040             用户组具可读取权限
-S_IWGRP 00020             用户组具可写入权限
-S_IXGRP 00010             用户组具可执行权限
-
-S_IROTH 00004             其他用户具可读取权限
-S_IWOTH 00002             其他用户具可写入权限
-S_IXOTH 00001             其他用户具可执行权限
-
-上述的文件类型在POSIX中定义了检查这些类型的宏定义：
-S_ISLNK (st_mode)    判断是否为符号连接
-S_ISREG (st_mode)    是否为一般文件
-S_ISDIR (st_mode)    是否为目录
-S_ISCHR (st_mode)    是否为字符装置文件
-S_ISBLK (s3e)        是否为先进先出
-S_ISSOCK (st_mode)   是否为socket
-若一目录具有sticky位(S_ISVTX)，则表示在此目录下的文件只能被该文件所有者、此目录所有者或root来删除或改名，在linux中，最典型的就是这个/tmp目录啦。</code></pre><p>st_mode 的结构</p>
-<p>st_mode 主要包含了 3 部分信息：</p>
-<p>15-12 位保存文件类型</p>
-<p>11-9 位保存执行文件时设置的信息</p>
-<p>8-0 位保存文件访问权限</p>
-<h5 id="getpwuid"><a href="#getpwuid" class="headerlink" title="getpwuid()"></a>getpwuid()</h5><p>头文件：#include &lt;sys/types.h&gt;  #include &lt;pwd.h&gt;</p>
-<p>getpwuid函数是通过用户的uid查找用户的passwd数据。如果出错时，它们都返回一个空<a href="https://baike.baidu.com/item/指针/2878304" target="_blank" rel="noopener">指针</a>并设置errno的值，用户可以根据perror函数查看出错的信息。</p>
-<p>函数说明</p>
-<p><font color =red>查找用户的passwd数据</font></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">和系统数据相关的passwd 结构 </span><br><span class="line">和系统数据相关的一个结构passwd定义如下 </span><br><span class="line"><span class="comment">/* The passwd structure.      */</span> </span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">passwd</span> </span></span><br><span class="line"><span class="class">&#123;</span> </span><br><span class="line">      <span class="keyword">char</span> *pw_name;       <span class="comment">/* 用户名*/</span> </span><br><span class="line">      <span class="keyword">char</span> *pw_passwd;     <span class="comment">/* 密码.*/</span> </span><br><span class="line">      <span class="keyword">__uid_t</span> pw_uid;      <span class="comment">/* 用户ID.*/</span> </span><br><span class="line">      <span class="keyword">__gid_t</span> pw_gid;      <span class="comment">/*组ID.*/</span> </span><br><span class="line">      <span class="keyword">char</span> *pw_gecos;      <span class="comment">/*真实名*/</span> </span><br><span class="line">      <span class="keyword">char</span> *pw_dir;        <span class="comment">/* 主目录.*/</span> </span><br><span class="line">      <span class="keyword">char</span> *pw_shell;      <span class="comment">/*使用的shell*/</span> </span><br><span class="line">&#125;; </span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt; </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt; </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/types.h&gt; </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/stat.h&gt; </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;fcntl.h&gt; </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt; </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;pwd.h&gt; </span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">(<span class="keyword">void</span>)</span> </span></span><br><span class="line"><span class="function"></span>&#123; </span><br><span class="line">       <span class="class"><span class="keyword">struct</span> <span class="title">passwd</span> *<span class="title">passwd</span>;</span> </span><br><span class="line">       passwd=getpwuid(getuid()); </span><br><span class="line">       <span class="comment">/** passwd=getcwnam("phpos"); **/</span> </span><br><span class="line">       <span class="built_in">printf</span>(<span class="string">"Username:%s/n"</span>,passwd-&gt;pw_name); </span><br><span class="line">       <span class="built_in">printf</span>(<span class="string">"Password:%s/n"</span>,passwd-&gt;pw_passwd); </span><br><span class="line">       <span class="built_in">printf</span>(<span class="string">"uid:%d/n"</span>,passwd-&gt;pw_uid); </span><br><span class="line">       <span class="built_in">printf</span>(<span class="string">"gid:%d/n"</span>,passwd-&gt;pw_gid); </span><br><span class="line">       <span class="built_in">printf</span>(<span class="string">"shell:%s/n"</span>,passwd-&gt;pw_shell); </span><br><span class="line">       <span class="built_in">printf</span>(<span class="string">"dir:%s/n"</span>,passwd-&gt;pw_dir); </span><br><span class="line">       <span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h5 id="getgrgid"><a href="#getgrgid" class="headerlink" title="getgrgid()"></a>getgrgid()</h5><p><strong>C语言getgrgid()函数：从组文件中取得指定gid的数据</strong></p>
-<p>头文件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;grp.h&gt;  #include &lt;sys/types.h&gt;</span><br></pre></td></tr></table></figure>
-
-<p>定义函数：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">strcut group * getgrgid(gid_t gid);</span><br></pre></td></tr></table></figure>
-
-<p>函数说明：getgrgid()用来依参数gid 指定的组识别码逐一搜索组文件, 找到时便将该组的数据以group 结构返回. 返回值：返回 group 结构数据, 如果返回NULL 则表示已无数据, 或有错误发生.</p>
-<p>通过gid,找到该组的相关信息,并以group结构体返回其信息, 头文件:#include &lt;grp.h&gt;,#include &lt;sys/types.h&gt; 参数     文件所属组的组id; 返回值:成功返回group结构体,错误返回NULL; group结构体: struct group { char <em>gr_name; /*组名称</em>/ char <em>gr_passwd; /</em> 组密码<em>/ gid_t gr_gid; /*组识别码</em>/ char <em><em>gr_mem; /</em>组成员账号</em>/ } 看个例子:</p>
-<p>范例</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">/* 取得gid＝3 的组数据 */</span><br><span class="line">#include &lt;grp.h&gt;</span><br><span class="line">#include &lt;sys/types.h&gt;</span><br><span class="line">main()</span><br><span class="line">&#123;</span><br><span class="line">  strcut group *data;</span><br><span class="line">  int i = 0;</span><br><span class="line">  data = getgrgid(3);</span><br><span class="line">  printf(&quot;%s:%s:%d:&quot;, data-&gt;gr_name, data-&gt;gr_passwd, data-&gt;gr_gid);</span><br><span class="line">    while(data-&gt;gr_mem[i])</span><br><span class="line">    printf(&quot;%s, &quot;, data-&gt;mem[i++]);</span><br><span class="line">    printf(&quot;\n&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">passwd</span>  </span></span><br><span class="line"><span class="class">&#123;</span>  </span><br><span class="line">    <span class="keyword">char</span> * pw_name; <span class="comment">/* Username, POSIX.1 */</span>  </span><br><span class="line">    <span class="keyword">char</span> * pw_passwd; <span class="comment">/* Password */</span>  </span><br><span class="line">    <span class="keyword">__uid_t</span> pw_uid; <span class="comment">/* User ID, POSIX.1 */</span>  </span><br><span class="line">    <span class="keyword">__gid_t</span> pw_gid; <span class="comment">/* Group ID, POSIX.1 */</span>  </span><br><span class="line">    <span class="keyword">char</span> * pw_gecos; <span class="comment">/* Real Name or Comment field */</span>  </span><br><span class="line">    <span class="keyword">char</span> * pw_dir; <span class="comment">/* Home directory, POSIX.1 */</span>  </span><br><span class="line">    <span class="keyword">char</span> * pw_shell; <span class="comment">/* Shell Program, POSIX.1 */</span>  </span><br><span class="line">&#125;;  </span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">group</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">char</span> *gr_name;  <span class="comment">/* Group name */</span></span><br><span class="line">    <span class="keyword">char</span> *gr_passwd;  <span class="comment">/* password */</span></span><br><span class="line">    <span class="keyword">__gid_t</span> gr_gid;  <span class="comment">/* Group ID */</span></span><br><span class="line">    <span class="keyword">char</span> **gr_mem;  <span class="comment">/* Member list */</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span><span class="comment">//0</span></span></span><br></pre></td></tr></table></figure>
-
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-  </article>
-  
-
-  
-  <nav class="page-nav">
-    
-    <a class="extend prev" rel="prev" href="/page/5/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/7/">下一页</a>
-  </nav>
-  
-</section>
 </div>
+<div id="lx-main-content">
+  <div class="lx-post"> 
 
-      <footer class="footer">
-  <div class="outer">
-    <ul class="list-inline">
-      <li>
-        &copy;
-        2015-2020
-        fangsong
-      </li>
-      <li>
-        
-      </li>
-    </ul>
-    <ul class="list-inline">
-      <li>
-        
-        
-        <span>
-  <i>PV:<span id="busuanzi_value_page_pv"></span></i>
-  <i>UV:<span id="busuanzi_value_site_uv"></span></i>
-</span>
-        
-      </li>
-      
-      <li>
-        <!-- cnzz统计 -->
-        
-        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
-        
-      </li>
-    </ul>
+  <div class="lx-entry padding">
+    <div>
+      <h2><a href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/%E4%BF%A1%E5%8F%B7%E9%87%8F/README/">Mynotes/操作系统与系统编程/信号量/README</a></h2>
+      <span class="lx-post-detail"><i class="fa fa-calendar-o"></i> 2020-05-13</span>
+      <p></p>
+    </div>
+  </div>
+  <div class="lx-entry padding">
+    <div>
+      <h2><a href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/server_select/README/">Mynotes/操作系统与系统编程/server_select/README</a></h2>
+      <span class="lx-post-detail"><i class="fa fa-calendar-o"></i> 2020-05-13</span>
+      <p></p>
+    </div>
+  </div>
+  <div class="lx-entry padding">
+    <div>
+      <h2><a href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/server_epoll/README/">Mynotes/操作系统与系统编程/server_epoll/README</a></h2>
+      <span class="lx-post-detail"><i class="fa fa-calendar-o"></i> 2020-05-13</span>
+      <p></p>
+    </div>
+  </div>
+  <div class="lx-entry padding">
+    <div>
+      <h2><a href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/popen/README/">Mynotes/操作系统与系统编程/popen/README</a></h2>
+      <span class="lx-post-detail"><i class="fa fa-calendar-o"></i> 2020-05-13</span>
+      <p></p>
+    </div>
+  </div>
+  <div class="lx-entry padding">
+    <div>
+      <h2><a href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/PIPE/README/">Mynotes/操作系统与系统编程/PIPE/README</a></h2>
+      <span class="lx-post-detail"><i class="fa fa-calendar-o"></i> 2020-05-13</span>
+      <p></p>
+    </div>
+  </div>
+  <div class="lx-entry padding">
+    <div>
+      <h2><a href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/IPC/3.%E9%9D%9E%E4%BA%B2%E7%BC%98%E8%BF%9B%E7%A8%8B%E9%97%B4%E7%9A%84%E5%86%85%E5%AD%98%E5%85%B1%E4%BA%AB/README/">Mynotes/操作系统与系统编程/IPC/3.非亲缘进程间的内存共享/README</a></h2>
+      <span class="lx-post-detail"><i class="fa fa-calendar-o"></i> 2020-05-13</span>
+      <p></p>
+    </div>
+  </div>
+  <div class="lx-entry padding">
+    <div>
+      <h2><a href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/IPC/2.SHM/README/">Mynotes/操作系统与系统编程/IPC/2.SHM/README</a></h2>
+      <span class="lx-post-detail"><i class="fa fa-calendar-o"></i> 2020-05-13</span>
+      <p></p>
+    </div>
+  </div>
+  <div class="lx-entry padding">
+    <div>
+      <h2><a href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/IPC/1.%E6%95%B0%E5%AD%97%E7%B4%AF%E5%8A%A0/README/">Mynotes/操作系统与系统编程/IPC/1.数字累加/README</a></h2>
+      <span class="lx-post-detail"><i class="fa fa-calendar-o"></i> 2020-05-13</span>
+      <p></p>
+    </div>
+  </div>
+  <div class="lx-entry padding">
+    <div>
+      <h2><a href="/2020/04/02/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/socket/Linux%20Socket%E7%BC%96%E7%A8%8B%EF%BC%88%E4%B8%8D%E9%99%90Linux%EF%BC%89/">Mynotes/操作系统与系统编程/socket/Linux Socket编程（不限Linux）</a></h2>
+      <span class="lx-post-detail"><i class="fa fa-calendar-o"></i> 2020-04-01</span>
+      <p></p>
+    </div>
+  </div>
+  <div class="lx-entry padding">
+    <div>
+      <h2><a href="/2020/04/02/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/ls/%E5%AE%9E%E7%8E%B0ls%E9%9C%80%E8%A6%81%E7%94%A8%E5%88%B0%E7%9A%84%E5%87%BD%E6%95%B0/">Mynotes/操作系统与系统编程/ls/实现ls需要用到的函数</a></h2>
+      <span class="lx-post-detail"><i class="fa fa-calendar-o"></i> 2020-04-01</span>
+      <p></p>
+    </div>
+  </div>
+ 
+
+<div id="pagination">
+  <a class="extend prev" rel="prev" href="/page/5/">&lt;i class=&quot;fa fa-chevron-left&quot; aria-label=&quot;accessibility.prev_page&quot;&gt;&lt;&#x2F;i&gt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/7/">&lt;i class=&quot;fa fa-chevron-right&quot; aria-label=&quot;accessibility.next_page&quot;&gt;&lt;&#x2F;i&gt;</a>
+</div>
+<footer>
+  <div>
+  Copyright &copy; 2019.<a href="/">恁村扛把子</a><br>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme <a href="https://lx.blleng.cn" target="_blank">Lx</a><br>
   </div>
 </footer>
-      <div class="float_btns">
-        <div class="totop" id="totop">
-  <i class="ri-arrow-up-line"></i>
+  </div>
+</div>
 </div>
 
-<div class="todark" id="todark">
-  <i class="ri-moon-line"></i>
-</div>
-
+<button class="menu-trigger"></button>
+<div class="menu">
+  <div class="menu-head">
+    <span class="layer">
+      <div class="col">
+        <div class="row for-pic">
+          <div class="profile-pic">
+            <a href="/"><img src="/images/fs3.jpg" alt="fangsong"/></a>
+          </div>
+        </div>
+        <div class="row for-name">
+          <p>fangsong</p>
+          <span class="tagline">Hello, World!</span>
+        </div>
       </div>
-    </main>
-    <aside class="sidebar on">
-      <button class="navbar-toggle"></button>
-<nav class="navbar">
-  
-  <div class="logo">
-    <a href="/"><img src="/images/ayer-side.svg" alt="恁村扛把子"></a>
+    </span>
   </div>
-  
-  <ul class="nav nav-main">
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/">主页</a>
+  <nav class="menu-container">
+  <ul class="menu-items">
+    <li><a href="/"><i class="fa fa-home fa-fw"></i>首页</a></li>
+    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-bookmark fa-fw"></i>页面</span>
+        <ul>
+          <li><a href="/guestbook">留言</a></li>
+        <li><a href="/about">关于</a></li>
+        </ul>
     </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/archives">归档</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/categories">分类</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/tags">标签</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/2019/about">关于我</a>
-    </li>
-    
-  </ul>
-</nav>
-<nav class="navbar navbar-bottom">
-  <ul class="nav">
-    <li class="nav-item">
-      
-      <a class="nav-item-link nav-item-search"  title="Search">
-        <i class="ri-search-line"></i>
-      </a>
-      
-      
-      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
-        <i class="ri-rss-line"></i>
-      </a>
-      
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-link fa-fw"></i>友链</span>
+        <ul>
+          <li> <a href="https://www.luogu.org/" target="_blank">luogu</a></li>
+        </ul>
     </li>
   </ul>
-</nav>
-<div class="search-form-wrap">
-  <div class="local-search local-search-plugin">
-  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
-  <div id="local-search-result" class="local-search-result"></div>
-</div>
-</div>
-    </aside>
-    <script>
-      if (window.matchMedia("(max-width: 768px)").matches) {
-        document.querySelector('.content').classList.remove('on');
-        document.querySelector('.sidebar').classList.remove('on');
-      }
-    </script>
-    <div id="mask"></div>
-
-<!-- #reward -->
-<div id="reward">
-  <span class="close"><i class="ri-close-line"></i></span>
-  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
-  <div class="reward-box">
-    
-    <div class="reward-item">
-      <img class="reward-img" src="/images/alipay.jpg">
-      <span class="reward-type">支付宝</span>
-    </div>
-    
-    
-    <div class="reward-item">
-      <img class="reward-img" src="/images/wechat.jpg">
-      <span class="reward-type">微信</span>
-    </div>
-    
-  </div>
-</div>
-    <script src="/js/jquery-2.0.3.min.js"></script>
-<script src="/js/lazyload.min.js"></script>
-
-<script>
-  try {
-    var typed = new Typed("#subtitle", {
-      strings: ['面朝大海，春暖花开', '愿你一生努力，一生被爱', '想要的都拥有，得不到的都释怀'],
-      startDelay: 0,
-      typeSpeed: 200,
-      loop: true,
-      backSpeed: 100,
-      showCursor: true
-    });
-  } catch (err) {
-  }
-
-</script>
-
-
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
-<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
-<script src="/dist/main.js"></script>
-
-
-<!-- Root element of PhotoSwipe. Must have class pswp. -->
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-
-    <!-- Background of PhotoSwipe. 
-         It's a separate element as animating opacity is faster than rgba(). -->
-    <div class="pswp__bg"></div>
-
-    <!-- Slides wrapper with overflow:hidden. -->
-    <div class="pswp__scroll-wrap">
-
-        <!-- Container that holds slides. 
-            PhotoSwipe keeps only 3 of them in the DOM to save memory.
-            Don't modify these 3 pswp__item elements, data is added later on. -->
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-        </div>
-
-        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
-        <div class="pswp__ui pswp__ui--hidden">
-
-            <div class="pswp__top-bar">
-
-                <!--  Controls are self-explanatory. Order can be changed. -->
-
-                <div class="pswp__counter"></div>
-
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-
-                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
-
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-
-                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
-                <!-- element will get class pswp__preloader--active when preloader is running -->
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                        <div class="pswp__preloader__cut">
-                            <div class="pswp__preloader__donut"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div>
-            </div>
-
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
-
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
-
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
-
-        </div>
-
-    </div>
-
+  </nav>
 </div>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
-<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
-
-<script>
-    function viewer_init() {
-        let pswpElement = document.querySelectorAll('.pswp')[0];
-        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
-
-        $imgArr.forEach(($em, i) => {
-            $em.onclick = () => {
-                // slider展开状态
-                // todo: 这样不好，后面改成状态
-                if (document.querySelector('.left-col.show')) return
-                let items = []
-                $imgArr.forEach(($em2, i2) => {
-                    let img = $em2.getAttribute('data-idx', i2)
-                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
-                    let title = $em2.getAttribute('alt')
-                    // 获得原图尺寸
-                    const image = new Image()
-                    image.src = src
-                    items.push({
-                        src: src,
-                        w: image.width || $em2.width,
-                        h: image.height || $em2.height,
-                        title: title
-                    })
-                })
-                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
-                    index: parseInt(i)
-                });
-                gallery.init()
-            }
-        })
-    }
-    viewer_init()
-</script>
-
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-      tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      }
-  });
-
-  MathJax.Hub.Queue(function() {
-      var all = MathJax.Hub.getAllJax(), i;
-      for(i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-      }
-  });
-</script>
-
-<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.6/unpacked/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script>
-  var ayerConfig = {
-    mathjax: true
-  }
-</script>
-
-
-
-<script src="/js/busuanzi-2.3.pure.min.js"></script>
-
-
-<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
-
-  <script src="/js/clickLove.js"></script>
-
-
-    
-    <div id="music">
-    
-    
-    
-    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
-        src="//music.163.com/outchain/player?type=2&id=436514312&auto=1&height=32"></iframe>
+<div class="gototop js-top">
+  <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
 </div>
+<script src="/js/jquery.easing.min.js"></script>
+<script src="/js/jquery.waypoints.min.js"></script>
+<script src="/js/jquery.stellar.min.js"></script>
+<script src="/js/main.js"></script>
 
-<style>
-    #music {
-        position: fixed;
-        right: 15px;
-        bottom: 0;
-        z-index: 998;
-    }
-</style>
-    
-  </div>
+
 </body>
-
 </html>

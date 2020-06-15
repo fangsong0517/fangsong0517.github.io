@@ -1,102 +1,64 @@
 <!DOCTYPE html>
-
-
-<html lang="zh-hanzi" >
-
-
+<html>
 <head>
-  <meta charset="utf-8" />
-    
-  <meta name="description" content="不要尽力而为，而要全力以赴，即使没有出色的外表和能力，也要压倒一切的霸气，用自己的光，照亮自己的路。" />
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-  <title>
-    Mynotes/操作系统与系统编程/理解select、poll和epoll区别/理解select、poll和epoll区别 |  恁村扛把子
-  </title>
-  <meta name="generator" content="hexo-theme-yilia-plus">
-  
-  <link rel="shortcut icon" href="/favicon.ico" />
-  
-  <link rel="stylesheet" href="/dist/main.css">
-  <link rel="stylesheet" href="/css/custom.css">
-  
-  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
-  
-  
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Mynotes/操作系统与系统编程/理解select、poll和epoll区别/理解select、poll和epoll区别 | 恁村扛把子</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="fangsong">
+  <meta name="keywords" content="">
+  <meta name="description" content="不要尽力而为，而要全力以赴，即使没有出色的外表和能力，也要压倒一切的霸气，用自己的光，照亮自己的路。">
+  <script id="hexo-configurations">
+  var CONFIG = {
+    root: '/',
+    theme: 'master',
+    version: '1.4.5',
+    localsearch:{
+      "enable": false,
+      "trigger": "auto",
+      "top_n_per_article": 1,
+      "unescape": false,
+      "preload": false
+      },
+    path: '-'
+  };
+</script>
 
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/jquery.jside.menu.js"></script>
+	<script>
+	$(document).ready(function(){
+	$(".menu-container").jSideMenu({
+	    jSidePosition: "position-right",
+	    jSideSticky: true,
+	    jSideSkin: "endless-river",
+	     });
+	}); 
+	</script>
   
-
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300|Noto+Serif+SC&amp;display=swap">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
 </head>
-
-</html>
-
 <body>
-  <div id="app">
-    <main class="content on">
-      <section class="outer">
-  <article id="post-Mynotes/操作系统与系统编程/理解select、poll和epoll区别/理解select、poll和epoll区别" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
+<div class="single">
+<div id="page">
+<div id="lx-aside" style="background-image: url(/images/page-cover.jpg)" data-stellar-background-ratio="0.5">
+  <div class="overlay">
+  <div class="page-title">
+    <div class="avatar"><a href="/"><img src="/images/fs3.jpg"></a></div>
+    <span>2020-05-14</span>
+    <h2>Mynotes/操作系统与系统编程/理解select、poll和epoll区别/理解select、poll和epoll区别</h2>
     
-    <header class="article-header">
-       
-<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  Mynotes/操作系统与系统编程/理解select、poll和epoll区别/理解select、poll和epoll区别
-</h1>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/%E7%90%86%E8%A7%A3select%E3%80%81poll%E5%92%8Cepoll%E5%8C%BA%E5%88%AB/%E7%90%86%E8%A7%A3select%E3%80%81poll%E5%92%8Cepoll%E5%8C%BA%E5%88%AB/" class="article-date">
-  <time datetime="2020-05-13T18:05:21.825Z" itemprop="datePublished">2020-05-13</time>
-</a>
-      
-      
-      
-<div class="word_count">
-    <span class="post-time">
-        <span class="post-meta-item-icon">
-            <i class="ri-quill-pen-line"></i>
-            <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">1k字</span>
-        </span>
-    </span>
-
-    <span class="post-time">
-        &nbsp; | &nbsp;
-        <span class="post-meta-item-icon">
-            <i class="ri-book-open-line"></i>
-            <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">3分钟</span>
-        </span>
-    </span>
-</div>
-
-      
     </div>
-    
-
-    
-    
-    <div class="tocbot"></div>
-
-
-
-
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h1 id="理解select、poll和epoll区别"><a href="#理解select、poll和epoll区别" class="headerlink" title="理解select、poll和epoll区别"></a>理解select、poll和epoll区别</h1><h2 id="１、IO复用模型"><a href="#１、IO复用模型" class="headerlink" title="１、IO复用模型"></a>１、IO复用模型</h2><p><img src="https://static.dingtalk.com/media/lALPDiQ3KR9S0PHNApTNA5Q_916_660.png_620x10000q90g.jpg?auth_bizType=IM&auth_bizEntity=%7B%22cid%22%3A%22627064533%3A627064533%22%2C%22msgId%22%3A%223484896791903%22%7D&bizType=im&open_id=627064533" alt="图片"></p>
+</div>
+</div>
+<div id="lx-main-content">
+  <div class="lx-post">
+    <div class="lx-entry padding">
+      <div>
+        <h1 id="理解select、poll和epoll区别"><a href="#理解select、poll和epoll区别" class="headerlink" title="理解select、poll和epoll区别"></a>理解select、poll和epoll区别</h1><h2 id="１、IO复用模型"><a href="#１、IO复用模型" class="headerlink" title="１、IO复用模型"></a>１、IO复用模型</h2><p><img src="https://static.dingtalk.com/media/lALPDiQ3KR9S0PHNApTNA5Q_916_660.png_620x10000q90g.jpg?auth_bizType=IM&auth_bizEntity=%7B%22cid%22%3A%22627064533%3A627064533%22%2C%22msgId%22%3A%223484896791903%22%7D&bizType=im&open_id=627064533" alt="图片"></p>
 <h2 id="２、目前的常用的IO复用模型有三种：select，poll，epoll"><a href="#２、目前的常用的IO复用模型有三种：select，poll，epoll" class="headerlink" title="２、目前的常用的IO复用模型有三种：select，poll，epoll"></a>２、目前的常用的IO复用模型有三种：select，poll，epoll</h2><p>(1)select时间复杂度O(n)</p>
 <p>他仅仅知道有I/O事件发生了，却不知道是哪那几个流(可能有一个，多个，甚至全部),我们只能无差别轮询所有的流，找出能读出数据，或者能写入数据的流，对他们进行操作。所以<font color = red>select具有o(n)无差别轮询的时间复杂度</font>，同时处理的流越多，无差别轮询时间就越长。</p>
 <p>(2)poll时间复杂度O(n)</p>
@@ -121,496 +83,93 @@
 <img src="https://static.dingtalk.com/media/lALPDiCpqpJJGZLNAY7NA84_974_398.png_620x10000q90g.jpg?auth_bizType=IM&amp;auth_bizEntity=%7B%22cid%22%3A%22627064533%3A627064533%22%2C%22msgId%22%3A%223505296142785%22%7D&amp;bizType=im&amp;open_id=627064533" alt="图片" style="zoom:150%;" />
 
 
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-        <div class="declare">
-          <ul class="post-copyright">
-            <li>
-              <i class="ri-copyright-line"></i>
-              <strong>版权声明： </strong s>
-              本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow"
-                target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
-            </li>
-          </ul>
-        </div>
-        
-    <footer class="article-footer">
-      
-          
-<div class="share-btn">
-      <span class="share-sns share-outer">
-        <i class="ri-share-forward-line"></i>
-        分享
-      </span>
-      <div class="share-wrap">
-        <i class="arrow"></i>
-        <div class="share-icons">
-          
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="ri-weibo-fill"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="ri-wechat-fill"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="ri-qq-fill"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="ri-douban-line"></i>
-          </a>
-          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a> -->
-          
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="ri-facebook-circle-fill"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="ri-twitter-fill"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="ri-google-fill"></i>
-          </a>
-        </div>
       </div>
-</div>
-
-<div class="wx-share-modal">
-    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/%E7%90%86%E8%A7%A3select%E3%80%81poll%E5%92%8Cepoll%E5%8C%BA%E5%88%AB/%E7%90%86%E8%A7%A3select%E3%80%81poll%E5%92%8Cepoll%E5%8C%BA%E5%88%AB/" alt="微信分享二维码">
     </div>
-</div>
-
-<div id="share-mask"></div>
-      
-      
-
-    </footer>
-
   </div>
-
-  
-  
-  <nav class="article-nav">
-    
-      <a href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/%E7%BA%BF%E7%A8%8B%E6%B1%A0/README/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            Mynotes/操作系统与系统编程/线程池/README
-          
-        </div>
-      </a>
-    
-    
-      <a href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/%E7%90%86%E8%A7%A3select%E3%80%81poll%E5%92%8Cepoll%E5%8C%BA%E5%88%AB/README/" class="article-nav-link">
-        <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">Mynotes/操作系统与系统编程/理解select、poll和epoll区别/README</div>
-      </a>
-    
-  </nav>
-
-
-  
-
-  
-  
-<!-- valine评论 -->
-<div id="vcomments-box">
-    <div id="vcomments">
-    </div>
 </div>
-<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
-<script>
-    new Valine({
-        el: '#vcomments',
-        app_id: '',
-        app_key: '',
-        path: window.location.pathname,
-        notify: 'false',
-        verify: 'false',
-        avatar: 'mp',
-        placeholder: '给我的文章加点评论吧~',
-        recordIP: true
-    });
-    const infoEle = document.querySelector('#vcomments .info');
-    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
-        infoEle.childNodes.forEach(function (item) {
-            item.parentNode.removeChild(item);
-        });
-    }
-</script>
-<style>
-    #vcomments-box {
-        padding: 5px 30px;
-    }
+<div class="lx-navigation">
+	<div class="lx-cover prev lx-cover-sm" style="background-image: url(/images/footer_1.jpg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2020/05/14/Mynotes/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/DNS%E5%8D%8F%E8%AE%AE/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Next</span>
+						<h3>Mynotes/计算机网络/DNS协议</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+        <div class="lx-cover next lx-cover-sm" style="background-image: url(/images/footer_2.jpg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/%E7%90%86%E8%A7%A3select%E3%80%81poll%E5%92%8Cepoll%E5%8C%BA%E5%88%AB/README/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Prev</span>
+						<h3>Mynotes/操作系统与系统编程/理解select、poll和epoll区别/README</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>
+</div>
 
-    @media screen and (max-width: 800px) {
-        #vcomments-box {
-            padding: 5px 0px;
-        }
-    }
-
-    #vcomments-box #vcomments {
-        background-color: #fff;
-    }
-
-    .v .vlist .vcard .vh {
-        padding-right: 20px;
-    }
-
-    .v .vlist .vcard {
-        padding-left: 10px;
-    }
-</style>
-
-  
-
-  
-  
-  
-
-</article>
-</section>
-      <footer class="footer">
-  <div class="outer">
-    <ul class="list-inline">
-      <li>
-        &copy;
-        2015-2020
-        fangsong
-      </li>
-      <li>
-        
-      </li>
-    </ul>
-    <ul class="list-inline">
-      <li>
-        
-        
-        <span>
-  <i>PV:<span id="busuanzi_value_page_pv"></span></i>
-  <i>UV:<span id="busuanzi_value_site_uv"></span></i>
-</span>
-        
-      </li>
-      
-      <li>
-        <!-- cnzz统计 -->
-        
-        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
-        
-      </li>
-    </ul>
+<footer>
+  <div>
+  Copyright &copy; 2019.<a href="/">恁村扛把子</a><br>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme <a href="https://lx.blleng.cn" target="_blank">Lx</a><br>
   </div>
 </footer>
-      <div class="float_btns">
-        <div class="totop" id="totop">
-  <i class="ri-arrow-up-line"></i>
 </div>
 
-<div class="todark" id="todark">
-  <i class="ri-moon-line"></i>
-</div>
-
+<button class="menu-trigger"></button>
+<div class="menu">
+  <div class="menu-head">
+    <span class="layer">
+      <div class="col">
+        <div class="row for-pic">
+          <div class="profile-pic">
+            <a href="/"><img src="/images/fs3.jpg" alt="fangsong"/></a>
+          </div>
+        </div>
+        <div class="row for-name">
+          <p>fangsong</p>
+          <span class="tagline">Hello, World!</span>
+        </div>
       </div>
-    </main>
-    <aside class="sidebar on">
-      <button class="navbar-toggle"></button>
-<nav class="navbar">
-  
-  <div class="logo">
-    <a href="/"><img src="/images/ayer-side.svg" alt="恁村扛把子"></a>
+    </span>
   </div>
-  
-  <ul class="nav nav-main">
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/">主页</a>
+  <nav class="menu-container">
+  <ul class="menu-items">
+    <li><a href="/"><i class="fa fa-home fa-fw"></i>首页</a></li>
+    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-bookmark fa-fw"></i>页面</span>
+        <ul>
+          <li><a href="/guestbook">留言</a></li>
+        <li><a href="/about">关于</a></li>
+        </ul>
     </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/archives">归档</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/categories">分类</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/tags">标签</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/2019/about">关于我</a>
-    </li>
-    
-  </ul>
-</nav>
-<nav class="navbar navbar-bottom">
-  <ul class="nav">
-    <li class="nav-item">
-      
-      <a class="nav-item-link nav-item-search"  title="Search">
-        <i class="ri-search-line"></i>
-      </a>
-      
-      
-      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
-        <i class="ri-rss-line"></i>
-      </a>
-      
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-link fa-fw"></i>友链</span>
+        <ul>
+          <li> <a href="https://www.luogu.org/" target="_blank">luogu</a></li>
+        </ul>
     </li>
   </ul>
-</nav>
-<div class="search-form-wrap">
-  <div class="local-search local-search-plugin">
-  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
-  <div id="local-search-result" class="local-search-result"></div>
-</div>
-</div>
-    </aside>
-    <script>
-      if (window.matchMedia("(max-width: 768px)").matches) {
-        document.querySelector('.content').classList.remove('on');
-        document.querySelector('.sidebar').classList.remove('on');
-      }
-    </script>
-    <div id="mask"></div>
-
-<!-- #reward -->
-<div id="reward">
-  <span class="close"><i class="ri-close-line"></i></span>
-  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
-  <div class="reward-box">
-    
-    <div class="reward-item">
-      <img class="reward-img" src="/images/alipay.jpg">
-      <span class="reward-type">支付宝</span>
-    </div>
-    
-    
-    <div class="reward-item">
-      <img class="reward-img" src="/images/wechat.jpg">
-      <span class="reward-type">微信</span>
-    </div>
-    
-  </div>
-</div>
-    <script src="/js/jquery-2.0.3.min.js"></script>
-<script src="/js/lazyload.min.js"></script>
-
-<script>
-  try {
-    var typed = new Typed("#subtitle", {
-      strings: ['面朝大海，春暖花开', '愿你一生努力，一生被爱', '想要的都拥有，得不到的都释怀'],
-      startDelay: 0,
-      typeSpeed: 200,
-      loop: true,
-      backSpeed: 100,
-      showCursor: true
-    });
-  } catch (err) {
-  }
-
-</script>
-
-
-
-<script src="/js/tocbot.min.js"></script>
-<script>
-  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
-  tocbot.init({
-    tocSelector: '.tocbot',
-    contentSelector: '.article-entry',
-    headingSelector: 'h1, h2, h3, h4, h5, h6',
-    hasInnerContainers: true,
-    scrollSmooth: true,
-    scrollContainer: 'main',
-    positionFixedSelector: '.tocbot',
-    positionFixedClass: 'is-position-fixed',
-    fixedSidebarOffset: 'auto'
-  });
-</script>
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
-<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
-<script src="/dist/main.js"></script>
-
-
-<!-- Root element of PhotoSwipe. Must have class pswp. -->
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-
-    <!-- Background of PhotoSwipe. 
-         It's a separate element as animating opacity is faster than rgba(). -->
-    <div class="pswp__bg"></div>
-
-    <!-- Slides wrapper with overflow:hidden. -->
-    <div class="pswp__scroll-wrap">
-
-        <!-- Container that holds slides. 
-            PhotoSwipe keeps only 3 of them in the DOM to save memory.
-            Don't modify these 3 pswp__item elements, data is added later on. -->
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-        </div>
-
-        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
-        <div class="pswp__ui pswp__ui--hidden">
-
-            <div class="pswp__top-bar">
-
-                <!--  Controls are self-explanatory. Order can be changed. -->
-
-                <div class="pswp__counter"></div>
-
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-
-                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
-
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-
-                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
-                <!-- element will get class pswp__preloader--active when preloader is running -->
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                        <div class="pswp__preloader__cut">
-                            <div class="pswp__preloader__donut"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div>
-            </div>
-
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
-
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
-
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
-
-        </div>
-
-    </div>
-
+  </nav>
 </div>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
-<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
-
-<script>
-    function viewer_init() {
-        let pswpElement = document.querySelectorAll('.pswp')[0];
-        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
-
-        $imgArr.forEach(($em, i) => {
-            $em.onclick = () => {
-                // slider展开状态
-                // todo: 这样不好，后面改成状态
-                if (document.querySelector('.left-col.show')) return
-                let items = []
-                $imgArr.forEach(($em2, i2) => {
-                    let img = $em2.getAttribute('data-idx', i2)
-                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
-                    let title = $em2.getAttribute('alt')
-                    // 获得原图尺寸
-                    const image = new Image()
-                    image.src = src
-                    items.push({
-                        src: src,
-                        w: image.width || $em2.width,
-                        h: image.height || $em2.height,
-                        title: title
-                    })
-                })
-                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
-                    index: parseInt(i)
-                });
-                gallery.init()
-            }
-        })
-    }
-    viewer_init()
-</script>
-
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-      tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      }
-  });
-
-  MathJax.Hub.Queue(function() {
-      var all = MathJax.Hub.getAllJax(), i;
-      for(i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-      }
-  });
-</script>
-
-<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.6/unpacked/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script>
-  var ayerConfig = {
-    mathjax: true
-  }
-</script>
-
-
-
-<script src="/js/busuanzi-2.3.pure.min.js"></script>
-
-
-<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
-
-  <script src="/js/clickLove.js"></script>
-
-
-    
-    <div id="music">
-    
-    
-    
-    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
-        src="//music.163.com/outchain/player?type=2&id=436514312&auto=1&height=32"></iframe>
+<div class="gototop js-top">
+  <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
 </div>
+<script src="/js/jquery.easing.min.js"></script>
+<script src="/js/jquery.waypoints.min.js"></script>
+<script src="/js/jquery.stellar.min.js"></script>
+<script src="/js/main.js"></script>
 
-<style>
-    #music {
-        position: fixed;
-        right: 15px;
-        bottom: 0;
-        z-index: 998;
-    }
-</style>
-    
-  </div>
+
 </body>
-
 </html>
