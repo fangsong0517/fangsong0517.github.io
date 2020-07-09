@@ -1,151 +1,274 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Archives | 恁村扛把子</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="author" content="fangsong">
-  <meta name="keywords" content="">
-  <meta name="description" content="不要尽力而为，而要全力以赴，即使没有出色的外表和能力，也要压倒一切的霸气，用自己的光，照亮自己的路。">
-  <script id="hexo-configurations">
-  var CONFIG = {
-    root: '/',
-    theme: 'master',
-    version: '1.4.5',
-    localsearch:{
-      "enable": false,
-      "trigger": "auto",
-      "top_n_per_article": 1,
-      "unescape": false,
-      "preload": false
-      },
-    path: '-'
-  };
-</script>
-
-  <link rel="shortcut icon" href="/favicon.ico">
-  <link rel="stylesheet" href="/css/main.css">
-  <script src="/js/jquery.min.js"></script>
-  <script src="/js/jquery.jside.menu.js"></script>
-	<script>
-	$(document).ready(function(){
-	$(".menu-container").jSideMenu({
-	    jSidePosition: "position-right",
-	    jSideSticky: true,
-	    jSideSkin: "endless-river",
-	     });
-	}); 
-	</script>
-  
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300|Noto+Serif+SC&amp;display=swap">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="google-site-verification" content="TZE0rZyIqLl10trYu3BWBWa1Vmz6HFwhb2OcNEK4u-s" />
+     <link rel="shortcut icon" href= /img/favicon.ico >
+    <title>
+        恁村扛把子
+    </title>
+    <meta name="description" content= 嘿，我是恁村扛把子～这是我的子站，用于展示写的Hexo主题：Coder。欢迎访问！ >
+    <meta name="keywords" content= Blog,Hexo,Theme,方嵩,FangSong >
+    <link rel="stylesheet" href="/libs/highlight/styles/monokai-sublime.css">
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+<link rel="alternate" href="/atom.xml" title="恁村扛把子" type="application/atom+xml">
 </head>
-<body>
-<div id="page">
-<div id="lx-aside" style="background-image: url(/images/fs2.jpg)">
-  <div class="overlay">
-  <div class="featured">
-    <div class="avatar"><a href="/"><img src="/images/fs3.jpg"></a></div>
-    <span>fangsong</span>
-    <h2>恁村扛把子</h2>
-    <span>——天行健君子以自强不息， 地势坤君子以厚德载物！</span>
+<body id="bodyx">
+    <div class="hd logodiv">
+    <img src="/img/male.png" class="logopng" alt="logo">
+    <p class="logot">
+         恁村扛把子 
+         <span class="logo_2"></span>
+        <h3 class="words" style="font-weight: bold;font-family: Georgia;"> 
+            天行健君子以自强不息，地势坤君子以厚德载物 
+        </h3>
+    </p>
+</div>
+
+
+<div class="hd">
+    <ol class="breadcrumb">
+        
+            <li><a class="ba" href="/about">关于我👀</a></li>
+        
+            <li><a class="ba" href="https://www.fangsong.run" target="_blank" rel="noopener">访问主站🎉</a></li>
+        
+            <li><a class="ba" href="https://github.com/fangsong0517" target="_blank" rel="noopener">GitHub🐒</a></li>
+        
+
+            <script src="/libs/jquery.min.js"></script>
+            <script src="/js/search.js"></script>
+            
+                <form class="site-search-form">
+                    <i class="fa fa-search" id="search-logo"><input type="text" id="local-search-input" class="st-search-input" /></i>
+                </form>
+                <div id="local-search-result" class="local-search-result-cls"></div>
+            
+            <script type="text/javascript" id="local.search.active">
+                var inputArea       = document.querySelector("#local-search-input");
+                var getSearchFile = function(){
+                    var path = "/search.xml";
+                    searchFunc(path, 'local-search-input', 'local-search-result');
+                }
+                inputArea.onfocus = function(){ getSearchFile() }
+
+                var $resetButton = $("#search-form .fa-times");
+                var $resultArea = $("#local-search-result");
+
+                inputArea.oninput = function(){ $resetButton.show(); }
+                resetSearch = function(){
+                    $resultArea.html("");
+                    document.querySelector("#search-form").reset();
+                    $resetButton.hide();
+                    $(".no-result").hide();
+                }
+                inputArea.onkeydown = function(){ if(event.keyCode == 13) return false }
+                //No search result
+                $resultArea.bind("DOMNodeRemoved DOMNodeInserted", function(e) {
+                    if (!$(e.target).text()) {
+                        $(".no-result").show(100);
+                    } else {
+                        $(".no-result").hide();
+                    }
+                })
+            </script>
+
+    </ol>
+    <hr>
+</div>
+<div class="hd">
     
-  </div>
-  </div>
-</div>
-<div id="lx-main-content">
-  <div class="lx-post">
-  <h2 class="archive">归档</h2>
-    <div class="lx-entry padding"><div>
-    <span class="lx-post-detail">2020-05-13</span>
-    <h2><a href="/2020/05/14/Mynotes/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/UDP%E5%92%8CTCP%E7%9A%84%E5%AF%B9%E6%AF%94/">Mynotes/计算机网络/UDP和TCP的对比</a></h2>
-    <p></p></div></div><div class="lx-entry padding"><div>
-    <span class="lx-post-detail">2020-05-13</span>
-    <h2><a href="/2020/05/14/Mynotes/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/SMTP%E3%80%81POP3%E3%80%81IMAP%E5%8D%8F%E8%AE%AE/">Mynotes/计算机网络/SMTP、POP3、IMAP协议</a></h2>
-    <p></p></div></div><div class="lx-entry padding"><div>
-    <span class="lx-post-detail">2020-05-13</span>
-    <h2><a href="/2020/05/14/Mynotes/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/IP%E5%9C%B0%E5%9D%80%E3%80%81MAC%E5%9C%B0%E5%9D%80%E3%80%81ARP%E5%9C%B0%E5%9D%80/">Mynotes/计算机网络/IP地址、MAC地址、ARP地址</a></h2>
-    <p></p></div></div><div class="lx-entry padding"><div>
-    <span class="lx-post-detail">2020-05-13</span>
-    <h2><a href="/2020/05/14/Mynotes/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/HTTP%E5%8D%8F%E8%AE%AE%E4%B8%8EHTTPS%E5%8D%8F%E8%AE%AE/">Mynotes/计算机网络/HTTP协议与HTTPS协议</a></h2>
-    <p></p></div></div><div class="lx-entry padding"><div>
-    <span class="lx-post-detail">2020-05-13</span>
-    <h2><a href="/2020/05/14/Mynotes/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/FTP%E5%8D%8F%E8%AE%AE/">Mynotes/计算机网络/FTP协议</a></h2>
-    <p></p></div></div><div class="lx-entry padding"><div>
-    <span class="lx-post-detail">2020-05-13</span>
-    <h2><a href="/2020/05/14/Mynotes/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/DNS%E5%8D%8F%E8%AE%AE/">Mynotes/计算机网络/DNS协议</a></h2>
-    <p></p></div></div><div class="lx-entry padding"><div>
-    <span class="lx-post-detail">2020-05-13</span>
-    <h2><a href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/%E7%90%86%E8%A7%A3select%E3%80%81poll%E5%92%8Cepoll%E5%8C%BA%E5%88%AB/%E7%90%86%E8%A7%A3select%E3%80%81poll%E5%92%8Cepoll%E5%8C%BA%E5%88%AB/">Mynotes/操作系统与系统编程/理解select、poll和epoll区别/理解select、poll和epoll区别</a></h2>
-    <p></p></div></div><div class="lx-entry padding"><div>
-    <span class="lx-post-detail">2020-05-13</span>
-    <h2><a href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/%E7%90%86%E8%A7%A3select%E3%80%81poll%E5%92%8Cepoll%E5%8C%BA%E5%88%AB/README/">Mynotes/操作系统与系统编程/理解select、poll和epoll区别/README</a></h2>
-    <p></p></div></div><div class="lx-entry padding"><div>
-    <span class="lx-post-detail">2020-05-13</span>
-    <h2><a href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/README/">Mynotes/操作系统与系统编程/消息队列/README</a></h2>
-    <p></p></div></div><div class="lx-entry padding"><div>
-    <span class="lx-post-detail">2020-05-13</span>
-    <h2><a href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/%E6%96%87%E4%BB%B6%E9%94%81/%E6%96%87%E4%BB%B6%E9%94%81/">Mynotes/操作系统与系统编程/文件锁/文件锁</a></h2>
-    <p></p></div></div>
-<div id="pagination">
-  <a class="extend prev" rel="prev" href="/archives/page/4/">&lt;i class=&quot;fa fa-chevron-left&quot; aria-label=&quot;accessibility.prev_page&quot;&gt;&lt;&#x2F;i&gt;</a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/archives/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/9/">9</a><a class="extend next" rel="next" href="/archives/page/6/">&lt;i class=&quot;fa fa-chevron-right&quot; aria-label=&quot;accessibility.next_page&quot;&gt;&lt;&#x2F;i&gt;</a>
-</div>
-<footer>
-  <div>
-  Copyright &copy; 2019.<a href="/">恁村扛把子</a><br>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme <a href="https://lx.blleng.cn" target="_blank">Lx</a><br>
-  </div>
-</footer>
-  </div>
-</div>
+    
+        
+        
+            <div class="titlex">
+                <p><span class="jing"></span><span style="color: #6d9ee7;"> 公元</span> 
+                 2020年 🕛
+                </p>
+            </div>
+            
+        
+        <a class="flink" href="/2020/05/14/Mynotes/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/TCP%E7%9A%84%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6/">
+            <div class="list">
+                <div class="postname">
+                    Mynotes/计算机网络/TCP的拥塞控制
+                </div>
+                <div class="posttime">
+                    May 13th
+                </div>
+            </div>
+        </a>
+    
+        
+        
+        <a class="flink" href="/2020/05/14/Mynotes/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/SMTP%E3%80%81POP3%E3%80%81IMAP%E5%8D%8F%E8%AE%AE/">
+            <div class="list">
+                <div class="postname">
+                    Mynotes/计算机网络/SMTP、POP3、IMAP协议
+                </div>
+                <div class="posttime">
+                    May 13th
+                </div>
+            </div>
+        </a>
+    
+        
+        
+        <a class="flink" href="/2020/05/14/Mynotes/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/HTTP%E5%8D%8F%E8%AE%AE%E4%B8%8EHTTPS%E5%8D%8F%E8%AE%AE/">
+            <div class="list">
+                <div class="postname">
+                    Mynotes/计算机网络/HTTP协议与HTTPS协议
+                </div>
+                <div class="posttime">
+                    May 13th
+                </div>
+            </div>
+        </a>
+    
+        
+        
+        <a class="flink" href="/2020/05/14/Mynotes/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/IP%E5%9C%B0%E5%9D%80%E3%80%81MAC%E5%9C%B0%E5%9D%80%E3%80%81ARP%E5%9C%B0%E5%9D%80/">
+            <div class="list">
+                <div class="postname">
+                    Mynotes/计算机网络/IP地址、MAC地址、ARP地址
+                </div>
+                <div class="posttime">
+                    May 13th
+                </div>
+            </div>
+        </a>
+    
+        
+        
+        <a class="flink" href="/2020/05/14/Mynotes/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/FTP%E5%8D%8F%E8%AE%AE/">
+            <div class="list">
+                <div class="postname">
+                    Mynotes/计算机网络/FTP协议
+                </div>
+                <div class="posttime">
+                    May 13th
+                </div>
+            </div>
+        </a>
+    
+        
+        
+        <a class="flink" href="/2020/05/14/Mynotes/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/DNS%E5%8D%8F%E8%AE%AE/">
+            <div class="list">
+                <div class="postname">
+                    Mynotes/计算机网络/DNS协议
+                </div>
+                <div class="posttime">
+                    May 13th
+                </div>
+            </div>
+        </a>
+    
+        
+        
+        <a class="flink" href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/%E7%BA%BF%E7%A8%8B%E6%B1%A0/README/">
+            <div class="list">
+                <div class="postname">
+                    Mynotes/操作系统与系统编程/线程池/README
+                </div>
+                <div class="posttime">
+                    May 13th
+                </div>
+            </div>
+        </a>
+    
+        
+        
+        <a class="flink" href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/%E7%90%86%E8%A7%A3select%E3%80%81poll%E5%92%8Cepoll%E5%8C%BA%E5%88%AB/%E7%90%86%E8%A7%A3select%E3%80%81poll%E5%92%8Cepoll%E5%8C%BA%E5%88%AB/">
+            <div class="list">
+                <div class="postname">
+                    Mynotes/操作系统与系统编程/理解select、poll和epoll区别/理解select、poll和epoll区别
+                </div>
+                <div class="posttime">
+                    May 13th
+                </div>
+            </div>
+        </a>
+    
+        
+        
+        <a class="flink" href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/%E7%90%86%E8%A7%A3select%E3%80%81poll%E5%92%8Cepoll%E5%8C%BA%E5%88%AB/README/">
+            <div class="list">
+                <div class="postname">
+                    Mynotes/操作系统与系统编程/理解select、poll和epoll区别/README
+                </div>
+                <div class="posttime">
+                    May 13th
+                </div>
+            </div>
+        </a>
+    
+        
+        
+        <a class="flink" href="/2020/05/14/Mynotes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/README/">
+            <div class="list">
+                <div class="postname">
+                    Mynotes/操作系统与系统编程/消息队列/README
+                </div>
+                <div class="posttime">
+                    May 13th
+                </div>
+            </div>
+        </a>
+    
 </div>
 
-<button class="menu-trigger"></button>
-<div class="menu">
-  <div class="menu-head">
-    <span class="layer">
-      <div class="col">
-        <div class="row for-pic">
-          <div class="profile-pic">
-            <a href="/"><img src="/images/fs3.jpg" alt="fangsong"/></a>
-          </div>
-        </div>
-        <div class="row for-name">
-          <p>fangsong</p>
-          <span class="tagline">Hello, World!</span>
-        </div>
-      </div>
-    </span>
-  </div>
-  <nav class="menu-container">
-  <ul class="menu-items">
-    <li><a href="/"><i class="fa fa-home fa-fw"></i>首页</a></li>
-    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>归档</a></li>
-    <li class="has-sub"><span class="dropdown-heading">
-      <i class="fa fa-bookmark fa-fw"></i>页面</span>
-        <ul>
-          <li><a href="/guestbook">留言</a></li>
-        <li><a href="/about">关于</a></li>
-        </ul>
-    </li>
-    <li class="has-sub"><span class="dropdown-heading">
-      <i class="fa fa-link fa-fw"></i>友链</span>
-        <ul>
-          <li> <a href="https://www.luogu.org/" target="_blank">luogu</a></li>
-        </ul>
-    </li>
-  </ul>
-  </nav>
+    <div class="footer" id="footer">
+    <p><h4>Copyright © 2020 | Author: fangsong | Theme By <a class="theme-author" href="https://github.com/Xunzhuo/hexo-theme-coder" target="_blank" rel="noopener" style="font-size:14px; color: #969696">Coder</a></h4>
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <span id="busuanzi_container_site_pv">Page Views: <span id="busuanzi_value_site_pv"></span></span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv">Unique Visitors: <span id="busuanzi_value_site_uv"></span></span>
+    
+    <label class="el-switch el-switch-blue el-switch-sm" style="vertical-align: sub;">
+        <input type="checkbox" name="switch" id="update_style">
+        <span class="el-switch-style"></span>
+    </label>
+
+    <!--         <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");
+    document.write(unescape("%3Cspan id='cnzz_stat_icon_1278548644'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "v1.cnzz.com/stat.php%3Fid%3D1278548644%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script> -->
+</p>
 </div>
 
-<div class="gototop js-top">
-  <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
-</div>
-<script src="/js/jquery.easing.min.js"></script>
-<script src="/js/jquery.waypoints.min.js"></script>
-<script src="/js/jquery.stellar.min.js"></script>
-<script src="/js/main.js"></script>
-
-
+<input type="hidden" id="web_style" value="black">
+<input type="hidden" id="valine_appid" value="NOsswOncKgc8HOxqo9oxIWlX-gzGzoHsz">
+<input type="hidden" id="valine_appKey" value="z1FihjWEbS8uIfUQdmCtK7zz">
+<script src="/libs/jquery.min.js"></script>
+<script src="/libs/highlight/highlight.pack.js"></script>
+<script src='//cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script src="/js/js.js"></script>
+<style type="text/css">
+.v * {
+color: #698fca;
+}
+.v .vlist .vcard .vhead .vsys {
+color: #3a3e4a;
+}
+.v .vlist .vcard .vh .vmeta .vat {
+color: #638fd5;
+}
+.v .vlist .vcard .vhead .vnick {
+color: #6ba1ff;
+}
+.v a {
+color: #8696b1;
+}
+.v .vlist .vcard .vhead .vnick:hover {
+color: #669bfc;
+}
+</style>
+    <script type="text/javascript" color="173,174,173" opacity='1' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
 </body>
 </html>

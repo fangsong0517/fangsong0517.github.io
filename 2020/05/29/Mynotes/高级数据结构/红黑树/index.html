@@ -1,63 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Mynotes/高级数据结构/红黑树 | 恁村扛把子</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="author" content="fangsong">
-  <meta name="keywords" content="">
-  <meta name="description" content="不要尽力而为，而要全力以赴，即使没有出色的外表和能力，也要压倒一切的霸气，用自己的光，照亮自己的路。">
-  <script id="hexo-configurations">
-  var CONFIG = {
-    root: '/',
-    theme: 'master',
-    version: '1.4.5',
-    localsearch:{
-      "enable": false,
-      "trigger": "auto",
-      "top_n_per_article": 1,
-      "unescape": false,
-      "preload": false
-      },
-    path: '-'
-  };
-</script>
-
-  <link rel="shortcut icon" href="/favicon.ico">
-  <link rel="stylesheet" href="/css/main.css">
-  <script src="/js/jquery.min.js"></script>
-  <script src="/js/jquery.jside.menu.js"></script>
-	<script>
-	$(document).ready(function(){
-	$(".menu-container").jSideMenu({
-	    jSidePosition: "position-right",
-	    jSideSticky: true,
-	    jSideSkin: "endless-river",
-	     });
-	}); 
-	</script>
-  
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300|Noto+Serif+SC&amp;display=swap">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="google-site-verification" content="TZE0rZyIqLl10trYu3BWBWa1Vmz6HFwhb2OcNEK4u-s" />
+     <link rel="shortcut icon" href= /img/favicon.ico >
+    <title>
+        恁村扛把子
+    </title>
+    <meta name="description" content= 嘿，我是恁村扛把子～这是我的子站，用于展示写的Hexo主题：Coder。欢迎访问！ >
+    <meta name="keywords" content= Blog,Hexo,Theme,方嵩,FangSong >
+    <link rel="stylesheet" href="/libs/highlight/styles/monokai-sublime.css">
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+<link rel="alternate" href="/atom.xml" title="恁村扛把子" type="application/atom+xml">
 </head>
-<body>
-<div class="single">
-<div id="page">
-<div id="lx-aside" style="background-image: url(/images/page-cover.jpg)" data-stellar-background-ratio="0.5">
-  <div class="overlay">
-  <div class="page-title">
-    <div class="avatar"><a href="/"><img src="/images/fs3.jpg"></a></div>
-    <span>2020-05-29</span>
-    <h2>Mynotes/高级数据结构/红黑树</h2>
-    
+<body id="bodyx">
+    <div class="hd posts">
+    <a href="/index.html"><i class="fa fa-home
+ replay-btn" aria-hidden="true"></i></a>
+    <div class="post-title">
+        <p>
+            Mynotes/高级数据结构/红黑树
+        </p>
+        <hr>
     </div>
-</div>
-</div>
-<div id="lx-main-content">
-  <div class="lx-post">
-    <div class="lx-entry padding">
-      <div>
+    <div class="post-content">
         <p>#　红黑树</p>
 <p>省<code>cpu</code></p>
 <p><img src="http://ww1.sinaimg.cn/large/006Uqzbtly1ges2uqo6fhj30ns0d4gob.jpg" alt="image.png"></p>
@@ -119,93 +89,57 @@
 <h5 id="代码-1"><a href="#代码-1" class="headerlink" title="代码:"></a>代码:</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> RED 0</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> BLACK 1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> DOUBLE_BLACK 2</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Node</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> key, color; <span class="comment">// 0 red, 1 black, 2 double black</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span> *<span class="title">lchild</span>, *<span class="title">rchild</span>;</span></span><br><span class="line">&#125; Node;</span><br><span class="line"></span><br><span class="line">Node _NIL, * <span class="keyword">const</span> NIL = &amp;_NIL;</span><br><span class="line"></span><br><span class="line">__attribute__((constructor))</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init_NIL</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    NIL-&gt;key = <span class="number">0</span>;</span><br><span class="line">    NIL-&gt;lchild = NIL-&gt;rchild = NIL;</span><br><span class="line">    NIL-&gt;color = BLACK;</span><br><span class="line">    <span class="keyword">return</span> ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">Node *<span class="title">getNewNode</span><span class="params">(<span class="keyword">int</span> key)</span> </span>&#123;</span><br><span class="line">    Node *p = (Node *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Node));</span><br><span class="line">    p-&gt;key = key;</span><br><span class="line">    p-&gt;lchild = p-&gt;rchild = NIL;</span><br><span class="line">    p-&gt;color = RED;</span><br><span class="line">    <span class="keyword">return</span> p;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">hasRedChild</span><span class="params">(Node *root)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> root-&gt;lchild-&gt;color == RED || root-&gt;rchild-&gt;color == RED;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">Node *<span class="title">left_rotate</span><span class="params">(Node *root)</span> </span>&#123;</span><br><span class="line">    Node *temp = root-&gt;rchild;</span><br><span class="line">    root-&gt;rchild = temp-&gt;lchild;</span><br><span class="line">    temp-&gt;lchild = root;</span><br><span class="line">    <span class="keyword">return</span> temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">Node *<span class="title">right_rotate</span><span class="params">(Node *root)</span> </span>&#123;</span><br><span class="line">    Node *temp = root-&gt;lchild;</span><br><span class="line">    root-&gt;lchild = temp-&gt;rchild;</span><br><span class="line">    temp-&gt;rchild = root;</span><br><span class="line">    <span class="keyword">return</span> temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">Node *<span class="title">insert_maintain</span><span class="params">(Node *root)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!hasRedChild(root)) <span class="keyword">return</span> root;</span><br><span class="line">    <span class="keyword">if</span> (root-&gt;lchild-&gt;color == RED &amp;&amp; root-&gt;rchild-&gt;color == RED) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!hasRedChild(root-&gt;lchild) &amp;&amp; !hasRedChild(root-&gt;rchild)) <span class="keyword">return</span> root;</span><br><span class="line">        <span class="keyword">goto</span> insert_end;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (root-&gt;lchild-&gt;color == RED) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!hasRedChild(root-&gt;lchild)) <span class="keyword">return</span> root;</span><br><span class="line">        <span class="keyword">if</span> (root-&gt;lchild-&gt;rchild-&gt;color == RED) &#123;</span><br><span class="line">            root-&gt;lchild = left_rotate(root-&gt;lchild);</span><br><span class="line">        &#125;</span><br><span class="line">        root = right_rotate(root);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (!hasRedChild(root-&gt;rchild)) <span class="keyword">return</span> root;</span><br><span class="line">        <span class="keyword">if</span> (root-&gt;rchild-&gt;lchild-&gt;color == RED) &#123;</span><br><span class="line">            root-&gt;rchild = right_rotate(root-&gt;rchild);</span><br><span class="line">        &#125;</span><br><span class="line">        root = left_rotate(root);</span><br><span class="line">    &#125;</span><br><span class="line">insert_end:</span><br><span class="line">    root-&gt;color = RED;</span><br><span class="line">    root-&gt;lchild-&gt;color = root-&gt;rchild-&gt;color = BLACK;</span><br><span class="line">    <span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Node *__insert(Node *root, <span class="keyword">int</span> key) &#123;</span><br><span class="line">    <span class="keyword">if</span> (root == NIL) <span class="keyword">return</span> getNewNode(key);</span><br><span class="line">    <span class="keyword">if</span> (root-&gt;key == key) <span class="keyword">return</span> root;</span><br><span class="line">    <span class="keyword">if</span> (root-&gt;key &gt; key) root-&gt;lchild = __insert(root-&gt;lchild, key);</span><br><span class="line">    <span class="keyword">else</span> root-&gt;rchild = __insert(root-&gt;rchild, key);</span><br><span class="line">    <span class="keyword">return</span> insert_maintain(root);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">Node *<span class="title">insert</span><span class="params">(Node *root, <span class="keyword">int</span> key)</span> </span>&#123;</span><br><span class="line">    root = __insert(root, key);</span><br><span class="line">    root-&gt;color = BLACK;</span><br><span class="line">    <span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function">Node *<span class="title">predecceddor</span><span class="params">(Node *root)</span> </span>&#123;</span><br><span class="line">    Node *temp = root-&gt;lchild;</span><br><span class="line">    <span class="keyword">while</span>(temp -&gt;rchild!= NIL) temp = temp-&gt;rchild;</span><br><span class="line">    <span class="keyword">return</span> temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">Node *<span class="title">erase_maintain</span><span class="params">(Node *root)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(root-&gt;lchild-&gt;color != DOUBLE_BLACK &amp;&amp; root-&gt;rchild-&gt;color != DOUBLE_BLACK) <span class="keyword">return</span> root;</span><br><span class="line">    <span class="keyword">if</span>(root-&gt;rchild-&gt;color == DOUBLE_BLACK) &#123;</span><br><span class="line">        <span class="keyword">if</span>(root-&gt;lchild-&gt;color == RED) &#123;</span><br><span class="line">            root-&gt;color = RED;</span><br><span class="line">            root-&gt;lchild-&gt;color = BLACK;</span><br><span class="line">            root = right_rotate(root);</span><br><span class="line">            root-&gt;rchild = erase_maintain(root-&gt;rchild);</span><br><span class="line">            <span class="keyword">return</span> root;</span><br><span class="line">        &#125; </span><br><span class="line">        <span class="keyword">if</span>(!hasRedChild(root-&gt;lchild)) &#123;</span><br><span class="line">            root-&gt;color += <span class="number">1</span>;</span><br><span class="line">            root-&gt;lchild-&gt;color -= <span class="number">1</span>;</span><br><span class="line">            root-&gt;rchild-&gt;color -= <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">return</span> root;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(root-&gt;lchild-&gt;lchild-&gt;color != RED) &#123;</span><br><span class="line">            root-&gt;lchild-&gt;rchild-&gt;color = BLACK;</span><br><span class="line">            root-&gt;lchild-&gt;color = RED;</span><br><span class="line">            root-&gt;lchild = left_rotate(root-&gt;lchild);</span><br><span class="line">        &#125;</span><br><span class="line">        root-&gt;lchild-&gt;color = root-&gt;color;</span><br><span class="line">        root-&gt;rchild-&gt;color -= <span class="number">1</span>;;</span><br><span class="line">        root = right_rotate(root);</span><br><span class="line">        root-&gt;lchild-&gt;color = root-&gt;rchild-&gt;color = BLACK;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(root-&gt;rchild-&gt;color == RED) &#123;</span><br><span class="line">            root-&gt;color = RED;</span><br><span class="line">            root-&gt;rchild-&gt;color = BLACK;</span><br><span class="line">            root = left_rotate(root);</span><br><span class="line">            root-&gt;lchild = erase_maintain(root-&gt;lchild);</span><br><span class="line">            <span class="keyword">return</span> root;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(!hasRedChild(root-&gt;rchild)) &#123;</span><br><span class="line">            root-&gt;color += <span class="number">1</span>;</span><br><span class="line">            root-&gt;lchild-&gt;color -= <span class="number">1</span>;</span><br><span class="line">            root-&gt;rchild-&gt;color -= <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">return</span> root;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(root-&gt;rchild-&gt;rchild-&gt;color != RED) &#123;</span><br><span class="line">            root-&gt;rchild-&gt;lchild-&gt;color = BLACK;</span><br><span class="line">            root-&gt;rchild-&gt;color = RED;</span><br><span class="line">            root-&gt;rchild = right_rotate(root-&gt;rchild);</span><br><span class="line">        &#125;</span><br><span class="line">        root-&gt;rchild-&gt;color = root-&gt;color;</span><br><span class="line">        root-&gt;lchild-&gt;color -= <span class="number">1</span>;;</span><br><span class="line">        root = left_rotate(root);</span><br><span class="line">        root-&gt;lchild-&gt;color = root-&gt;rchild-&gt;color = BLACK;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Node *__erase(Node *root, <span class="keyword">int</span> key) &#123;</span><br><span class="line">    <span class="keyword">if</span>(root == NIL) <span class="keyword">return</span> root;</span><br><span class="line">    <span class="keyword">if</span>(root-&gt;key &gt; key) &#123;</span><br><span class="line">        root-&gt;lchild = __erase(root-&gt;lchild, key);</span><br><span class="line"></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span>(root-&gt;key &lt; key) &#123;</span><br><span class="line">        root-&gt;rchild = __erase(root-&gt;rchild, key);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(root-&gt;lchild == NIL || root-&gt;rchild == NIL) &#123;<span class="comment">//d 0 1</span></span><br><span class="line">            Node *temp = root-&gt;lchild == NIL ? root-&gt;rchild : root-&gt;lchild;</span><br><span class="line">            temp-&gt;color += root-&gt;color;</span><br><span class="line">            <span class="built_in">free</span>(root);</span><br><span class="line">            <span class="keyword">return</span> temp;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;<span class="comment">//2</span></span><br><span class="line">            Node *temp = predecceddor(root);</span><br><span class="line">            root-&gt;key = temp-&gt;key;</span><br><span class="line">            root-&gt;lchild = __erase(root-&gt;lchild, temp-&gt;key);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> erase_maintain(root);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">Node *<span class="title">erase</span><span class="params">(Node *root, <span class="keyword">int</span> key)</span> </span>&#123;</span><br><span class="line">    root = __erase(root, key);</span><br><span class="line">    root-&gt;color = BLACK;</span><br><span class="line">    <span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">clear</span><span class="params">(Node *root)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (root == NIL) <span class="keyword">return</span> ;</span><br><span class="line">    clear(root-&gt;lchild);</span><br><span class="line">    clear(root-&gt;rchild);</span><br><span class="line">    <span class="built_in">free</span>(root);</span><br><span class="line">    <span class="keyword">return</span> ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">output</span><span class="params">(Node *root)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (root == NIL) <span class="keyword">return</span> ;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d [%d, %d] %s\n"</span>, </span><br><span class="line">        root-&gt;key, </span><br><span class="line">        root-&gt;lchild-&gt;key, </span><br><span class="line">        root-&gt;rchild-&gt;key,</span><br><span class="line">        root-&gt;color ? <span class="string">"BLACK"</span> : <span class="string">"RED"</span></span><br><span class="line">    );</span><br><span class="line">    output(root-&gt;lchild);</span><br><span class="line">    output(root-&gt;rchild);</span><br><span class="line">    <span class="keyword">return</span> ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> op, val;</span><br><span class="line">    Node *root = NIL;</span><br><span class="line">    <span class="keyword">while</span>(~<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;op, &amp;val)) &#123;</span><br><span class="line">        <span class="keyword">switch</span>(op) &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">1</span>: root = insert(root, val);<span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">2</span>: root = erase(root, val);<span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        output(root);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
-      </div>
     </div>
-  </div>
+
+    
 </div>
-<div class="lx-navigation">
-	<div class="lx-cover prev lx-cover-sm" style="background-image: url(/images/footer_1.jpg)">
-		<div class="overlay"></div>
-		<a class="copy" href="/2020/05/29/Mynotes/%E9%AB%98%E7%BA%A7%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%BA%A2%E9%BB%91%E6%A0%912/">
-			<div class="display-t">
-				<div class="display-tc">
-					<div>
-						<span>Next</span>
-						<h3>Mynotes/高级数据结构/红黑树2</h3>
-					</div>
-				</div>
-			</div>
-		</a>
-	</div>
-        <div class="lx-cover next lx-cover-sm" style="background-image: url(/images/footer_2.jpg)">
-		<div class="overlay"></div>
-		<a class="copy" href="/2020/05/29/Mynotes/%E9%AB%98%E7%BA%A7%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/README/">
-			<div class="display-t">
-				<div class="display-tc">
-					<div>
-						<span>Prev</span>
-						<h3>Mynotes/高级数据结构/README</h3>
-					</div>
-				</div>
-			</div>
-		</a>
-	</div>
-</div>
+    <div class="footer" id="footer">
+    <p><h4>Copyright © 2020 | Author: fangsong | Theme By <a class="theme-author" href="https://github.com/Xunzhuo/hexo-theme-coder" target="_blank" rel="noopener" style="font-size:14px; color: #969696">Coder</a></h4>
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <span id="busuanzi_container_site_pv">Page Views: <span id="busuanzi_value_site_pv"></span></span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv">Unique Visitors: <span id="busuanzi_value_site_uv"></span></span>
+    
+    <label class="el-switch el-switch-blue el-switch-sm" style="vertical-align: sub;">
+        <input type="checkbox" name="switch" id="update_style">
+        <span class="el-switch-style"></span>
+    </label>
+
+    <!--         <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");
+    document.write(unescape("%3Cspan id='cnzz_stat_icon_1278548644'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "v1.cnzz.com/stat.php%3Fid%3D1278548644%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script> -->
+</p>
 </div>
 
-<footer>
-  <div>
-  Copyright &copy; 2019.<a href="/">恁村扛把子</a><br>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme <a href="https://lx.blleng.cn" target="_blank">Lx</a><br>
-  </div>
-</footer>
-</div>
-
-<button class="menu-trigger"></button>
-<div class="menu">
-  <div class="menu-head">
-    <span class="layer">
-      <div class="col">
-        <div class="row for-pic">
-          <div class="profile-pic">
-            <a href="/"><img src="/images/fs3.jpg" alt="fangsong"/></a>
-          </div>
-        </div>
-        <div class="row for-name">
-          <p>fangsong</p>
-          <span class="tagline">Hello, World!</span>
-        </div>
-      </div>
-    </span>
-  </div>
-  <nav class="menu-container">
-  <ul class="menu-items">
-    <li><a href="/"><i class="fa fa-home fa-fw"></i>首页</a></li>
-    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>归档</a></li>
-    <li class="has-sub"><span class="dropdown-heading">
-      <i class="fa fa-bookmark fa-fw"></i>页面</span>
-        <ul>
-          <li><a href="/guestbook">留言</a></li>
-        <li><a href="/about">关于</a></li>
-        </ul>
-    </li>
-    <li class="has-sub"><span class="dropdown-heading">
-      <i class="fa fa-link fa-fw"></i>友链</span>
-        <ul>
-          <li> <a href="https://www.luogu.org/" target="_blank">luogu</a></li>
-        </ul>
-    </li>
-  </ul>
-  </nav>
-</div>
-
-<div class="gototop js-top">
-  <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
-</div>
-<script src="/js/jquery.easing.min.js"></script>
-<script src="/js/jquery.waypoints.min.js"></script>
-<script src="/js/jquery.stellar.min.js"></script>
-<script src="/js/main.js"></script>
-
-
+<input type="hidden" id="web_style" value="black">
+<input type="hidden" id="valine_appid" value="NOsswOncKgc8HOxqo9oxIWlX-gzGzoHsz">
+<input type="hidden" id="valine_appKey" value="z1FihjWEbS8uIfUQdmCtK7zz">
+<script src="/libs/jquery.min.js"></script>
+<script src="/libs/highlight/highlight.pack.js"></script>
+<script src='//cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script src="/js/js.js"></script>
+<style type="text/css">
+.v * {
+color: #698fca;
+}
+.v .vlist .vcard .vhead .vsys {
+color: #3a3e4a;
+}
+.v .vlist .vcard .vh .vmeta .vat {
+color: #638fd5;
+}
+.v .vlist .vcard .vhead .vnick {
+color: #6ba1ff;
+}
+.v a {
+color: #8696b1;
+}
+.v .vlist .vcard .vhead .vnick:hover {
+color: #669bfc;
+}
+</style>
+    <script type="text/javascript" color="173,174,173" opacity='1' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
 </body>
 </html>
